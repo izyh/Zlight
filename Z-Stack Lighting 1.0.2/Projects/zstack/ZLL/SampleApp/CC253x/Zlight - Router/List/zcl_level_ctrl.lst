@@ -1,0 +1,1290 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.20.2.41139 for 8051             27/May/2014  19:14:24 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\Source\Light\z #
+#                          cl_level_ctrl.c                                    #
+#    Command line       =  -f "D:\Texas Instruments\Z-Stack Lighting          #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wRouter.cfg" (-DCPU32MHZ        #
+#                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TRU #
+#                          E -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8       #
+#                          -DMAC_CFG_RX_MAX=5 -DRTR_NWK) -f "D:\Texas         #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wConfig.cfg" (-DZIGBEEPRO       #
+#                          -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR       #
+#                          -DDEFAULT_CHANLIST=0x00000800                      #
+#                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                       #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MA #
+#                          SK=0x007F -DBEACON_REQUEST_DELAY=100               #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                     #
+#                          -DLINK_STATUS_JITTER_MASK=0x007F                   #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_PO #
+#                          LLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7             #
+#                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3    #
+#                          -DNWK_MAX_DATA_RETRIES=2                           #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9         #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40           #
+#                          -DNWK_MAX_BINDING_ENTRIES=4                        #
+#                          -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01,  #
+#                          0x03, 0x05, 0x07, 0x09, 0x0B, 0x0D, 0x0F, 0x00,    #
+#                          0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0D}"         #
+#                          -DMAC_MAX_FRAME_SIZE=116                           #
+#                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const     #
+#                          __code" -DGENERIC=__generic                        #
+#                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000        #
+#                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100    #
+#                          -DREJOIN_POLL_RATE=440) -f "D:\Texas               #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wZCL.cfg" "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\Source\Light\z #
+#                          cl_level_ctrl.c" -D FEATURE_GREEN_POWER -D         #
+#                          SECURE=1 -D TC_LINKKEY_JOIN -D                     #
+#                          ZDSECMGR_TC_DEVICE_MAX=2 -D NV_RESTORE -D          #
+#                          HOLD_AUTO_START -D INTER_PAN -D                    #
+#                          LCD_SUPPORTED=DEBUG -D ZCL_BASIC -D ZCL_READ -D    #
+#                          ZCL_WRITE -D ZCL_IDENTIFY -D ZCL_ON_OFF -D         #
+#                          ZCL_SCENES -D ZCL_GROUPS -D                        #
+#                          ZCL_LIGHT_LINK_ENHANCE -D ZCL_LEVEL_CTRL -D        #
+#                          ZCL_COLOR_CTRL -D MAX_CHANNELS_24GHZ=0x02108800    #
+#                          -D xPWM_ALT2 -D xTHERMAL_SHUTDOWN -D               #
+#                          ZLL_1_0_HUB_COMPATIBILITY -D DALI_LIGHT -lC        #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\List\" -lA "D:\Texas Instruments\Z-Stack  #
+#                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC253 #
+#                          x\Zlight - Router\List\" --diag_suppress           #
+#                          Pe001,Pa010 -o "D:\Texas Instruments\Z-Stack       #
+#                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC253 #
+#                          x\Zlight - Router\Obj\" -e --debug --core=plain    #
+#                          --dptr=16,1 --data_model=large                     #
+#                          --code_model=banked --calling_convention=xdata_ree #
+#                          ntrant --place_constants=data_rom                  #
+#                          --nr_virtual_regs 16 -I "D:\Texas                  #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\" -I    #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\Sour #
+#                          ce\" -I "D:\Texas Instruments\Z-Stack Lighting     #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\S #
+#                          ource\" -I "D:\Texas Instruments\Z-Stack Lighting  #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\HomeAutomation\Source\" -I "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\HomeAutomation\SampleLight\Source\" -I           #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\ZMain\TI2530DB\" -I "D:\Texas                    #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\hal\include\" -I "D:\Texas      #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\hal\target\CC2530PMP4712\" -I   #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\include\" -I "D:\Texas      #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\high_level\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\low_level\srf04\" -I        #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\low_level\srf04\single_chip #
+#                          \" -I "D:\Texas Instruments\Z-Stack Lighting       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mt\" -I "D:\Texas               #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\osal\include\" -I "D:\Texas     #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\services\saddr\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\services\sdata\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\af\" -I "D:\Texas         #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\nwk\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sapi\" -I "D:\Texas       #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sec\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sys\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\zcl\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\zdo\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\zmac\" -I "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\zmac\f8w\" -Ohz                 #
+#                          --require_prototypes                               #
+#    List file          =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\List\zcl_level_ctrl.lst                   #
+#    Object file        =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\Obj\zcl_level_ctrl.r51                    #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\Texas Instruments\Z-Stack Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\Source\Light\zcl_level_ctrl.c
+      1          /**************************************************************************************************
+      2            Filename:       zcl_level_ctrl.c
+      3            Revised:        $Date: 2013-04-03 14:59:11 -0700 (Wed, 03 Apr 2013) $
+      4            Revision:       $Revision: 33727 $
+      5          
+      6          
+      7            Description:    This file contains the Zigbee Cluster Library Level Control
+      8                            application callbacks code.
+      9          
+     10          
+     11            Copyright 2010-2011 Texas Instruments Incorporated. All rights reserved.
+     12          
+     13            IMPORTANT: Your use of this Software is limited to those specific rights
+     14            granted under the terms of a software license agreement between the user
+     15            who downloaded the software, his/her employer (which must be your employer)
+     16            and Texas Instruments Incorporated (the "License").  You may not use this
+     17            Software unless you agree to abide by the terms of the License. The License
+     18            limits your use, and you acknowledge, that the Software may not be modified,
+     19            copied or distributed unless embedded on a Texas Instruments microcontroller
+     20            or used solely and exclusively in conjunction with a Texas Instruments radio
+     21            frequency transceiver, which is integrated into your product.  Other than for
+     22            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     23            works of, modify, distribute, perform, display or sell this Software and/or
+     24            its documentation for any purpose.
+     25          
+     26            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     27            PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     28            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     29            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     30            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     31            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     32            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     33            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     34            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     35            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     36            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     37          
+     38            Should you have any questions regarding your right to use this Software,
+     39            contact Texas Instruments Incorporated at www.TI.com.
+     40          **************************************************************************************************/
+     41          
+     42          /*********************************************************************
+     43            This device will be like a Light device.  This application is not
+     44            intended to be a Light device, but will use the device description
+     45            to implement this sample code.
+     46          *********************************************************************/
+     47          
+     48          #ifdef ZCL_LEVEL_CTRL
+     49          /*********************************************************************
+     50           * INCLUDES
+     51           */
+     52          
+     53          #include "zcl_level_ctrl.h"
+     54          
+     55          /*********************************************************************
+     56           * MACROS
+     57           */
+     58          
+     59          /*********************************************************************
+     60           * CONSTANTS
+     61           */
+     62          /*********************************************************************
+     63           * TYPEDEFS
+     64           */
+     65          
+     66          /*********************************************************************
+     67           * GLOBAL VARIABLES
+     68           */
+     69          
+     70          /*********************************************************************
+     71           * GLOBAL FUNCTIONS
+     72           */
+     73          
+     74          /*********************************************************************
+     75           * LOCAL VARIABLES
+     76           */
+     77          //static afAddrType_t zclLevel_DstAddr;
+     78          
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+     79          static int32 zclLevel_StepLevel_256 = 0;
+   \                     zclLevel_StepLevel_256:
+   \   000000                DS 4
+   \   000004                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+     80          static uint16 zclLevel_CurrentLevel_256 = ((uint16)LEVEL_MAX)<<8;
+   \                     zclLevel_CurrentLevel_256:
+   \   000000                DS 2
+   \   000002                REQUIRE `?<Initializer for zclLevel_CurrentLevel_256>`
+   \   000002                REQUIRE __INIT_XDATA_I
+     81          
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+     82          static uint16 zclLevel_LevelWithOnOff = 0;
+   \                     zclLevel_LevelWithOnOff:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+     83          
+     84          /*********************************************************************
+     85           * LOCAL FUNCTIONS
+     86           */
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+     87          static byte zclLight_TaskID;
+   \                     zclLight_TaskID:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+     88          static zclGCB_OnOff_t zclLevel_OnOffCB;
+   \                     zclLevel_OnOffCB:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+     89          /*********************************************************************
+     90           * LOCAL FUNCTIONS
+     91           */
+     92          
+     93          
+     94          /*********************************************************************
+     95           * @fn          zclLevel_init
+     96           *
+     97           * @brief
+     98           *
+     99           * @param       none
+    100           *
+    101           * @return      none
+    102           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    103          void zclLevel_init( byte taskID, zclGCB_OnOff_t OnOffCB )
+   \                     zclLevel_init:
+    104          {
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+    105            zclLight_TaskID = taskID;
+   \   000006   90....       MOV     DPTR,#zclLight_TaskID
+   \   000009   F0           MOVX    @DPTR,A
+    106            zclLevel_OnOffCB = OnOffCB;
+   \   00000A   90....       MOV     DPTR,#zclLevel_OnOffCB
+   \   00000D   EA           MOV     A,R2
+   \   00000E   F0           MOVX    @DPTR,A
+   \   00000F   A3           INC     DPTR
+   \   000010   EB           MOV     A,R3
+   \   000011   F0           MOVX    @DPTR,A
+    107          
+    108            //Move lamp to default level
+    109            zclLevel_LevelRemainingTime = 0;
+   \   000012   90....       MOV     DPTR,#zclLevel_LevelRemainingTime
+   \   000015   E4           CLR     A
+   \   000016   F0           MOVX    @DPTR,A
+   \   000017   A3           INC     DPTR
+   \   000018   F0           MOVX    @DPTR,A
+    110             hwLight_ApplyUpdate( &zclLevel_CurrentLevel,
+    111                                  &zclLevel_CurrentLevel_256,
+    112                                  &zclLevel_StepLevel_256,
+    113                                  &zclLevel_LevelRemainingTime,
+    114                                  LEVEL_MIN, LEVEL_MAX, FALSE );
+   \   000019                ; Setup parameters for call to function hwLight_ApplyUpdate
+   \   000019   F5..         MOV     ?V0 + 0,A
+   \   00001B   78..         MOV     R0,#?V0 + 0
+   \   00001D   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   000020   75..FE       MOV     ?V0 + 0,#-0x2
+   \   000023   78..         MOV     R0,#?V0 + 0
+   \   000025   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   000028   75....       MOV     ?V0 + 0,#zclLevel_LevelRemainingTime & 0xff
+   \   00002B   75....       MOV     ?V0 + 1,#(zclLevel_LevelRemainingTime >> 8) & 0xff
+   \   00002E   78..         MOV     R0,#?V0 + 0
+   \   000030   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000033   75....       MOV     ?V0 + 0,#zclLevel_StepLevel_256 & 0xff
+   \   000036   75....       MOV     ?V0 + 1,#(zclLevel_StepLevel_256 >> 8) & 0xff
+   \   000039   78..         MOV     R0,#?V0 + 0
+   \   00003B   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00003E   7901         MOV     R1,#0x1
+   \   000040   7C..         MOV     R4,#zclLevel_CurrentLevel_256 & 0xff
+   \   000042   7D..         MOV     R5,#(zclLevel_CurrentLevel_256 >> 8) & 0xff
+   \   000044   7A..         MOV     R2,#zclLevel_CurrentLevel & 0xff
+   \   000046   7B..         MOV     R3,#(zclLevel_CurrentLevel >> 8) & 0xff
+   \   000048   12....       LCALL   ??hwLight_ApplyUpdate?relay
+   \   00004B   7406         MOV     A,#0x6
+   \   00004D   12....       LCALL   ?DEALLOC_XSTACK8
+    115          }
+   \   000050                REQUIRE ?Subroutine0
+   \   000050                ; // Fall through to label ?Subroutine0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   7F02         MOV     R7,#0x2
+   \   000002   02....       LJMP    ?BANKED_LEAVE_XDATA
+    116          
+    117          /*********************************************************************
+    118           * @fn          zclLevel_process_level_event
+    119           *
+    120           * @brief       Level Event Processor for zclGeneral.
+    121           *
+    122           * @param       none
+    123           *
+    124           * @return      none
+    125           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    126          void zclLevel_process( uint16 *events )
+   \                     zclLevel_process:
+    127          {
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV     A,R2
+   \   000006   FE           MOV     R6,A
+   \   000007   EB           MOV     A,R3
+   \   000008   FF           MOV     R7,A
+    128            if ( *events & LEVEL_PROCESS_EVT )
+   \   000009   8E82         MOV     DPL,R6
+   \   00000B   8F83         MOV     DPH,R7
+   \   00000D   E0           MOVX    A,@DPTR
+   \   00000E   5408         ANL     A,#0x8
+   \   000010   7003         JNZ     $+5
+   \   000012   02....       LJMP    ??zclLevel_process_0 & 0xFFFF
+    129            {
+    130              //update the level
+    131              if(zclLevel_LevelRemainingTime)
+   \   000015   12....       LCALL   ?Subroutine2 & 0xFFFF
+   \                     ??CrossCallReturnLabel_18:
+   \   000018   604E         JZ      ??zclLevel_process_1
+    132              {
+    133                hwLight_ApplyUpdate( &zclLevel_CurrentLevel,
+    134                                     &zclLevel_CurrentLevel_256,
+    135                                     &zclLevel_StepLevel_256,
+    136                                     &zclLevel_LevelRemainingTime,
+    137                                     LEVEL_MIN, LEVEL_MAX, FALSE );
+   \   00001A                ; Setup parameters for call to function hwLight_ApplyUpdate
+   \   00001A   75..00       MOV     ?V0 + 0,#0x0
+   \   00001D   78..         MOV     R0,#?V0 + 0
+   \   00001F   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   000022   75..FE       MOV     ?V0 + 0,#-0x2
+   \   000025   78..         MOV     R0,#?V0 + 0
+   \   000027   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   00002A   75....       MOV     ?V0 + 0,#zclLevel_LevelRemainingTime & 0xff
+   \   00002D   75....       MOV     ?V0 + 1,#(zclLevel_LevelRemainingTime >> 8) & 0xff
+   \   000030   78..         MOV     R0,#?V0 + 0
+   \   000032   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000035   75....       MOV     ?V0 + 0,#zclLevel_StepLevel_256 & 0xff
+   \   000038   75....       MOV     ?V0 + 1,#(zclLevel_StepLevel_256 >> 8) & 0xff
+   \   00003B   78..         MOV     R0,#?V0 + 0
+   \   00003D   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000040   7901         MOV     R1,#0x1
+   \   000042   7C..         MOV     R4,#zclLevel_CurrentLevel_256 & 0xff
+   \   000044   7D..         MOV     R5,#(zclLevel_CurrentLevel_256 >> 8) & 0xff
+   \   000046   7A..         MOV     R2,#zclLevel_CurrentLevel & 0xff
+   \   000048   7B..         MOV     R3,#(zclLevel_CurrentLevel >> 8) & 0xff
+   \   00004A   12....       LCALL   ??hwLight_ApplyUpdate?relay
+   \   00004D   7406         MOV     A,#0x6
+   \   00004F   12....       LCALL   ?DEALLOC_XSTACK8
+    138          
+    139                if( (zclLevel_CurrentLevel == LEVEL_MIN) && (zclLevel_LevelWithOnOff) )
+   \   000052   90....       MOV     DPTR,#zclLevel_CurrentLevel
+   \   000055   E0           MOVX    A,@DPTR
+   \   000056   6401         XRL     A,#0x1
+   \   000058   700E         JNZ     ??zclLevel_process_1
+   \   00005A   90....       MOV     DPTR,#zclLevel_LevelWithOnOff
+   \   00005D   12....       LCALL   ??Subroutine7_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_11:
+   \   000060   6022         JZ      ??zclLevel_process_2
+    140                {
+    141                  zclLevel_OnOffCB(COMMAND_OFF);
+   \   000062                ; Setup parameters for indirect call
+   \   000062   12....       LCALL   ?Subroutine3 & 0xFFFF
+    142                }
+    143              }
+   \                     ??CrossCallReturnLabel_8:
+   \   000065   12....       LCALL   ?CALL_IND
+    144          
+    145              if(zclLevel_LevelWithOnOff)
+   \                     ??zclLevel_process_1:
+   \   000068   90....       MOV     DPTR,#zclLevel_LevelWithOnOff
+   \   00006B   12....       LCALL   ??Subroutine7_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_12:
+   \   00006E   6014         JZ      ??zclLevel_process_2
+    146              {
+    147                if(zclLevel_CurrentLevel == LEVEL_MIN)
+   \   000070   90....       MOV     DPTR,#zclLevel_CurrentLevel
+   \   000073   E0           MOVX    A,@DPTR
+   \   000074   6401         XRL     A,#0x1
+   \   000076   7004         JNZ     ??zclLevel_process_3
+    148                {
+    149                  zclLevel_OnOffCB(COMMAND_OFF);
+   \   000078                ; Setup parameters for indirect call
+   \   000078   7900         MOV     R1,#0x0
+   \   00007A   8002         SJMP    ??zclLevel_process_4
+    150                }
+    151                else
+    152                {
+    153                  zclLevel_OnOffCB(COMMAND_ON);
+   \                     ??zclLevel_process_3:
+   \   00007C                ; Setup parameters for indirect call
+   \   00007C   7901         MOV     R1,#0x1
+    154                }
+    155              }
+   \                     ??zclLevel_process_4:
+   \   00007E   12....       LCALL   ??Subroutine6_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_4:
+   \   000081   12....       LCALL   ?CALL_IND
+    156          
+    157              if (zclLevel_LevelRemainingTime)
+   \                     ??zclLevel_process_2:
+   \   000084   12....       LCALL   ?Subroutine2 & 0xFFFF
+   \                     ??CrossCallReturnLabel_19:
+   \   000087   6017         JZ      ??zclLevel_process_5
+    158              {
+    159                //set a timer to make the change over zclLevel_StepTime 100ms
+    160                osal_start_timerEx( zclLight_TaskID, LEVEL_PROCESS_EVT , 100 );
+   \   000089                ; Setup parameters for call to function osal_start_timerEx
+   \   000089   90....       MOV     DPTR,#__Constant_64
+   \   00008C   12....       LCALL   ?PUSH_XSTACK8_X_FOUR
+   \   00008F   7A08         MOV     R2,#0x8
+   \   000091   7B00         MOV     R3,#0x0
+   \   000093   90....       MOV     DPTR,#zclLight_TaskID
+   \   000096   E0           MOVX    A,@DPTR
+   \   000097   F9           MOV     R1,A
+   \   000098   12....       LCALL   ??osal_start_timerEx?relay
+   \   00009B   7404         MOV     A,#0x4
+   \   00009D   12....       LCALL   ?DEALLOC_XSTACK8
+    161              }
+    162          
+    163              *events = *events ^ LEVEL_PROCESS_EVT;
+   \                     ??zclLevel_process_5:
+   \   0000A0   8E82         MOV     DPL,R6
+   \   0000A2   8F83         MOV     DPH,R7
+   \   0000A4   E0           MOVX    A,@DPTR
+   \   0000A5   6408         XRL     A,#0x8
+   \   0000A7   F0           MOVX    @DPTR,A
+    164            }
+    165          
+    166            return;
+   \                     ??zclLevel_process_0:
+   \   0000A8   02....       LJMP    ?Subroutine0 & 0xFFFF
+    167          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine3:
+   \   000000   7900         MOV     R1,#0x0
+   \   000002                REQUIRE ??Subroutine6_0
+   \   000002                ; // Fall through to label ??Subroutine6_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine6_0:
+   \   000000   90....       MOV     DPTR,#zclLevel_OnOffCB
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   F8           MOV     R0,A
+   \   000005   A3           INC     DPTR
+   \   000006   E0           MOVX    A,@DPTR
+   \   000007   F583         MOV     DPH,A
+   \   000009   8882         MOV     DPL,R0
+   \   00000B   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine2:
+   \   000000   90....       MOV     DPTR,#zclLevel_LevelRemainingTime
+   \   000003                REQUIRE ??Subroutine7_0
+   \   000003                ; // Fall through to label ??Subroutine7_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine7_0:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   F8           MOV     R0,A
+   \   000002   A3           INC     DPTR
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   F9           MOV     R1,A
+   \   000005   E8           MOV     A,R0
+   \   000006   49           ORL     A,R1
+   \   000007   22           RET
+    168          
+    169          
+    170          
+    171          /*********************************************************************
+    172           * @fn      zclLevel_LevelControlMoveToLevelCB
+    173           *
+    174           * @brief   This callback is called to process a move to color
+    175           *          Request command.
+    176           *
+    177           * @param   pCmd - command
+    178           *
+    179           * @return  ZStatus_t
+    180           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    181          void zclLevel_MoveToLevelCB( zclLCMoveToLevel_t *pCmd )
+   \                     zclLevel_MoveToLevelCB:
+    182          {
+   \   000000   74F0         MOV     A,#-0x10
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 16
+   \   000005                ; Auto size: 0
+    183            zclLevel_LevelWithOnOff = pCmd->withOnOff;
+   \   000005   8A82         MOV     DPL,R2
+   \   000007   8B83         MOV     DPH,R3
+   \   000009   A3           INC     DPTR
+   \   00000A   12....       LCALL   ?Subroutine5 & 0xFFFF
+    184          
+    185            //if transition time = 0 then do immediately
+    186            if ( pCmd->transitionTime == 0 )
+   \                     ??CrossCallReturnLabel_2:
+   \   00000D   8A82         MOV     DPL,R2
+   \   00000F   8B83         MOV     DPH,R3
+   \   000011   A3           INC     DPTR
+   \   000012   12....       LCALL   ??Subroutine7_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_13:
+   \   000015   90....       MOV     DPTR,#zclLevel_LevelRemainingTime
+   \   000018   7007         JNZ     ??zclLevel_MoveToLevelCB_0
+    187            {
+    188                zclLevel_LevelRemainingTime = 1;
+   \   00001A   7401         MOV     A,#0x1
+   \   00001C   F0           MOVX    @DPTR,A
+   \   00001D   A3           INC     DPTR
+   \   00001E   E4           CLR     A
+   \   00001F   8004         SJMP    ??zclLevel_MoveToLevelCB_1
+    189            }
+    190            else
+    191            {
+    192              zclLevel_LevelRemainingTime = pCmd->transitionTime;
+   \                     ??zclLevel_MoveToLevelCB_0:
+   \   000021   E8           MOV     A,R0
+   \   000022   F0           MOVX    @DPTR,A
+   \   000023   A3           INC     DPTR
+   \   000024   E9           MOV     A,R1
+   \                     ??zclLevel_MoveToLevelCB_1:
+   \   000025   F0           MOVX    @DPTR,A
+    193            }
+    194              zclLevel_StepLevel_256 = ((int32)(pCmd->level - zclLevel_CurrentLevel))<<8;
+    195              zclLevel_StepLevel_256 /= (int32)zclLevel_LevelRemainingTime;
+   \   000026   8A82         MOV     DPL,R2
+   \   000028   8B83         MOV     DPH,R3
+   \   00002A   E0           MOVX    A,@DPTR
+   \   00002B   F8           MOV     R0,A
+   \   00002C   90....       MOV     DPTR,#zclLevel_CurrentLevel
+   \   00002F   E0           MOVX    A,@DPTR
+   \   000030   FA           MOV     R2,A
+   \   000031   E8           MOV     A,R0
+   \   000032   C3           CLR     C
+   \   000033   9A           SUBB    A,R2
+   \   000034   F5..         MOV     ?V0 + 0,A
+   \   000036   95E0         SUBB    A,0xE0 /* A   */
+   \   000038   85....       MOV     ?V0 + 4,?V0 + 0
+   \   00003B   F5..         MOV     ?V0 + 5,A
+   \   00003D   95E0         SUBB    A,0xE0 /* A   */
+   \   00003F   F5..         MOV     ?V0 + 6,A
+   \   000041   F5..         MOV     ?V0 + 7,A
+   \   000043   7408         MOV     A,#0x8
+   \   000045   78..         MOV     R0,#?V0 + 4
+   \   000047   12....       LCALL   ?L_SHL
+   \   00004A   90....       MOV     DPTR,#zclLevel_LevelRemainingTime
+   \   00004D   E0           MOVX    A,@DPTR
+   \   00004E   F5..         MOV     ?V0 + 0,A
+   \   000050   A3           INC     DPTR
+   \   000051   E0           MOVX    A,@DPTR
+   \   000052   F5..         MOV     ?V0 + 1,A
+   \   000054   E4           CLR     A
+   \   000055   F5..         MOV     ?V0 + 2,A
+   \   000057   F5..         MOV     ?V0 + 3,A
+   \   000059   78..         MOV     R0,#?V0 + 4
+   \   00005B   79..         MOV     R1,#?V0 + 0
+   \   00005D   12....       LCALL   ?L_DIV_MOD
+   \   000060   90....       MOV     DPTR,#zclLevel_StepLevel_256
+   \   000063   78..         MOV     R0,#?V0 + 4
+   \   000065   12....       LCALL   ?L_MOV_TO_X
+    196          
+    197            hwLight_ApplyUpdate( &zclLevel_CurrentLevel,
+    198                                 &zclLevel_CurrentLevel_256,
+    199                                 &zclLevel_StepLevel_256,
+    200                                 &zclLevel_LevelRemainingTime,
+    201                                 LEVEL_MIN, LEVEL_MAX, FALSE );
+   \   000068                ; Setup parameters for call to function hwLight_ApplyUpdate
+   \   000068   75..00       MOV     ?V0 + 0,#0x0
+   \   00006B   78..         MOV     R0,#?V0 + 0
+   \   00006D   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   000070   75..FE       MOV     ?V0 + 0,#-0x2
+   \   000073   78..         MOV     R0,#?V0 + 0
+   \   000075   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   000078   75....       MOV     ?V0 + 0,#zclLevel_LevelRemainingTime & 0xff
+   \   00007B   75....       MOV     ?V0 + 1,#(zclLevel_LevelRemainingTime >> 8) & 0xff
+   \   00007E   78..         MOV     R0,#?V0 + 0
+   \   000080   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000083   75....       MOV     ?V0 + 0,#zclLevel_StepLevel_256 & 0xff
+   \   000086   75....       MOV     ?V0 + 1,#(zclLevel_StepLevel_256 >> 8) & 0xff
+   \   000089   78..         MOV     R0,#?V0 + 0
+   \   00008B   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00008E   7901         MOV     R1,#0x1
+   \   000090   7C..         MOV     R4,#zclLevel_CurrentLevel_256 & 0xff
+   \   000092   7D..         MOV     R5,#(zclLevel_CurrentLevel_256 >> 8) & 0xff
+   \   000094   7A..         MOV     R2,#zclLevel_CurrentLevel & 0xff
+   \   000096   7B..         MOV     R3,#(zclLevel_CurrentLevel >> 8) & 0xff
+   \   000098   12....       LCALL   ??hwLight_ApplyUpdate?relay
+   \   00009B   7406         MOV     A,#0x6
+   \   00009D   12....       LCALL   ?DEALLOC_XSTACK8
+    202          
+    203            if ( zclLevel_LevelWithOnOff )
+   \   0000A0   90....       MOV     DPTR,#zclLevel_LevelWithOnOff
+   \   0000A3   12....       LCALL   ??Subroutine7_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_14:
+   \   0000A6   6026         JZ      ??zclLevel_MoveToLevelCB_2
+    204            {
+    205              if ( zclLevel_StepLevel_256 > 0 )
+   \   0000A8   90....       MOV     DPTR,#__Constant_1
+   \   0000AB   78..         MOV     R0,#?V0 + 0
+   \   0000AD   12....       LCALL   ?L_MOV_X
+   \   0000B0   90....       MOV     DPTR,#zclLevel_StepLevel_256
+   \   0000B3   78..         MOV     R0,#?V0 + 0
+   \   0000B5   12....       LCALL   ?SL_GT_X
+   \   0000B8   4004         JC      ??zclLevel_MoveToLevelCB_3
+    206              {
+    207                zclLevel_OnOffCB(COMMAND_ON);
+   \   0000BA                ; Setup parameters for indirect call
+   \   0000BA   7901         MOV     R1,#0x1
+   \   0000BC   800A         SJMP    ??zclLevel_MoveToLevelCB_4
+    208              }
+    209              else if( (zclLevel_CurrentLevel == LEVEL_MIN) && (zclLevel_LevelWithOnOff) )
+   \                     ??zclLevel_MoveToLevelCB_3:
+   \   0000BE   90....       MOV     DPTR,#zclLevel_CurrentLevel
+   \   0000C1   E0           MOVX    A,@DPTR
+   \   0000C2   6401         XRL     A,#0x1
+   \   0000C4   7008         JNZ     ??zclLevel_MoveToLevelCB_2
+    210              {
+    211                zclLevel_OnOffCB(COMMAND_OFF);
+   \   0000C6                ; Setup parameters for indirect call
+   \   0000C6   7900         MOV     R1,#0x0
+    212              }
+    213            }
+   \                     ??zclLevel_MoveToLevelCB_4:
+   \   0000C8   12....       LCALL   ??Subroutine6_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_5:
+   \   0000CB   12....       LCALL   ?CALL_IND
+    214          
+    215            if (zclLevel_LevelRemainingTime)
+   \                     ??zclLevel_MoveToLevelCB_2:
+   \   0000CE   12....       LCALL   ?Subroutine2 & 0xFFFF
+   \                     ??CrossCallReturnLabel_20:
+   \   0000D1   6017         JZ      ??zclLevel_MoveToLevelCB_5
+    216            {
+    217              //set a timer to make the change over zclLevel_StepTime 100ms
+    218              osal_start_timerEx( zclLight_TaskID, LEVEL_PROCESS_EVT , 100 );
+   \   0000D3                ; Setup parameters for call to function osal_start_timerEx
+   \   0000D3   90....       MOV     DPTR,#__Constant_64
+   \   0000D6   12....       LCALL   ?PUSH_XSTACK8_X_FOUR
+   \   0000D9   7A08         MOV     R2,#0x8
+   \   0000DB   7B00         MOV     R3,#0x0
+   \   0000DD   90....       MOV     DPTR,#zclLight_TaskID
+   \   0000E0   E0           MOVX    A,@DPTR
+   \   0000E1   F9           MOV     R1,A
+   \   0000E2   12....       LCALL   ??osal_start_timerEx?relay
+   \   0000E5   7404         MOV     A,#0x4
+   \   0000E7   12....       LCALL   ?DEALLOC_XSTACK8
+    219            }
+    220          
+    221            return;
+   \                     ??zclLevel_MoveToLevelCB_5:
+   \   0000EA   7F08         MOV     R7,#0x8
+   \   0000EC   02....       LJMP    ?BANKED_LEAVE_XDATA
+    222          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine5:
+   \   000000   A3           INC     DPTR
+   \   000001   A3           INC     DPTR
+   \   000002   E0           MOVX    A,@DPTR
+   \   000003   90....       MOV     DPTR,#zclLevel_LevelWithOnOff
+   \   000006   F0           MOVX    @DPTR,A
+   \   000007   A3           INC     DPTR
+   \   000008   E4           CLR     A
+   \   000009   F0           MOVX    @DPTR,A
+   \   00000A   22           RET
+    223          
+    224          /*********************************************************************
+    225           * @fn      zclLevel_MoveCB
+    226           *
+    227           * @brief   Callback from the ZCL General Cluster Library when
+    228           *          it received a Level Control - Move Command for
+    229           *          this application.
+    230           *
+    231           * @param   moveMode -
+    232           * @param   rate -
+    233           * @param   withOnOff - with On/off command
+    234           *
+    235           * @return  none
+    236           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    237          void zclLevel_MoveCB( zclLCMove_t *pCmd )
+   \                     zclLevel_MoveCB:
+    238          {
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV     A,R2
+   \   000006   FC           MOV     R4,A
+   \   000007   EB           MOV     A,R3
+   \   000008   FD           MOV     R5,A
+    239            zclLevel_LevelWithOnOff = pCmd->withOnOff;
+   \   000009   8C82         MOV     DPL,R4
+   \   00000B   8D83         MOV     DPH,R5
+   \   00000D   12....       LCALL   ?Subroutine4 & 0xFFFF
+    240            zclLevel_StepLevel_256 = (((int32)pCmd->rate)<<8)/10;
+   \                     ??CrossCallReturnLabel_0:
+   \   000010   E0           MOVX    A,@DPTR
+   \   000011   F8           MOV     R0,A
+   \   000012   E4           CLR     A
+   \   000013   C8           XCH     A,R0
+   \   000014   F9           MOV     R1,A
+   \   000015   7A0A         MOV     R2,#0xa
+   \   000017   7B00         MOV     R3,#0x0
+   \   000019   12....       LCALL   ?US_DIV_MOD
+   \   00001C   88..         MOV     ?V0 + 0,R0
+   \   00001E   89..         MOV     ?V0 + 1,R1
+   \   000020   E4           CLR     A
+   \   000021   F5..         MOV     ?V0 + 2,A
+   \   000023   F5..         MOV     ?V0 + 3,A
+   \   000025   90....       MOV     DPTR,#zclLevel_StepLevel_256
+   \   000028   78..         MOV     R0,#?V0 + 0
+   \   00002A   12....       LCALL   ?L_MOV_TO_X
+    241          
+    242            switch (pCmd->moveMode)
+   \   00002D   8C82         MOV     DPL,R4
+   \   00002F   8D83         MOV     DPH,R5
+   \   000031   E0           MOVX    A,@DPTR
+   \   000032   6005         JZ      ??zclLevel_MoveCB_0
+   \   000034   14           DEC     A
+   \   000035   6012         JZ      ??zclLevel_MoveCB_1
+   \   000037   8025         SJMP    ??zclLevel_MoveCB_2
+    243            {
+    244              case LEVEL_MOVE_UP:
+    245                if(zclLevel_LevelWithOnOff)
+   \                     ??zclLevel_MoveCB_0:
+   \   000039   90....       MOV     DPTR,#zclLevel_LevelWithOnOff
+   \   00003C   E0           MOVX    A,@DPTR
+   \   00003D   601F         JZ      ??zclLevel_MoveCB_2
+    246                {
+    247                  zclLevel_OnOffCB(COMMAND_ON);
+   \   00003F                ; Setup parameters for indirect call
+   \   00003F   7901         MOV     R1,#0x1
+   \   000041   12....       LCALL   ??Subroutine6_0 & 0xFFFF
+    248                }
+   \                     ??CrossCallReturnLabel_6:
+   \   000044   12....       LCALL   ?CALL_IND
+   \   000047   8015         SJMP    ??zclLevel_MoveCB_2
+    249                break;
+    250              case LEVEL_MOVE_DOWN:
+    251                zclLevel_StepLevel_256 = -zclLevel_StepLevel_256;
+   \                     ??zclLevel_MoveCB_1:
+   \   000049   90....       MOV     DPTR,#zclLevel_StepLevel_256
+   \   00004C   78..         MOV     R0,#?V0 + 0
+   \   00004E   12....       LCALL   ?L_MOV_X
+   \   000051   78..         MOV     R0,#?V0 + 0
+   \   000053   12....       LCALL   ?L_NEG
+   \   000056   90....       MOV     DPTR,#zclLevel_StepLevel_256
+   \   000059   78..         MOV     R0,#?V0 + 0
+   \   00005B   12....       LCALL   ?L_MOV_TO_X
+    252                break;
+    253            }
+    254          
+    255            //Change for ever - level stop call back will stop this command
+    256            zclLevel_LevelRemainingTime = 0xFFFF;
+   \                     ??zclLevel_MoveCB_2:
+   \   00005E   90....       MOV     DPTR,#zclLevel_LevelRemainingTime
+   \   000061   74FF         MOV     A,#-0x1
+   \   000063   F0           MOVX    @DPTR,A
+   \   000064   A3           INC     DPTR
+   \   000065   F0           MOVX    @DPTR,A
+    257          
+    258            hwLight_ApplyUpdate( &zclLevel_CurrentLevel,
+    259                                 &zclLevel_CurrentLevel_256,
+    260                                 &zclLevel_StepLevel_256,
+    261                                 &zclLevel_LevelRemainingTime,
+    262                                 LEVEL_MIN, LEVEL_MAX, FALSE);
+   \   000066                ; Setup parameters for call to function hwLight_ApplyUpdate
+   \   000066   75..00       MOV     ?V0 + 0,#0x0
+   \   000069   78..         MOV     R0,#?V0 + 0
+   \   00006B   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   00006E   75..FE       MOV     ?V0 + 0,#-0x2
+   \   000071   78..         MOV     R0,#?V0 + 0
+   \   000073   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   000076   75....       MOV     ?V0 + 0,#zclLevel_LevelRemainingTime & 0xff
+   \   000079   75....       MOV     ?V0 + 1,#(zclLevel_LevelRemainingTime >> 8) & 0xff
+   \   00007C   78..         MOV     R0,#?V0 + 0
+   \   00007E   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000081   75....       MOV     ?V0 + 0,#zclLevel_StepLevel_256 & 0xff
+   \   000084   75....       MOV     ?V0 + 1,#(zclLevel_StepLevel_256 >> 8) & 0xff
+   \   000087   78..         MOV     R0,#?V0 + 0
+   \   000089   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00008C   7901         MOV     R1,#0x1
+   \   00008E   7C..         MOV     R4,#zclLevel_CurrentLevel_256 & 0xff
+   \   000090   7D..         MOV     R5,#(zclLevel_CurrentLevel_256 >> 8) & 0xff
+   \   000092   7A..         MOV     R2,#zclLevel_CurrentLevel & 0xff
+   \   000094   7B..         MOV     R3,#(zclLevel_CurrentLevel >> 8) & 0xff
+   \   000096   12....       LCALL   ??hwLight_ApplyUpdate?relay
+   \   000099   7406         MOV     A,#0x6
+   \   00009B   12....       LCALL   ?DEALLOC_XSTACK8
+    263          
+    264            if( (zclLevel_CurrentLevel == LEVEL_MIN) && (zclLevel_LevelWithOnOff) )
+   \   00009E   90....       MOV     DPTR,#zclLevel_CurrentLevel
+   \   0000A1   E0           MOVX    A,@DPTR
+   \   0000A2   6401         XRL     A,#0x1
+   \   0000A4   700E         JNZ     ??zclLevel_MoveCB_3
+   \   0000A6   90....       MOV     DPTR,#zclLevel_LevelWithOnOff
+   \   0000A9   12....       LCALL   ??Subroutine7_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_15:
+   \   0000AC   6006         JZ      ??zclLevel_MoveCB_3
+    265            {
+    266              zclLevel_OnOffCB(COMMAND_OFF);
+   \   0000AE                ; Setup parameters for indirect call
+   \   0000AE   12....       LCALL   ?Subroutine3 & 0xFFFF
+    267            }
+   \                     ??CrossCallReturnLabel_9:
+   \   0000B1   12....       LCALL   ?CALL_IND
+    268          
+    269            if (zclLevel_LevelRemainingTime)
+   \                     ??zclLevel_MoveCB_3:
+   \   0000B4   12....       LCALL   ?Subroutine2 & 0xFFFF
+   \                     ??CrossCallReturnLabel_21:
+   \   0000B7   6017         JZ      ??zclLevel_MoveCB_4
+    270            {
+    271              //set a timer to make the change over zclLevel_StepTime 100ms
+    272              osal_start_timerEx( zclLight_TaskID, LEVEL_PROCESS_EVT , 100);
+   \   0000B9                ; Setup parameters for call to function osal_start_timerEx
+   \   0000B9   90....       MOV     DPTR,#__Constant_64
+   \   0000BC   12....       LCALL   ?PUSH_XSTACK8_X_FOUR
+   \   0000BF   7A08         MOV     R2,#0x8
+   \   0000C1   7B00         MOV     R3,#0x0
+   \   0000C3   90....       MOV     DPTR,#zclLight_TaskID
+   \   0000C6   E0           MOVX    A,@DPTR
+   \   0000C7   F9           MOV     R1,A
+   \   0000C8   12....       LCALL   ??osal_start_timerEx?relay
+   \   0000CB   7404         MOV     A,#0x4
+   \   0000CD   12....       LCALL   ?DEALLOC_XSTACK8
+    273            }
+    274          
+    275            return;
+   \                     ??zclLevel_MoveCB_4:
+   \   0000D0                REQUIRE ?Subroutine1
+   \   0000D0                ; // Fall through to label ?Subroutine1
+    276          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000   7F04         MOV     R7,#0x4
+   \   000002   02....       LJMP    ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine4:
+   \   000000   12....       LCALL   ?Subroutine5 & 0xFFFF
+   \                     ??CrossCallReturnLabel_3:
+   \   000003   8C82         MOV     DPL,R4
+   \   000005   8D83         MOV     DPH,R5
+   \   000007   A3           INC     DPTR
+   \   000008   22           RET
+    277          
+    278          /*********************************************************************
+    279           * @fn      zclLevel_StepCB
+    280           *
+    281           * @brief   This callback is called to process a Level step
+    282           *          Request command.
+    283           *
+    284           * @param   pCmd - command
+    285           *
+    286           * @return  ZStatus_t
+    287           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    288          void zclLevel_StepCB(zclLCStep_t *pCmd )
+   \                     zclLevel_StepCB:
+    289          {
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV     A,R2
+   \   000006   FC           MOV     R4,A
+   \   000007   EB           MOV     A,R3
+   \   000008   FD           MOV     R5,A
+    290            zclLevel_LevelWithOnOff = pCmd->withOnOff;
+   \   000009   8C82         MOV     DPL,R4
+   \   00000B   8D83         MOV     DPH,R5
+   \   00000D   A3           INC     DPTR
+   \   00000E   A3           INC     DPTR
+   \   00000F   12....       LCALL   ?Subroutine4 & 0xFFFF
+    291          
+    292            if ( (pCmd->transitionTime == 0) || (pCmd->transitionTime == 0xFFFF) )
+   \                     ??CrossCallReturnLabel_1:
+   \   000012   A3           INC     DPTR
+   \   000013   12....       LCALL   ??Subroutine7_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_16:
+   \   000016   600A         JZ      ??zclLevel_StepCB_0
+   \   000018   74FF         MOV     A,#-0x1
+   \   00001A   68           XRL     A,R0
+   \   00001B   7003         JNZ     ??zclLevel_StepCB_1
+   \   00001D   74FF         MOV     A,#-0x1
+   \   00001F   69           XRL     A,R1
+   \                     ??zclLevel_StepCB_1:
+   \   000020   700A         JNZ     ??zclLevel_StepCB_2
+    293            {
+    294              zclLevel_LevelRemainingTime = 1;
+   \                     ??zclLevel_StepCB_0:
+   \   000022   90....       MOV     DPTR,#zclLevel_LevelRemainingTime
+   \   000025   7401         MOV     A,#0x1
+   \   000027   F0           MOVX    @DPTR,A
+   \   000028   A3           INC     DPTR
+   \   000029   E4           CLR     A
+   \   00002A   8007         SJMP    ??zclLevel_StepCB_3
+    295            }
+    296            else
+    297            {
+    298              zclLevel_LevelRemainingTime = pCmd->transitionTime;
+   \                     ??zclLevel_StepCB_2:
+   \   00002C   90....       MOV     DPTR,#zclLevel_LevelRemainingTime
+   \   00002F   E8           MOV     A,R0
+   \   000030   F0           MOVX    @DPTR,A
+   \   000031   A3           INC     DPTR
+   \   000032   E9           MOV     A,R1
+   \                     ??zclLevel_StepCB_3:
+   \   000033   F0           MOVX    @DPTR,A
+    299            }
+    300          
+    301            zclLevel_StepLevel_256 = ((((int32)pCmd->amount)<<8) / zclLevel_LevelRemainingTime);
+   \   000034   8C82         MOV     DPL,R4
+   \   000036   8D83         MOV     DPH,R5
+   \   000038   A3           INC     DPTR
+   \   000039   E0           MOVX    A,@DPTR
+   \   00003A   F8           MOV     R0,A
+   \   00003B   E4           CLR     A
+   \   00003C   C8           XCH     A,R0
+   \   00003D   F9           MOV     R1,A
+   \   00003E   90....       MOV     DPTR,#zclLevel_LevelRemainingTime
+   \   000041   E0           MOVX    A,@DPTR
+   \   000042   FA           MOV     R2,A
+   \   000043   A3           INC     DPTR
+   \   000044   E0           MOVX    A,@DPTR
+   \   000045   FB           MOV     R3,A
+   \   000046   12....       LCALL   ?US_DIV_MOD
+   \   000049   88..         MOV     ?V0 + 0,R0
+   \   00004B   89..         MOV     ?V0 + 1,R1
+   \   00004D   E4           CLR     A
+   \   00004E   F5..         MOV     ?V0 + 2,A
+   \   000050   F5..         MOV     ?V0 + 3,A
+   \   000052   90....       MOV     DPTR,#zclLevel_StepLevel_256
+   \   000055   78..         MOV     R0,#?V0 + 0
+   \   000057   12....       LCALL   ?L_MOV_TO_X
+    302            switch (pCmd->stepMode)
+   \   00005A   8C82         MOV     DPL,R4
+   \   00005C   8D83         MOV     DPH,R5
+   \   00005E   E0           MOVX    A,@DPTR
+   \   00005F   6005         JZ      ??zclLevel_StepCB_4
+   \   000061   14           DEC     A
+   \   000062   6012         JZ      ??zclLevel_StepCB_5
+   \   000064   8025         SJMP    ??zclLevel_StepCB_6
+    303            {
+    304              case LEVEL_STEP_UP:
+    305                if(zclLevel_LevelWithOnOff)
+   \                     ??zclLevel_StepCB_4:
+   \   000066   90....       MOV     DPTR,#zclLevel_LevelWithOnOff
+   \   000069   E0           MOVX    A,@DPTR
+   \   00006A   601F         JZ      ??zclLevel_StepCB_6
+    306                {
+    307                  zclLevel_OnOffCB(COMMAND_ON);
+   \   00006C                ; Setup parameters for indirect call
+   \   00006C   7901         MOV     R1,#0x1
+   \   00006E   12....       LCALL   ??Subroutine6_0 & 0xFFFF
+    308                }
+   \                     ??CrossCallReturnLabel_7:
+   \   000071   12....       LCALL   ?CALL_IND
+   \   000074   8015         SJMP    ??zclLevel_StepCB_6
+    309                break;
+    310              case LEVEL_STEP_DOWN:
+    311                zclLevel_StepLevel_256 = -zclLevel_StepLevel_256;
+   \                     ??zclLevel_StepCB_5:
+   \   000076   90....       MOV     DPTR,#zclLevel_StepLevel_256
+   \   000079   78..         MOV     R0,#?V0 + 0
+   \   00007B   12....       LCALL   ?L_MOV_X
+   \   00007E   78..         MOV     R0,#?V0 + 0
+   \   000080   12....       LCALL   ?L_NEG
+   \   000083   90....       MOV     DPTR,#zclLevel_StepLevel_256
+   \   000086   78..         MOV     R0,#?V0 + 0
+   \   000088   12....       LCALL   ?L_MOV_TO_X
+    312                break;
+    313            }
+    314          
+    315            hwLight_ApplyUpdate( &zclLevel_CurrentLevel,
+    316                                 &zclLevel_CurrentLevel_256,
+    317                                 &zclLevel_StepLevel_256,
+    318                                 &zclLevel_LevelRemainingTime,
+    319                                 LEVEL_MIN, LEVEL_MAX, FALSE );
+   \                     ??zclLevel_StepCB_6:
+   \   00008B                ; Setup parameters for call to function hwLight_ApplyUpdate
+   \   00008B   75..00       MOV     ?V0 + 0,#0x0
+   \   00008E   78..         MOV     R0,#?V0 + 0
+   \   000090   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   000093   75..FE       MOV     ?V0 + 0,#-0x2
+   \   000096   78..         MOV     R0,#?V0 + 0
+   \   000098   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   00009B   75....       MOV     ?V0 + 0,#zclLevel_LevelRemainingTime & 0xff
+   \   00009E   75....       MOV     ?V0 + 1,#(zclLevel_LevelRemainingTime >> 8) & 0xff
+   \   0000A1   78..         MOV     R0,#?V0 + 0
+   \   0000A3   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   0000A6   75....       MOV     ?V0 + 0,#zclLevel_StepLevel_256 & 0xff
+   \   0000A9   75....       MOV     ?V0 + 1,#(zclLevel_StepLevel_256 >> 8) & 0xff
+   \   0000AC   78..         MOV     R0,#?V0 + 0
+   \   0000AE   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   0000B1   7901         MOV     R1,#0x1
+   \   0000B3   7C..         MOV     R4,#zclLevel_CurrentLevel_256 & 0xff
+   \   0000B5   7D..         MOV     R5,#(zclLevel_CurrentLevel_256 >> 8) & 0xff
+   \   0000B7   7A..         MOV     R2,#zclLevel_CurrentLevel & 0xff
+   \   0000B9   7B..         MOV     R3,#(zclLevel_CurrentLevel >> 8) & 0xff
+   \   0000BB   12....       LCALL   ??hwLight_ApplyUpdate?relay
+   \   0000BE   7406         MOV     A,#0x6
+   \   0000C0   12....       LCALL   ?DEALLOC_XSTACK8
+    320          
+    321            if( (zclLevel_CurrentLevel == LEVEL_MIN) && (zclLevel_LevelWithOnOff) )
+   \   0000C3   90....       MOV     DPTR,#zclLevel_CurrentLevel
+   \   0000C6   E0           MOVX    A,@DPTR
+   \   0000C7   6401         XRL     A,#0x1
+   \   0000C9   700E         JNZ     ??zclLevel_StepCB_7
+   \   0000CB   90....       MOV     DPTR,#zclLevel_LevelWithOnOff
+   \   0000CE   12....       LCALL   ??Subroutine7_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_17:
+   \   0000D1   6006         JZ      ??zclLevel_StepCB_7
+    322            {
+    323              zclLevel_OnOffCB(COMMAND_OFF);
+   \   0000D3                ; Setup parameters for indirect call
+   \   0000D3   12....       LCALL   ?Subroutine3 & 0xFFFF
+    324            }
+   \                     ??CrossCallReturnLabel_10:
+   \   0000D6   12....       LCALL   ?CALL_IND
+    325          
+    326            if (zclLevel_LevelRemainingTime)
+   \                     ??zclLevel_StepCB_7:
+   \   0000D9   12....       LCALL   ?Subroutine2 & 0xFFFF
+   \                     ??CrossCallReturnLabel_22:
+   \   0000DC   6017         JZ      ??zclLevel_StepCB_8
+    327            {
+    328              //set a timer to make the change over zclLevel_StepTime 100ms
+    329              osal_start_timerEx( zclLight_TaskID, LEVEL_PROCESS_EVT , 100 );
+   \   0000DE                ; Setup parameters for call to function osal_start_timerEx
+   \   0000DE   90....       MOV     DPTR,#__Constant_64
+   \   0000E1   12....       LCALL   ?PUSH_XSTACK8_X_FOUR
+   \   0000E4   7A08         MOV     R2,#0x8
+   \   0000E6   7B00         MOV     R3,#0x0
+   \   0000E8   90....       MOV     DPTR,#zclLight_TaskID
+   \   0000EB   E0           MOVX    A,@DPTR
+   \   0000EC   F9           MOV     R1,A
+   \   0000ED   12....       LCALL   ??osal_start_timerEx?relay
+   \   0000F0   7404         MOV     A,#0x4
+   \   0000F2   12....       LCALL   ?DEALLOC_XSTACK8
+    330            }
+    331          
+    332            return;
+   \                     ??zclLevel_StepCB_8:
+   \   0000F5   02....       LJMP    ?Subroutine1 & 0xFFFF
+    333          
+    334          }
+    335          
+    336          /*********************************************************************
+    337           * @fn      zclLevel_StopCB
+    338           *
+    339           * @brief   Callback from the ZCL General Cluster Library when
+    340           *          it received a Level Control - Stop Command for
+    341           *          this application.
+    342           *
+    343           * @param   stepMode -
+    344           * @param   amount - number of levels to step
+    345           * @param   transitionTime - time to take a single step
+    346           *
+    347           * @return  none
+    348           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    349          void zclLevel_StopCB( void )
+   \                     zclLevel_StopCB:
+    350          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    351              osal_stop_timerEx( zclLight_TaskID, LEVEL_PROCESS_EVT);
+   \   000004                ; Setup parameters for call to function osal_stop_timerEx
+   \   000004   7A08         MOV     R2,#0x8
+   \   000006   7B00         MOV     R3,#0x0
+   \   000008   90....       MOV     DPTR,#zclLight_TaskID
+   \   00000B   E0           MOVX    A,@DPTR
+   \   00000C   F9           MOV     R1,A
+   \   00000D   12....       LCALL   ??osal_stop_timerEx?relay
+    352              zclLevel_LevelRemainingTime = 0;
+   \   000010   90....       MOV     DPTR,#zclLevel_LevelRemainingTime
+   \   000013   E4           CLR     A
+   \   000014   F0           MOVX    @DPTR,A
+   \   000015   A3           INC     DPTR
+   \   000016   F0           MOVX    @DPTR,A
+    353              // align variables
+    354              zclLevel_CurrentLevel_256 = ((int32)zclLevel_CurrentLevel)<<8;
+   \   000017   90....       MOV     DPTR,#zclLevel_CurrentLevel
+   \   00001A   E0           MOVX    A,@DPTR
+   \   00001B   F9           MOV     R1,A
+   \   00001C   90....       MOV     DPTR,#zclLevel_CurrentLevel_256
+   \   00001F   E4           CLR     A
+   \   000020   F0           MOVX    @DPTR,A
+   \   000021   A3           INC     DPTR
+   \   000022   E9           MOV     A,R1
+   \   000023   F0           MOVX    @DPTR,A
+    355          }
+   \   000024   D083         POP     DPH
+   \   000026   D082         POP     DPL
+   \   000028   02....       LJMP    ?BRET
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for zclLevel_CurrentLevel_256>`:
+   \   000000   00FE         DW 65024
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_64:
+   \   000000   64000000     DD 100
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_1:
+   \   000000   01000000     DD 1
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zclLevel_init?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zclLevel_init
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zclLevel_process?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zclLevel_process
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zclLevel_MoveToLevelCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zclLevel_MoveToLevelCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zclLevel_MoveCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zclLevel_MoveCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zclLevel_StepCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zclLevel_StepCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zclLevel_StopCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zclLevel_StopCB
+    356          
+    357          #endif //ZCL_LEVEL_CTRL
+    358          /****************************************************************************
+    359          ****************************************************************************/
+    360          
+    361          
+
+   Maximum stack usage in bytes:
+
+   ISTACK PSTACK XSTACK Function
+   ------ ------ ------ --------
+       0      0     18  zclLevel_MoveCB
+                          0 0 18 -> hwLight_ApplyUpdate
+                          0 0 16 -> osal_start_timerEx
+       0      0     22  zclLevel_MoveToLevelCB
+                          0 0 22 -> hwLight_ApplyUpdate
+                          0 0 20 -> osal_start_timerEx
+       0      0     18  zclLevel_StepCB
+                          0 0 18 -> hwLight_ApplyUpdate
+                          0 0 16 -> osal_start_timerEx
+       2      0      0  zclLevel_StopCB
+                          2 0  0 -> osal_stop_timerEx
+       0      0     16  zclLevel_init
+                          0 0 16 -> hwLight_ApplyUpdate
+       0      0     16  zclLevel_process
+                          0 0 16 -> hwLight_ApplyUpdate
+                          0 0 14 -> osal_start_timerEx
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       2  ?<Initializer for zclLevel_CurrentLevel_256>
+      12  ??Subroutine6_0
+       8  ??Subroutine7_0
+       6  ??zclLevel_MoveCB?relay
+       6  ??zclLevel_MoveToLevelCB?relay
+       6  ??zclLevel_StepCB?relay
+       6  ??zclLevel_StopCB?relay
+       6  ??zclLevel_init?relay
+       6  ??zclLevel_process?relay
+       5  ?Subroutine0
+       5  ?Subroutine1
+       3  ?Subroutine2
+       2  ?Subroutine3
+       9  ?Subroutine4
+      11  ?Subroutine5
+       4  __Constant_1
+       4  __Constant_64
+       2  zclLevel_CurrentLevel_256
+       2  zclLevel_LevelWithOnOff
+     208  zclLevel_MoveCB
+     239  zclLevel_MoveToLevelCB
+       2  zclLevel_OnOffCB
+     248  zclLevel_StepCB
+       4  zclLevel_StepLevel_256
+      43  zclLevel_StopCB
+      80  zclLevel_init
+     171  zclLevel_process
+       1  zclLight_TaskID
+
+ 
+ 1 044 bytes in segment BANKED_CODE
+    36 bytes in segment BANK_RELAYS
+     2 bytes in segment XDATA_I
+     2 bytes in segment XDATA_ID
+     8 bytes in segment XDATA_ROM_C
+     9 bytes in segment XDATA_Z
+ 
+ 1 082 bytes of CODE  memory
+     0 bytes of CONST memory (+ 8 bytes shared)
+    11 bytes of XDATA memory
+
+Errors: none
+Warnings: none

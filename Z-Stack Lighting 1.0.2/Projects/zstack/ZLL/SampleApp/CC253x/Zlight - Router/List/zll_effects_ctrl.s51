@@ -1,0 +1,1664 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V8.20.2.41139 for 8051            27/May/2014  19:14:29 /
+// Copyright 2004-2013 IAR Systems AB.                                        /
+//                                                                            /
+//    Core               =  plain                                             /
+//    Code model         =  banked                                            /
+//    Data model         =  large                                             /
+//    Calling convention =  xdata reentrant                                   /
+//    Constant location  =  data_rom                                          /
+//    Dptr setup         =  1,16                                              /
+//                                                                            /
+//    Source file        =  D:\Texas Instruments\Z-Stack Lighting             /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\Source\Light\ /
+//                          zll_effects_ctrl.c                                /
+//    Command line       =  -f "D:\Texas Instruments\Z-Stack Lighting         /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\Tools\CC2530DB\f8wRouter.cfg" (-DCPU32MHZ      /
+//                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TR /
+//                          UE -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8     /
+//                          -DMAC_CFG_RX_MAX=5 -DRTR_NWK) -f "D:\Texas        /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\Tools\CC2530DB\f8wConfig.cfg" (-DZIGBEEPRO     /
+//                          -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR      /
+//                          -DDEFAULT_CHANLIST=0x00000800                     /
+//                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                      /
+//                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_M /
+//                          ASK=0x007F -DBEACON_REQUEST_DELAY=100             /
+//                          -DBEACON_REQ_DELAY_MASK=0x00FF                    /
+//                          -DLINK_STATUS_JITTER_MASK=0x007F                  /
+//                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_P /
+//                          OLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7           /
+//                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3   /
+//                          -DNWK_MAX_DATA_RETRIES=2                          /
+//                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9        /
+//                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40          /
+//                          -DNWK_MAX_BINDING_ENTRIES=4                       /
+//                          -DMAX_BINDING_CLUSTER_IDS=4                       /
+//                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,     /
+//                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,   /
+//                          0x0A, 0x0C, 0x0D}" -DMAC_MAX_FRAME_SIZE=116       /
+//                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const    /
+//                          __code" -DGENERIC=__generic                       /
+//                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000       /
+//                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100   /
+//                          -DREJOIN_POLL_RATE=440) -f "D:\Texas              /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\Tools\CC2530DB\f8wZCL.cfg" "D:\Texas           /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\Source\Light\ /
+//                          zll_effects_ctrl.c" -D FEATURE_GREEN_POWER -D     /
+//                          SECURE=1 -D TC_LINKKEY_JOIN -D                    /
+//                          ZDSECMGR_TC_DEVICE_MAX=2 -D NV_RESTORE -D         /
+//                          HOLD_AUTO_START -D INTER_PAN -D                   /
+//                          LCD_SUPPORTED=DEBUG -D ZCL_BASIC -D ZCL_READ -D   /
+//                          ZCL_WRITE -D ZCL_IDENTIFY -D ZCL_ON_OFF -D        /
+//                          ZCL_SCENES -D ZCL_GROUPS -D                       /
+//                          ZCL_LIGHT_LINK_ENHANCE -D ZCL_LEVEL_CTRL -D       /
+//                          ZCL_COLOR_CTRL -D MAX_CHANNELS_24GHZ=0x02108800   /
+//                          -D xPWM_ALT2 -D xTHERMAL_SHUTDOWN -D              /
+//                          ZLL_1_0_HUB_COMPATIBILITY -D DALI_LIGHT -lC       /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight /
+//                           - Router\List\" -lA "D:\Texas                    /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight /
+//                           - Router\List\" --diag_suppress Pe001,Pa010 -o   /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight /
+//                           - Router\Obj\" -e --debug --core=plain           /
+//                          --dptr=16,1 --data_model=large                    /
+//                          --code_model=banked --calling_convention=xdata_re /
+//                          entrant --place_constants=data_rom                /
+//                          --nr_virtual_regs 16 -I "D:\Texas                 /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\" -I   /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\Sou /
+//                          rce\" -I "D:\Texas Instruments\Z-Stack Lighting   /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          Source\" -I "D:\Texas Instruments\Z-Stack         /
+//                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC25 /
+//                          3x\..\..\..\HomeAutomation\Source\" -I "D:\Texas  /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\HomeAutomation\SampleLight\Source\" -I         /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\ZMain\TI2530DB\" -I "D:\Texas                  /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\hal\include\" -I "D:\Texas    /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\hal\target\CC2530PMP4712\"    /
+//                          -I "D:\Texas Instruments\Z-Stack Lighting         /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\mac\include\" -I "D:\Texas    /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\mac\high_level\" -I           /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\mac\low_level\srf04\" -I      /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\mac\low_level\srf04\single_ch /
+//                          ip\" -I "D:\Texas Instruments\Z-Stack Lighting    /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\mt\" -I "D:\Texas             /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\osal\include\" -I "D:\Texas   /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\services\saddr\" -I           /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\services\sdata\" -I           /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\af\" -I "D:\Texas       /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\nwk\" -I "D:\Texas      /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\sapi\" -I "D:\Texas     /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\sec\" -I "D:\Texas      /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\sys\" -I "D:\Texas      /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\zcl\" -I "D:\Texas      /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\zdo\" -I "D:\Texas      /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\zmac\" -I "D:\Texas           /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\zmac\f8w\" -Ohz               /
+//                          --require_prototypes                              /
+//    List file          =  D:\Texas Instruments\Z-Stack Lighting             /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight /
+//                           - Router\List\zll_effects_ctrl.s51               /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME zll_effects_ctrl
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?BANKED_ENTER_XDATA
+        EXTERN ?BANKED_LEAVE_XDATA
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+        EXTERN ?CALL_IND
+        EXTERN ?DEALLOC_XSTACK8
+        EXTERN ?PUSH_XSTACK8_X_FOUR
+        EXTERN __INIT_XDATA_Z
+
+        PUBLIC ??zllEffects_Blink?relay
+        FUNCTION ??zllEffects_Blink?relay,0203H
+        PUBLIC ??zllEffects_Init?relay
+        FUNCTION ??zllEffects_Init?relay,0203H
+        PUBLIC ??zllEffects_InitiateEffect?relay
+        FUNCTION ??zllEffects_InitiateEffect?relay,0203H
+        PUBLIC ??zllEffects_ProcessEffect?relay
+        FUNCTION ??zllEffects_ProcessEffect?relay,0203H
+        PUBWEAK __Constant_1f40
+        PUBWEAK __Constant_3e8
+        PUBWEAK __Constant_64
+        PUBWEAK __Constant_c8
+        PUBLIC zllEffects_Blink
+        FUNCTION zllEffects_Blink,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC zllEffects_Init
+        FUNCTION zllEffects_Init,0203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC zllEffects_InitiateEffect
+        FUNCTION zllEffects_InitiateEffect,021203H
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 9, STACK
+        PUBLIC zllEffects_ProcessEffect
+        FUNCTION zllEffects_ProcessEffect,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME XSTACK, 4, STACK
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_SP SP IDATA
+          CFI StackFrame CFA_PSP16 PSP16 XDATA
+          CFI StackFrame CFA_XSP16 XSP16 XDATA
+          CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+          CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+          CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+          CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+          CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+          CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+          CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+          CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+          CFI Resource V8:8, V9:8, V10:8, V11:8, V12:8, V13:8, V14:8, V15:8, SP:8
+          CFI Resource PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+          CFI VirtualResource ?RET:24
+          CFI Resource ?BRET_EXT:8
+          CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+          CFI ResourceParts PSP16 PSPH, PSPL
+          CFI ResourceParts XSP16 XSPH, XSPL
+          CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-3
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B Undefined
+          CFI A Undefined
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 Undefined
+          CFI R5 Undefined
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI V8 SameValue
+          CFI V9 SameValue
+          CFI V10 SameValue
+          CFI V11 SameValue
+          CFI V12 SameValue
+          CFI V13 SameValue
+          CFI V14 SameValue
+          CFI V15 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT Frame(CFA_SP, 3)
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-2
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B SameValue
+          CFI A SameValue
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI V8 SameValue
+          CFI V9 SameValue
+          CFI V10 SameValue
+          CFI V11 SameValue
+          CFI V12 SameValue
+          CFI V13 SameValue
+          CFI V14 SameValue
+          CFI V15 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT SameValue
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon1
+        
+hwLight_Refresh     SYMBOL "hwLight_Refresh"
+??hwLight_Refresh?relay SYMBOL "?relay", hwLight_Refresh
+hwLight_UpdateLampColorHueSat SYMBOL "hwLight_UpdateLampColorHueSat"
+??hwLight_UpdateLampColorHueSat?relay SYMBOL "?relay", hwLight_UpdateLampColorHueSat
+hwLight_UpdateOnOff SYMBOL "hwLight_UpdateOnOff"
+??hwLight_UpdateOnOff?relay SYMBOL "?relay", hwLight_UpdateOnOff
+osal_set_event      SYMBOL "osal_set_event"
+??osal_set_event?relay SYMBOL "?relay", osal_set_event
+osal_start_timerEx  SYMBOL "osal_start_timerEx"
+??osal_start_timerEx?relay SYMBOL "?relay", osal_start_timerEx
+zllEffects_Blink    SYMBOL "zllEffects_Blink"
+??zllEffects_Blink?relay SYMBOL "?relay", zllEffects_Blink
+zllEffects_Init     SYMBOL "zllEffects_Init"
+??zllEffects_Init?relay SYMBOL "?relay", zllEffects_Init
+zllEffects_InitiateEffect SYMBOL "zllEffects_InitiateEffect"
+??zllEffects_InitiateEffect?relay SYMBOL "?relay", zllEffects_InitiateEffect
+zllEffects_ProcessEffect SYMBOL "zllEffects_ProcessEffect"
+??zllEffects_ProcessEffect?relay SYMBOL "?relay", zllEffects_ProcessEffect
+
+        EXTERN ??hwLight_Refresh?relay
+        FUNCTION ??hwLight_Refresh?relay,00H
+        EXTERN ??hwLight_UpdateLampColorHueSat?relay
+        FUNCTION ??hwLight_UpdateLampColorHueSat?relay,00H
+        EXTERN ??hwLight_UpdateOnOff?relay
+        FUNCTION ??hwLight_UpdateOnOff?relay,00H
+        EXTERN ??osal_set_event?relay
+        FUNCTION ??osal_set_event?relay,00H
+        EXTERN ??osal_start_timerEx?relay
+        FUNCTION ??osal_start_timerEx?relay,00H
+        EXTERN hwLight_Refresh
+        FUNCTION hwLight_Refresh,0202H
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN hwLight_UpdateLampColorHueSat
+        FUNCTION hwLight_UpdateLampColorHueSat,0202H
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN hwLight_UpdateOnOff
+        FUNCTION hwLight_UpdateOnOff,0202H
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN osal_set_event
+        FUNCTION osal_set_event,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN osal_start_timerEx
+        FUNCTION osal_start_timerEx,0202H
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 4, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN zclColor_CurrentHue
+        EXTERN zclColor_CurrentSaturation
+        EXTERN zclLevel_CurrentLevel
+        EXTERN zllSampleLight_OnOff
+
+// D:\Texas Instruments\Z-Stack Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\Source\Light\zll_effects_ctrl.c
+//    1 /**************************************************************************************************
+//    2   Filename:       zll_effects_ctrl.c
+//    3   Revised:        $Date: 2013-12-02 13:41:13 -0800 (Mon, 02 Dec 2013) $
+//    4   Revision:       $Revision: 36340 $
+//    5 
+//    6 
+//    7   Description:    This file contains the application-level ZigBee Light Link
+//    8                   effects contrl.
+//    9 
+//   10 
+//   11   Copyright 2012-2013 Texas Instruments Incorporated. All rights reserved.
+//   12 
+//   13   IMPORTANT: Your use of this Software is limited to those specific rights
+//   14   granted under the terms of a software license agreement between the user
+//   15   who downloaded the software, his/her employer (which must be your employer)
+//   16   and Texas Instruments Incorporated (the "License").  You may not use this
+//   17   Software unless you agree to abide by the terms of the License. The License
+//   18   limits your use, and you acknowledge, that the Software may not be modified,
+//   19   copied or distributed unless embedded on a Texas Instruments microcontroller
+//   20   or used solely and exclusively in conjunction with a Texas Instruments radio
+//   21   frequency transceiver, which is integrated into your product.  Other than for
+//   22   the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+//   23   works of, modify, distribute, perform, display or sell this Software and/or
+//   24   its documentation for any purpose.
+//   25 
+//   26   YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+//   27   PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+//   28   INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+//   29   NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+//   30   TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+//   31   NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+//   32   LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+//   33   INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+//   34   OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+//   35   OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+//   36   (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+//   37 
+//   38   Should you have any questions regarding your right to use this Software,
+//   39   contact Texas Instruments Incorporated at www.TI.com.
+//   40 **************************************************************************************************/
+//   41 
+//   42 /*********************************************************************
+//   43   This device will be like a Light device.  This application is not
+//   44   intended to be a Light device, but will use the device description
+//   45   to implement this sample code.
+//   46 *********************************************************************/
+//   47 
+//   48 /*********************************************************************
+//   49  * INCLUDES
+//   50  */
+//   51 #include "zll_effects_ctrl.h"
+//   52 #include "hal_led.h"
+//   53 #include "hw_light_ctrl.h"
+//   54 #include "zll_samplelight.h"
+//   55 #ifdef ZCL_LEVEL_CTRL
+//   56 #include "zcl_level_ctrl.h"
+//   57 #endif
+//   58 
+//   59 /*********************************************************************
+//   60  * MACROS
+//   61  */
+//   62 
+//   63 /*********************************************************************
+//   64  * CONSTANTS
+//   65  */
+//   66 #define HUE_GREEN   0x55
+//   67 #define HUE_ORANGE  0x1C
+//   68 
+//   69 /*********************************************************************
+//   70  * TYPEDEFS
+//   71  */
+//   72 typedef struct
+//   73 {
+//   74   uint16 clusterID;
+//   75   uint8 commandID;
+//   76   uint8 effectID;
+//   77   uint8 effectVariant;
+//   78   uint8 state;
+//   79 } currentEffect_t;
+//   80 
+//   81 /*********************************************************************
+//   82  * GLOBAL VARIABLES
+//   83  */
+//   84 
+//   85 /*********************************************************************
+//   86  * GLOBAL FUNCTIONS
+//   87  */
+//   88 
+//   89 /*********************************************************************
+//   90  * LOCAL VARIABLES
+//   91  */
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//   92 static currentEffect_t _currentEffect;
+_currentEffect:
+        DS 6
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//   93 static byte zclLight_TaskID;
+zclLight_TaskID:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA16
+//   94 static zclGCB_OnOff_t zllEffects_OnOffCB;
+zllEffects_OnOffCB:
+        DS 2
+        REQUIRE __INIT_XDATA_Z
+//   95 
+//   96 /*********************************************************************
+//   97  * LOCAL FUNCTIONS
+//   98  */
+//   99 
+//  100 /*********************************************************************
+//  101  * LOCAL FUNCTIONS
+//  102  */
+//  103 
+//  104 /*********************************************************************
+//  105  * @fn          zllEffects_Init
+//  106  *
+//  107  * @brief
+//  108  *
+//  109  * @param       none
+//  110  *
+//  111  * @return      none
+//  112  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  113 void zllEffects_Init( byte taskID, zclGCB_OnOff_t OnOffCB )
+zllEffects_Init:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function zllEffects_Init
+        CODE
+//  114 {
+        PUSH    DPL
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH    DPH
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  115   zclLight_TaskID = taskID;
+        MOV     A,R1
+        MOV     DPTR,#zclLight_TaskID
+        MOVX    @DPTR,A
+//  116   zllEffects_OnOffCB = OnOffCB;
+        MOV     DPTR,#zllEffects_OnOffCB
+        MOV     A,R2
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R3
+        MOVX    @DPTR,A
+//  117   _currentEffect.state = 0;
+        MOV     DPTR,#_currentEffect + 5
+        CLR     A
+        MOVX    @DPTR,A
+          CFI EndBlock cfiBlock0
+//  118 }
+        REQUIRE ?Subroutine0
+        ; // Fall through to label ?Subroutine0
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine0:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA_SP SP+-5
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI DPH0 Frame(CFA_SP, 5)
+        POP     DPH
+          CFI CFA_SP SP+-4
+          CFI DPH0 SameValue
+        POP     DPL
+          CFI CFA_SP SP+-3
+          CFI DPL0 SameValue
+        LJMP    ?BRET
+          CFI EndBlock cfiBlock1
+//  119 
+//  120 /*********************************************************************
+//  121  * @fn      zllEffects_Blink
+//  122  *
+//  123  * @brief   Perform "blink" effect on light.
+//  124  *
+//  125  * @param   none
+//  126  *
+//  127  * @return  none
+//  128  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  129 void zllEffects_Blink( void )
+zllEffects_Blink:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function zllEffects_Blink
+        CODE
+//  130 {
+        FUNCALL zllEffects_Blink, zllEffects_InitiateEffect
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUSH    DPL
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH    DPH
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  131   zllEffects_InitiateEffect( ZCL_CLUSTER_ID_GEN_IDENTIFY,
+//  132                              COMMAND_IDENTIFY_TRIGGER_EFFECT,
+//  133                              EFFECT_ID_BLINK, 0 );
+        ; Setup parameters for call to function zllEffects_InitiateEffect
+        MOV     R5,#0x0
+        MOV     R4,#0x0
+        MOV     R1,#0x40
+        MOV     R2,#0x3
+        MOV     R3,#0x0
+        LCALL   ??zllEffects_InitiateEffect?relay
+//  134 }
+        SJMP    ?Subroutine0
+          CFI EndBlock cfiBlock2
+//  135 
+//  136 /*********************************************************************
+//  137  * @fn      zllEffects_InitiateEffect
+//  138  *
+//  139  * @brief   Initiate light effect
+//  140  *
+//  141  * @param   clusterID -     Cluster ID (e.g. Identify or On/Off)
+//  142  * @param   commandID -     Command ID
+//  143  * @param   effectID -      Effect ID
+//  144  * @param   effectVariant - Effect Variant
+//  145  *
+//  146  * @return  none
+//  147  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  148 void zllEffects_InitiateEffect( uint16 clusterID, uint8 commandID, uint8 effectID, uint8 effectVariant )
+zllEffects_InitiateEffect:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI Function zllEffects_InitiateEffect
+        CODE
+//  149 {
+        FUNCALL zllEffects_InitiateEffect, hwLight_Refresh
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL zllEffects_InitiateEffect, osal_set_event
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV     A,#-0x9
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+        MOV     A,R1
+        MOV     R6,A
+        MOV     A,R4
+        MOV     R7,A
+//  150   _currentEffect.clusterID = clusterID;
+        MOV     DPTR,#_currentEffect
+        MOV     A,R2
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R3
+        MOVX    @DPTR,A
+//  151   _currentEffect.commandID = commandID;
+        MOV     A,R6
+        INC     DPTR
+        MOVX    @DPTR,A
+//  152   _currentEffect.effectID = effectID;
+        MOV     A,R7
+        INC     DPTR
+        MOVX    @DPTR,A
+//  153   _currentEffect.effectVariant = effectVariant;
+        MOV     A,R5
+        INC     DPTR
+        MOVX    @DPTR,A
+//  154   _currentEffect.state = 0xFF; //start
+        INC     DPTR
+        MOV     A,#-0x1
+        MOVX    @DPTR,A
+//  155   hwLight_Refresh( REFRESH_BYPASS );
+        ; Setup parameters for call to function hwLight_Refresh
+        MOV     R1,#0x1
+        LCALL   ??hwLight_Refresh?relay
+//  156 
+//  157   if ( !( (commandID == COMMAND_IDENTIFY_TRIGGER_EFFECT ) && ( effectID == EFFECT_ID_FINISH_EFFECT ) ) )
+        MOV     A,#0x40
+        XRL     A,R6
+        JNZ     ??zllEffects_InitiateEffect_0
+        MOV     A,#-0x2
+        XRL     A,R7
+        JZ      ??zllEffects_InitiateEffect_1
+//  158   {
+//  159     osal_set_event( zclLight_TaskID, SAMPLELIGHT_EFFECT_PROCESS_EVT );
+??zllEffects_InitiateEffect_0:
+        ; Setup parameters for call to function osal_set_event
+        MOV     R2,#0x2
+        MOV     R3,#0x0
+        MOV     DPTR,#zclLight_TaskID
+        MOVX    A,@DPTR
+        MOV     R1,A
+        LCALL   ??osal_set_event?relay
+//  160   }
+//  161 }
+??zllEffects_InitiateEffect_1:
+        MOV     R7,#0x1
+        LJMP    ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock3
+//  162 
+//  163 /*********************************************************************
+//  164  * @fn      zllEffects_ProcessEffect
+//  165  *
+//  166  * @brief   Process ongoing light effect
+//  167  *
+//  168  * @param   none
+//  169  *
+//  170  * @return  none
+//  171  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  172 void zllEffects_ProcessEffect()
+zllEffects_ProcessEffect:
+          CFI Block cfiBlock4 Using cfiCommon0
+          CFI Function zllEffects_ProcessEffect
+        CODE
+//  173 {
+        FUNCALL zllEffects_ProcessEffect, hwLight_Refresh
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL zllEffects_ProcessEffect, hwLight_UpdateOnOff
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL zllEffects_ProcessEffect, osal_start_timerEx
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 4, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 4, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL zllEffects_ProcessEffect, hwLight_UpdateOnOff
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL zllEffects_ProcessEffect, osal_start_timerEx
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 4, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 4, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL zllEffects_ProcessEffect, hwLight_UpdateOnOff
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL zllEffects_ProcessEffect, hwLight_UpdateLampColorHueSat
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL zllEffects_ProcessEffect, osal_start_timerEx
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 4, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 4, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL zllEffects_ProcessEffect, hwLight_UpdateOnOff
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL zllEffects_ProcessEffect, hwLight_UpdateLampColorHueSat
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL zllEffects_ProcessEffect, osal_start_timerEx
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 4, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 4, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL zllEffects_ProcessEffect, hwLight_Refresh
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL zllEffects_ProcessEffect, hwLight_Refresh
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL zllEffects_ProcessEffect, hwLight_UpdateLampColorHueSat
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL zllEffects_ProcessEffect, osal_start_timerEx
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 4, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 4, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUSH    DPL
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH    DPH
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  174   if ( ( _currentEffect.clusterID == ZCL_CLUSTER_ID_GEN_IDENTIFY )
+//  175        && ( _currentEffect.commandID == COMMAND_IDENTIFY_TRIGGER_EFFECT ) )
+        MOV     DPTR,#_currentEffect
+        MOVX    A,@DPTR
+        XRL     A,#0x3
+        JNZ     ??zllEffects_ProcessEffect_0
+        INC     DPTR
+        MOVX    A,@DPTR
+??zllEffects_ProcessEffect_0:
+        JZ      $+5
+        LJMP    ??zllEffects_ProcessEffect_1 & 0xFFFF
+        MOV     DPTR,#_currentEffect + 2
+        MOVX    A,@DPTR
+        XRL     A,#0x40
+        JZ      $+5
+        LJMP    ??zllEffects_ProcessEffect_2 & 0xFFFF
+//  176   {
+//  177     if ( _currentEffect.state == 0 ) // end of effect
+        MOV     DPTR,#_currentEffect + 5
+        MOVX    A,@DPTR
+        MOV     R0,A
+        JNZ     $+5
+        LJMP    ??zllEffects_ProcessEffect_3 & 0xFFFF
+//  178     {
+//  179       // revert effect bypass
+//  180       hwLight_Refresh( REFRESH_RESUME );
+        ; Setup parameters for call to function hwLight_Refresh
+//  181       return;
+//  182     }
+//  183     switch ( _currentEffect.effectID )
+        MOV     DPTR,#_currentEffect + 3
+        MOVX    A,@DPTR
+        JZ      ??zllEffects_ProcessEffect_4
+        DEC     A
+        JZ      ??zllEffects_ProcessEffect_5
+        DEC     A
+        JZ      ??zllEffects_ProcessEffect_6
+        ADD     A,#-0x9
+        JZ      ??zllEffects_ProcessEffect_7
+        SJMP    ??zllEffects_ProcessEffect_8
+//  184     {
+//  185     case EFFECT_ID_BLINK:
+//  186       {
+//  187         if ( _currentEffect.state == 0xFF )
+??zllEffects_ProcessEffect_4:
+        MOV     A,#-0x1
+        XRL     A,R0
+        JZ      $+5
+        LJMP    ??zllEffects_ProcessEffect_2 & 0xFFFF
+//  188         {
+//  189           _currentEffect.state = 0;
+        MOV     DPTR,#_currentEffect + 5
+        CLR     A
+        MOVX    @DPTR,A
+//  190 #ifdef ZLL_HW_LED_LAMP
+//  191           hwLight_UpdateOnOff ( ( zllSampleLight_OnOff == LIGHT_ON ) ? LIGHT_OFF : LIGHT_ON );
+        MOV     DPTR,#zllSampleLight_OnOff
+        MOVX    A,@DPTR
+        XRL     A,#0x1
+        JNZ     ??zllEffects_ProcessEffect_9
+        MOV     R1,#0x0
+        SJMP    ??zllEffects_ProcessEffect_10
+??zllEffects_ProcessEffect_9:
+        MOV     R1,#0x1
+??zllEffects_ProcessEffect_10:
+        ; Setup parameters for call to function hwLight_UpdateOnOff
+        LCALL   ??hwLight_UpdateOnOff?relay
+//  192 #else
+//  193           HalLedBlink ( HAL_LED_4, 0xFF, HAL_LED_DEFAULT_DUTY_CYCLE, HAL_LED_DEFAULT_FLASH_TIME );
+//  194 #endif
+//  195           osal_start_timerEx( zclLight_TaskID, SAMPLELIGHT_EFFECT_PROCESS_EVT, 200 );
+        ; Setup parameters for call to function osal_start_timerEx
+        MOV     DPTR,#__Constant_c8
+        LJMP    ??zllEffects_ProcessEffect_11 & 0xFFFF
+//  196         }
+//  197       }
+//  198       break;
+//  199 
+//  200     case EFFECT_ID_BREATHE:
+//  201       {
+//  202         if ( _currentEffect.state == 0xFF )
+??zllEffects_ProcessEffect_5:
+        MOV     A,#-0x1
+        XRL     A,R0
+        MOV     DPTR,#_currentEffect + 5
+        JNZ     ??zllEffects_ProcessEffect_12
+//  203         {
+//  204           _currentEffect.state = 14;
+        MOV     A,#0xe
+        SJMP    ??zllEffects_ProcessEffect_13
+//  205         }
+//  206         else
+//  207         {
+//  208           _currentEffect.state--;
+??zllEffects_ProcessEffect_12:
+        MOVX    A,@DPTR
+        DEC     A
+??zllEffects_ProcessEffect_13:
+        MOVX    @DPTR,A
+//  209         }
+//  210         hwLight_UpdateOnOff( ( _currentEffect.state & 0x01 ) ? LIGHT_ON : LIGHT_OFF );
+        ; Setup parameters for call to function hwLight_UpdateOnOff
+        MOVX    A,@DPTR
+        MOV     C,0xE0 /* A   */.0
+        CLR     A
+        RLC     A
+        MOV     R1,A
+        LCALL   ??hwLight_UpdateOnOff?relay
+//  211         osal_start_timerEx( zclLight_TaskID, SAMPLELIGHT_EFFECT_PROCESS_EVT, 1000 );
+        ; Setup parameters for call to function osal_start_timerEx
+        SJMP    ??zllEffects_ProcessEffect_14
+//  212       }
+//  213       break;
+//  214 
+//  215     case EFFECT_ID_OKAY:
+//  216       {
+//  217 #ifdef ZCL_COLOR_CTRL
+//  218         _currentEffect.state = 0;
+??zllEffects_ProcessEffect_6:
+        MOV     DPTR,#_currentEffect + 5
+        CLR     A
+        MOVX    @DPTR,A
+//  219         hwLight_UpdateOnOff( LIGHT_ON );
+        ; Setup parameters for call to function hwLight_UpdateOnOff
+        MOV     R1,#0x1
+        LCALL   ??hwLight_UpdateOnOff?relay
+//  220 #ifdef ZLL_HW_LED_LAMP
+//  221         hwLight_UpdateLampColorHueSat( HUE_GREEN, 0xFF, zclLevel_CurrentLevel );
+        ; Setup parameters for call to function hwLight_UpdateLampColorHueSat
+        MOV     DPTR,#zclLevel_CurrentLevel
+        MOVX    A,@DPTR
+        MOV     R3,A
+        MOV     R2,#-0x1
+        MOV     R1,#0x55
+        LCALL   ??hwLight_UpdateLampColorHueSat?relay
+//  222         osal_start_timerEx( zclLight_TaskID, SAMPLELIGHT_EFFECT_PROCESS_EVT, 1000 );
+        ; Setup parameters for call to function osal_start_timerEx
+??zllEffects_ProcessEffect_14:
+        MOV     DPTR,#__Constant_3e8
+        LJMP    ??zllEffects_ProcessEffect_11 & 0xFFFF
+//  223 #endif //ZLL_HW_LED_LAMP
+//  224 #else //ZCL_COLOR_CTRL
+//  225         if ( _currentEffect.state == 0xFF )
+//  226         {
+//  227           _currentEffect.state = 3;
+//  228         }
+//  229         else
+//  230         {
+//  231           _currentEffect.state--;
+//  232         }
+//  233         hwLight_UpdateOnOff( ( _currentEffect.state & 0x01 ) ? LIGHT_ON : LIGHT_OFF );
+//  234         osal_start_timerEx( zclLight_TaskID, SAMPLELIGHT_EFFECT_PROCESS_EVT, 500 );
+//  235 #endif
+//  236       }
+//  237       break;
+//  238 
+//  239     case EFFECT_ID_CHANNEL_CHANGE:
+//  240       {
+//  241         hwLight_UpdateOnOff( LIGHT_ON );
+??zllEffects_ProcessEffect_7:
+        ; Setup parameters for call to function hwLight_UpdateOnOff
+        MOV     R1,#0x1
+        LCALL   ??hwLight_UpdateOnOff?relay
+//  242 #ifdef ZCL_COLOR_CTRL
+//  243         _currentEffect.state = 0;
+        MOV     DPTR,#_currentEffect + 5
+        CLR     A
+        MOVX    @DPTR,A
+//  244 #ifdef ZLL_HW_LED_LAMP
+//  245         hwLight_UpdateLampColorHueSat( HUE_ORANGE, 0xFF, zclLevel_CurrentLevel );
+        ; Setup parameters for call to function hwLight_UpdateLampColorHueSat
+        MOV     DPTR,#zclLevel_CurrentLevel
+        MOVX    A,@DPTR
+        MOV     R3,A
+        MOV     R2,#-0x1
+        MOV     R1,#0x1c
+        LCALL   ??hwLight_UpdateLampColorHueSat?relay
+//  246         osal_start_timerEx( zclLight_TaskID, SAMPLELIGHT_EFFECT_PROCESS_EVT, 8000 );
+        ; Setup parameters for call to function osal_start_timerEx
+        MOV     DPTR,#__Constant_1f40
+        LJMP    ??zllEffects_ProcessEffect_11 & 0xFFFF
+//  247 #endif //ZLL_HW_LED_LAMP
+//  248 #else //ZCL_COLOR_CTRL
+//  249         if ( _currentEffect.state == 0xFF )
+//  250         {
+//  251           _currentEffect.state = 1;
+//  252         }
+//  253         else
+//  254         {
+//  255           _currentEffect.state--;
+//  256         }
+//  257         if ( _currentEffect.state > 0 )
+//  258         {
+//  259 #ifdef ZCL_LEVEL_CTRL
+//  260           hwLight_UpdateLampLevel( LEVEL_MAX ); // maximum brightness
+//  261 #endif
+//  262           osal_start_timerEx( zclLight_TaskID, SAMPLELIGHT_EFFECT_PROCESS_EVT, 500 );
+//  263         }
+//  264         else
+//  265         {
+//  266 #ifdef ZCL_LEVEL_CTRL
+//  267           hwLight_UpdateLampLevel( LEVEL_MIN ); // minimum brightness
+//  268 #endif
+//  269           osal_start_timerEx( zclLight_TaskID, SAMPLELIGHT_EFFECT_PROCESS_EVT, 7500 );
+//  270         }
+//  271 #endif
+//  272       }
+//  273       break;
+//  274 
+//  275     case EFFECT_ID_FINISH_EFFECT:
+//  276     case EFFECT_ID_STOP_EFFECT:
+//  277     default: //unknown effects should not block normal operation
+//  278       {
+//  279         _currentEffect.state = 0;
+??zllEffects_ProcessEffect_8:
+        MOV     DPTR,#_currentEffect + 5
+        CLR     A
+        MOVX    @DPTR,A
+//  280         hwLight_Refresh( REFRESH_RESUME );
+        ; Setup parameters for call to function hwLight_Refresh
+        SJMP    ??zllEffects_ProcessEffect_3
+//  281       }
+//  282       break;
+//  283     }
+//  284   }
+//  285   else if ( ( _currentEffect.clusterID == ZCL_CLUSTER_ID_GEN_ON_OFF )
+//  286             && ( _currentEffect.commandID == COMMAND_OFF_WITH_EFFECT ) )
+??zllEffects_ProcessEffect_1:
+        MOV     DPTR,#_currentEffect
+        MOVX    A,@DPTR
+        XRL     A,#0x6
+        JNZ     ??zllEffects_ProcessEffect_15
+        INC     DPTR
+        MOVX    A,@DPTR
+??zllEffects_ProcessEffect_15:
+        JZ      $+5
+        LJMP    ??zllEffects_ProcessEffect_2 & 0xFFFF
+        MOV     DPTR,#_currentEffect + 2
+        MOVX    A,@DPTR
+        XRL     A,#0x40
+        JZ      $+5
+        LJMP    ??zllEffects_ProcessEffect_2 & 0xFFFF
+//  287   {
+//  288 #ifdef ZCL_LEVEL_CTRL
+//  289     static uint8 step = 0;
+//  290     static uint8 level = 0;
+//  291 #else
+//  292     _currentEffect.state = 0;
+//  293 #endif //ZCL_LEVEL_CTRL
+//  294     if ( _currentEffect.state == 0 ) // end of effect
+        MOV     DPTR,#_currentEffect + 5
+        MOVX    A,@DPTR
+        MOV     R0,A
+        JNZ     ??zllEffects_ProcessEffect_16
+//  295     {
+//  296       // Turn off the light
+//  297       zllEffects_OnOffCB( COMMAND_OFF );
+        ; Setup parameters for indirect call
+        MOV     R1,#0x0
+        MOV     DPTR,#zllEffects_OnOffCB
+        MOVX    A,@DPTR
+        MOV     R0,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     DPH,A
+        MOV     DPL,R0
+        LCALL   ?CALL_IND
+//  298       // revert effect bypass
+//  299       hwLight_Refresh( REFRESH_RESUME );
+        ; Setup parameters for call to function hwLight_Refresh
+??zllEffects_ProcessEffect_3:
+        MOV     R1,#0x2
+        LCALL   ??hwLight_Refresh?relay
+//  300       return;
+        LJMP    ??zllEffects_ProcessEffect_2 & 0xFFFF
+//  301     }
+//  302 #ifdef ZCL_LEVEL_CTRL
+//  303     switch ( _currentEffect.effectID )
+??zllEffects_ProcessEffect_16:
+        MOV     DPTR,#_currentEffect + 3
+        MOVX    A,@DPTR
+        JZ      ??zllEffects_ProcessEffect_17
+        DEC     A
+        JZ      ??zllEffects_ProcessEffect_18
+        LJMP    ??zllEffects_ProcessEffect_19 & 0xFFFF
+//  304     {
+//  305       case EFFECT_ID_DELAY_ALL_OFF:
+//  306         {
+//  307           if ( _currentEffect.effectVariant == 0 )
+??zllEffects_ProcessEffect_17:
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R1,A
+        JNZ     ??zllEffects_ProcessEffect_20
+//  308           {
+//  309             if ( _currentEffect.state == 0xFF )
+        MOV     A,#-0x1
+        XRL     A,R0
+        INC     DPTR
+        JNZ     ??zllEffects_ProcessEffect_21
+//  310             {
+//  311               _currentEffect.state = 7;
+        MOV     A,#0x7
+        LCALL   ?Subroutine1 & 0xFFFF
+//  312               level = zclLevel_CurrentLevel;
+//  313               step = MAX( (level/8), 1 );
+??CrossCallReturnLabel_0:
+        ANL     A,#0xf8
+        JNZ     $+5
+        LJMP    ??zllEffects_ProcessEffect_22 & 0xFFFF
+        MOVX    A,@DPTR
+        RRC     A
+        RRC     A
+        RRC     A
+        ANL     A,#0x1f
+        LJMP    ??zllEffects_ProcessEffect_23 & 0xFFFF
+//  314             }
+//  315             else
+//  316             {
+//  317               _currentEffect.state--;
+??zllEffects_ProcessEffect_21:
+        MOVX    A,@DPTR
+        DEC     A
+        LJMP    ??zllEffects_ProcessEffect_24 & 0xFFFF
+//  318             }
+//  319             level = ( (level-LEVEL_MIN) > step) ? (level - step) : LEVEL_MIN;
+//  320           }
+//  321           else if ( _currentEffect.effectVariant == 1 )
+??zllEffects_ProcessEffect_20:
+        MOV     A,#0x1
+        XRL     A,R1
+        JNZ     $+5
+        LJMP    ??zllEffects_ProcessEffect_19 & 0xFFFF
+//  322           {
+//  323             _currentEffect.state = 0;
+//  324           }
+//  325           else if ( _currentEffect.effectVariant == 2 )
+        MOV     A,#0x2
+        XRL     A,R1
+        JZ      $+5
+        LJMP    ??zllEffects_ProcessEffect_19 & 0xFFFF
+//  326           {
+//  327             if ( _currentEffect.state == 0xFF )
+        MOV     A,#-0x1
+        XRL     A,R0
+        INC     DPTR
+        JNZ     ??zllEffects_ProcessEffect_25
+//  328             {
+//  329               _currentEffect.state = 127;
+        MOV     A,#0x7f
+        LCALL   ?Subroutine1 & 0xFFFF
+//  330               level = zclLevel_CurrentLevel;
+//  331               step = MAX( (level/16), 1 );
+??CrossCallReturnLabel_1:
+        ANL     A,#0xf0
+        JZ      ??zllEffects_ProcessEffect_22
+        MOVX    A,@DPTR
+        SWAP    A
+        ANL     A,#0xf
+        SJMP    ??zllEffects_ProcessEffect_23
+//  332             }
+//  333             else
+//  334             {
+//  335               _currentEffect.state--;
+??zllEffects_ProcessEffect_25:
+        MOVX    A,@DPTR
+        DEC     A
+        MOVX    @DPTR,A
+//  336             }
+//  337             if ( _currentEffect.state == 120 )
+        XRL     A,#0x78
+        JNZ     ??zllEffects_ProcessEffect_26
+        SJMP    ??zllEffects_ProcessEffect_22
+//  338             {
+//  339               step = 1;
+//  340             }
+//  341             level = ( (level-LEVEL_MIN) > step) ? (level - step) : LEVEL_MIN;
+//  342           }
+//  343           else //unknown variant
+//  344           {
+//  345              _currentEffect.state = 0;
+//  346           }
+//  347         }
+//  348         break;
+//  349 
+//  350       case EFFECT_ID_DYING_LIGHT:
+//  351         {
+//  352           if ( _currentEffect.state == 0xFF )
+??zllEffects_ProcessEffect_18:
+        MOV     A,#-0x1
+        XRL     A,R0
+        MOV     DPTR,#_currentEffect + 5
+        JNZ     ??zllEffects_ProcessEffect_27
+//  353           {
+//  354             _currentEffect.state = 14;
+        MOV     A,#0xe
+        LCALL   ?Subroutine1 & 0xFFFF
+//  355             level = zclLevel_CurrentLevel;
+//  356             step = MAX( (zclLevel_CurrentLevel/25), 1 );
+??CrossCallReturnLabel_2:
+        MOV     B,#0x19
+        DIV     AB
+        MOV     DPTR,#??step
+        JNZ     ??zllEffects_ProcessEffect_28
+        MOV     A,#0x1
+??zllEffects_ProcessEffect_28:
+        MOVX    @DPTR,A
+        SJMP    ??zllEffects_ProcessEffect_29
+//  357           }
+//  358           else
+//  359           {
+//  360             _currentEffect.state--;
+??zllEffects_ProcessEffect_27:
+        MOVX    A,@DPTR
+        DEC     A
+        MOVX    @DPTR,A
+//  361           }
+//  362 
+//  363           if ( _currentEffect.state > 10 )
+        CLR     C
+        SUBB    A,#0xb
+        JC      ??zllEffects_ProcessEffect_30
+//  364           {
+//  365             level = ( (LEVEL_MAX-level) > step) ? (level + step) : LEVEL_MAX;
+??zllEffects_ProcessEffect_29:
+        MOV     DPTR,#??step
+        MOVX    A,@DPTR
+        MOV     R2,A
+        MOV     DPTR,#??level
+        MOVX    A,@DPTR
+        MOV     R0,A
+        MOV     A,#-0x2
+        CLR     C
+        SUBB    A,R0
+        MOV     R0,A
+        SUBB    A,0xE0 /* A   */
+        LCALL   ?Subroutine2 & 0xFFFF
+//  366           }
+??CrossCallReturnLabel_3:
+        JNC     ??zllEffects_ProcessEffect_31
+        MOV     DPTR,#??step
+        MOVX    A,@DPTR
+        MOV     R0,A
+        MOV     DPTR,#??level
+        MOVX    A,@DPTR
+        ADD     A,R0
+        SJMP    ??zllEffects_ProcessEffect_32
+??zllEffects_ProcessEffect_31:
+        MOV     A,#-0x2
+        SJMP    ??zllEffects_ProcessEffect_32
+//  367           else
+//  368           {
+//  369             step = MAX( (zclLevel_CurrentLevel/10), 1 );
+??zllEffects_ProcessEffect_30:
+        MOV     B,#0xa
+        MOV     DPTR,#zclLevel_CurrentLevel
+        MOVX    A,@DPTR
+        DIV     AB
+        JNZ     ??zllEffects_ProcessEffect_23
+??zllEffects_ProcessEffect_22:
+        MOV     DPTR,#??step
+        MOV     A,#0x1
+        SJMP    ??zllEffects_ProcessEffect_24
+??zllEffects_ProcessEffect_23:
+        MOV     DPTR,#??step
+??zllEffects_ProcessEffect_24:
+        MOVX    @DPTR,A
+//  370             level = ( (level-LEVEL_MIN) > step) ? (level - step) : LEVEL_MIN;
+??zllEffects_ProcessEffect_26:
+        MOV     DPTR,#??step
+        MOVX    A,@DPTR
+        MOV     R2,A
+        MOV     DPTR,#??level
+        MOVX    A,@DPTR
+        ADD     A,#-0x1
+        MOV     R0,A
+        CLR     A
+        ADDC    A,#-0x1
+        LCALL   ?Subroutine2 & 0xFFFF
+//  371           }
+//  372         }
+??CrossCallReturnLabel_4:
+        JNC     ??zllEffects_ProcessEffect_33
+        MOV     DPTR,#??step
+        MOVX    A,@DPTR
+        MOV     R0,A
+        MOV     DPTR,#??level
+        MOVX    A,@DPTR
+        CLR     C
+        SUBB    A,R0
+        SJMP    ??zllEffects_ProcessEffect_32
+??zllEffects_ProcessEffect_33:
+        MOV     A,#0x1
+        SJMP    ??zllEffects_ProcessEffect_32
+//  373         break;
+//  374       default: //unknown effect
+//  375         {
+//  376           _currentEffect.state = 0;
+??zllEffects_ProcessEffect_19:
+        MOV     DPTR,#_currentEffect + 5
+        CLR     A
+??zllEffects_ProcessEffect_32:
+        MOVX    @DPTR,A
+//  377         }
+//  378     }
+//  379 #ifdef ZLL_HW_LED_LAMP
+//  380 #ifdef ZCL_COLOR_CTRL
+//  381     hwLight_UpdateLampColorHueSat( zclColor_CurrentHue, zclColor_CurrentSaturation, level );
+        ; Setup parameters for call to function hwLight_UpdateLampColorHueSat
+        MOV     DPTR,#??level
+        MOVX    A,@DPTR
+        MOV     R3,A
+        MOV     DPTR,#zclColor_CurrentSaturation
+        MOVX    A,@DPTR
+        MOV     R2,A
+        MOV     DPTR,#zclColor_CurrentHue
+        MOVX    A,@DPTR
+        MOV     R1,A
+        LCALL   ??hwLight_UpdateLampColorHueSat?relay
+//  382 #else
+//  383     hwLight_UpdateLampLevel( level );
+//  384 #endif //ZCL_COLOR_CTRL
+//  385 #endif //ZLL_HW_LED_LAMP
+//  386     osal_start_timerEx( zclLight_TaskID, SAMPLELIGHT_EFFECT_PROCESS_EVT, 100 );
+        ; Setup parameters for call to function osal_start_timerEx
+        MOV     DPTR,#__Constant_64
+??zllEffects_ProcessEffect_11:
+        LCALL   ?PUSH_XSTACK8_X_FOUR
+          CFI CFA_XSP16 add(XSP16, 4)
+        MOV     R2,#0x2
+        MOV     R3,#0x0
+        MOV     DPTR,#zclLight_TaskID
+        MOVX    A,@DPTR
+        MOV     R1,A
+        LCALL   ??osal_start_timerEx?relay
+        MOV     A,#0x4
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 XSP16+0
+//  387 #endif //ZCL_LEVEL_CTRL
+//  388   }
+??zllEffects_ProcessEffect_2:
+        LJMP    ?Subroutine0 & 0xFFFF
+          CFI EndBlock cfiBlock4
+//  389 }
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine2:
+          CFI Block cfiCond5 Using cfiCommon0
+          CFI Function zllEffects_ProcessEffect
+          CFI Conditional ??CrossCallReturnLabel_3
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+          CFI Block cfiCond6 Using cfiCommon0
+          CFI (cfiCond6) Function zllEffects_ProcessEffect
+          CFI (cfiCond6) Conditional ??CrossCallReturnLabel_4
+          CFI (cfiCond6) DPL0 Frame(CFA_SP, 4)
+          CFI (cfiCond6) DPH0 Frame(CFA_SP, 5)
+          CFI (cfiCond6) CFA_SP SP+-5
+          CFI Block cfiPicker7 Using cfiCommon1
+          CFI (cfiPicker7) NoFunction
+          CFI (cfiPicker7) Picker
+        MOV     R1,A
+        CLR     C
+        MOV     A,R2
+        SUBB    A,R0
+        CLR     A
+        SUBB    A,R1
+        MOV     C,0xD0 /* PSW */.2
+        XRL     A,PSW
+        RLC     A
+        RET
+          CFI EndBlock cfiCond5
+          CFI EndBlock cfiCond6
+          CFI EndBlock cfiPicker7
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine1:
+          CFI Block cfiCond8 Using cfiCommon0
+          CFI Function zllEffects_ProcessEffect
+          CFI Conditional ??CrossCallReturnLabel_0
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+          CFI Block cfiCond9 Using cfiCommon0
+          CFI (cfiCond9) Function zllEffects_ProcessEffect
+          CFI (cfiCond9) Conditional ??CrossCallReturnLabel_1
+          CFI (cfiCond9) DPL0 Frame(CFA_SP, 4)
+          CFI (cfiCond9) DPH0 Frame(CFA_SP, 5)
+          CFI (cfiCond9) CFA_SP SP+-5
+          CFI Block cfiCond10 Using cfiCommon0
+          CFI (cfiCond10) Function zllEffects_ProcessEffect
+          CFI (cfiCond10) Conditional ??CrossCallReturnLabel_2
+          CFI (cfiCond10) DPL0 Frame(CFA_SP, 4)
+          CFI (cfiCond10) DPH0 Frame(CFA_SP, 5)
+          CFI (cfiCond10) CFA_SP SP+-5
+          CFI Block cfiPicker11 Using cfiCommon1
+          CFI (cfiPicker11) NoFunction
+          CFI (cfiPicker11) Picker
+        MOVX    @DPTR,A
+        MOV     DPTR,#zclLevel_CurrentLevel
+        MOVX    A,@DPTR
+        MOV     DPTR,#??level
+        MOVX    @DPTR,A
+        RET
+          CFI EndBlock cfiCond8
+          CFI EndBlock cfiCond9
+          CFI EndBlock cfiCond10
+          CFI EndBlock cfiPicker11
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+??step:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+??level:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA32
+__Constant_c8:
+        DD 200
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA32
+__Constant_3e8:
+        DD 1000
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA32
+__Constant_1f40:
+        DD 8000
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA32
+__Constant_64:
+        DD 100
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??zllEffects_Init?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    zllEffects_Init
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??zllEffects_Blink?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    zllEffects_Blink
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??zllEffects_InitiateEffect?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    zllEffects_InitiateEffect
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??zllEffects_ProcessEffect?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    zllEffects_ProcessEffect
+
+        END
+//  390 
+//  391 /****************************************************************************
+//  392 ****************************************************************************/
+//  393 
+//  394 
+// 
+// 647 bytes in segment BANKED_CODE
+//  24 bytes in segment BANK_RELAYS
+//  16 bytes in segment XDATA_ROM_C
+//  11 bytes in segment XDATA_Z
+// 
+// 671 bytes of CODE  memory
+//   0 bytes of CONST memory (+ 16 bytes shared)
+//  11 bytes of XDATA memory
+//
+//Errors: none
+//Warnings: none

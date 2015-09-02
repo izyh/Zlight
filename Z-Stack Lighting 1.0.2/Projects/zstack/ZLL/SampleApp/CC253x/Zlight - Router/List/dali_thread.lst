@@ -1,0 +1,2671 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.20.2.41139 for 8051             27/May/2014  20:15:41 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Components\hal\target\CC2530PMP4712\dali_thr #
+#                          ead.c                                              #
+#    Command line       =  -f "D:\Texas Instruments\Z-Stack Lighting          #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wRouter.cfg" (-DCPU32MHZ        #
+#                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TRU #
+#                          E -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8       #
+#                          -DMAC_CFG_RX_MAX=5 -DRTR_NWK) -f "D:\Texas         #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wConfig.cfg" (-DZIGBEEPRO       #
+#                          -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR       #
+#                          -DDEFAULT_CHANLIST=0x00000800                      #
+#                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                       #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MA #
+#                          SK=0x007F -DBEACON_REQUEST_DELAY=100               #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                     #
+#                          -DLINK_STATUS_JITTER_MASK=0x007F                   #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_PO #
+#                          LLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7             #
+#                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3    #
+#                          -DNWK_MAX_DATA_RETRIES=2                           #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9         #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40           #
+#                          -DNWK_MAX_BINDING_ENTRIES=4                        #
+#                          -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01,  #
+#                          0x03, 0x05, 0x07, 0x09, 0x0B, 0x0D, 0x0F, 0x00,    #
+#                          0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0D}"         #
+#                          -DMAC_MAX_FRAME_SIZE=116                           #
+#                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const     #
+#                          __code" -DGENERIC=__generic                        #
+#                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000        #
+#                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100    #
+#                          -DREJOIN_POLL_RATE=440) -f "D:\Texas               #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wZCL.cfg" "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Components\hal\target\CC2530PMP4712\dali_thr #
+#                          ead.c" -D FEATURE_GREEN_POWER -D SECURE=1 -D       #
+#                          TC_LINKKEY_JOIN -D ZDSECMGR_TC_DEVICE_MAX=2 -D     #
+#                          NV_RESTORE -D HOLD_AUTO_START -D INTER_PAN -D      #
+#                          LCD_SUPPORTED=DEBUG -D ZCL_BASIC -D ZCL_READ -D    #
+#                          ZCL_WRITE -D ZCL_IDENTIFY -D ZCL_ON_OFF -D         #
+#                          ZCL_SCENES -D ZCL_GROUPS -D                        #
+#                          ZCL_LIGHT_LINK_ENHANCE -D ZCL_LEVEL_CTRL -D        #
+#                          ZCL_COLOR_CTRL -D MAX_CHANNELS_24GHZ=0x02108800    #
+#                          -D xPWM_ALT2 -D xTHERMAL_SHUTDOWN -D               #
+#                          ZLL_1_0_HUB_COMPATIBILITY -D DALI_LIGHT -lC        #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\List\" -lA "D:\Texas Instruments\Z-Stack  #
+#                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC253 #
+#                          x\Zlight - Router\List\" --diag_suppress           #
+#                          Pe001,Pa010 -o "D:\Texas Instruments\Z-Stack       #
+#                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC253 #
+#                          x\Zlight - Router\Obj\" -e --debug --core=plain    #
+#                          --dptr=16,1 --data_model=large                     #
+#                          --code_model=banked --calling_convention=xdata_ree #
+#                          ntrant --place_constants=data_rom                  #
+#                          --nr_virtual_regs 16 -I "D:\Texas                  #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\" -I    #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\Sour #
+#                          ce\" -I "D:\Texas Instruments\Z-Stack Lighting     #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\S #
+#                          ource\" -I "D:\Texas Instruments\Z-Stack Lighting  #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\HomeAutomation\Source\" -I "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\HomeAutomation\SampleLight\Source\" -I           #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\ZMain\TI2530DB\" -I "D:\Texas                    #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\hal\include\" -I "D:\Texas      #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\hal\target\CC2530PMP4712\" -I   #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\include\" -I "D:\Texas      #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\high_level\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\low_level\srf04\" -I        #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\low_level\srf04\single_chip #
+#                          \" -I "D:\Texas Instruments\Z-Stack Lighting       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mt\" -I "D:\Texas               #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\osal\include\" -I "D:\Texas     #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\services\saddr\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\services\sdata\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\af\" -I "D:\Texas         #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\nwk\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sapi\" -I "D:\Texas       #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sec\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sys\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\zcl\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\zdo\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\zmac\" -I "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\zmac\f8w\" -Ohz                 #
+#                          --require_prototypes                               #
+#    List file          =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\List\dali_thread.lst                      #
+#    Object file        =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\Obj\dali_thread.r51                       #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\Texas Instruments\Z-Stack Lighting 1.0.2\Components\hal\target\CC2530PMP4712\dali_thread.c
+      1          /*******************************************************************************
+      2          *
+      3          * dali_thread.c
+      4          *
+      5          * DALI forward frame format:
+      6          *
+      7          *  | S |        8 address bits         |        8 command bits         | stop  |
+      8          *  | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 0 | 1 | 1 | 1 | 1 | 0 | 0 | 0 |   |   |
+      9          *
+     10          * -+ +-+ +---+ +-+ +-+ +-+ +-+   +-+ +---+   +-+ +-+ +-+ +---+ +-+ +-+ +--------
+     11          *  | | | |   | | | | | | | | |   | | |   |   | | | | | | |   | | | | | |
+     12          *  +-+ +-+   +-+ +-+ +-+ +-+ +---+ +-+   +---+ +-+ +-+ +-+   +-+ +-+ +-+
+     13          *
+     14          *  |2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|  4TE  |
+     15          *
+     16          *
+     17          * DALI slave backward frame format:
+     18          *
+     19          *                   | S |         8 data bits           | stop  |
+     20          *                   | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 1 |   |   |
+     21          *
+     22          *   +---------------+ +-+ +---+ +-+ +-+ +-+ +-+   +-+ +-------------
+     23          *   |               | | | |   | | | | | | | | |   | | |
+     24          *  -+               +-+ +-+   +-+ +-+ +-+ +-+ +---+ +-+
+     25          *
+     26          *   |4 + 7 to 22 TE |2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|  4TE  |
+     27          *
+     28          * 2TE = 834 usec (1200 bps)
+     29          *
+     30          ********************************************************************************
+     31          *  commands supported
+     32          *  ------------------
+     33          *  Type				Range			Repeat		Answer from slave
+     34          *  Power control	0 - 31 			N			N
+     35          *
+     36          *  Configuration	32-129			Y			N
+     37          *  Reserved			130-143			N			N
+     38          *
+     39          *  Query			144-157			N			Y
+     40          *  Reserved			158-159			N			N
+     41          *  Query			160-165			N			Y
+     42          *  Reserved			166-175			N			N
+     43          *  Query			176-197			N			Y
+     44          *  Reserved			198-223			N			N
+     45          *  Query,2xx Std.	224-254			?			?
+     46          *  Query			255				N			Y
+     47          *
+     48          *  Special			256-257			N			N
+     49          *  Special			258-259			Y			N
+     50          *  Special			260-261			N			N
+     51          *  Special			262-263			N			N
+     52          *  Special			264-267			N			N
+     53          *  Special			268-269			N			Y
+     54          *  Special			270				N			N
+     55          *  Reserved			271				N			N
+     56          *  Special			272				N			N
+     57          *******************************************************************************/
+     58          
+     59          #include  "hal_mcu.h"
+
+   \                                 In  segment SFR_AN, at 0x80
+   \   union <unnamed> volatile __sfr _A_P0
+   \                     _A_P0:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0x90
+   \   union <unnamed> volatile __sfr _A_P1
+   \                     _A_P1:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xb8
+   \   union <unnamed> volatile __sfr _A_IEN1
+   \                     _A_IEN1:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xc0
+   \   union <unnamed> volatile __sfr _A_IRCON
+   \                     _A_IRCON:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xcb
+   \   unsigned char volatile __sfr T3CTL
+   \                     T3CTL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xcc
+   \   unsigned char volatile __sfr T3CCTL0
+   \                     T3CCTL0:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xcd
+   \   unsigned char volatile __sfr T3CC0
+   \                     T3CC0:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xce
+   \   unsigned char volatile __sfr T3CCTL1
+   \                     T3CCTL1:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xcf
+   \   unsigned char volatile __sfr T3CC1
+   \                     T3CC1:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xd8
+   \   union <unnamed> volatile __sfr _A_TIMIF
+   \                     _A_TIMIF:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf1
+   \   unsigned char volatile __sfr PERCFG
+   \                     PERCFG:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf4
+   \   unsigned char volatile __sfr P1SEL
+   \                     P1SEL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf5
+   \   unsigned char volatile __sfr P2SEL
+   \                     P2SEL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xfd
+   \   unsigned char volatile __sfr P0DIR
+   \                     P0DIR:
+   \   000000                DS 1
+     60          #include  "hal_types.h"
+     61          //#include "bsp.h"
+     62          #include "dali_thread.h"
+     63          #include "OnBoard.h"
+     64          #include "zcl.h"
+     65          #include "zcl_lighting.h"
+     66          #include "AF.h"
+     67          #include "ZComDef.h"
+     68          //#include "zcl_general.h"
+     69          #include "OSAL.h"
+     70          
+     71          /***********************************************************/
+     72          /* Configuration flags                                     */
+     73          /***********************************************************/
+     74          
+     75          /* in case of inverted RX path define INVERTED_RX */
+     76          #define INVERTED_RX
+     77          
+     78          /***********************************************************/
+     79          /* Microcontroller and Board specific defines              */
+     80          /***********************************************************/
+     81          
+     82          
+     83          /* PIO pin P0.7 is used as DALI send (tx) pin */
+     84          #define DALI_SetOutputHigh() { P0_7=1; }
+     85          #define DALI_SetOutputLow()  { P0_7=0; }
+     86          #define DALI_ConfigOutput()  { P0DIR  |=  (1<<7); }
+     87          
+     88          /* PIO pin P1.3 is used as DALI receive (rx) pin */
+     89          #ifdef INVERTED_RX
+     90          #define DALI_GetInput(x)     { x = P1_3 ? 0 : 1; }
+     91          #else
+     92          #define DALI_GetInput(x)     { x = P1_3 ? 1 : 0; }
+     93          #endif
+     94          
+     95          /* For receive, this module uses T3-CAP1 input (capture and interrupt on both edges) */
+     96          /* T3-CAP1 input (P1.4) is connected to P1.3 (to check high / low level by software) */
+     97          /* So set P1.4 as CT3.CAP1 (= DALI receive pin). */
+     98          #define DALI_ConfigInput()   { P1SEL |= 0x10; }
+     99          
+    100          /* T3 is used for DALI timing and capturing of DALI input */
+    101          #define GET_TIMER_REG_CR0(x) { x = T3CC1; }    //to get timestamp for the received message.
+    102          #define GET_TIMER_REG_IR(x)  { x = TIMIF; }    //to decide the interrupt type of T3.
+    103          #define SET_TIMER_REG_IR(x)  { TIMIF &= x; }    //to clear T3 overflow interrupt or cap0 capture interrupt.
+    104          #define SET_TIMER_REG_PR(x)  { T3CTL = x; }    //initialize timer counter 3.
+    105          #define SET_TIMER_REG_TC  { T3CTL |= 0x04; }    //clear T3 counter.
+    106          #define SET_TIMER_REG_CCR(x) { T3CCTL1 = x; }    //to enable or disable T3_cap1.
+    107          #define SET_TIMER_START { T3CTL |= 0x10; }    //to start T3.
+    108          #define SET_TIMER_STOP { T3CTL &= 0xef;  T3CTL |= 0x04; }    //stop and reset T3.
+    109          #define SET_TIMER_REG_MR0(x) { T3CC0 = x; }    //set match value to control the overflow time of T3.
+    110          
+    111          /***********************************************************/
+    112          /* Type definitions and defines                            */
+    113          /***********************************************************/
+    114          
+    115          #define MAX_BF_EDGES      18     // max 18 edges per backward frame
+    116          
+    117          /* protocol timing definitions */
+    118          #define TE          (104)                   // half bit time = 417 usec
+    119          #if 0 /* strict receive timing according to specification (+/- 10%) */
+    120          #define MIN_TE      (TE     - (TE/10))      // minimum half bit time
+    121          #define MAX_TE      (TE     + (TE/10))      // maximum half bit time
+    122          #define MIN_2TE     ((2*TE) - ((2*TE)/10))  // minimum full bit time
+    123          #define MAX_2TE     ((2*TE) + ((2*TE)/10))  // maximum full bit time
+    124          #else /* More relaxed receive timing (+/- 20%) */
+    125          #define MIN_TE      (TE     - (TE/5)) 		// minimum half bit time
+    126          #define MAX_TE      (TE     + (TE/5))  		// maximum half bit time
+    127          #define MIN_2TE     ((2*TE) - ((2*TE)/5))   // minimum full bit time
+    128          #define MAX_2TE     ((2*TE) + ((2*TE)/5))   // maximum full bit time
+    129          #endif
+    130          
+    131          
+    132          
+    133          typedef enum daliMsgTypeTag
+    134          {
+    135              DALI_MSG_UNDETERMINED    = 0,
+    136              DALI_MSG_SHORT_ADDRESS   = 1,
+    137              DALI_MSG_GROUP_ADDRESS   = 2,
+    138              DALI_MSG_BROADCAST       = 4,
+    139              DALI_MSG_SPECIAL_COMMAND = 8
+    140          } daliMsgType_t;
+    141          
+    142          typedef enum answerTypeTag
+    143          {
+    144              ANSWER_NOT_AVAILABLE = 0,
+    145              ANSWER_NOTHING_RECEIVED,
+    146              ANSWER_GOT_DATA,
+    147              ANSWER_INVALID_DATA,
+    148              ANSWER_TOO_EARLY
+    149          } answer_t;
+    150          
+    151          /* state machine related definitions */
+    152          typedef enum stateTag
+    153          {
+    154              MS_IDLE = 0,                        // bus idle
+    155              MS_TX_SECOND_HALF_START_BIT,        // 
+    156              MS_TX_DALI_FORWARD_FRAME,           // sending the dali forward frame
+    157              MS_TX_STOP_BITS,                    //
+    158              MS_SETTLING_BEFORE_BACKWARD,        // settling between forward and backward - stop bits
+    159              MS_SETTLING_BEFORE_IDLE,            // settling before going to idle, after forward frame
+    160              MS_WAITING_FOR_SLAVE_START_WINDOW,  // waiting for 7Te, start of slave Tx window
+    161              MS_WAITING_FOR_SLAVE_START,         // start of slave Tx window
+    162              MS_RECEIVING_ANSWER,                // receiving slave message
+    163              MS_RECEIVING_ANSWER_FINISH          //finish receiving slave message
+    164          } MASTER_STATE;
+    165          
+    166          /* definition of the captured edge data */
+    167          typedef struct capturedDataType_tag
+    168          {
+    169              uint8   TECNT;                     //time stamp of signal edge
+    170              uint8   capturedTime;             // time stamp of signal edge
+    171              uint8   bitLevel;                 // bit level *after* the edge
+    172              uint8   levelType;                // indication of long or short duration *after* the edge
+    173          } capturedDataType;
+    174          
+    175          typedef struct capturedFrameType_tag
+    176          {
+    177              capturedDataType  capturedData[MAX_BF_EDGES];
+    178              uint8           capturedItems;    // counter of the captured edges
+    179          } capturedFrameType;
+    180          
+    181          /***********************************************************/
+    182          /* Global variables                                        */
+    183          /***********************************************************/
+    184          
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    185          static volatile uint16     ForwardFrame;
+   \                     ForwardFrame:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    186          static volatile uint8      BackwardFrame; // DALI slave answer
+   \                     BackwardFrame:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    187          static volatile answer_t     BackwardFrameAnswer; //slave answer state
+   \                     BackwardFrameAnswer:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    188          static volatile MASTER_STATE masterState;
+   \                     masterState:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    189          static volatile bool         waitForAnswer;
+   \                     waitForAnswer:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    190          static volatile bool         earlyAnswer;
+   \                     earlyAnswer:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    191          static volatile uint32     daliForwardFrame; // converted DALI master command
+   \                     daliForwardFrame:
+   \   000000                DS 4
+   \   000004                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    192          static volatile capturedFrameType     capturedFrame;    // data structure for the capture
+   \                     capturedFrame:
+   \   000000                DS 73
+   \   000049                REQUIRE __INIT_XDATA_Z
+    193          
+    194          /***********************************************************/
+    195          /* Local functions                                         */
+    196          /***********************************************************/
+    197          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    198          static inline bool DALI_CheckLogicalError(void)
+   \                     DALI_CheckLogicalError:
+    199          {
+   \   000000   74E8         MOV     A,#-0x18
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 24
+   \   000005                ; Auto size: 0
+    200              uint8  bitLevel;
+    201              uint16 receivedFrame;
+    202              uint32 bitStream, i, item, pattern, bitPair;
+    203          
+    204              // build frame from captured bit levels in bitStream
+    205              bitStream = 0;
+   \   000005   75..00       MOV     ?V0 + 0,#0x0
+   \   000008   75..00       MOV     ?V0 + 1,#0x0
+   \   00000B   75..00       MOV     ?V0 + 2,#0x0
+   \   00000E   75..00       MOV     ?V0 + 3,#0x0
+    206              for (i=0, item=0;  ((i < MAX_BF_EDGES) && (item < capturedFrame.capturedItems)); item++)
+   \   000011   75..00       MOV     ?V0 + 4,#0x0
+   \   000014   75..00       MOV     ?V0 + 5,#0x0
+   \   000017   75..00       MOV     ?V0 + 6,#0x0
+   \   00001A   75..00       MOV     ?V0 + 7,#0x0
+   \   00001D   75..00       MOV     ?V0 + 8,#0x0
+   \   000020   75..00       MOV     ?V0 + 9,#0x0
+   \   000023   75..00       MOV     ?V0 + 10,#0x0
+   \   000026   75..00       MOV     ?V0 + 11,#0x0
+   \                     ??DALI_CheckLogicalError_0:
+   \   000029   90....       MOV     DPTR,#capturedFrame + 72
+   \   00002C   E0           MOVX    A,@DPTR
+   \   00002D   F5..         MOV     ?V0 + 12,A
+   \   00002F   E4           CLR     A
+   \   000030   F5..         MOV     ?V0 + 13,A
+   \   000032   F5..         MOV     ?V0 + 14,A
+   \   000034   F5..         MOV     ?V0 + 15,A
+   \   000036   78..         MOV     R0,#?V0 + 12
+   \   000038   79..         MOV     R1,#?V0 + 8
+   \   00003A   12....       LCALL   ?UL_GT
+   \   00003D   4003         JC      $+5
+   \   00003F   02....       LJMP    ??DALI_CheckLogicalError_1 & 0xFFFF
+    207              {
+    208                  bitLevel = capturedFrame.capturedData[item].bitLevel;
+   \   000042   85....       MOV     ?V0 + 12,?V0 + 8
+   \   000045   85....       MOV     ?V0 + 13,?V0 + 9
+   \   000048   7402         MOV     A,#0x2
+   \   00004A   78..         MOV     R0,#?V0 + 12
+   \   00004C   12....       LCALL   ?S_SHL
+   \   00004F   74..         MOV     A,#capturedFrame & 0xff
+   \   000051   25..         ADD     A,?V0 + 12
+   \   000053   FC           MOV     R4,A
+   \   000054   74..         MOV     A,#(capturedFrame >> 8) & 0xff
+   \   000056   35..         ADDC    A,?V0 + 13
+   \   000058   FD           MOV     R5,A
+   \   000059   8C82         MOV     DPL,R4
+   \   00005B   8D83         MOV     DPH,R5
+   \   00005D   A3           INC     DPTR
+   \   00005E   A3           INC     DPTR
+   \   00005F   E0           MOVX    A,@DPTR
+   \   000060   F8           MOV     R0,A
+    209                  bitStream |= (bitLevel << ((MAX_BF_EDGES - 1) - i));
+   \   000061   8882         MOV     DPL,R0
+   \   000063   AA82         MOV     R2,DPL
+   \   000065   7B00         MOV     R3,#0x0
+   \   000067   8A..         MOV     ?V0 + 12,R2
+   \   000069   8B..         MOV     ?V0 + 13,R3
+   \   00006B   A8..         MOV     R0,?V0 + 4
+   \   00006D   7411         MOV     A,#0x11
+   \   00006F   C3           CLR     C
+   \   000070   98           SUBB    A,R0
+   \   000071   78..         MOV     R0,#?V0 + 12
+   \   000073   12....       LCALL   ?S_SHL
+   \   000076   12....       LCALL   ?Subroutine3 & 0xFFFF
+   \                     ??CrossCallReturnLabel_4:
+   \   000079   12....       LCALL   ?L_IOR
+    210                  i++;
+   \   00007C   90....       MOV     DPTR,#__Constant_1
+   \   00007F   78..         MOV     R0,#?V0 + 4
+   \   000081   12....       LCALL   ?L_ADD_X
+    211                  // shift another bit in case of long symbol
+    212                  if (capturedFrame.capturedData[item].levelType == 'l')
+   \   000084   8C82         MOV     DPL,R4
+   \   000086   8D83         MOV     DPH,R5
+   \   000088   A3           INC     DPTR
+   \   000089   A3           INC     DPTR
+   \   00008A   A3           INC     DPTR
+   \   00008B   E0           MOVX    A,@DPTR
+   \   00008C   646C         XRL     A,#0x6c
+   \   00008E   701D         JNZ     ??DALI_CheckLogicalError_2
+    213                  {
+    214                      bitStream |= (bitLevel << ((MAX_BF_EDGES - 1) - i));
+   \   000090   8A..         MOV     ?V0 + 12,R2
+   \   000092   8B..         MOV     ?V0 + 13,R3
+   \   000094   A8..         MOV     R0,?V0 + 4
+   \   000096   7411         MOV     A,#0x11
+   \   000098   C3           CLR     C
+   \   000099   98           SUBB    A,R0
+   \   00009A   78..         MOV     R0,#?V0 + 12
+   \   00009C   12....       LCALL   ?S_SHL
+   \   00009F   12....       LCALL   ?Subroutine3 & 0xFFFF
+   \                     ??CrossCallReturnLabel_5:
+   \   0000A2   12....       LCALL   ?L_IOR
+    215                      i++;
+   \   0000A5   90....       MOV     DPTR,#__Constant_1
+   \   0000A8   78..         MOV     R0,#?V0 + 4
+   \   0000AA   12....       LCALL   ?L_ADD_X
+    216                  }
+    217              }
+   \                     ??DALI_CheckLogicalError_2:
+   \   0000AD   90....       MOV     DPTR,#__Constant_1
+   \   0000B0   78..         MOV     R0,#?V0 + 8
+   \   0000B2   12....       LCALL   ?L_ADD_X
+   \   0000B5   90....       MOV     DPTR,#__Constant_12
+   \   0000B8   78..         MOV     R0,#?V0 + 4
+   \   0000BA   12....       LCALL   ?UL_GE_X
+   \   0000BD   4003         JC      $+5
+   \   0000BF   02....       LJMP    ??DALI_CheckLogicalError_0 & 0xFFFF
+    218              // check if there are 3 zeros or 3 ones in a row
+    219              for (i=0; i < (MAX_BF_EDGES - 2); i++)
+   \                     ??DALI_CheckLogicalError_1:
+   \   0000C2   75..00       MOV     ?V0 + 4,#0x0
+   \   0000C5   75..00       MOV     ?V0 + 5,#0x0
+   \   0000C8   75..00       MOV     ?V0 + 6,#0x0
+   \   0000CB   75..00       MOV     ?V0 + 7,#0x0
+    220              {
+    221                  pattern = 7 << i;
+   \                     ??DALI_CheckLogicalError_3:
+   \   0000CE   75..07       MOV     ?V0 + 8,#0x7
+   \   0000D1   75..00       MOV     ?V0 + 9,#0x0
+   \   0000D4   E5..         MOV     A,?V0 + 4
+   \   0000D6   78..         MOV     R0,#?V0 + 8
+   \   0000D8   12....       LCALL   ?S_SHL
+   \   0000DB   E5..         MOV     A,?V0 + 9
+   \   0000DD   33           RLC     A
+   \   0000DE   95E0         SUBB    A,0xE0 /* A   */
+   \   0000E0   F5..         MOV     ?V0 + 10,A
+   \   0000E2   F5..         MOV     ?V0 + 11,A
+    222                  if (((bitStream & pattern) == 0) ||
+    223                      ((bitStream & pattern) == pattern))
+   \   0000E4   85....       MOV     ?V0 + 12,?V0 + 0
+   \   0000E7   85....       MOV     ?V0 + 13,?V0 + 1
+   \   0000EA   85....       MOV     ?V0 + 14,?V0 + 2
+   \   0000ED   85....       MOV     ?V0 + 15,?V0 + 3
+   \   0000F0   78..         MOV     R0,#?V0 + 12
+   \   0000F2   79..         MOV     R1,#?V0 + 8
+   \   0000F4   12....       LCALL   ?L_AND
+   \   0000F7   E5..         MOV     A,?V0 + 12
+   \   0000F9   45..         ORL     A,?V0 + 13
+   \   0000FB   45..         ORL     A,?V0 + 14
+   \   0000FD   45..         ORL     A,?V0 + 15
+   \   0000FF   6076         JZ      ??DALI_CheckLogicalError_4
+   \   000101   78..         MOV     R0,#?V0 + 12
+   \   000103   79..         MOV     R1,#?V0 + 8
+   \   000105   12....       LCALL   ?L_EQ
+   \   000108   606D         JZ      ??DALI_CheckLogicalError_4
+    224                  {
+    225                      return true; // error, invalid data, so return immediately
+    226                  }
+    227              }
+   \   00010A   90....       MOV     DPTR,#__Constant_1
+   \   00010D   78..         MOV     R0,#?V0 + 4
+   \   00010F   12....       LCALL   ?L_ADD_X
+   \   000112   90....       MOV     DPTR,#__Constant_10
+   \   000115   78..         MOV     R0,#?V0 + 4
+   \   000117   12....       LCALL   ?UL_GE_X
+   \   00011A   50B2         JNC     ??DALI_CheckLogicalError_3
+    228              // compose answer byte in receivedFrame
+    229              receivedFrame = 0;
+   \   00011C   7A00         MOV     R2,#0x0
+   \   00011E   7B00         MOV     R3,#0x0
+    230              for (i=0; i < MAX_BF_EDGES; i += 2)
+   \   000120   8A..         MOV     ?V0 + 4,R2
+   \   000122   8A..         MOV     ?V0 + 5,R2
+   \   000124   8A..         MOV     ?V0 + 6,R2
+   \   000126   8A..         MOV     ?V0 + 7,R2
+    231              {
+    232                  receivedFrame <<= 1;
+   \                     ??DALI_CheckLogicalError_5:
+   \   000128   EA           MOV     A,R2
+   \   000129   C3           CLR     C
+   \   00012A   33           RLC     A
+   \   00012B   FA           MOV     R2,A
+   \   00012C   EB           MOV     A,R3
+   \   00012D   33           RLC     A
+   \   00012E   FB           MOV     R3,A
+    233                  bitPair = (bitStream >> ((MAX_BF_EDGES - 2) - i)) & 3;
+   \   00012F   85....       MOV     ?V0 + 8,?V0 + 0
+   \   000132   85....       MOV     ?V0 + 9,?V0 + 1
+   \   000135   85....       MOV     ?V0 + 10,?V0 + 2
+   \   000138   85....       MOV     ?V0 + 11,?V0 + 3
+   \   00013B   A8..         MOV     R0,?V0 + 4
+   \   00013D   7410         MOV     A,#0x10
+   \   00013F   C3           CLR     C
+   \   000140   98           SUBB    A,R0
+   \   000141   78..         MOV     R0,#?V0 + 8
+   \   000143   12....       LCALL   ?UL_SHR
+   \   000146   90....       MOV     DPTR,#__Constant_3
+   \   000149   78..         MOV     R0,#?V0 + 8
+   \   00014B   12....       LCALL   ?L_AND_X
+    234                  if ((bitPair == 0) || bitPair == 3)
+   \   00014E   E5..         MOV     A,?V0 + 8
+   \   000150   6025         JZ      ??DALI_CheckLogicalError_4
+   \   000152   6403         XRL     A,#0x3
+   \   000154   6021         JZ      ??DALI_CheckLogicalError_4
+    235                  {
+    236                      return true; // error '00' or '11' is not a valid bit
+    237                  }
+    238                  if (bitPair == 1) receivedFrame |= 1;
+   \   000156   E5..         MOV     A,?V0 + 8
+   \   000158   6401         XRL     A,#0x1
+   \   00015A   7004         JNZ     ??DALI_CheckLogicalError_6
+   \   00015C   7401         MOV     A,#0x1
+   \   00015E   4A           ORL     A,R2
+   \   00015F   FA           MOV     R2,A
+    239              }
+   \                     ??DALI_CheckLogicalError_6:
+   \   000160   90....       MOV     DPTR,#__Constant_2
+   \   000163   78..         MOV     R0,#?V0 + 4
+   \   000165   12....       LCALL   ?L_ADD_X
+   \   000168   90....       MOV     DPTR,#__Constant_12
+   \   00016B   78..         MOV     R0,#?V0 + 4
+   \   00016D   12....       LCALL   ?UL_GE_X
+   \   000170   50B6         JNC     ??DALI_CheckLogicalError_5
+    240              // need to have the start bit in position 9 for a valid frame
+    241              if (!(receivedFrame & 0x100)) return true;
+   \   000172   EB           MOV     A,R3
+   \   000173   5401         ANL     A,#0x1
+   \   000175   7004         JNZ     ??DALI_CheckLogicalError_7
+   \                     ??DALI_CheckLogicalError_4:
+   \   000177   7901         MOV     R1,#0x1
+   \   000179   8007         SJMP    ??DALI_CheckLogicalError_8
+    242              // cast out the start bit for the answer byte
+    243              BackwardFrame = (uint8) receivedFrame;
+   \                     ??DALI_CheckLogicalError_7:
+   \   00017B   EA           MOV     A,R2
+   \   00017C   90....       MOV     DPTR,#BackwardFrame
+   \   00017F   F0           MOVX    @DPTR,A
+    244              return false;
+   \   000180   7900         MOV     R1,#0x0
+   \                     ??DALI_CheckLogicalError_8:
+   \   000182   7F10         MOV     R7,#0x10
+   \   000184   02....       LJMP    ?BANKED_LEAVE_XDATA
+    245          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine3:
+   \   000000   E5..         MOV     A,?V0 + 13
+   \   000002   33           RLC     A
+   \   000003   95E0         SUBB    A,0xE0 /* A   */
+   \   000005   F5..         MOV     ?V0 + 14,A
+   \   000007   F5..         MOV     ?V0 + 15,A
+   \   000009   78..         MOV     R0,#?V0 + 0
+   \   00000B   79..         MOV     R1,#?V0 + 12
+   \   00000D   22           RET
+    246          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    247          static inline bool DALI_CheckTimingError(void)
+   \                     DALI_CheckTimingError:
+    248          {
+   \   000000   74F5         MOV     A,#-0xb
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 11
+   \   000005                ; Auto size: 0
+    249              uint8 i, capTECNT1, capTECNT2, capT1, capT2, interval;
+    250          
+    251              for (i=0; i < (capturedFrame.capturedItems - 1); i++)
+   \   000005   75..00       MOV     ?V0 + 2,#0x0
+   \   000008   8020         SJMP    ??DALI_CheckTimingError_0
+    252              {
+    253                  capTECNT1 = capturedFrame.capturedData[i].TECNT;
+    254                  capTECNT2 = capturedFrame.capturedData[i+1].TECNT;
+    255                  capT1 = capturedFrame.capturedData[i].capturedTime;
+    256                  capT2 = capturedFrame.capturedData[i+1].capturedTime;
+    257                  if (capTECNT1 == capTECNT2)
+    258                  {
+    259                   interval = capT2 - capT1;
+    260                  }
+    261                  else
+    262                  {
+    263                   interval = 230 - capT1 + capT2 + (capTECNT2 - capTECNT1 - 1) * 230;
+   \                     ??DALI_CheckTimingError_1:
+   \   00000A   75F0E6       MOV     B,#-0x1a
+   \   00000D   ED           MOV     A,R5
+   \   00000E   C3           CLR     C
+   \   00000F   9E           SUBB    A,R6
+   \   000010   14           DEC     A
+   \   000011   A4           MUL     AB
+   \   000012   F8           MOV     R0,A
+   \   000013   74E6         MOV     A,#-0x1a
+   \   000015   9C           SUBB    A,R4
+   \   000016   29           ADD     A,R1
+   \   000017   28           ADD     A,R0
+   \                     ??DALI_CheckTimingError_2:
+   \   000018   F8           MOV     R0,A
+    264                  }
+    265                  if ((interval >= MIN_TE) && (interval <= MAX_TE))
+   \   000019   74AC         MOV     A,#-0x54
+   \   00001B   28           ADD     A,R0
+   \   00001C   C3           CLR     C
+   \   00001D   9429         SUBB    A,#0x29
+   \   00001F   506A         JNC     ??DALI_CheckTimingError_3
+    266                  {
+    267                      capturedFrame.capturedData[i].levelType = 's';
+   \   000021   8A82         MOV     DPL,R2
+   \   000023   8B83         MOV     DPH,R3
+   \   000025   7473         MOV     A,#0x73
+   \                     ??DALI_CheckTimingError_4:
+   \   000027   F0           MOVX    @DPTR,A
+    268                  }
+   \   000028   05..         INC     ?V0 + 2
+   \                     ??DALI_CheckTimingError_0:
+   \   00002A   85..82       MOV     DPL,?V0 + 2
+   \   00002D   AC82         MOV     R4,DPL
+   \   00002F   8C..         MOV     ?V0 + 0,R4
+   \   000031   75..00       MOV     ?V0 + 1,#0x0
+   \   000034   7402         MOV     A,#0x2
+   \   000036   78..         MOV     R0,#?V0 + 0
+   \   000038   12....       LCALL   ?S_SHL
+   \   00003B   74..         MOV     A,#capturedFrame & 0xff
+   \   00003D   25..         ADD     A,?V0 + 0
+   \   00003F   F8           MOV     R0,A
+   \   000040   74..         MOV     A,#(capturedFrame >> 8) & 0xff
+   \   000042   35..         ADDC    A,?V0 + 1
+   \   000044   F9           MOV     R1,A
+   \   000045   E8           MOV     A,R0
+   \   000046   2403         ADD     A,#0x3
+   \   000048   FA           MOV     R2,A
+   \   000049   E9           MOV     A,R1
+   \   00004A   3400         ADDC    A,#0x0
+   \   00004C   FB           MOV     R3,A
+   \   00004D   90....       MOV     DPTR,#capturedFrame + 72
+   \   000050   E0           MOVX    A,@DPTR
+   \   000051   24FF         ADD     A,#-0x1
+   \   000053   FE           MOV     R6,A
+   \   000054   E4           CLR     A
+   \   000055   34FF         ADDC    A,#-0x1
+   \   000057   FF           MOV     R7,A
+   \   000058   C3           CLR     C
+   \   000059   EC           MOV     A,R4
+   \   00005A   9E           SUBB    A,R6
+   \   00005B   E4           CLR     A
+   \   00005C   9F           SUBB    A,R7
+   \   00005D   A2D2         MOV     C,0xD0 /* PSW */.2
+   \   00005F   65D0         XRL     A,PSW
+   \   000061   33           RLC     A
+   \   000062   503B         JNC     ??DALI_CheckTimingError_5
+   \   000064   8882         MOV     DPL,R0
+   \   000066   8983         MOV     DPH,R1
+   \   000068   E0           MOVX    A,@DPTR
+   \   000069   FE           MOV     R6,A
+   \   00006A   A3           INC     DPTR
+   \   00006B   A3           INC     DPTR
+   \   00006C   A3           INC     DPTR
+   \   00006D   A3           INC     DPTR
+   \   00006E   E0           MOVX    A,@DPTR
+   \   00006F   FD           MOV     R5,A
+   \   000070   8882         MOV     DPL,R0
+   \   000072   8983         MOV     DPH,R1
+   \   000074   A3           INC     DPTR
+   \   000075   E0           MOVX    A,@DPTR
+   \   000076   FC           MOV     R4,A
+   \   000077   8882         MOV     DPL,R0
+   \   000079   8983         MOV     DPH,R1
+   \   00007B   A3           INC     DPTR
+   \   00007C   A3           INC     DPTR
+   \   00007D   A3           INC     DPTR
+   \   00007E   A3           INC     DPTR
+   \   00007F   A3           INC     DPTR
+   \   000080   E0           MOVX    A,@DPTR
+   \   000081   F9           MOV     R1,A
+   \   000082   ED           MOV     A,R5
+   \   000083   6E           XRL     A,R6
+   \   000084   7084         JNZ     ??DALI_CheckTimingError_1
+   \   000086   E9           MOV     A,R1
+   \   000087   C3           CLR     C
+   \   000088   9C           SUBB    A,R4
+   \   000089   808D         SJMP    ??DALI_CheckTimingError_2
+    269                  else if ((interval >= MIN_2TE) && (interval <= MAX_2TE))
+   \                     ??DALI_CheckTimingError_3:
+   \   00008B   7459         MOV     A,#0x59
+   \   00008D   28           ADD     A,R0
+   \   00008E   C3           CLR     C
+   \   00008F   9453         SUBB    A,#0x53
+   \   000091   5008         JNC     ??DALI_CheckTimingError_6
+    270                  {
+    271                      capturedFrame.capturedData[i].levelType = 'l';
+   \   000093   8A82         MOV     DPL,R2
+   \   000095   8B83         MOV     DPH,R3
+   \   000097   746C         MOV     A,#0x6c
+   \   000099   808C         SJMP    ??DALI_CheckTimingError_4
+    272                  }
+    273                  else
+    274                  {
+    275                      return true; // timing error, so stop check immediately
+   \                     ??DALI_CheckTimingError_6:
+   \   00009B   7901         MOV     R1,#0x1
+   \   00009D   8009         SJMP    ??DALI_CheckTimingError_7
+    276                  }
+    277              }
+    278              capturedFrame.capturedData[i].levelType = 'x'; // terminate the frame
+   \                     ??DALI_CheckTimingError_5:
+   \   00009F   8A82         MOV     DPL,R2
+   \   0000A1   8B83         MOV     DPH,R3
+   \   0000A3   7478         MOV     A,#0x78
+   \   0000A5   F0           MOVX    @DPTR,A
+    279              return false;
+   \   0000A6   7900         MOV     R1,#0x0
+   \                     ??DALI_CheckTimingError_7:
+   \   0000A8   7F03         MOV     R7,#0x3
+   \   0000AA   02....       LJMP    ?BANKED_LEAVE_XDATA
+    280          }
+    281          
+    282          static inline bool DALI_Decode(void)
+    283          {
+    284              if (DALI_CheckTimingError()) return false;
+    285              if (DALI_CheckLogicalError()) return false;
+    286              return true;
+    287          }
+    288          
+    289          static inline uint32 DALI_ConvertForwardFrame(uint16 forwardFrame)
+    290          {
+    291              uint32 convertedForwardFrame = 0;
+    292              int8   i;
+    293              
+    294              for (i=15; i>=0; i--)
+    295              {
+    296                  if (forwardFrame & (1 << i))
+    297                  {   // shift in bits values '0' and '1'
+    298                      convertedForwardFrame <<= 1;
+    299                      convertedForwardFrame <<= 1;
+    300                      convertedForwardFrame  |= 1;
+    301                  }
+    302                  else
+    303                  {   // shift in bits values '1' and '0'
+    304                      convertedForwardFrame <<= 1;
+    305                      convertedForwardFrame  |= 1;
+    306                      convertedForwardFrame <<= 1;
+    307                  }
+    308              }
+    309              return convertedForwardFrame;
+    310          }
+    311          
+    312          static inline daliMsgType_t DALI_CheckMsgType(uint16 forwardFrame)
+    313          {
+    314              daliMsgType_t type = DALI_MSG_UNDETERMINED;
+    315              
+    316              if ((forwardFrame & 0x8000) == 0)
+    317              {
+    318                  type = DALI_MSG_SHORT_ADDRESS;
+    319              }
+    320              else if ((forwardFrame & 0xE000) == 0x8000)
+    321              {
+    322                  type = DALI_MSG_GROUP_ADDRESS;
+    323              }
+    324              else if ((forwardFrame & 0xFE00) == 0xFE00)
+    325              {
+    326                  type = DALI_MSG_BROADCAST;
+    327              }
+    328              else if (((forwardFrame & 0xFF00) >= 0xA000) &&
+    329                       ((forwardFrame & 0xFF00) <= 0xFD00))
+    330              {
+    331                  type = DALI_MSG_SPECIAL_COMMAND;
+    332              }
+    333              return type;
+    334          }
+    335          
+    336          static inline bool DALI_CheckWaitForAnswer(uint16 forwardFrame, daliMsgType_t type)
+    337          {
+    338              bool waitFlag = false;
+    339          
+    340              if (type == DALI_MSG_SPECIAL_COMMAND)
+    341              {
+    342                  // Special commands
+    343                  if ((forwardFrame == COMPARE) ||
+    344                      ((forwardFrame & 0xFF81) == VERIFY_SHORT_ADDRESS) ||
+    345                      (forwardFrame == QUERY_SHORT_ADDRESS))
+    346                  {
+    347                      waitFlag = true;
+    348                  }
+    349              }
+    350              else
+    351              {
+    352                  // Query commands
+    353                  if ((((forwardFrame & 0x01FF) >= CMD144) && ((forwardFrame & 0x01FF) <= CMD157)) ||
+    354                      (((forwardFrame & 0x01FF) >= CMD160) && ((forwardFrame & 0x01FF) <= CMD165)) ||
+    355                      (((forwardFrame & 0x01FF) >= CMD176) && ((forwardFrame & 0x01FF) <= CMD197)) ||
+    356                      ((forwardFrame & 0x01FF) == CMD255))
+    357                  {
+    358                      waitFlag = true;
+    359                  }
+    360              }
+    361              return waitFlag;
+    362          }
+    363          
+    364          static inline bool DALI_CheckRepeatCmd(uint16 forwardFrame, daliMsgType_t type)
+    365          {
+    366              bool repeatCmd = false;
+    367              
+    368              if (type == DALI_MSG_SPECIAL_COMMAND)
+    369              {
+    370                  // Special commands 'initialize' and 'randomize' shall be repeated within 100 ms
+    371                  if (((forwardFrame & 0xFF00) == INITIALISE) ||
+    372                      (forwardFrame == RANDOMISE))
+    373                  {
+    374                      repeatCmd = true;
+    375                  }
+    376              }
+    377              else
+    378              {
+    379                  // Configuration commands (32 - 129) shall all be repeated within 100 ms
+    380                  if (((forwardFrame & 0x01FF) >= CMD32) &&
+    381                      ((forwardFrame & 0x01FF) <= CMD129))
+    382                  {
+    383                      repeatCmd = true;
+    384                  }
+    385              }
+    386              return repeatCmd;
+    387          }
+    388          
+    389          static inline void DALI_DoTransmission(uint32 convertedForwardFrame, bool waitFlag)
+    390          {
+    391              //bsp_set_led(LED_RTX_DALI_BUS, 0); // LED OFF MEANS TX TO DALI BUS
+    392              // Claim the bus and setup global variables
+    393              masterState      = MS_TX_SECOND_HALF_START_BIT;
+    394              waitForAnswer    = waitFlag;
+    395              daliForwardFrame = convertedForwardFrame;
+    396              DALI_SetOutputLow();
+    397              // Activate the timer module to output the forward frame
+    398              //SET_TIMER_REG_TC(0);       // clear timer
+    399              SET_TIMER_REG_MR0(TE);     // ~ 2400 Hz (half bit time)
+    400              SET_TIMER_REG_CCR(0);      // disable capture
+    401              //SET_TIMER_REG_MCR(3);      // interrupt on MR0, reset timer on match 0
+    402              SET_TIMER_START;      // enable the timer
+    403              while (masterState != MS_IDLE)
+    404              {
+    405                  // wait till transmission is completed
+    406                  // __WFI();
+    407              }
+    408              if (waitForAnswer)
+    409              {
+    410                  if (capturedFrame.capturedItems == 0)
+    411                  {
+    412                      BackwardFrameAnswer = ANSWER_NOTHING_RECEIVED;
+    413                  }
+    414                  else if (earlyAnswer)
+    415                  {
+    416                      BackwardFrameAnswer = ANSWER_TOO_EARLY;
+    417                  }
+    418                  else
+    419                  {
+    420                      if (DALI_Decode())
+    421                      {
+    422                          BackwardFrameAnswer = ANSWER_GOT_DATA;
+    423                      }
+    424                      else
+    425                      {
+    426                          BackwardFrameAnswer = ANSWER_INVALID_DATA;
+    427                      }
+    428                  }
+    429                  //Do something to get out the answer. Then set BackwardFrameAnswer = ANSWER_NOT_AVAILABLE.
+    430              }
+    431          }
+    432          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    433          void DALI_Send(uint16 forwardFrame,uint8 * pbackwardFrame,uint8 * pbackwardFrameAnswer)
+   \                     DALI_Send:
+    434          {
+   \   000000   74EC         MOV     A,#-0x14
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 20
+   \   000005                ; Auto size: 0
+   \   000005   8C..         MOV     ?V0 + 8,R4
+   \   000007   8D..         MOV     ?V0 + 9,R5
+   \   000009   7414         MOV     A,#0x14
+   \   00000B   12....       LCALL   ?XSTACK_DISP0_8
+   \   00000E   E0           MOVX    A,@DPTR
+   \   00000F   F5..         MOV     ?V0 + 4,A
+   \   000011   A3           INC     DPTR
+   \   000012   E0           MOVX    A,@DPTR
+   \   000013   F5..         MOV     ?V0 + 5,A
+    435              uint8        i = 0;
+   \   000015   7F00         MOV     R7,#0x0
+    436              uint8        n = 1;
+   \   000017   7E01         MOV     R6,#0x1
+    437              uint32       convertedForwardFrame = DALI_ConvertForwardFrame(forwardFrame);
+   \   000019   8F..         MOV     ?V0 + 0,R7
+   \   00001B   8F..         MOV     ?V0 + 1,R7
+   \   00001D   8F..         MOV     ?V0 + 2,R7
+   \   00001F   8F..         MOV     ?V0 + 3,R7
+   \   000021   790F         MOV     R1,#0xf
+   \                     ??DALI_Send_0:
+   \   000023   7402         MOV     A,#0x2
+   \   000025   78..         MOV     R0,#?V0 + 0
+   \   000027   12....       LCALL   ?L_SHL
+   \   00002A   8E..         MOV     ?V0 + 6,R6
+   \   00002C   F5..         MOV     ?V0 + 7,A
+   \   00002E   E9           MOV     A,R1
+   \   00002F   78..         MOV     R0,#?V0 + 6
+   \   000031   12....       LCALL   ?S_SHL
+   \   000034   EA           MOV     A,R2
+   \   000035   55..         ANL     A,?V0 + 6
+   \   000037   FC           MOV     R4,A
+   \   000038   EB           MOV     A,R3
+   \   000039   55..         ANL     A,?V0 + 7
+   \   00003B   FD           MOV     R5,A
+   \   00003C   EC           MOV     A,R4
+   \   00003D   4D           ORL     A,R5
+   \   00003E   6005         JZ      ??DALI_Send_1
+   \   000040   90....       MOV     DPTR,#__Constant_1
+   \   000043   8003         SJMP    ??DALI_Send_2
+   \                     ??DALI_Send_1:
+   \   000045   90....       MOV     DPTR,#__Constant_2
+   \                     ??DALI_Send_2:
+   \   000048   78..         MOV     R0,#?V0 + 0
+   \   00004A   12....       LCALL   ?L_IOR_X
+   \   00004D   74FF         MOV     A,#-0x1
+   \   00004F   29           ADD     A,R1
+   \   000050   19           DEC     R1
+   \   000051   C3           CLR     C
+   \   000052   9400         SUBB    A,#0x0
+   \   000054   A2D2         MOV     C,0xD0 /* PSW */.2
+   \   000056   65D0         XRL     A,PSW
+   \   000058   33           RLC     A
+   \   000059   50C8         JNC     ??DALI_Send_0
+    438              daliMsgType_t  daliMsgType = DALI_CheckMsgType(forwardFrame);
+   \   00005B   8F..         MOV     ?V0 + 7,R7
+   \   00005D   EB           MOV     A,R3
+   \   00005E   FD           MOV     R5,A
+   \   00005F   5480         ANL     A,#0x80
+   \   000061   7004         JNZ     ??DALI_Send_3
+   \   000063   8E..         MOV     ?V0 + 7,R6
+   \   000065   8035         SJMP    ??DALI_Send_4
+   \                     ??DALI_Send_3:
+   \   000067   EB           MOV     A,R3
+   \   000068   54E0         ANL     A,#0xe0
+   \   00006A   F9           MOV     R1,A
+   \   00006B   E4           CLR     A
+   \   00006C   7003         JNZ     ??DALI_Send_5
+   \   00006E   7480         MOV     A,#-0x80
+   \   000070   69           XRL     A,R1
+   \                     ??DALI_Send_5:
+   \   000071   7005         JNZ     ??DALI_Send_6
+   \   000073   75..02       MOV     ?V0 + 7,#0x2
+   \   000076   8024         SJMP    ??DALI_Send_4
+   \                     ??DALI_Send_6:
+   \   000078   EB           MOV     A,R3
+   \   000079   54FE         ANL     A,#0xfe
+   \   00007B   F9           MOV     R1,A
+   \   00007C   E4           CLR     A
+   \   00007D   7003         JNZ     ??DALI_Send_7
+   \   00007F   74FE         MOV     A,#-0x2
+   \   000081   69           XRL     A,R1
+   \                     ??DALI_Send_7:
+   \   000082   7005         JNZ     ??DALI_Send_8
+   \   000084   75..04       MOV     ?V0 + 7,#0x4
+   \   000087   8013         SJMP    ??DALI_Send_4
+   \                     ??DALI_Send_8:
+   \   000089   E4           CLR     A
+   \   00008A   2400         ADD     A,#0x0
+   \   00008C   ED           MOV     A,R5
+   \   00008D   3460         ADDC    A,#0x60
+   \   00008F   F9           MOV     R1,A
+   \   000090   C3           CLR     C
+   \   000091   E4           CLR     A
+   \   000092   9401         SUBB    A,#0x1
+   \   000094   E9           MOV     A,R1
+   \   000095   945D         SUBB    A,#0x5d
+   \   000097   5003         JNC     ??DALI_Send_4
+   \   000099   75..08       MOV     ?V0 + 7,#0x8
+    439              bool           waitFlag = DALI_CheckWaitForAnswer(forwardFrame,daliMsgType);
+   \                     ??DALI_Send_4:
+   \   00009C   8F..         MOV     ?V0 + 6,R7
+   \   00009E   EA           MOV     A,R2
+   \   00009F   F8           MOV     R0,A
+   \   0000A0   EB           MOV     A,R3
+   \   0000A1   5401         ANL     A,#0x1
+   \   0000A3   F9           MOV     R1,A
+   \   0000A4   7408         MOV     A,#0x8
+   \   0000A6   65..         XRL     A,?V0 + 7
+   \   0000A8   7025         JNZ     ??DALI_Send_9
+   \   0000AA   EA           MOV     A,R2
+   \   0000AB   7003         JNZ     ??DALI_Send_10
+   \   0000AD   74A9         MOV     A,#-0x57
+   \   0000AF   6B           XRL     A,R3
+   \                     ??DALI_Send_10:
+   \   0000B0   6050         JZ      ??DALI_Send_11
+   \   0000B2   EA           MOV     A,R2
+   \   0000B3   5481         ANL     A,#0x81
+   \   0000B5   F5..         MOV     ?V0 + 10,A
+   \   0000B7   EB           MOV     A,R3
+   \   0000B8   F5..         MOV     ?V0 + 11,A
+   \   0000BA   EE           MOV     A,R6
+   \   0000BB   65..         XRL     A,?V0 + 10
+   \   0000BD   7004         JNZ     ??DALI_Send_12
+   \   0000BF   74B9         MOV     A,#-0x47
+   \   0000C1   65..         XRL     A,?V0 + 11
+   \                     ??DALI_Send_12:
+   \   0000C3   603D         JZ      ??DALI_Send_11
+   \   0000C5   EA           MOV     A,R2
+   \   0000C6   7003         JNZ     ??DALI_Send_13
+   \   0000C8   74BB         MOV     A,#-0x45
+   \   0000CA   6B           XRL     A,R3
+   \                     ??DALI_Send_13:
+   \   0000CB   703D         JNZ     ??DALI_Send_14
+   \   0000CD   8033         SJMP    ??DALI_Send_11
+   \                     ??DALI_Send_9:
+   \   0000CF   E8           MOV     A,R0
+   \   0000D0   2470         ADD     A,#0x70
+   \   0000D2   12....       LCALL   ?Subroutine5 & 0xFFFF
+   \                     ??CrossCallReturnLabel_10:
+   \   0000D5   940E         SUBB    A,#0xe
+   \   0000D7   E5..         MOV     A,?V0 + 11
+   \   0000D9   9400         SUBB    A,#0x0
+   \   0000DB   4025         JC      ??DALI_Send_11
+   \   0000DD   E8           MOV     A,R0
+   \   0000DE   2460         ADD     A,#0x60
+   \   0000E0   12....       LCALL   ?Subroutine5 & 0xFFFF
+   \                     ??CrossCallReturnLabel_11:
+   \   0000E3   9406         SUBB    A,#0x6
+   \   0000E5   E5..         MOV     A,?V0 + 11
+   \   0000E7   9400         SUBB    A,#0x0
+   \   0000E9   4017         JC      ??DALI_Send_11
+   \   0000EB   E8           MOV     A,R0
+   \   0000EC   2450         ADD     A,#0x50
+   \   0000EE   12....       LCALL   ?Subroutine5 & 0xFFFF
+   \                     ??CrossCallReturnLabel_12:
+   \   0000F1   9416         SUBB    A,#0x16
+   \   0000F3   E5..         MOV     A,?V0 + 11
+   \   0000F5   9400         SUBB    A,#0x0
+   \   0000F7   4009         JC      ??DALI_Send_11
+   \   0000F9   74FF         MOV     A,#-0x1
+   \   0000FB   68           XRL     A,R0
+   \   0000FC   7002         JNZ     ??DALI_Send_15
+   \   0000FE   EE           MOV     A,R6
+   \   0000FF   69           XRL     A,R1
+   \                     ??DALI_Send_15:
+   \   000100   701A         JNZ     ??DALI_Send_16
+   \                     ??DALI_Send_11:
+   \   000102   8E..         MOV     ?V0 + 6,R6
+    440              
+    441              if (DALI_CheckRepeatCmd(forwardFrame,daliMsgType)) n = 2;
+   \   000104   7408         MOV     A,#0x8
+   \   000106   65..         XRL     A,?V0 + 7
+   \   000108   7012         JNZ     ??DALI_Send_16
+   \                     ??DALI_Send_14:
+   \   00010A   E4           CLR     A
+   \   00010B   7003         JNZ     ??DALI_Send_17
+   \   00010D   74A5         MOV     A,#-0x5b
+   \   00010F   6D           XRL     A,R5
+   \                     ??DALI_Send_17:
+   \   000110   601B         JZ      ??DALI_Send_18
+   \   000112   EA           MOV     A,R2
+   \   000113   7003         JNZ     ??DALI_Send_19
+   \   000115   74A7         MOV     A,#-0x59
+   \   000117   6B           XRL     A,R3
+   \                     ??DALI_Send_19:
+   \   000118   7014         JNZ     ??DALI_Send_20
+   \   00011A   8011         SJMP    ??DALI_Send_18
+   \                     ??DALI_Send_16:
+   \   00011C   E8           MOV     A,R0
+   \   00011D   24E0         ADD     A,#-0x20
+   \   00011F   F8           MOV     R0,A
+   \   000120   E9           MOV     A,R1
+   \   000121   34FE         ADDC    A,#-0x2
+   \   000123   F9           MOV     R1,A
+   \   000124   C3           CLR     C
+   \   000125   E8           MOV     A,R0
+   \   000126   9462         SUBB    A,#0x62
+   \   000128   E9           MOV     A,R1
+   \   000129   9400         SUBB    A,#0x0
+   \   00012B   5001         JNC     ??DALI_Send_20
+   \                     ??DALI_Send_18:
+   \   00012D   0E           INC     R6
+    442              while (i < n)
+    443              {
+    444                  DALI_DoTransmission(convertedForwardFrame, waitFlag);
+   \                     ??DALI_Send_20:
+   \   00012E   90....       MOV     DPTR,#masterState
+   \   000131   7401         MOV     A,#0x1
+   \   000133   F0           MOVX    @DPTR,A
+   \   000134   E5..         MOV     A,?V0 + 6
+   \   000136   90....       MOV     DPTR,#waitForAnswer
+   \   000139   F0           MOVX    @DPTR,A
+   \   00013A   90....       MOV     DPTR,#daliForwardFrame
+   \   00013D   78..         MOV     R0,#?V0 + 0
+   \   00013F   12....       LCALL   ?L_MOV_TO_X
+   \   000142   C287         CLR     0x80.7
+   \   000144   75CD68       MOV     0xcd,#0x68
+   \   000147   75CE00       MOV     0xce,#0x0
+   \   00014A   43CB10       ORL     0xcb,#0x10
+   \                     ??DALI_Send_21:
+   \   00014D   90....       MOV     DPTR,#masterState
+   \   000150   E0           MOVX    A,@DPTR
+   \   000151   70FA         JNZ     ??DALI_Send_21
+   \   000153   90....       MOV     DPTR,#waitForAnswer
+   \   000156   E0           MOVX    A,@DPTR
+   \   000157   6033         JZ      ??DALI_Send_22
+   \   000159   90....       MOV     DPTR,#capturedFrame + 72
+   \   00015C   E0           MOVX    A,@DPTR
+   \   00015D   7007         JNZ     ??DALI_Send_23
+   \   00015F   90....       MOV     DPTR,#BackwardFrameAnswer
+   \   000162   7401         MOV     A,#0x1
+   \   000164   8025         SJMP    ??DALI_Send_24
+   \                     ??DALI_Send_23:
+   \   000166   90....       MOV     DPTR,#earlyAnswer
+   \   000169   E0           MOVX    A,@DPTR
+   \   00016A   6007         JZ      ??DALI_Send_25
+   \   00016C   90....       MOV     DPTR,#BackwardFrameAnswer
+   \   00016F   7404         MOV     A,#0x4
+   \   000171   8018         SJMP    ??DALI_Send_24
+   \                     ??DALI_Send_25:
+   \   000173                ; Setup parameters for call to function DALI_CheckTimingError
+   \   000173   12....       LCALL   ??DALI_CheckTimingError?relay
+   \   000176   E9           MOV     A,R1
+   \   000177   700D         JNZ     ??DALI_Send_26
+   \   000179                ; Setup parameters for call to function DALI_CheckLogicalError
+   \   000179   12....       LCALL   ??DALI_CheckLogicalError?relay
+   \   00017C   E9           MOV     A,R1
+   \   00017D   7007         JNZ     ??DALI_Send_26
+   \   00017F   90....       MOV     DPTR,#BackwardFrameAnswer
+   \   000182   7402         MOV     A,#0x2
+   \   000184   8005         SJMP    ??DALI_Send_24
+   \                     ??DALI_Send_26:
+   \   000186   90....       MOV     DPTR,#BackwardFrameAnswer
+   \   000189   7403         MOV     A,#0x3
+   \                     ??DALI_Send_24:
+   \   00018B   F0           MOVX    @DPTR,A
+    445                  i++;
+   \                     ??DALI_Send_22:
+   \   00018C   0F           INC     R7
+    446              }
+   \   00018D   EF           MOV     A,R7
+   \   00018E   C3           CLR     C
+   \   00018F   9E           SUBB    A,R6
+   \   000190   409C         JC      ??DALI_Send_20
+    447              *pbackwardFrameAnswer = BackwardFrameAnswer;
+   \   000192   90....       MOV     DPTR,#BackwardFrameAnswer
+   \   000195   E0           MOVX    A,@DPTR
+   \   000196   85..82       MOV     DPL,?V0 + 4
+   \   000199   85..83       MOV     DPH,?V0 + 5
+   \   00019C   F0           MOVX    @DPTR,A
+    448              *pbackwardFrame = BackwardFrame;
+   \   00019D   90....       MOV     DPTR,#BackwardFrame
+   \   0001A0   E0           MOVX    A,@DPTR
+   \   0001A1   85..82       MOV     DPL,?V0 + 8
+   \   0001A4   85..83       MOV     DPH,?V0 + 9
+   \   0001A7   F0           MOVX    @DPTR,A
+    449              BackwardFrameAnswer = ANSWER_NOT_AVAILABLE;
+   \   0001A8   90....       MOV     DPTR,#BackwardFrameAnswer
+   \   0001AB   E4           CLR     A
+   \   0001AC   F0           MOVX    @DPTR,A
+    450          }
+   \   0001AD   7F0C         MOV     R7,#0xc
+   \   0001AF   02....       LJMP    ?BANKED_LEAVE_XDATA
+   \   0001B2                REQUIRE _A_P0
+   \   0001B2                REQUIRE T3CC0
+   \   0001B2                REQUIRE T3CCTL1
+   \   0001B2                REQUIRE T3CTL
+    451          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    452          void DALI_Init(void)
+   \                     DALI_Init:
+    453          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+    454              // First init ALL the global variables
+    455              ForwardFrame         = 0;
+   \   000005   90....       MOV     DPTR,#ForwardFrame
+   \   000008   E4           CLR     A
+   \   000009   F0           MOVX    @DPTR,A
+   \   00000A   A3           INC     DPTR
+   \   00000B   F0           MOVX    @DPTR,A
+    456              BackwardFrame        = 0;
+   \   00000C   90....       MOV     DPTR,#BackwardFrame
+   \   00000F   F0           MOVX    @DPTR,A
+    457              BackwardFrameAnswer  = ANSWER_NOT_AVAILABLE;
+   \   000010   90....       MOV     DPTR,#BackwardFrameAnswer
+   \   000013   F0           MOVX    @DPTR,A
+    458              masterState             = MS_IDLE;
+   \   000014   90....       MOV     DPTR,#masterState
+   \   000017   F0           MOVX    @DPTR,A
+    459              waitForAnswer           = false;
+   \   000018   90....       MOV     DPTR,#waitForAnswer
+   \   00001B   F0           MOVX    @DPTR,A
+    460              earlyAnswer             = false;
+   \   00001C   90....       MOV     DPTR,#earlyAnswer
+   \   00001F   F0           MOVX    @DPTR,A
+    461              daliForwardFrame        = 0;
+   \   000020   90....       MOV     DPTR,#daliForwardFrame
+   \   000023   F0           MOVX    @DPTR,A
+   \   000024   A3           INC     DPTR
+   \   000025   F0           MOVX    @DPTR,A
+   \   000026   A3           INC     DPTR
+   \   000027   F0           MOVX    @DPTR,A
+   \   000028   A3           INC     DPTR
+   \   000029   F0           MOVX    @DPTR,A
+    462              capturedFrame.capturedItems = 0;
+   \   00002A   90....       MOV     DPTR,#capturedFrame + 72
+   \   00002D   F0           MOVX    @DPTR,A
+    463          
+    464              //bsp_set_led(LED_RTX_DALI_BUS, 1); // LED ON MEANS RX FROM DALI BUS
+    465          
+    466              // Initialize the phisical layer of the dali master
+    467              DALI_ConfigOutput();
+   \   00002E   43FD80       ORL     0xfd,#0x80
+    468              DALI_SetOutputHigh();
+   \   000031   D287         SETB    0x80.7
+    469              DALI_ConfigInput();
+   \   000033   43F410       ORL     0xf4,#0x10
+    470              
+    471              PERCFG &= 0xdf;
+   \   000036   53F1DF       ANL     0xf1,#0xdf
+    472              P2SEL |= 0x60;    //chose Alt.1 as the capture I/O
+   \   000039   43F560       ORL     0xf5,#0x60
+    473              
+    474              T3IE = 1;
+   \   00003C   D2BB         SETB    0xb8.3
+    475              SET_TIMER_REG_PR(0xee); // timer runs at (32MHz/128)0.25 MHz - 4usec per tick; enable timer interrupt.
+   \   00003E   75CBEE       MOV     0xcb,#-0x12
+    476              T3CCTL0 |= 0x54;  //set channel0 in compare mode
+   \   000041   43CC54       ORL     0xcc,#0x54
+    477              SET_TIMER_REG_IR(0xf8); // clear possible interrupt flag.
+   \   000044   53D8F8       ANL     0xd8,#0xf8
+    478              T3IF = 0;
+   \   000047   C2C3         CLR     0xc0.3
+    479          }
+   \   000049   7F01         MOV     R7,#0x1
+   \   00004B   02....       LJMP    ?BANKED_LEAVE_XDATA
+   \   00004E                REQUIRE P0DIR
+   \   00004E                REQUIRE _A_P0
+   \   00004E                REQUIRE P1SEL
+   \   00004E                REQUIRE PERCFG
+   \   00004E                REQUIRE P2SEL
+   \   00004E                REQUIRE _A_IEN1
+   \   00004E                REQUIRE T3CTL
+   \   00004E                REQUIRE T3CCTL0
+   \   00004E                REQUIRE _A_TIMIF
+   \   00004E                REQUIRE _A_IRCON
+    480          
+    481          /***********************************************************/
+    482          /* Exported Counter/Timer IRQ handler                      */
+    483          /***********************************************************/
+    484          
+    485          /* the handling of the protocol is done in the IRQ */
+
+   \                                 In  segment NEAR_CODE, align 1, keep-with-next
+    486          HAL_ISR_FUNCTION( Timer3Isr, T3_VECTOR )
+   \                     Timer3Isr:
+    487          {
+   \   000000   C0E0         PUSH    A
+   \   000002   74EF         MOV     A,#-0x11
+   \   000004   12....       LCALL   ?INTERRUPT_ENTER_XSP
+   \   000007                ; Saved register size: 17
+   \   000007                ; Auto size: 0
+    488           static uint8 bitcount, TEcnt;
+    489                  uint8 irq_stat;
+    490          
+    491              GET_TIMER_REG_IR(irq_stat);
+   \   000007   E5D8         MOV     A,0xd8
+    492              if (irq_stat & 2)
+   \   000009   A2E1         MOV     C,0xE0 /* A   */.1
+   \   00000B   4003         JC      $+5
+   \   00000D   02....       LJMP    ??Timer3Isr_0
+    493              {   // T3 overflow interrupt
+    494                  SET_TIMER_REG_IR(0xfd);   // clear T3 overflow interrupt flag
+   \   000010   C2D9         CLR     0xd8.1
+    495                  if (masterState == MS_TX_SECOND_HALF_START_BIT)
+   \   000012   90....       MOV     DPTR,#masterState
+   \   000015   E0           MOVX    A,@DPTR
+   \   000016   6401         XRL     A,#0x1
+   \   000018   700E         JNZ     ??Timer3Isr_1
+    496                  {
+    497                      DALI_SetOutputHigh();
+   \   00001A   D287         SETB    0x80.7
+    498                      bitcount = 0;
+   \   00001C   90....       MOV     DPTR,#??bitcount
+   \   00001F   E4           CLR     A
+   \   000020   12....       LCALL   ?Subroutine11
+    499                      TEcnt = 0;
+    500                      masterState = MS_TX_DALI_FORWARD_FRAME;
+    501                  }
+   \                     ??CrossCallReturnLabel_27:
+   \   000023   7402         MOV     A,#0x2
+   \   000025   02....       LJMP    ??Timer3Isr_2
+    502                  else if (masterState == MS_TX_DALI_FORWARD_FRAME)
+   \                     ??Timer3Isr_1:
+   \   000028   E0           MOVX    A,@DPTR
+   \   000029   6402         XRL     A,#0x2
+   \   00002B   704C         JNZ     ??Timer3Isr_3
+    503                  {
+    504                      if (daliForwardFrame & 0x80000000)
+   \   00002D   90....       MOV     DPTR,#daliForwardFrame
+   \   000030   78..         MOV     R0,#?V0 + 0
+   \   000032   12....       LCALL   ?L_MOV_X
+   \   000035   90....       MOV     DPTR,#__Constant_80000000
+   \   000038   78..         MOV     R0,#?V0 + 0
+   \   00003A   12....       LCALL   ?L_AND_X
+   \   00003D   E5..         MOV     A,?V0 + 0
+   \   00003F   45..         ORL     A,?V0 + 1
+   \   000041   45..         ORL     A,?V0 + 2
+   \   000043   45..         ORL     A,?V0 + 3
+   \   000045   6004         JZ      ??Timer3Isr_4
+    505                      {
+    506                          DALI_SetOutputHigh();
+   \   000047   D287         SETB    0x80.7
+   \   000049   8002         SJMP    ??Timer3Isr_5
+    507                      }
+    508                      else
+    509                      {
+    510                          DALI_SetOutputLow();
+   \                     ??Timer3Isr_4:
+   \   00004B   C287         CLR     0x80.7
+    511                      }
+    512                      daliForwardFrame <<= 1;
+   \                     ??Timer3Isr_5:
+   \   00004D   90....       MOV     DPTR,#daliForwardFrame
+   \   000050   78..         MOV     R0,#?V0 + 0
+   \   000052   12....       LCALL   ?L_MOV_X
+   \   000055   7401         MOV     A,#0x1
+   \   000057   78..         MOV     R0,#?V0 + 0
+   \   000059   12....       LCALL   ?L_SHL
+   \   00005C   90....       MOV     DPTR,#daliForwardFrame
+   \   00005F   78..         MOV     R0,#?V0 + 0
+   \   000061   12....       LCALL   ?L_MOV_TO_X
+    513                      bitcount++;
+   \   000064   90....       MOV     DPTR,#??bitcount
+   \   000067   E0           MOVX    A,@DPTR
+   \   000068   04           INC     A
+   \   000069   F0           MOVX    @DPTR,A
+    514                      if (bitcount == 32) masterState = MS_TX_STOP_BITS;
+   \   00006A   6420         XRL     A,#0x20
+   \   00006C   6003         JZ      $+5
+   \   00006E   02....       LJMP    ??Timer3Isr_6
+   \   000071   90....       MOV     DPTR,#masterState
+   \   000074   7403         MOV     A,#0x3
+   \   000076   02....       LJMP    ??Timer3Isr_2
+    515                  }
+    516                  else if (masterState == MS_TX_STOP_BITS)
+   \                     ??Timer3Isr_3:
+   \   000079   E0           MOVX    A,@DPTR
+   \   00007A   6403         XRL     A,#0x3
+   \   00007C   7036         JNZ     ??Timer3Isr_7
+    517                  {
+    518                      DALI_SetOutputHigh();
+   \   00007E   D287         SETB    0x80.7
+    519                      // the first half of the first stop bit has just been output.
+    520                      // do we have to wait for an answer?
+    521                      if (waitForAnswer)
+   \   000080   90....       MOV     DPTR,#waitForAnswer
+   \   000083   E0           MOVX    A,@DPTR
+   \   000084   90....       MOV     DPTR,#??TEcnt
+   \   000087   601E         JZ      ??Timer3Isr_8
+    522                      {   // elapse until the end of the last half of the second stop bit
+    523                          //SET_TIMER_REG_MR0(4*TE);
+    524                          TEcnt++;
+   \   000089   E0           MOVX    A,@DPTR
+   \   00008A   04           INC     A
+   \   00008B   F0           MOVX    @DPTR,A
+    525                          if (TEcnt == 4)
+   \   00008C   6404         XRL     A,#0x4
+   \   00008E   6003         JZ      $+5
+   \   000090   02....       LJMP    ??Timer3Isr_6
+    526                          {
+    527                           BackwardFrame = 0;
+   \   000093   90....       MOV     DPTR,#BackwardFrame
+   \   000096   E4           CLR     A
+   \   000097   F0           MOVX    @DPTR,A
+    528                           earlyAnswer = false;
+   \   000098   90....       MOV     DPTR,#earlyAnswer
+   \   00009B   F0           MOVX    @DPTR,A
+    529                           capturedFrame.capturedItems = 0;
+   \   00009C   90....       MOV     DPTR,#capturedFrame + 72
+   \   00009F   12....       LCALL   ?Subroutine11
+    530                           TEcnt = 0;
+    531                           masterState = MS_SETTLING_BEFORE_BACKWARD;
+    532                          }
+    533                      }
+   \                     ??CrossCallReturnLabel_28:
+   \   0000A2   7404         MOV     A,#0x4
+   \   0000A4   02....       LJMP    ??Timer3Isr_2
+    534                      else
+    535                      {   // no answer from slave expected, need to wait for the remaining
+    536                          // bus idle time before next forward frame
+    537                      	// add additional 3 TE to minimum specification to be not at the edge of the timing specification
+    538                          //SET_TIMER_REG_MR0((4*TE) + (22*TE) + (3*TE));
+    539                          TEcnt++;
+   \                     ??Timer3Isr_8:
+   \   0000A7   E0           MOVX    A,@DPTR
+   \   0000A8   04           INC     A
+   \   0000A9   F0           MOVX    @DPTR,A
+    540                          if (TEcnt == 29)
+   \   0000AA   641D         XRL     A,#0x1d
+   \   0000AC   6003         JZ      $+5
+   \   0000AE   02....       LJMP    ??Timer3Isr_6
+   \   0000B1   02....       LJMP    ??Timer3Isr_9
+    541                          {
+    542                           TEcnt = 0;
+    543                           masterState = MS_SETTLING_BEFORE_IDLE;
+    544                          }
+    545                      }
+    546                  }
+    547                  else if (masterState == MS_SETTLING_BEFORE_BACKWARD)
+   \                     ??Timer3Isr_7:
+   \   0000B4   E0           MOVX    A,@DPTR
+   \   0000B5   6404         XRL     A,#0x4
+   \   0000B7   701E         JNZ     ??Timer3Isr_10
+    548                  {
+    549                      //bsp_set_led(LED_RTX_DALI_BUS, 1); // LED ON MEANS RX FROM DALI BUS
+    550                      // setup the first window limit for the slave answer
+    551                      // slave should not respond before 7TE
+    552                      if (TEcnt == 0)
+   \   0000B9   90....       MOV     DPTR,#??TEcnt
+   \   0000BC   E0           MOVX    A,@DPTR
+   \   0000BD   7006         JNZ     ??Timer3Isr_11
+    553                      {
+    554                       SET_TIMER_REG_MR0(MIN_TE);
+   \   0000BF   75CD54       MOV     0xcd,#0x54
+    555                       SET_TIMER_REG_CCR(0x43);   // enable receive, capture on both edges
+   \   0000C2   75CE43       MOV     0xce,#0x43
+    556                      }
+    557                      TEcnt++;
+   \                     ??Timer3Isr_11:
+   \   0000C5   04           INC     A
+   \   0000C6   F0           MOVX    @DPTR,A
+    558                      if (TEcnt == 8)
+   \   0000C7   6408         XRL     A,#0x8
+   \   0000C9   6003         JZ      $+5
+   \   0000CB   02....       LJMP    ??Timer3Isr_6
+    559                      {
+    560                       TEcnt = 0;
+   \   0000CE   E4           CLR     A
+   \   0000CF   12....       LCALL   ??Subroutine13_0
+    561                       masterState = MS_WAITING_FOR_SLAVE_START_WINDOW;
+    562                      }
+    563                  }
+   \                     ??CrossCallReturnLabel_29:
+   \   0000D2   7406         MOV     A,#0x6
+   \   0000D4   02....       LJMP    ??Timer3Isr_2
+    564                  else if (masterState == MS_WAITING_FOR_SLAVE_START_WINDOW)
+   \                     ??Timer3Isr_10:
+   \   0000D7   E0           MOVX    A,@DPTR
+   \   0000D8   6406         XRL     A,#0x6
+   \   0000DA   701B         JNZ     ??Timer3Isr_12
+    565                  {   // setup the second window limit for the slave answer,
+    566                      // slave must start transmit within the next 23TE window
+    567                      if (TEcnt == 0) SET_TIMER_REG_MR0(MAX_TE);
+   \   0000DC   90....       MOV     DPTR,#??TEcnt
+   \   0000DF   E0           MOVX    A,@DPTR
+   \   0000E0   7003         JNZ     ??Timer3Isr_13
+   \   0000E2   75CD7C       MOV     0xcd,#0x7c
+    568                      TEcnt++;
+   \                     ??Timer3Isr_13:
+   \   0000E5   04           INC     A
+   \   0000E6   F0           MOVX    @DPTR,A
+    569                      if (TEcnt == 23)
+   \   0000E7   6417         XRL     A,#0x17
+   \   0000E9   6003         JZ      $+5
+   \   0000EB   02....       LJMP    ??Timer3Isr_6
+    570                      {
+    571                       TEcnt = 0;
+   \   0000EE   E4           CLR     A
+   \   0000EF   12....       LCALL   ??Subroutine13_0
+    572                       masterState = MS_WAITING_FOR_SLAVE_START;
+    573                      }
+    574                  }
+   \                     ??CrossCallReturnLabel_30:
+   \   0000F2   7407         MOV     A,#0x7
+   \   0000F4   02....       LJMP    ??Timer3Isr_2
+    575                  else if (masterState == MS_WAITING_FOR_SLAVE_START)
+   \                     ??Timer3Isr_12:
+   \   0000F7   E0           MOVX    A,@DPTR
+   \   0000F8   6407         XRL     A,#0x7
+   \   0000FA   700D         JNZ     ??Timer3Isr_14
+    576                  {   // if we still get here, got 'no' or too early answer from slave
+    577                      // idle time of 23TE was already elapsed while waiting, so
+    578                      // immediately release the bus
+    579                      SET_TIMER_STOP;   // reset and stop the timer
+   \   0000FC   53CBEF       ANL     0xcb,#0xef
+   \   0000FF   43CB04       ORL     0xcb,#0x4
+    580                      SET_TIMER_REG_CCR(0);   // disable capture
+   \   000102   75CE00       MOV     0xce,#0x0
+    581                      SET_TIMER_REG_IR(0xfb); // clear possible capture interrupt flag
+   \   000105   C2DA         CLR     0xd8.2
+    582                      masterState = MS_IDLE;
+   \   000107   804E         SJMP    ??Timer3Isr_15
+    583                  }
+    584                  else if (masterState == MS_RECEIVING_ANSWER)
+   \                     ??Timer3Isr_14:
+   \   000109   E0           MOVX    A,@DPTR
+   \   00010A   6408         XRL     A,#0x8
+   \   00010C   7016         JNZ     ??Timer3Isr_16
+    585                  {   
+    586                      TEcnt++;
+   \   00010E   90....       MOV     DPTR,#??TEcnt
+   \   000111   E0           MOVX    A,@DPTR
+   \   000112   04           INC     A
+   \   000113   F0           MOVX    @DPTR,A
+    587                      uint8 wait = ( 22*MAX_TE ) /230 + 1;
+    588                      if (TEcnt == wait)
+   \   000114   640C         XRL     A,#0xc
+   \   000116   6003         JZ      $+5
+   \   000118   02....       LJMP    ??Timer3Isr_6
+    589                      {
+    590                       TEcnt = 0;
+   \   00011B   E4           CLR     A
+   \   00011C   12....       LCALL   ??Subroutine13_0
+    591                       masterState = MS_RECEIVING_ANSWER_FINISH;
+    592                      }
+    593                  }
+   \                     ??CrossCallReturnLabel_31:
+   \   00011F   7409         MOV     A,#0x9
+   \   000121   02....       LJMP    ??Timer3Isr_2
+    594                  else if (masterState == MS_RECEIVING_ANSWER_FINISH)
+   \                     ??Timer3Isr_16:
+   \   000124   E0           MOVX    A,@DPTR
+   \   000125   6409         XRL     A,#0x9
+   \   000127   7020         JNZ     ??Timer3Isr_17
+    595                  {   // stop receiving
+    596                      // now idle the bus between backward and next forward frame
+    597                      // since we don't track the last edge of received frame,
+    598                      // conservatively we wait for 23 TE (>= 22 TE as for specification)
+    599                      // Receive interval considered anyway the max tolerance for
+    600                      // backward frame duration so >22TE should already be asserted
+    601                      if (TEcnt == 0)
+   \   000129   90....       MOV     DPTR,#??TEcnt
+   \   00012C   E0           MOVX    A,@DPTR
+   \   00012D   7008         JNZ     ??Timer3Isr_18
+    602                      {
+    603                       SET_TIMER_REG_MR0(TE);
+   \   00012F   75CD68       MOV     0xcd,#0x68
+    604                       SET_TIMER_REG_CCR(0);   // disable capture
+   \   000132   75CE00       MOV     0xce,#0x0
+    605                       SET_TIMER_REG_IR(0xfb); // clear possible capture interrupt flag
+   \   000135   C2DA         CLR     0xd8.2
+    606                      }
+    607                      TEcnt++;
+   \                     ??Timer3Isr_18:
+   \   000137   04           INC     A
+   \   000138   F0           MOVX    @DPTR,A
+    608                      if (TEcnt == 22)
+   \   000139   6416         XRL     A,#0x16
+   \   00013B   6003         JZ      $+5
+   \   00013D   02....       LJMP    ??Timer3Isr_6
+    609                      {
+    610                       TEcnt = 0;
+   \                     ??Timer3Isr_9:
+   \   000140   E4           CLR     A
+   \   000141   12....       LCALL   ??Subroutine13_0
+    611                       masterState = MS_SETTLING_BEFORE_IDLE;
+    612                      }
+    613                  }
+   \                     ??CrossCallReturnLabel_32:
+   \   000144   7405         MOV     A,#0x5
+   \   000146   02....       LJMP    ??Timer3Isr_2
+    614                  else if (masterState == MS_SETTLING_BEFORE_IDLE)
+   \                     ??Timer3Isr_17:
+   \   000149   E0           MOVX    A,@DPTR
+   \   00014A   6405         XRL     A,#0x5
+   \   00014C   6003         JZ      $+5
+   \   00014E   02....       LJMP    ??Timer3Isr_6
+    615                  {
+    616                      //bsp_set_led(LED_RTX_DALI_BUS, 1); // LED ON MEANS RX FROM DALI BUS
+    617                      SET_TIMER_STOP;   // reset and stop the timer
+   \   000151   53CBEF       ANL     0xcb,#0xef
+   \   000154   43CB04       ORL     0xcb,#0x4
+    618          	    masterState = MS_IDLE;
+   \                     ??Timer3Isr_15:
+   \   000157   E4           CLR     A
+   \   000158   02....       LJMP    ??Timer3Isr_2
+    619                  }
+    620              }
+    621              else if (irq_stat & 0x04)
+   \                     ??Timer3Isr_0:
+   \   00015B   A2E2         MOV     C,0xE0 /* A   */.2
+   \   00015D   4003         JC      $+5
+   \   00015F   02....       LJMP    ??Timer3Isr_6
+    622              {   // capture interrupt
+    623                  P0DIR |= 0x02;//test
+   \   000162   43FD02       ORL     0xfd,#0x2
+    624                  P0_1 = 1;//test
+   \   000165   D281         SETB    0x80.1
+    625                  SET_TIMER_REG_IR(0xfb);     // clear capture interrupt flag
+   \   000167   C2DA         CLR     0xd8.2
+    626                  if (masterState == MS_SETTLING_BEFORE_BACKWARD)
+   \   000169   90....       MOV     DPTR,#masterState
+   \   00016C   E0           MOVX    A,@DPTR
+   \   00016D   6404         XRL     A,#0x4
+   \   00016F   700B         JNZ     ??Timer3Isr_19
+    627                  {   // slave should not answer yet, it came too early!!!!
+    628                      SET_TIMER_REG_CCR(0);   // disable capture
+   \   000171   75CE00       MOV     0xce,#0x0
+    629                      earlyAnswer = true;
+   \   000174   90....       MOV     DPTR,#earlyAnswer
+   \   000177   7401         MOV     A,#0x1
+   \   000179   02....       LJMP    ??Timer3Isr_2
+    630                  }
+    631                  else if (masterState == MS_WAITING_FOR_SLAVE_START_WINDOW)
+   \                     ??Timer3Isr_19:
+   \   00017C   E0           MOVX    A,@DPTR
+   \   00017D   6406         XRL     A,#0x6
+   \   00017F   7030         JNZ     ??Timer3Isr_20
+    632                  {   // we got an edge, so the slave is transmitting now
+    633                      // allowed remaining answering time is 22TE
+    634                      SET_TIMER_REG_MR0(230);//avoid T3 overfiow interrupt conflict with capture interrupt.
+   \   000181   75CDE6       MOV     0xcd,#-0x1a
+    635                      TEcnt = 0;
+   \   000184   90....       MOV     DPTR,#??TEcnt
+   \   000187   E4           CLR     A
+   \   000188   F0           MOVX    @DPTR,A
+    636                      SET_TIMER_REG_TC;    //clear timer counter
+   \   000189   43CB04       ORL     0xcb,#0x4
+    637                      SET_TIMER_REG_IR(0xfd);    // clear possible T3 channel0 compare interrupt flag
+   \   00018C   C2D9         CLR     0xd8.1
+    638                      // first pulse is begin of the start bit
+    639                      DALI_GetInput(capturedFrame.capturedData[0].bitLevel);
+   \   00018E   A293         MOV     C,0x90.3
+   \   000190   4004         JC      ??Timer3Isr_21
+   \   000192   D2F0         SETB    B.0
+   \   000194   8002         SJMP    ??Timer3Isr_22
+   \                     ??Timer3Isr_21:
+   \   000196   C2F0         CLR     B.0
+   \                     ??Timer3Isr_22:
+   \   000198   A2F0         MOV     C,B.0
+   \   00019A   33           RLC     A
+   \   00019B   90....       MOV     DPTR,#capturedFrame + 2
+   \   00019E   F0           MOVX    @DPTR,A
+    640                      capturedFrame.capturedData[0].TECNT = 0;
+   \   00019F   90....       MOV     DPTR,#capturedFrame
+   \   0001A2   E4           CLR     A
+   \   0001A3   F0           MOVX    @DPTR,A
+    641                      capturedFrame.capturedData[0].capturedTime = 0;
+   \   0001A4   A3           INC     DPTR
+   \   0001A5   F0           MOVX    @DPTR,A
+    642                      capturedFrame.capturedItems = 1;
+   \   0001A6   90....       MOV     DPTR,#capturedFrame + 72
+   \   0001A9   04           INC     A
+   \   0001AA   12....       LCALL   ??Subroutine13_0
+    643                      masterState = MS_RECEIVING_ANSWER;
+    644                  }
+   \                     ??CrossCallReturnLabel_33:
+   \   0001AD   7408         MOV     A,#0x8
+   \   0001AF   804C         SJMP    ??Timer3Isr_2
+    645                  else if (masterState == MS_RECEIVING_ANSWER)
+   \                     ??Timer3Isr_20:
+   \   0001B1   E0           MOVX    A,@DPTR
+   \   0001B2   6408         XRL     A,#0x8
+   \   0001B4   7048         JNZ     ??Timer3Isr_6
+    646                  {   // this part just captures the frame data, evaluation is done
+    647                      // at the end of max backward frame duration
+    648                      if (capturedFrame.capturedItems < MAX_BF_EDGES)
+   \   0001B6   90....       MOV     DPTR,#capturedFrame + 72
+   \   0001B9   E0           MOVX    A,@DPTR
+   \   0001BA   C3           CLR     C
+   \   0001BB   9412         SUBB    A,#0x12
+   \   0001BD   503F         JNC     ??Timer3Isr_6
+    649                      {
+    650                          uint32 index = capturedFrame.capturedItems;
+   \   0001BF   E0           MOVX    A,@DPTR
+   \   0001C0   F5..         MOV     ?V0 + 0,A
+   \   0001C2   75..00       MOV     ?V0 + 1,#0x0
+    651                          DALI_GetInput(capturedFrame.capturedData[index].bitLevel);
+   \   0001C5   A293         MOV     C,0x90.3
+   \   0001C7   4004         JC      ??Timer3Isr_23
+   \   0001C9   D2F0         SETB    B.0
+   \   0001CB   8002         SJMP    ??Timer3Isr_24
+   \                     ??Timer3Isr_23:
+   \   0001CD   C2F0         CLR     B.0
+   \                     ??Timer3Isr_24:
+   \   0001CF   7402         MOV     A,#0x2
+   \   0001D1   78..         MOV     R0,#?V0 + 0
+   \   0001D3   12....       LCALL   ?S_SHL
+   \   0001D6   74..         MOV     A,#capturedFrame & 0xff
+   \   0001D8   25..         ADD     A,?V0 + 0
+   \   0001DA   F8           MOV     R0,A
+   \   0001DB   74..         MOV     A,#(capturedFrame >> 8) & 0xff
+   \   0001DD   35..         ADDC    A,?V0 + 1
+   \   0001DF   F9           MOV     R1,A
+   \   0001E0   A2F0         MOV     C,B.0
+   \   0001E2   E4           CLR     A
+   \   0001E3   33           RLC     A
+   \   0001E4   8882         MOV     DPL,R0
+   \   0001E6   8983         MOV     DPH,R1
+   \   0001E8   A3           INC     DPTR
+   \   0001E9   A3           INC     DPTR
+   \   0001EA   F0           MOVX    @DPTR,A
+    652                          capturedFrame.capturedData[index].TECNT = TEcnt;
+   \   0001EB   90....       MOV     DPTR,#??TEcnt
+   \   0001EE   E0           MOVX    A,@DPTR
+   \   0001EF   8882         MOV     DPL,R0
+   \   0001F1   8983         MOV     DPH,R1
+   \   0001F3   F0           MOVX    @DPTR,A
+    653                          GET_TIMER_REG_CR0(capturedFrame.capturedData[index].capturedTime);
+   \   0001F4   E5CF         MOV     A,0xcf
+   \   0001F6   A3           INC     DPTR
+   \   0001F7   F0           MOVX    @DPTR,A
+    654                          capturedFrame.capturedItems++;
+   \   0001F8   90....       MOV     DPTR,#capturedFrame + 72
+   \   0001FB   E0           MOVX    A,@DPTR
+   \   0001FC   04           INC     A
+   \                     ??Timer3Isr_2:
+   \   0001FD   F0           MOVX    @DPTR,A
+    655                      }
+    656                  }
+    657              }
+    658          }
+   \                     ??Timer3Isr_6:
+   \   0001FE   7F04         MOV     R7,#0x4
+   \   000200   02....       LJMP    ?INTERRUPT_LEAVE_XSP
+   \   000203                REQUIRE _A_TIMIF
+   \   000203                REQUIRE _A_P0
+   \   000203                REQUIRE T3CC0
+   \   000203                REQUIRE T3CCTL1
+   \   000203                REQUIRE T3CTL
+   \   000203                REQUIRE P0DIR
+   \   000203                REQUIRE _A_P1
+   \   000203                REQUIRE T3CC1
+
+   \                                 In  segment NEAR_CODE, align 1, keep-with-next
+   \                     ?Subroutine11:
+   \   000000   F0           MOVX    @DPTR,A
+   \   000001   90....       MOV     DPTR,#??TEcnt
+   \   000004                REQUIRE ??Subroutine13_0
+   \   000004                ; // Fall through to label ??Subroutine13_0
+
+   \                                 In  segment NEAR_CODE, align 1, keep-with-next
+   \                     ??Subroutine13_0:
+   \   000000   F0           MOVX    @DPTR,A
+   \   000001   90....       MOV     DPTR,#masterState
+   \   000004   22           RET
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+   \                     ??bitcount:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+   \                     ??TEcnt:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+    659          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    660          void DALI_Addressing(void)
+   \                     DALI_Addressing:
+    661          {
+   \   000000   74F0         MOV     A,#-0x10
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 16
+   \   000005                ; Auto size: 5
+   \   000005   74FB         MOV     A,#-0x5
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+    662           uint8 i ,j, k ,diff;
+    663           uint8 halfword[2] = {0xf ,0xf};
+   \   00000A   85..82       MOV     DPL,?XSP + 0
+   \   00000D   85..83       MOV     DPH,?XSP + 1
+   \   000010   AC82         MOV     R4,DPL
+   \   000012   AD83         MOV     R5,DPH
+   \   000014   7583..       MOV     DPH,#(`?<Constant {15, 15}>` >> 8) & 0xff
+   \   000017   7582..       MOV     DPL,#`?<Constant {15, 15}>` & 0xff
+   \   00001A   7402         MOV     A,#0x2
+   \   00001C   12....       LCALL   ?MOVE_LONG8_XDATA_XDATA
+    664           uint8 searchaddrcmd[3] = {0xb1 ,0xb3 ,0xb5};
+   \   00001F   7402         MOV     A,#0x2
+   \   000021   12....       LCALL   ?XSTACK_DISP0_8
+   \   000024   AC82         MOV     R4,DPL
+   \   000026   AD83         MOV     R5,DPH
+   \   000028   7583..       MOV     DPH,#(`?<Constant {177, 179, 181}>` >> 8) & 0xff
+   \   00002B   7582..       MOV     DPL,#`?<Constant {177, 179, 181}>` & 0xff
+   \   00002E   7403         MOV     A,#0x3
+   \   000030   12....       LCALL   ?MOVE_LONG8_XDATA_XDATA
+    665          
+    666           DALI_Send(INITIALISE,&dali_answer,&dali_answer_state);    //addressing initialise
+   \   000033                ; Setup parameters for call to function DALI_Send
+   \   000033   75....       MOV     ?V0 + 0,#dali_answer_state & 0xff
+   \   000036   75....       MOV     ?V0 + 1,#(dali_answer_state >> 8) & 0xff
+   \   000039   78..         MOV     R0,#?V0 + 0
+   \   00003B   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00003E   7C..         MOV     R4,#dali_answer & 0xff
+   \   000040   7D..         MOV     R5,#(dali_answer >> 8) & 0xff
+   \   000042   7A00         MOV     R2,#0x0
+   \   000044   7BA5         MOV     R3,#-0x5b
+   \   000046   12....       LCALL   ??DALI_Send?relay
+   \   000049   7402         MOV     A,#0x2
+   \   00004B   12....       LCALL   ?DEALLOC_XSTACK8
+    667           DALI_Send(RANDOMISE,&dali_answer,&dali_answer_state);    //produce random sequence
+   \   00004E                ; Setup parameters for call to function DALI_Send
+   \   00004E   78..         MOV     R0,#?V0 + 0
+   \   000050   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000053   7C..         MOV     R4,#dali_answer & 0xff
+   \   000055   7D..         MOV     R5,#(dali_answer >> 8) & 0xff
+   \   000057   7A00         MOV     R2,#0x0
+   \   000059   7BA7         MOV     R3,#-0x59
+   \   00005B   12....       LCALL   ??DALI_Send?relay
+   \   00005E   7402         MOV     A,#0x2
+   \   000060   12....       LCALL   ?DEALLOC_XSTACK8
+    668           MicroWait(0xd6d8);
+   \   000063                ; Setup parameters for call to function Onboard_wait
+   \   000063   7AD8         MOV     R2,#-0x28
+   \   000065   7BD6         MOV     R3,#-0x2a
+   \   000067   12....       LCALL   ??Onboard_wait?relay
+    669           MicroWait(0xd6d8);
+   \   00006A                ; Setup parameters for call to function Onboard_wait
+   \   00006A   7AD8         MOV     R2,#-0x28
+   \   00006C   7BD6         MOV     R3,#-0x2a
+   \   00006E   12....       LCALL   ??Onboard_wait?relay
+    670           MicroWait(0xd6d8);    //wait for the DALI slaver to produce random sequence
+   \   000071                ; Setup parameters for call to function Onboard_wait
+   \   000071   7AD8         MOV     R2,#-0x28
+   \   000073   7BD6         MOV     R3,#-0x2a
+   \   000075   12....       LCALL   ??Onboard_wait?relay
+    671           dali_answer_state = ANSWER_NOTHING_RECEIVED;
+   \   000078   90....       MOV     DPTR,#dali_answer_state
+   \   00007B   7401         MOV     A,#0x1
+   \   00007D   F0           MOVX    @DPTR,A
+   \   00007E   02....       LJMP    ??DALI_Addressing_0 & 0xFFFF
+    672           do
+    673           {
+    674             if(dali_answer_state != ANSWER_NOTHING_RECEIVED)
+    675             {
+    676               for (k=0 ;k<3 ;k++)
+   \                     ??DALI_Addressing_1:
+   \   000081   75..00       MOV     ?V0 + 3,#0x0
+    677               {
+    678                for (j=0 ;j<2 ;j++)
+   \                     ??DALI_Addressing_2:
+   \   000084   75..00       MOV     ?V0 + 2,#0x0
+    679                {
+    680                  halfword[j] = 8;
+   \                     ??DALI_Addressing_3:
+   \   000087   85....       MOV     ?V0 + 0,?V0 + 2
+   \   00008A   85..82       MOV     DPL,?XSP + 0
+   \   00008D   85..83       MOV     DPH,?XSP + 1
+   \   000090   E582         MOV     A,DPL
+   \   000092   25..         ADD     A,?V0 + 0
+   \   000094   F5..         MOV     ?V0 + 0,A
+   \   000096   E583         MOV     A,DPH
+   \   000098   3400         ADDC    A,#0x0
+   \   00009A   F5..         MOV     ?V0 + 1,A
+   \   00009C   85..82       MOV     DPL,?V0 + 0
+   \   00009F   F583         MOV     DPH,A
+   \   0000A1   7408         MOV     A,#0x8
+   \   0000A3   F0           MOVX    @DPTR,A
+    681                  dali_cmd = searchaddrcmd[k]*256 + halfword[0]*16 + halfword[1];    //rebuild dali_cmd
+    682                  DALI_Send(dali_cmd,&dali_answer,&dali_answer_state);
+   \   0000A4   85....       MOV     ?V0 + 4,?V0 + 3
+   \   0000A7   7402         MOV     A,#0x2
+   \   0000A9   12....       LCALL   ?XSTACK_DISP0_8
+   \   0000AC   E582         MOV     A,DPL
+   \   0000AE   25..         ADD     A,?V0 + 4
+   \   0000B0   F582         MOV     DPL,A
+   \   0000B2   E583         MOV     A,DPH
+   \   0000B4   3400         ADDC    A,#0x0
+   \   0000B6   F583         MOV     DPH,A
+   \   0000B8   E0           MOVX    A,@DPTR
+   \   0000B9   FE           MOV     R6,A
+   \   0000BA   E4           CLR     A
+   \   0000BB   CE           XCH     A,R6
+   \   0000BC   FF           MOV     R7,A
+   \   0000BD                ; Setup parameters for call to function DALI_Send
+   \   0000BD   75....       MOV     ?V0 + 4,#dali_answer_state & 0xff
+   \   0000C0   75....       MOV     ?V0 + 5,#(dali_answer_state >> 8) & 0xff
+   \   0000C3   78..         MOV     R0,#?V0 + 4
+   \   0000C5   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   0000C8   7C..         MOV     R4,#dali_answer & 0xff
+   \   0000CA   7D..         MOV     R5,#(dali_answer >> 8) & 0xff
+   \   0000CC   7402         MOV     A,#0x2
+   \   0000CE   12....       LCALL   ?XSTACK_DISP0_8
+   \   0000D1   12....       LCALL   ??Subroutine12_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_26:
+   \   0000D4   12....       LCALL   ?S_SHL
+   \   0000D7   25..         ADD     A,?V0 + 4
+   \   0000D9   F8           MOV     R0,A
+   \   0000DA   EF           MOV     A,R7
+   \   0000DB   35..         ADDC    A,?V0 + 5
+   \   0000DD   F9           MOV     R1,A
+   \   0000DE   7403         MOV     A,#0x3
+   \   0000E0   12....       LCALL   ?XSTACK_DISP0_8
+   \   0000E3   E0           MOVX    A,@DPTR
+   \   0000E4   FA           MOV     R2,A
+   \   0000E5   E8           MOV     A,R0
+   \   0000E6   2A           ADD     A,R2
+   \   0000E7   FA           MOV     R2,A
+   \   0000E8   E9           MOV     A,R1
+   \   0000E9   3400         ADDC    A,#0x0
+   \   0000EB   FB           MOV     R3,A
+   \   0000EC   12....       LCALL   ??DALI_Send?relay
+   \   0000EF   7402         MOV     A,#0x2
+   \   0000F1   12....       LCALL   ?DEALLOC_XSTACK8
+    683                  DALI_Send(COMPARE,&dali_answer,&dali_answer_state);    //compare
+   \   0000F4                ; Setup parameters for call to function DALI_Send
+   \   0000F4   75....       MOV     ?V0 + 4,#dali_answer_state & 0xff
+   \   0000F7   75....       MOV     ?V0 + 5,#(dali_answer_state >> 8) & 0xff
+   \   0000FA   78..         MOV     R0,#?V0 + 4
+   \   0000FC   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   0000FF   7C..         MOV     R4,#dali_answer & 0xff
+   \   000101   7D..         MOV     R5,#(dali_answer >> 8) & 0xff
+   \   000103   7A00         MOV     R2,#0x0
+   \   000105   7BA9         MOV     R3,#-0x57
+   \   000107   12....       LCALL   ??DALI_Send?relay
+   \   00010A   7402         MOV     A,#0x2
+   \   00010C   12....       LCALL   ?DEALLOC_XSTACK8
+    684                 for (i=1 ;i<4 ;i++)
+   \   00010F   75..01       MOV     ?V0 + 4,#0x1
+    685                 {
+    686                  diff = 8 >> i;
+   \                     ??DALI_Addressing_4:
+   \   000112   75..08       MOV     ?V0 + 6,#0x8
+   \   000115   8E..         MOV     ?V0 + 7,R6
+   \   000117   E5..         MOV     A,?V0 + 4
+   \   000119   78..         MOV     R0,#?V0 + 6
+   \   00011B   12....       LCALL   ?SS_SHR
+   \   00011E   A8..         MOV     R0,?V0 + 6
+    687                  if(dali_answer_state == ANSWER_NOTHING_RECEIVED)
+   \   000120   90....       MOV     DPTR,#dali_answer_state
+   \   000123   E0           MOVX    A,@DPTR
+   \   000124   6401         XRL     A,#0x1
+   \   000126   85..82       MOV     DPL,?V0 + 0
+   \   000129   85..83       MOV     DPH,?V0 + 1
+   \   00012C   7004         JNZ     ??DALI_Addressing_5
+    688                    halfword[j] += diff;
+   \   00012E   E0           MOVX    A,@DPTR
+   \   00012F   28           ADD     A,R0
+   \   000130   8003         SJMP    ??DALI_Addressing_6
+    689                  else
+    690                    halfword[j] -= diff;
+   \                     ??DALI_Addressing_5:
+   \   000132   E0           MOVX    A,@DPTR
+   \   000133   C3           CLR     C
+   \   000134   98           SUBB    A,R0
+   \                     ??DALI_Addressing_6:
+   \   000135   12....       LCALL   ?Subroutine7 & 0xFFFF
+    691                  dali_cmd = searchaddrcmd[k]*256 + halfword[0]*16 + halfword[1];    //rebuild dali_cmd
+   \                     ??CrossCallReturnLabel_15:
+   \   000138   F5..         MOV     ?V0 + 6,A
+   \   00013A   8E..         MOV     ?V0 + 7,R6
+   \   00013C   7404         MOV     A,#0x4
+   \   00013E   78..         MOV     R0,#?V0 + 6
+   \   000140   12....       LCALL   ?S_SHL
+   \   000143   25..         ADD     A,?V0 + 6
+   \   000145   F8           MOV     R0,A
+   \   000146   EF           MOV     A,R7
+   \   000147   35..         ADDC    A,?V0 + 7
+   \   000149   F9           MOV     R1,A
+   \   00014A   7401         MOV     A,#0x1
+   \   00014C   12....       LCALL   ?XSTACK_DISP0_8
+   \   00014F   12....       LCALL   ?Subroutine1 & 0xFFFF
+    692                  DALI_Send(dali_cmd,&dali_answer,&dali_answer_state);
+   \                     ??CrossCallReturnLabel_2:
+   \   000152                ; Setup parameters for call to function DALI_Send
+   \   000152   75....       MOV     ?V0 + 6,#dali_answer_state & 0xff
+   \   000155   75....       MOV     ?V0 + 7,#(dali_answer_state >> 8) & 0xff
+   \   000158   78..         MOV     R0,#?V0 + 6
+   \   00015A   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00015D   12....       LCALL   ?Subroutine4 & 0xFFFF
+   \                     ??CrossCallReturnLabel_6:
+   \   000160   12....       LCALL   ??DALI_Send?relay
+   \   000163   7402         MOV     A,#0x2
+   \   000165   12....       LCALL   ?DEALLOC_XSTACK8
+    693                  DALI_Send(COMPARE,&dali_answer,&dali_answer_state);    //compare
+   \   000168                ; Setup parameters for call to function DALI_Send
+   \   000168   78..         MOV     R0,#?V0 + 6
+   \   00016A   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00016D   7C..         MOV     R4,#dali_answer & 0xff
+   \   00016F   7D..         MOV     R5,#(dali_answer >> 8) & 0xff
+   \   000171   7A00         MOV     R2,#0x0
+   \   000173   7BA9         MOV     R3,#-0x57
+   \   000175   12....       LCALL   ??DALI_Send?relay
+   \   000178   7402         MOV     A,#0x2
+   \   00017A   12....       LCALL   ?DEALLOC_XSTACK8
+    694                 }
+   \   00017D   05..         INC     ?V0 + 4
+   \   00017F   E5..         MOV     A,?V0 + 4
+   \   000181   C3           CLR     C
+   \   000182   9404         SUBB    A,#0x4
+   \   000184   408C         JC      ??DALI_Addressing_4
+    695                 if((halfword[j] == 1)&&(dali_answer_state != ANSWER_NOTHING_RECEIVED))
+   \   000186   85..82       MOV     DPL,?V0 + 0
+   \   000189   85..83       MOV     DPH,?V0 + 1
+   \   00018C   E0           MOVX    A,@DPTR
+   \   00018D   6401         XRL     A,#0x1
+   \   00018F   706E         JNZ     ??DALI_Addressing_7
+   \   000191   90....       MOV     DPTR,#dali_answer_state
+   \   000194   E0           MOVX    A,@DPTR
+   \   000195   6401         XRL     A,#0x1
+   \   000197   606E         JZ      ??DALI_Addressing_8
+    696                 {
+    697                  halfword[j] = 0;
+   \   000199   85..82       MOV     DPL,?V0 + 0
+   \   00019C   85..83       MOV     DPH,?V0 + 1
+   \   00019F   E4           CLR     A
+   \   0001A0   12....       LCALL   ?Subroutine2 & 0xFFFF
+    698                  dali_cmd = searchaddrcmd[k]*256 + halfword[0]*16 + halfword[1];    //rebuild dali_cmd
+   \                     ??CrossCallReturnLabel_24:
+   \   0001A3   12....       LCALL   ?S_SHL
+   \   0001A6   12....       LCALL   ?Subroutine6 & 0xFFFF
+   \                     ??CrossCallReturnLabel_13:
+   \   0001A9   12....       LCALL   ?XSTACK_DISP0_8
+   \   0001AC   12....       LCALL   ?Subroutine0 & 0xFFFF
+    699                  DALI_Send(dali_cmd,&dali_answer,&dali_answer_state);
+   \                     ??CrossCallReturnLabel_0:
+   \   0001AF   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   0001B2   12....       LCALL   ?Subroutine4 & 0xFFFF
+   \                     ??CrossCallReturnLabel_7:
+   \   0001B5   12....       LCALL   ??DALI_Send?relay
+   \   0001B8   7402         MOV     A,#0x2
+   \   0001BA   12....       LCALL   ?DEALLOC_XSTACK8
+    700                  DALI_Send(COMPARE,&dali_answer,&dali_answer_state);    //compare
+   \   0001BD                ; Setup parameters for call to function DALI_Send
+   \   0001BD   78..         MOV     R0,#?V0 + 4
+   \   0001BF   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   0001C2   7C..         MOV     R4,#dali_answer & 0xff
+   \   0001C4   7D..         MOV     R5,#(dali_answer >> 8) & 0xff
+   \   0001C6   7A00         MOV     R2,#0x0
+   \   0001C8   7BA9         MOV     R3,#-0x57
+   \   0001CA   12....       LCALL   ??DALI_Send?relay
+   \   0001CD   7402         MOV     A,#0x2
+   \   0001CF   12....       LCALL   ?DEALLOC_XSTACK8
+    701                  if(dali_answer_state == ANSWER_NOTHING_RECEIVED)
+   \   0001D2   90....       MOV     DPTR,#dali_answer_state
+   \   0001D5   E0           MOVX    A,@DPTR
+   \   0001D6   6401         XRL     A,#0x1
+   \   0001D8   7025         JNZ     ??DALI_Addressing_7
+    702                  {
+    703                   halfword[j] = 1;
+   \   0001DA   85..82       MOV     DPL,?V0 + 0
+   \   0001DD   85..83       MOV     DPH,?V0 + 1
+   \   0001E0   7401         MOV     A,#0x1
+   \   0001E2   12....       LCALL   ?Subroutine2 & 0xFFFF
+    704                   dali_cmd = searchaddrcmd[k]*256 + halfword[0]*16 + halfword[1];    //rebuild dali_cmd
+    705                   DALI_Send(dali_cmd,&dali_answer,&dali_answer_state);
+    706                  }
+    707                 }
+   \                     ??CrossCallReturnLabel_25:
+   \   0001E5   12....       LCALL   ?S_SHL
+   \   0001E8   12....       LCALL   ?Subroutine6 & 0xFFFF
+   \                     ??CrossCallReturnLabel_14:
+   \   0001EB   12....       LCALL   ?XSTACK_DISP0_8
+   \   0001EE   12....       LCALL   ?Subroutine0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_1:
+   \   0001F1   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   0001F4   12....       LCALL   ?Subroutine4 & 0xFFFF
+   \                     ??CrossCallReturnLabel_8:
+   \   0001F7   12....       LCALL   ??DALI_Send?relay
+   \   0001FA   7402         MOV     A,#0x2
+   \   0001FC   12....       LCALL   ?DEALLOC_XSTACK8
+    708                 if(dali_answer_state == ANSWER_NOTHING_RECEIVED)
+   \                     ??DALI_Addressing_7:
+   \   0001FF   90....       MOV     DPTR,#dali_answer_state
+   \   000202   E0           MOVX    A,@DPTR
+   \   000203   6401         XRL     A,#0x1
+   \   000205   703B         JNZ     ??DALI_Addressing_9
+    709                  {
+    710                   halfword[j] ++;
+   \                     ??DALI_Addressing_8:
+   \   000207   85..82       MOV     DPL,?V0 + 0
+   \   00020A   85..83       MOV     DPH,?V0 + 1
+   \   00020D   E0           MOVX    A,@DPTR
+   \   00020E   04           INC     A
+   \   00020F   12....       LCALL   ?Subroutine7 & 0xFFFF
+    711                   dali_cmd = searchaddrcmd[k]*256 + halfword[0]*16 + halfword[1];    //rebuild dali_cmd
+   \                     ??CrossCallReturnLabel_16:
+   \   000212   F5..         MOV     ?V0 + 0,A
+   \   000214   8E..         MOV     ?V0 + 1,R6
+   \   000216   7404         MOV     A,#0x4
+   \   000218   78..         MOV     R0,#?V0 + 0
+   \   00021A   12....       LCALL   ?S_SHL
+   \   00021D   25..         ADD     A,?V0 + 0
+   \   00021F   F8           MOV     R0,A
+   \   000220   EF           MOV     A,R7
+   \   000221   35..         ADDC    A,?V0 + 1
+   \   000223   F9           MOV     R1,A
+   \   000224   7401         MOV     A,#0x1
+   \   000226   12....       LCALL   ?XSTACK_DISP0_8
+   \   000229   12....       LCALL   ?Subroutine1 & 0xFFFF
+    712                   DALI_Send(dali_cmd,&dali_answer,&dali_answer_state);
+   \                     ??CrossCallReturnLabel_3:
+   \   00022C                ; Setup parameters for call to function DALI_Send
+   \   00022C   75....       MOV     ?V0 + 0,#dali_answer_state & 0xff
+   \   00022F   75....       MOV     ?V0 + 1,#(dali_answer_state >> 8) & 0xff
+   \   000232   78..         MOV     R0,#?V0 + 0
+   \   000234   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000237   12....       LCALL   ?Subroutine4 & 0xFFFF
+    713                  }
+    714                }
+   \                     ??CrossCallReturnLabel_9:
+   \   00023A   12....       LCALL   ??DALI_Send?relay
+   \   00023D   7402         MOV     A,#0x2
+   \   00023F   12....       LCALL   ?DEALLOC_XSTACK8
+   \                     ??DALI_Addressing_9:
+   \   000242   05..         INC     ?V0 + 2
+   \   000244   E5..         MOV     A,?V0 + 2
+   \   000246   C3           CLR     C
+   \   000247   9402         SUBB    A,#0x2
+   \   000249   5003         JNC     $+5
+   \   00024B   02....       LJMP    ??DALI_Addressing_3 & 0xFFFF
+    715                halfword[0] = halfword[1] = 0xf;
+   \   00024E   7401         MOV     A,#0x1
+   \   000250   12....       LCALL   ?XSTACK_DISP0_8
+   \   000253   12....       LCALL   ?Subroutine8 & 0xFFFF
+    716               }
+   \                     ??CrossCallReturnLabel_17:
+   \   000256   05..         INC     ?V0 + 3
+   \   000258   E5..         MOV     A,?V0 + 3
+   \   00025A   C3           CLR     C
+   \   00025B   9403         SUBB    A,#0x3
+   \   00025D   5003         JNC     $+5
+   \   00025F   02....       LJMP    ??DALI_Addressing_2 & 0xFFFF
+    717               DALI_Send((0xb701|(dalishortaddr << 1)),&dali_answer,&dali_answer_state);    //program short address
+   \   000262                ; Setup parameters for call to function DALI_Send
+   \   000262   75....       MOV     ?V0 + 0,#dali_answer_state & 0xff
+   \   000265   75....       MOV     ?V0 + 1,#(dali_answer_state >> 8) & 0xff
+   \   000268   78..         MOV     R0,#?V0 + 0
+   \   00026A   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00026D   7C..         MOV     R4,#dali_answer & 0xff
+   \   00026F   7D..         MOV     R5,#(dali_answer >> 8) & 0xff
+   \   000271   90....       MOV     DPTR,#dalishortaddr
+   \   000274   E0           MOVX    A,@DPTR
+   \   000275   C3           CLR     C
+   \   000276   33           RLC     A
+   \   000277   F8           MOV     R0,A
+   \   000278   E4           CLR     A
+   \   000279   33           RLC     A
+   \   00027A   F9           MOV     R1,A
+   \   00027B   E8           MOV     A,R0
+   \   00027C   4401         ORL     A,#0x1
+   \   00027E   FA           MOV     R2,A
+   \   00027F   E9           MOV     A,R1
+   \   000280   44B7         ORL     A,#0xb7
+   \   000282   FB           MOV     R3,A
+   \   000283   12....       LCALL   ??DALI_Send?relay
+   \   000286   7402         MOV     A,#0x2
+   \   000288   12....       LCALL   ?DEALLOC_XSTACK8
+    718               dalishortaddr++;    //the next short address to allocate
+   \   00028B   90....       MOV     DPTR,#dalishortaddr
+   \   00028E   E0           MOVX    A,@DPTR
+   \   00028F   04           INC     A
+   \   000290   F0           MOVX    @DPTR,A
+    719               MicroWait(0xd6d8);
+   \   000291                ; Setup parameters for call to function Onboard_wait
+   \   000291   7AD8         MOV     R2,#-0x28
+   \   000293   7BD6         MOV     R3,#-0x2a
+   \   000295   12....       LCALL   ??Onboard_wait?relay
+    720               MicroWait(0xd6d8);
+   \   000298                ; Setup parameters for call to function Onboard_wait
+   \   000298   7AD8         MOV     R2,#-0x28
+   \   00029A   7BD6         MOV     R3,#-0x2a
+   \   00029C   12....       LCALL   ??Onboard_wait?relay
+    721               MicroWait(0xd6d8);    //wait for the DALI slaver to store short address
+   \   00029F                ; Setup parameters for call to function Onboard_wait
+   \   00029F   7AD8         MOV     R2,#-0x28
+   \   0002A1   7BD6         MOV     R3,#-0x2a
+   \   0002A3   12....       LCALL   ??Onboard_wait?relay
+    722          //     uint8 buf[1];
+    723          //     buf[0] = dalishortaddr;
+    724          //     zcl_SendCommand(pInMsg->msg->endPoint,&(pInMsg->msg->srcAddr),pInMsg->msg->clusterId,
+    725          //                     COMMAND_BALLAST_DALI_ADDRESSING_NOTIFY,1,!pInMsg->hdr.fc.direction,
+    726          //                     0,pInMsg->hdr.manuCode,pInMsg->hdr.transSeqNum,1,buf);//send a notice to controller after allocate DALI address.
+    727               DALI_Send(0xab00,&dali_answer,&dali_answer_state);    //withdraw
+   \   0002A6                ; Setup parameters for call to function DALI_Send
+   \   0002A6   78..         MOV     R0,#?V0 + 0
+   \   0002A8   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   0002AB   7C..         MOV     R4,#dali_answer & 0xff
+   \   0002AD   7D..         MOV     R5,#(dali_answer >> 8) & 0xff
+   \   0002AF   7A00         MOV     R2,#0x0
+   \   0002B1   7BAB         MOV     R3,#-0x55
+   \   0002B3   12....       LCALL   ??DALI_Send?relay
+   \   0002B6   7402         MOV     A,#0x2
+   \   0002B8   12....       LCALL   ?DEALLOC_XSTACK8
+    728             }
+    729            
+    730            
+    731             halfword[0] = halfword[1] = 0xf;
+   \                     ??DALI_Addressing_0:
+   \   0002BB   7401         MOV     A,#0x1
+   \   0002BD   12....       LCALL   ?XSTACK_DISP0_8
+   \   0002C0   12....       LCALL   ?Subroutine8 & 0xFFFF
+    732             DALI_Send(0xb1ff,&dali_answer,&dali_answer_state);
+   \                     ??CrossCallReturnLabel_18:
+   \   0002C3                ; Setup parameters for call to function DALI_Send
+   \   0002C3   78..         MOV     R0,#?V0 + 0
+   \   0002C5   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   0002C8   7C..         MOV     R4,#dali_answer & 0xff
+   \   0002CA   7D..         MOV     R5,#(dali_answer >> 8) & 0xff
+   \   0002CC   7AFF         MOV     R2,#-0x1
+   \   0002CE   7BB1         MOV     R3,#-0x4f
+   \   0002D0   12....       LCALL   ??DALI_Send?relay
+   \   0002D3   7402         MOV     A,#0x2
+   \   0002D5   12....       LCALL   ?DEALLOC_XSTACK8
+    733             DALI_Send(0xb3ff,&dali_answer,&dali_answer_state);
+   \   0002D8                ; Setup parameters for call to function DALI_Send
+   \   0002D8   78..         MOV     R0,#?V0 + 0
+   \   0002DA   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   0002DD   7C..         MOV     R4,#dali_answer & 0xff
+   \   0002DF   7D..         MOV     R5,#(dali_answer >> 8) & 0xff
+   \   0002E1   7AFF         MOV     R2,#-0x1
+   \   0002E3   7BB3         MOV     R3,#-0x4d
+   \   0002E5   12....       LCALL   ??DALI_Send?relay
+   \   0002E8   7402         MOV     A,#0x2
+   \   0002EA   12....       LCALL   ?DEALLOC_XSTACK8
+    734             DALI_Send(0xb5ff,&dali_answer,&dali_answer_state);    //searching address (ffff)
+   \   0002ED                ; Setup parameters for call to function DALI_Send
+   \   0002ED   78..         MOV     R0,#?V0 + 0
+   \   0002EF   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   0002F2   7C..         MOV     R4,#dali_answer & 0xff
+   \   0002F4   7D..         MOV     R5,#(dali_answer >> 8) & 0xff
+   \   0002F6   7AFF         MOV     R2,#-0x1
+   \   0002F8   7BB5         MOV     R3,#-0x4b
+   \   0002FA   12....       LCALL   ??DALI_Send?relay
+   \   0002FD   7402         MOV     A,#0x2
+   \   0002FF   12....       LCALL   ?DEALLOC_XSTACK8
+    735             DALI_Send(COMPARE,&dali_answer,&dali_answer_state);    //compare
+   \   000302                ; Setup parameters for call to function DALI_Send
+   \   000302   78..         MOV     R0,#?V0 + 0
+   \   000304   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000307   7C..         MOV     R4,#dali_answer & 0xff
+   \   000309   7D..         MOV     R5,#(dali_answer >> 8) & 0xff
+   \   00030B   7A00         MOV     R2,#0x0
+   \   00030D   7BA9         MOV     R3,#-0x57
+   \   00030F   12....       LCALL   ??DALI_Send?relay
+   \   000312   7402         MOV     A,#0x2
+   \   000314   12....       LCALL   ?DEALLOC_XSTACK8
+    736           }while(dali_answer_state != ANSWER_NOTHING_RECEIVED);
+   \   000317   90....       MOV     DPTR,#dali_answer_state
+   \   00031A   E0           MOVX    A,@DPTR
+   \   00031B   6401         XRL     A,#0x1
+   \   00031D   6003         JZ      $+5
+   \   00031F   02....       LJMP    ??DALI_Addressing_1 & 0xFFFF
+    737          }
+   \   000322   7405         MOV     A,#0x5
+   \   000324   12....       LCALL   ?DEALLOC_XSTACK8
+   \   000327   7F08         MOV     R7,#0x8
+   \   000329   02....       LJMP    ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine8:
+   \   000000   740F         MOV     A,#0xf
+   \   000002   12....       LCALL   ?Subroutine10 & 0xFFFF
+   \                     ??CrossCallReturnLabel_23:
+   \   000005   F0           MOVX    @DPTR,A
+   \   000006   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine7:
+   \   000000   12....       LCALL   ?Subroutine10 & 0xFFFF
+   \                     ??CrossCallReturnLabel_21:
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine10:
+   \   000000   F0           MOVX    @DPTR,A
+   \   000001   85..82       MOV     DPL,?XSP + 0
+   \   000004   85..83       MOV     DPH,?XSP + 1
+   \   000007   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine6:
+   \   000000   25..         ADD     A,?V0 + 4
+   \   000002   F8           MOV     R0,A
+   \   000003   EF           MOV     A,R7
+   \   000004   35..         ADDC    A,?V0 + 5
+   \   000006   F9           MOV     R1,A
+   \   000007   7401         MOV     A,#0x1
+   \   000009   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine4:
+   \   000000   7C..         MOV     R4,#dali_answer & 0xff
+   \   000002   7D..         MOV     R5,#(dali_answer >> 8) & 0xff
+   \   000004   90....       MOV     DPTR,#dali_cmd
+   \   000007   E0           MOVX    A,@DPTR
+   \   000008   FA           MOV     R2,A
+   \   000009   A3           INC     DPTR
+   \   00000A   E0           MOVX    A,@DPTR
+   \   00000B   FB           MOV     R3,A
+   \   00000C   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine2:
+   \   000000   12....       LCALL   ?Subroutine10 & 0xFFFF
+   \                     ??CrossCallReturnLabel_22:
+   \   000003                REQUIRE ??Subroutine12_0
+   \   000003                ; // Fall through to label ??Subroutine12_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine12_0:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   F5..         MOV     ?V0 + 4,A
+   \   000003   8E..         MOV     ?V0 + 5,R6
+   \   000005   7404         MOV     A,#0x4
+   \   000007   78..         MOV     R0,#?V0 + 4
+   \   000009   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000   12....       LCALL   ?Subroutine9 & 0xFFFF
+   \                     ??CrossCallReturnLabel_20:
+   \   000003   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine9:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   FA           MOV     R2,A
+   \   000002   E8           MOV     A,R0
+   \   000003   2A           ADD     A,R2
+   \   000004   F8           MOV     R0,A
+   \   000005   E9           MOV     A,R1
+   \   000006   3400         ADDC    A,#0x0
+   \   000008   F9           MOV     R1,A
+   \   000009   90....       MOV     DPTR,#dali_cmd
+   \   00000C   E8           MOV     A,R0
+   \   00000D   F0           MOVX    @DPTR,A
+   \   00000E   A3           INC     DPTR
+   \   00000F   E9           MOV     A,R1
+   \   000010   F0           MOVX    @DPTR,A
+   \   000011   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   12....       LCALL   ?Subroutine9 & 0xFFFF
+   \                     ??CrossCallReturnLabel_19:
+   \   000003                ; Setup parameters for call to function DALI_Send
+   \   000003                ; Setup parameters for call to function DALI_Send
+   \   000003   75....       MOV     ?V0 + 4,#dali_answer_state & 0xff
+   \   000006   75....       MOV     ?V0 + 5,#(dali_answer_state >> 8) & 0xff
+   \   000009   78..         MOV     R0,#?V0 + 4
+   \   00000B   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine5:
+   \   000000   F5..         MOV     ?V0 + 10,A
+   \   000002   E9           MOV     A,R1
+   \   000003   34FE         ADDC    A,#-0x2
+   \   000005   F5..         MOV     ?V0 + 11,A
+   \   000007   C3           CLR     C
+   \   000008   E5..         MOV     A,?V0 + 10
+   \   00000A   22           RET
+
+   \                                 In  segment INTVEC, offset 0x5b, root
+   \                     `??Timer3Isr??INTVEC 91`:
+   \   00005B   02....       LJMP       (Timer3Isr)
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??DALI_CheckLogicalError?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    DALI_CheckLogicalError
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??DALI_CheckTimingError?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    DALI_CheckTimingError
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??DALI_Send?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    DALI_Send
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??DALI_Init?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    DALI_Init
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??DALI_Addressing?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    DALI_Addressing
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant {15, 15}>`:
+   \   000000   0F           DB 15
+   \   000001   0F           DB 15
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant {177, 179, 181}>`:
+   \   000000   B1           DB 177
+   \   000001   B3           DB 179
+   \   000002   B5           DB 181
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_1:
+   \   000000   01000000     DD 1
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_12:
+   \   000000   12000000     DD 18
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_10:
+   \   000000   10000000     DD 16
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_3:
+   \   000000   03000000     DD 3
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_2:
+   \   000000   02000000     DD 2
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_80000000:
+   \   000000   00000080     DD 2147483648
+    738           
+    739          
+    740          
+    741          /* EOF */
+
+   Maximum stack usage in bytes:
+
+   ISTACK PSTACK XSTACK Function
+   ------ ------ ------ --------
+       2      0     23  DALI_Addressing
+                          0 0 23 -> DALI_Send
+                          0 0 21 -> Onboard_wait
+       0      0     44  DALI_CheckLogicalError
+       0      0     31  DALI_CheckTimingError
+       0      0      9  DALI_Init
+       1      0     43  DALI_Send
+                          0 0 20 -> DALI_CheckLogicalError
+                          0 0 20 -> DALI_CheckTimingError
+       1      0     17  Timer3Isr
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       2  ?<Constant {15, 15}>
+       3  ?<Constant {177, 179, 181}>
+       6  ??DALI_Addressing?relay
+       6  ??DALI_CheckLogicalError?relay
+       6  ??DALI_CheckTimingError?relay
+       6  ??DALI_Init?relay
+       6  ??DALI_Send?relay
+      10  ??Subroutine12_0
+       5  ??Subroutine13_0
+       3  ??Timer3Isr??INTVEC 91
+      12  ?Subroutine0
+       4  ?Subroutine1
+       8  ?Subroutine10
+       4  ?Subroutine11
+       3  ?Subroutine2
+      14  ?Subroutine3
+      13  ?Subroutine4
+      11  ?Subroutine5
+      10  ?Subroutine6
+       5  ?Subroutine7
+       7  ?Subroutine8
+      18  ?Subroutine9
+       1  BackwardFrame
+       1  BackwardFrameAnswer
+     812  DALI_Addressing
+     391  DALI_CheckLogicalError
+     173  DALI_CheckTimingError
+      78  DALI_Init
+     434  DALI_Send
+       2  ForwardFrame
+       1  P0DIR
+       1  P1SEL
+       1  P2SEL
+       1  PERCFG
+       1  T3CC0
+       1  T3CC1
+       1  T3CCTL0
+       1  T3CCTL1
+       1  T3CTL
+       1  TEcnt
+     515  Timer3Isr
+       1  _A_IEN1
+       1  _A_IRCON
+       1  _A_P0
+       1  _A_P1
+       1  _A_TIMIF
+       4  __Constant_1
+       4  __Constant_10
+       4  __Constant_12
+       4  __Constant_2
+       4  __Constant_3
+       4  __Constant_80000000
+       1  bitcount
+      73  capturedFrame
+       4  daliForwardFrame
+       1  earlyAnswer
+       1  masterState
+       1  waitForAnswer
+
+ 
+ 2 003 bytes in segment BANKED_CODE
+    30 bytes in segment BANK_RELAYS
+     3 bytes in segment INTVEC
+   524 bytes in segment NEAR_CODE
+    14 bytes in segment SFR_AN
+    29 bytes in segment XDATA_ROM_C
+    86 bytes in segment XDATA_Z
+ 
+ 2 557 bytes of CODE  memory (+  3 bytes shared)
+     5 bytes of CONST memory (+ 24 bytes shared)
+     0 bytes of DATA  memory (+ 14 bytes shared)
+    86 bytes of XDATA memory
+
+Errors: none
+Warnings: none

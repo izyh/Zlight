@@ -1,0 +1,1510 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.20.2.41139 for 8051             27/May/2014  19:14:30 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\Source\Light\z #
+#                          ll_samplelight_data.c                              #
+#    Command line       =  -f "D:\Texas Instruments\Z-Stack Lighting          #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wRouter.cfg" (-DCPU32MHZ        #
+#                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TRU #
+#                          E -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8       #
+#                          -DMAC_CFG_RX_MAX=5 -DRTR_NWK) -f "D:\Texas         #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wConfig.cfg" (-DZIGBEEPRO       #
+#                          -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR       #
+#                          -DDEFAULT_CHANLIST=0x00000800                      #
+#                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                       #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MA #
+#                          SK=0x007F -DBEACON_REQUEST_DELAY=100               #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                     #
+#                          -DLINK_STATUS_JITTER_MASK=0x007F                   #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_PO #
+#                          LLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7             #
+#                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3    #
+#                          -DNWK_MAX_DATA_RETRIES=2                           #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9         #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40           #
+#                          -DNWK_MAX_BINDING_ENTRIES=4                        #
+#                          -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01,  #
+#                          0x03, 0x05, 0x07, 0x09, 0x0B, 0x0D, 0x0F, 0x00,    #
+#                          0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0D}"         #
+#                          -DMAC_MAX_FRAME_SIZE=116                           #
+#                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const     #
+#                          __code" -DGENERIC=__generic                        #
+#                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000        #
+#                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100    #
+#                          -DREJOIN_POLL_RATE=440) -f "D:\Texas               #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wZCL.cfg" "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\Source\Light\z #
+#                          ll_samplelight_data.c" -D FEATURE_GREEN_POWER -D   #
+#                          SECURE=1 -D TC_LINKKEY_JOIN -D                     #
+#                          ZDSECMGR_TC_DEVICE_MAX=2 -D NV_RESTORE -D          #
+#                          HOLD_AUTO_START -D INTER_PAN -D                    #
+#                          LCD_SUPPORTED=DEBUG -D ZCL_BASIC -D ZCL_READ -D    #
+#                          ZCL_WRITE -D ZCL_IDENTIFY -D ZCL_ON_OFF -D         #
+#                          ZCL_SCENES -D ZCL_GROUPS -D                        #
+#                          ZCL_LIGHT_LINK_ENHANCE -D ZCL_LEVEL_CTRL -D        #
+#                          ZCL_COLOR_CTRL -D MAX_CHANNELS_24GHZ=0x02108800    #
+#                          -D xPWM_ALT2 -D xTHERMAL_SHUTDOWN -D               #
+#                          ZLL_1_0_HUB_COMPATIBILITY -D DALI_LIGHT -lC        #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\List\" -lA "D:\Texas Instruments\Z-Stack  #
+#                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC253 #
+#                          x\Zlight - Router\List\" --diag_suppress           #
+#                          Pe001,Pa010 -o "D:\Texas Instruments\Z-Stack       #
+#                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC253 #
+#                          x\Zlight - Router\Obj\" -e --debug --core=plain    #
+#                          --dptr=16,1 --data_model=large                     #
+#                          --code_model=banked --calling_convention=xdata_ree #
+#                          ntrant --place_constants=data_rom                  #
+#                          --nr_virtual_regs 16 -I "D:\Texas                  #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\" -I    #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\Sour #
+#                          ce\" -I "D:\Texas Instruments\Z-Stack Lighting     #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\S #
+#                          ource\" -I "D:\Texas Instruments\Z-Stack Lighting  #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\HomeAutomation\Source\" -I "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\HomeAutomation\SampleLight\Source\" -I           #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\ZMain\TI2530DB\" -I "D:\Texas                    #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\hal\include\" -I "D:\Texas      #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\hal\target\CC2530PMP4712\" -I   #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\include\" -I "D:\Texas      #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\high_level\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\low_level\srf04\" -I        #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\low_level\srf04\single_chip #
+#                          \" -I "D:\Texas Instruments\Z-Stack Lighting       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mt\" -I "D:\Texas               #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\osal\include\" -I "D:\Texas     #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\services\saddr\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\services\sdata\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\af\" -I "D:\Texas         #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\nwk\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sapi\" -I "D:\Texas       #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sec\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sys\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\zcl\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\zdo\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\zmac\" -I "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\zmac\f8w\" -Ohz                 #
+#                          --require_prototypes                               #
+#    List file          =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\List\zll_samplelight_data.lst             #
+#    Object file        =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\Obj\zll_samplelight_data.r51              #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\Texas Instruments\Z-Stack Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\Source\Light\zll_samplelight_data.c
+      1          /**************************************************************************************************
+      2            Filename:       zll_samplelight_data.c
+      3            Revised:        $Date: 2013-12-12 08:31:21 -0800 (Thu, 12 Dec 2013) $
+      4            Revision:       $Revision: 36570 $
+      5          
+      6          
+      7            Description:    Zigbee Cluster Library - Light Link (ZLL) Light Sample
+      8                            Application.
+      9          
+     10          
+     11            Copyright 2010-2013 Texas Instruments Incorporated. All rights reserved.
+     12          
+     13            IMPORTANT: Your use of this Software is limited to those specific rights
+     14            granted under the terms of a software license agreement between the user
+     15            who downloaded the software, his/her employer (which must be your employer)
+     16            and Texas Instruments Incorporated (the "License").  You may not use this
+     17            Software unless you agree to abide by the terms of the License. The License
+     18            limits your use, and you acknowledge, that the Software may not be modified,
+     19            copied or distributed unless embedded on a Texas Instruments microcontroller
+     20            or used solely and exclusively in conjunction with a Texas Instruments radio
+     21            frequency transceiver, which is integrated into your product.  Other than for
+     22            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     23            works of, modify, distribute, perform, display or sell this Software and/or
+     24            its documentation for any purpose.
+     25          
+     26            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     27            PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     28            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     29            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     30            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     31            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     32            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     33            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     34            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     35            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     36            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     37          
+     38            Should you have any questions regarding your right to use this Software,
+     39            contact Texas Instruments Incorporated at www.TI.com.
+     40          **************************************************************************************************/
+     41          
+     42          /*********************************************************************
+     43           * INCLUDES
+     44           */
+     45          #include "zcl_general.h"
+     46          #include "zcl_ha.h"
+     47          #include "zcl_ll.h"
+     48          
+     49          #include "zll_samplelight.h"
+     50          
+     51          /*********************************************************************
+     52           * CONSTANTS
+     53           */
+     54          
+     55          #define SAMPLELIGHT_DEVICE_VERSION     1
+     56          #define SAMPLELIGHT_FLAGS              0
+     57          
+     58          #define SAMPLELIGHT_ZCL_VERSION        1
+     59          #define SAMPLELIGHT_HW_VERSION         1
+     60          
+     61          /*********************************************************************
+     62           * TYPEDEFS
+     63           */
+     64          
+     65          /*********************************************************************
+     66           * MACROS
+     67           */
+     68          
+     69          /*********************************************************************
+     70           * GLOBAL VARIABLES
+     71           */
+     72          
+     73          // Basic Cluster
+
+   \                                 In  segment XDATA_ROM_C, align 1
+     74          const uint8 zllSampleLight_ZCLVersion = SAMPLELIGHT_ZCL_VERSION;
+   \                     zllSampleLight_ZCLVersion:
+   \   000000   01           DB 1
+
+   \                                 In  segment XDATA_ROM_C, align 1
+     75          const uint8 zllSampleLight_HWVersion = SAMPLELIGHT_HW_VERSION;
+   \                     zllSampleLight_HWVersion:
+   \   000000   01           DB 1
+
+   \                                 In  segment XDATA_ROM_C, align 1
+     76          const uint8 zllSampleLight_ManufacturerName[] = { 16, 'T','e','x','a','s','I','n','s','t','r','u','m','e','n','t','s' };
+   \                     zllSampleLight_ManufacturerName:
+   \   000000   10           DB 16
+   \   000001   54           DB 84
+   \   000002   65           DB 101
+   \   000003   78           DB 120
+   \   000004   61           DB 97
+   \   000005   73           DB 115
+   \   000006   49           DB 73
+   \   000007   6E           DB 110
+   \   000008   73           DB 115
+   \   000009   74           DB 116
+   \   00000A   72           DB 114
+   \   00000B   75           DB 117
+   \   00000C   6D           DB 109
+   \   00000D   65           DB 101
+   \   00000E   6E           DB 110
+   \   00000F   74           DB 116
+   \   000010   73           DB 115
+
+   \                                 In  segment XDATA_ROM_C, align 1
+     77          const uint8 zllSampleLight_ModelId[] = { 14, 'T','I',' ','S','a','m','p','l','e','L','i','g','h','t' };
+   \                     zllSampleLight_ModelId:
+   \   000000   0E           DB 14
+   \   000001   54           DB 84
+   \   000002   49           DB 73
+   \   000003   20           DB 32
+   \   000004   53           DB 83
+   \   000005   61           DB 97
+   \   000006   6D           DB 109
+   \   000007   70           DB 112
+   \   000008   6C           DB 108
+   \   000009   65           DB 101
+   \   00000A   4C           DB 76
+   \   00000B   69           DB 105
+   \   00000C   67           DB 103
+   \   00000D   68           DB 104
+   \   00000E   74           DB 116
+
+   \                                 In  segment XDATA_ROM_C, align 1
+     78          const uint8 zllSampleLight_DateCode[] = { 8, '2','0','1','3','1','2','0','6' };
+   \                     zllSampleLight_DateCode:
+   \   000000   08           DB 8
+   \   000001   32           DB 50
+   \   000002   30           DB 48
+   \   000003   31           DB 49
+   \   000004   33           DB 51
+   \   000005   31           DB 49
+   \   000006   32           DB 50
+   \   000007   30           DB 48
+   \   000008   36           DB 54
+
+   \                                 In  segment XDATA_ROM_C, align 1
+     79          const uint8 zllSampleLight_PowerSource = POWER_SOURCE_MAINS_1_PHASE;
+   \                     zllSampleLight_PowerSource:
+   \   000000   01           DB 1
+
+   \                                 In  segment XDATA_ROM_C, align 1
+     80          const uint8 zllSampleLight_SWBuildID[] = { 5, '1','.','0','.','2' };
+   \                     zllSampleLight_SWBuildID:
+   \   000000   05           DB 5
+   \   000001   31           DB 49
+   \   000002   2E           DB 46
+   \   000003   30           DB 48
+   \   000004   2E           DB 46
+   \   000005   32           DB 50
+
+   \                                 In  segment XDATA_ROM_C, align 1
+     81          const uint8 zllSampleLight_AppVersion = 1;
+   \                     zllSampleLight_AppVersion:
+   \   000000   01           DB 1
+
+   \                                 In  segment XDATA_ROM_C, align 1
+     82          const uint8 zllSampleLight_StackVersion = 2;
+   \                     zllSampleLight_StackVersion:
+   \   000000   02           DB 2
+     83          
+     84          // Identify Cluster
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+     85          uint16 zllSampleLight_IdentifyTime = 0;
+   \                     zllSampleLight_IdentifyTime:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+     86          
+     87          // On/Off Cluster
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+     88          uint8  zllSampleLight_OnOff = LIGHT_OFF;
+   \                     zllSampleLight_OnOff:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+     89          uint8  zllSampleLight_GlobalSceneCtrl = TRUE;
+   \                     zllSampleLight_GlobalSceneCtrl:
+   \   000000                DS 1
+   \   000001                REQUIRE `?<Initializer for zllSampleLight_GlobalSceneCt`
+   \   000001                REQUIRE __INIT_XDATA_I
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+     90          uint16 zllSampleLight_OnTime = 0x0000;
+   \                     zllSampleLight_OnTime:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+     91          uint16 zllSampleLight_OffWaitTime = 0x0000;
+   \                     zllSampleLight_OffWaitTime:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+     92          zclGeneral_Scene_t zllSampleLight_GlobalScene =
+   \                     zllSampleLight_GlobalScene:
+   \   000000                DS 55
+   \   000037                REQUIRE `?<Initializer for zllSampleLight_GlobalScene>`
+   \   000037                REQUIRE __INIT_XDATA_I
+     93          {
+     94            0,                                     // The group ID for which this scene applies
+     95            0,                                     // Scene ID
+     96            0,                                     // Time to take to transition to this scene
+     97            0,                                     // Together with transTime, this allows transition time to be specified in 1/10s
+     98            "GlobalScene",                         // Scene name
+     99            ZCL_GEN_SCENE_EXT_LEN,                 // Length of extension fields
+    100            0,                                     // Extension fields
+    101          };
+    102          
+    103          // Level control Cluster (server) -----------------------------------------------------
+    104          #ifdef ZCL_LEVEL_CTRL
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+    105          uint8 zclLevel_CurrentLevel = 0xFE;
+   \                     zclLevel_CurrentLevel:
+   \   000000                DS 1
+   \   000001                REQUIRE `?<Initializer for zclLevel_CurrentLevel>`
+   \   000001                REQUIRE __INIT_XDATA_I
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    106          uint16 zclLevel_LevelRemainingTime = 0;
+   \                     zclLevel_LevelRemainingTime:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+    107          #endif //ZCL_LEVEL_CTRL
+    108          
+    109          // Scene Cluster (server) -----------------------------------------------------
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    110          uint8 zllSampleLight_CurrentScene = 0x0;
+   \                     zllSampleLight_CurrentScene:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    111          uint16 zllSampleLight_CurrentGroup = 0x0;
+   \                     zllSampleLight_CurrentGroup:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    112          uint8 zllSampleLight_SceneValid = 0x0;
+   \                     zllSampleLight_SceneValid:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    113          const uint8 zllSampleLight_SceneNameSupport = 0;
+   \                     zllSampleLight_SceneNameSupport:
+   \   000000   00           DB 0
+    114          
+    115          // Group Cluster (server) -----------------------------------------------------
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    116          const uint8 zllSampleLight_GroupNameSupport = 0;
+   \                     zllSampleLight_GroupNameSupport:
+   \   000000   00           DB 0
+    117          
+    118          // Color control Cluster (server) -----------------------------------------------------
+    119          #ifdef ZCL_COLOR_CTRL
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+    120          uint16 zclColor_CurrentX = 0x616b;
+   \                     zclColor_CurrentX:
+   \   000000                DS 2
+   \   000002                REQUIRE `?<Initializer for zclColor_CurrentX>`
+   \   000002                REQUIRE __INIT_XDATA_I
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+    121          uint16 zclColor_CurrentY = 0x607d;
+   \                     zclColor_CurrentY:
+   \   000000                DS 2
+   \   000002                REQUIRE `?<Initializer for zclColor_CurrentY>`
+   \   000002                REQUIRE __INIT_XDATA_I
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    122          uint16 zclColor_EnhancedCurrentHue = 0;
+   \                     zclColor_EnhancedCurrentHue:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    123          uint8  zclColor_CurrentHue = 0;
+   \                     zclColor_CurrentHue:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    124          uint8  zclColor_CurrentSaturation = 0x0;
+   \                     zclColor_CurrentSaturation:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+    125          
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+    126          uint8  zclColor_ColorMode = COLOR_MODE_CURRENT_X_Y;
+   \                     zclColor_ColorMode:
+   \   000000                DS 1
+   \   000001                REQUIRE `?<Initializer for zclColor_ColorMode>`
+   \   000001                REQUIRE __INIT_XDATA_I
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    127          uint8  zclColor_EnhancedColorMode = ENHANCED_COLOR_MODE_CURRENT_HUE_SATURATION;
+   \                     zclColor_EnhancedColorMode:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    128          uint16 zclColor_ColorRemainingTime = 0;
+   \                     zclColor_ColorRemainingTime:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    129          uint8  zclColor_ColorLoopActive = 0;
+   \                     zclColor_ColorLoopActive:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    130          uint8  zclColor_ColorLoopDirection = 0;
+   \                     zclColor_ColorLoopDirection:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+    131          uint16 zclColor_ColorLoopTime = 0x0019;
+   \                     zclColor_ColorLoopTime:
+   \   000000                DS 2
+   \   000002                REQUIRE `?<Initializer for zclColor_ColorLoopTime>`
+   \   000002                REQUIRE __INIT_XDATA_I
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+    132          uint16 zclColor_ColorLoopStartEnhancedHue = 0x2300;
+   \                     zclColor_ColorLoopStartEnhancedHue:
+   \   000000                DS 2
+   \   000002                REQUIRE `?<Initializer for zclColor_ColorLoopStartEnhan`
+   \   000002                REQUIRE __INIT_XDATA_I
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    133          uint16 zclColor_ColorLoopStoredEnhancedHue = 0;
+   \                     zclColor_ColorLoopStoredEnhancedHue:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+    134          uint16 zclColor_ColorCapabilities = ( COLOR_CAPABILITIES_ATTR_BIT_HUE_SATURATION |
+   \                     zclColor_ColorCapabilities:
+   \   000000                DS 2
+   \   000002                REQUIRE `?<Initializer for zclColor_ColorCapabilities>`
+   \   000002                REQUIRE __INIT_XDATA_I
+    135                                                COLOR_CAPABILITIES_ATTR_BIT_ENHANCED_HUE |
+    136                                                COLOR_CAPABILITIES_ATTR_BIT_COLOR_LOOP |
+    137                                                COLOR_CAPABILITIES_ATTR_BIT_X_Y_ATTRIBUTES );
+    138          #ifdef ZLL_HW_LED_LAMP
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    139          const uint8  zclColor_NumOfPrimaries = 3;
+   \                     zclColor_NumOfPrimaries:
+   \   000000   03           DB 3
+    140          //RED: LR W5AP, 625nm
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    141          const uint16 zclColor_Primary1X = 0xB35B;
+   \                     zclColor_Primary1X:
+   \   000000   5BB3         DW 45915
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    142          const uint16 zclColor_Primary1Y = 0x4C9F;
+   \                     zclColor_Primary1Y:
+   \   000000   9F4C         DW 19615
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    143          const uint8 zclColor_Primary1Intensity = 0x9F;
+   \                     zclColor_Primary1Intensity:
+   \   000000   9F           DB 159
+    144          //GREEN: LT W5AP, 528nm
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    145          const uint16 zclColor_Primary2X = 0x2382;
+   \                     zclColor_Primary2X:
+   \   000000   8223         DW 9090
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    146          const uint16 zclColor_Primary2Y = 0xD095;
+   \                     zclColor_Primary2Y:
+   \   000000   95D0         DW 53397
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    147          const uint8 zclColor_Primary2Intensity = 0xF0;
+   \                     zclColor_Primary2Intensity:
+   \   000000   F0           DB 240
+    148          //BLUE: LD W5AP, 455nm
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    149          const uint16 zclColor_Primary3X = 0x26A7;
+   \                     zclColor_Primary3X:
+   \   000000   A726         DW 9895
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    150          const uint16 zclColor_Primary3Y = 0x05D2;
+   \                     zclColor_Primary3Y:
+   \   000000   D205         DW 1490
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    151          const uint8 zclColor_Primary3Intensity = 0xFE;
+   \                     zclColor_Primary3Intensity:
+   \   000000   FE           DB 254
+    152          #else
+    153          const uint8  zclColor_NumOfPrimaries = 0;
+    154          #endif //ZLL_HW_LED_LAMP
+    155          #endif //ZCL_COLOR_CTRL
+    156          
+    157          /*********************************************************************
+    158           * ATTRIBUTE DEFINITIONS - Uses REAL cluster IDs
+    159           */
+
+   \                                 In  segment CODE_C, align 1
+    160          CONST zclAttrRec_t zllSampleLight_Attrs[SAMPLELIGHT_NUM_ATTRIBUTES] =
+   \                     zllSampleLight_Attrs:
+   \   000000   0000         DW 0
+   \   000002   0000         DW 0
+   \   000004   20           DB 32
+   \   000005   01           DB 1
+   \   000006   ....         DW zllSampleLight_ZCLVersion
+   \   000008   0000         DW 0
+   \   00000A   0100         DW 1
+   \   00000C   20           DB 32
+   \   00000D   01           DB 1
+   \   00000E   ....         DW zllSampleLight_AppVersion
+   \   000010   0000         DW 0
+   \   000012   0200         DW 2
+   \   000014   20           DB 32
+   \   000015   01           DB 1
+   \   000016   ....         DW zllSampleLight_StackVersion
+   \   000018   0000         DW 0
+   \   00001A   0040         DW 16384
+   \   00001C   42           DB 66
+   \   00001D   01           DB 1
+   \   00001E   ....         DW zllSampleLight_SWBuildID
+   \   000020   0000         DW 0
+   \   000022   0300         DW 3
+   \   000024   20           DB 32
+   \   000025   01           DB 1
+   \   000026   ....         DW zllSampleLight_HWVersion
+   \   000028   0000         DW 0
+   \   00002A   0400         DW 4
+   \   00002C   42           DB 66
+   \   00002D   01           DB 1
+   \   00002E   ....         DW zllSampleLight_ManufacturerName
+   \   000030   0000         DW 0
+   \   000032   0500         DW 5
+   \   000034   42           DB 66
+   \   000035   01           DB 1
+   \   000036   ....         DW zllSampleLight_ModelId
+   \   000038   0000         DW 0
+   \   00003A   0600         DW 6
+   \   00003C   42           DB 66
+   \   00003D   01           DB 1
+   \   00003E   ....         DW zllSampleLight_DateCode
+   \   000040   0000         DW 0
+   \   000042   0700         DW 7
+   \   000044   30           DB 48
+   \   000045   01           DB 1
+   \   000046   ....         DW zllSampleLight_PowerSource
+   \   000048   0300         DW 3
+   \   00004A   0000         DW 0
+   \   00004C   21           DB 33
+   \   00004D   03           DB 3
+   \   00004E   0000         DW 0H
+   \   000050   0500         DW 5
+   \   000052   0000         DW 0
+   \   000054   20           DB 32
+   \   000055   01           DB 1
+   \   000056   0000         DW 0H
+   \   000058   0500         DW 5
+   \   00005A   0100         DW 1
+   \   00005C   20           DB 32
+   \   00005D   01           DB 1
+   \   00005E   ....         DW zllSampleLight_CurrentScene
+   \   000060   0500         DW 5
+   \   000062   0200         DW 2
+   \   000064   21           DB 33
+   \   000065   01           DB 1
+   \   000066   ....         DW zllSampleLight_CurrentGroup
+   \   000068   0500         DW 5
+   \   00006A   0300         DW 3
+   \   00006C   10           DB 16
+   \   00006D   01           DB 1
+   \   00006E   ....         DW zllSampleLight_SceneValid
+   \   000070   0500         DW 5
+   \   000072   0400         DW 4
+   \   000074   18           DB 24
+   \   000075   01           DB 1
+   \   000076   ....         DW zllSampleLight_SceneNameSupport
+   \   000078   0400         DW 4
+   \   00007A   0000         DW 0
+   \   00007C   18           DB 24
+   \   00007D   01           DB 1
+   \   00007E   ....         DW zllSampleLight_GroupNameSupport
+   \   000080   0600         DW 6
+   \   000082   0000         DW 0
+   \   000084   10           DB 16
+   \   000085   01           DB 1
+   \   000086   ....         DW zllSampleLight_OnOff
+   \   000088   0600         DW 6
+   \   00008A   0040         DW 16384
+   \   00008C   10           DB 16
+   \   00008D   01           DB 1
+   \   00008E   ....         DW zllSampleLight_GlobalSceneCtrl
+   \   000090   0600         DW 6
+   \   000092   0140         DW 16385
+   \   000094   21           DB 33
+   \   000095   03           DB 3
+   \   000096   ....         DW zllSampleLight_OnTime
+   \   000098   0600         DW 6
+   \   00009A   0240         DW 16386
+   \   00009C   21           DB 33
+   \   00009D   03           DB 3
+   \   00009E   ....         DW zllSampleLight_OffWaitTime
+   \   0000A0   0800         DW 8
+   \   0000A2   0000         DW 0
+   \   0000A4   20           DB 32
+   \   0000A5   03           DB 3
+   \   0000A6   ....         DW zclLevel_CurrentLevel
+   \   0000A8   0800         DW 8
+   \   0000AA   0100         DW 1
+   \   0000AC   21           DB 33
+   \   0000AD   01           DB 1
+   \   0000AE   ....         DW zclLevel_LevelRemainingTime
+   \   0000B0   0003         DW 768
+   \   0000B2   0100         DW 1
+   \   0000B4   20           DB 32
+   \   0000B5   01           DB 1
+   \   0000B6   ....         DW zclColor_CurrentSaturation
+   \   0000B8   0003         DW 768
+   \   0000BA   0000         DW 0
+   \   0000BC   20           DB 32
+   \   0000BD   01           DB 1
+   \   0000BE   ....         DW zclColor_CurrentHue
+   \   0000C0   0003         DW 768
+   \   0000C2   0200         DW 2
+   \   0000C4   21           DB 33
+   \   0000C5   01           DB 1
+   \   0000C6   ....         DW zclColor_ColorRemainingTime
+   \   0000C8   0003         DW 768
+   \   0000CA   0300         DW 3
+   \   0000CC   21           DB 33
+   \   0000CD   01           DB 1
+   \   0000CE   ....         DW zclColor_CurrentX
+   \   0000D0   0003         DW 768
+   \   0000D2   0400         DW 4
+   \   0000D4   21           DB 33
+   \   0000D5   01           DB 1
+   \   0000D6   ....         DW zclColor_CurrentY
+   \   0000D8   0003         DW 768
+   \   0000DA   0800         DW 8
+   \   0000DC   30           DB 48
+   \   0000DD   01           DB 1
+   \   0000DE   ....         DW zclColor_ColorMode
+   \   0000E0   0003         DW 768
+   \   0000E2   1000         DW 16
+   \   0000E4   20           DB 32
+   \   0000E5   01           DB 1
+   \   0000E6   ....         DW zclColor_NumOfPrimaries
+   \   0000E8   0003         DW 768
+   \   0000EA   0140         DW 16385
+   \   0000EC   30           DB 48
+   \   0000ED   01           DB 1
+   \   0000EE   ....         DW zclColor_EnhancedColorMode
+   \   0000F0   0003         DW 768
+   \   0000F2   0040         DW 16384
+   \   0000F4   21           DB 33
+   \   0000F5   01           DB 1
+   \   0000F6   ....         DW zclColor_EnhancedCurrentHue
+   \   0000F8   0003         DW 768
+   \   0000FA   0240         DW 16386
+   \   0000FC   20           DB 32
+   \   0000FD   01           DB 1
+   \   0000FE   ....         DW zclColor_ColorLoopActive
+   \   000100   0003         DW 768
+   \   000102   0340         DW 16387
+   \   000104   20           DB 32
+   \   000105   01           DB 1
+   \   000106   ....         DW zclColor_ColorLoopDirection
+   \   000108   0003         DW 768
+   \   00010A   0440         DW 16388
+   \   00010C   21           DB 33
+   \   00010D   01           DB 1
+   \   00010E   ....         DW zclColor_ColorLoopTime
+   \   000110   0003         DW 768
+   \   000112   0540         DW 16389
+   \   000114   21           DB 33
+   \   000115   01           DB 1
+   \   000116   ....         DW zclColor_ColorLoopStartEnhancedHue
+   \   000118   0003         DW 768
+   \   00011A   0640         DW 16390
+   \   00011C   21           DB 33
+   \   00011D   01           DB 1
+   \   00011E   ....         DW zclColor_ColorLoopStoredEnhancedHue
+   \   000120   0003         DW 768
+   \   000122   0A40         DW 16394
+   \   000124   19           DB 25
+   \   000125   01           DB 1
+   \   000126   ....         DW zclColor_ColorCapabilities
+   \   000128   0003         DW 768
+   \   00012A   1100         DW 17
+   \   00012C   21           DB 33
+   \   00012D   01           DB 1
+   \   00012E   ....         DW zclColor_Primary1X
+   \   000130   0003         DW 768
+   \   000132   1200         DW 18
+   \   000134   21           DB 33
+   \   000135   01           DB 1
+   \   000136   ....         DW zclColor_Primary1Y
+   \   000138   0003         DW 768
+   \   00013A   1300         DW 19
+   \   00013C   20           DB 32
+   \   00013D   01           DB 1
+   \   00013E   ....         DW zclColor_Primary1Intensity
+   \   000140   0003         DW 768
+   \   000142   1500         DW 21
+   \   000144   21           DB 33
+   \   000145   01           DB 1
+   \   000146   ....         DW zclColor_Primary2X
+   \   000148   0003         DW 768
+   \   00014A   1600         DW 22
+   \   00014C   21           DB 33
+   \   00014D   01           DB 1
+   \   00014E   ....         DW zclColor_Primary2Y
+   \   000150   0003         DW 768
+   \   000152   1700         DW 23
+   \   000154   20           DB 32
+   \   000155   01           DB 1
+   \   000156   ....         DW zclColor_Primary2Intensity
+   \   000158   0003         DW 768
+   \   00015A   1900         DW 25
+   \   00015C   21           DB 33
+   \   00015D   01           DB 1
+   \   00015E   ....         DW zclColor_Primary3X
+   \   000160   0003         DW 768
+   \   000162   1A00         DW 26
+   \   000164   21           DB 33
+   \   000165   01           DB 1
+   \   000166   ....         DW zclColor_Primary3Y
+   \   000168   0003         DW 768
+   \   00016A   1B00         DW 27
+   \   00016C   20           DB 32
+   \   00016D   01           DB 1
+   \   00016E   ....         DW zclColor_Primary3Intensity
+    161          {
+    162            // *** General Basic Cluster Attributes ***
+    163            {
+    164              ZCL_CLUSTER_ID_GEN_BASIC,
+    165              { // Attribute record
+    166                ATTRID_BASIC_ZCL_VERSION,
+    167                ZCL_DATATYPE_UINT8,
+    168                ACCESS_CONTROL_READ,
+    169                (void *)&zllSampleLight_ZCLVersion
+    170              }
+    171            },
+    172            {
+    173              ZCL_CLUSTER_ID_GEN_BASIC,
+    174              { // Attribute record
+    175                ATTRID_BASIC_APPL_VERSION,
+    176                ZCL_DATATYPE_UINT8,
+    177                ACCESS_CONTROL_READ,
+    178                (void *)&zllSampleLight_AppVersion
+    179              }
+    180            },
+    181            {
+    182              ZCL_CLUSTER_ID_GEN_BASIC,
+    183              { // Attribute record
+    184                ATTRID_BASIC_STACK_VERSION,
+    185                ZCL_DATATYPE_UINT8,
+    186                ACCESS_CONTROL_READ,
+    187                (void *)&zllSampleLight_StackVersion
+    188              }
+    189            },
+    190            {
+    191              ZCL_CLUSTER_ID_GEN_BASIC,
+    192              { // Attribute record
+    193                ATTRID_BASIC_SW_BUILD_ID,
+    194                ZCL_DATATYPE_CHAR_STR,
+    195                ACCESS_CONTROL_READ,
+    196                (void *)zllSampleLight_SWBuildID
+    197              }
+    198            },
+    199            {
+    200              ZCL_CLUSTER_ID_GEN_BASIC,             // Cluster IDs - defined in the foundation (ie. zcl.h)
+    201              {  // Attribute record
+    202                ATTRID_BASIC_HW_VERSION,            // Attribute ID - Found in Cluster Library header (ie. zcl_general.h)
+    203                ZCL_DATATYPE_UINT8,                 // Data Type - found in zcl.h
+    204                ACCESS_CONTROL_READ,                // Variable access control - found in zcl.h
+    205                (void *)&zllSampleLight_HWVersion   // Pointer to attribute variable
+    206              }
+    207            },
+    208            {
+    209              ZCL_CLUSTER_ID_GEN_BASIC,
+    210              { // Attribute record
+    211                ATTRID_BASIC_MANUFACTURER_NAME,
+    212                ZCL_DATATYPE_CHAR_STR,
+    213                ACCESS_CONTROL_READ,
+    214                (void *)zllSampleLight_ManufacturerName
+    215              }
+    216            },
+    217            {
+    218              ZCL_CLUSTER_ID_GEN_BASIC,
+    219              { // Attribute record
+    220                ATTRID_BASIC_MODEL_ID,
+    221                ZCL_DATATYPE_CHAR_STR,
+    222                ACCESS_CONTROL_READ,
+    223                (void *)zllSampleLight_ModelId
+    224              }
+    225            },
+    226            {
+    227              ZCL_CLUSTER_ID_GEN_BASIC,
+    228              { // Attribute record
+    229                ATTRID_BASIC_DATE_CODE,
+    230                ZCL_DATATYPE_CHAR_STR,
+    231                ACCESS_CONTROL_READ,
+    232                (void *)zllSampleLight_DateCode
+    233              }
+    234            },
+    235            {
+    236              ZCL_CLUSTER_ID_GEN_BASIC,
+    237              { // Attribute record
+    238                ATTRID_BASIC_POWER_SOURCE,
+    239                ZCL_DATATYPE_ENUM8,
+    240                ACCESS_CONTROL_READ,
+    241                (void *)&zllSampleLight_PowerSource
+    242              }
+    243            },
+    244          
+    245            // *** Identify Cluster Attribute ***
+    246            {
+    247              ZCL_CLUSTER_ID_GEN_IDENTIFY,
+    248              { // Attribute record
+    249                ATTRID_IDENTIFY_TIME,
+    250                ZCL_DATATYPE_UINT16,
+    251                (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),
+    252                NULL // Use application's callback to Read/Write this attribute
+    253              }
+    254            },
+    255            // *** Scene Cluster Attribute ***
+    256            {
+    257              ZCL_CLUSTER_ID_GEN_SCENES,
+    258              { // Attribute record
+    259                ATTRID_SCENES_COUNT,
+    260                ZCL_DATATYPE_UINT8,
+    261                (ACCESS_CONTROL_READ),
+    262                NULL // Use application's callback to Read this attribute
+    263              }
+    264            },
+    265            {
+    266              ZCL_CLUSTER_ID_GEN_SCENES,
+    267              { // Attribute record
+    268                ATTRID_SCENES_CURRENT_SCENE,
+    269                ZCL_DATATYPE_UINT8,
+    270                (ACCESS_CONTROL_READ),
+    271                (void *)&zllSampleLight_CurrentScene
+    272              }
+    273            },
+    274            {
+    275              ZCL_CLUSTER_ID_GEN_SCENES,
+    276              { // Attribute record
+    277                ATTRID_SCENES_CURRENT_GROUP,
+    278                ZCL_DATATYPE_UINT16,
+    279                (ACCESS_CONTROL_READ),
+    280                (void *)&zllSampleLight_CurrentGroup
+    281              }
+    282            },
+    283            {
+    284              ZCL_CLUSTER_ID_GEN_SCENES,
+    285              { // Attribute record
+    286                ATTRID_SCENES_SCENE_VALID,
+    287                ZCL_DATATYPE_BOOLEAN,
+    288                (ACCESS_CONTROL_READ),
+    289                (void *)&zllSampleLight_SceneValid
+    290              }
+    291            },
+    292            {
+    293              ZCL_CLUSTER_ID_GEN_SCENES,
+    294              { // Attribute record
+    295                ATTRID_SCENES_NAME_SUPPORT,
+    296                ZCL_DATATYPE_BITMAP8,
+    297                (ACCESS_CONTROL_READ),
+    298                (void *)&zllSampleLight_SceneNameSupport
+    299              }
+    300            },
+    301            // *** Groups Cluster Attribute ***
+    302            {
+    303              ZCL_CLUSTER_ID_GEN_GROUPS,
+    304              { // Attribute record
+    305                ATTRID_GROUP_NAME_SUPPORT,
+    306                ZCL_DATATYPE_BITMAP8,
+    307                (ACCESS_CONTROL_READ),
+    308                (void *)&zllSampleLight_GroupNameSupport
+    309              }
+    310            },
+    311          
+    312            // *** On/Off Cluster Attributes ***
+    313            {
+    314              ZCL_CLUSTER_ID_GEN_ON_OFF,
+    315              { // Attribute record
+    316                ATTRID_ON_OFF,
+    317                ZCL_DATATYPE_BOOLEAN,
+    318                ACCESS_CONTROL_READ,
+    319                (void *)&zllSampleLight_OnOff
+    320              }
+    321            },
+    322            {
+    323              ZCL_CLUSTER_ID_GEN_ON_OFF,
+    324              { // Attribute record
+    325                ATTRID_ON_OFF_GLOBAL_SCENE_CTRL,
+    326                ZCL_DATATYPE_BOOLEAN,
+    327                ACCESS_CONTROL_READ,
+    328                (void *)&zllSampleLight_GlobalSceneCtrl
+    329              }
+    330            },
+    331            {
+    332              ZCL_CLUSTER_ID_GEN_ON_OFF,
+    333              { // Attribute record
+    334                ATTRID_ON_OFF_ON_TIME,
+    335                ZCL_DATATYPE_UINT16,
+    336                (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),
+    337                (void *)&zllSampleLight_OnTime
+    338              }
+    339            },
+    340            {
+    341              ZCL_CLUSTER_ID_GEN_ON_OFF,
+    342              { // Attribute record
+    343                ATTRID_ON_OFF_OFF_WAIT_TIME,
+    344                ZCL_DATATYPE_UINT16,
+    345                (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),
+    346                (void *)&zllSampleLight_OffWaitTime
+    347              }
+    348            },
+    349            // *** Level Control Cluster Attribute ***
+    350          #ifdef ZCL_LEVEL_CTRL
+    351            {
+    352              ZCL_CLUSTER_ID_GEN_LEVEL_CONTROL,
+    353              { // Attribute record
+    354                ATTRID_LEVEL_CURRENT_LEVEL,
+    355                ZCL_DATATYPE_UINT8,
+    356                (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),
+    357                (void *)&zclLevel_CurrentLevel
+    358              }
+    359            },
+    360          
+    361            {
+    362              ZCL_CLUSTER_ID_GEN_LEVEL_CONTROL,
+    363              { // Attribute record
+    364                ATTRID_LEVEL_REMAINING_TIME,
+    365                ZCL_DATATYPE_UINT16,
+    366                ACCESS_CONTROL_READ,
+    367                (void *)&zclLevel_LevelRemainingTime
+    368              }
+    369            },
+    370          #endif //ZCL_LEVEL_CTRL
+    371            // *** Color Control Cluster Attributes ***
+    372          #ifdef ZCL_COLOR_CTRL
+    373            {
+    374              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    375              { // Attribute record
+    376                ATTRID_LIGHTING_COLOR_CONTROL_CURRENT_SATURATION,
+    377                ZCL_DATATYPE_UINT8,
+    378                ACCESS_CONTROL_READ,
+    379                (void *)&zclColor_CurrentSaturation
+    380              }
+    381            },
+    382            {
+    383              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    384              { // Attribute record
+    385                ATTRID_LIGHTING_COLOR_CONTROL_CURRENT_HUE,
+    386                ZCL_DATATYPE_UINT8,
+    387                ACCESS_CONTROL_READ,
+    388                (void *)&zclColor_CurrentHue
+    389              }
+    390            },
+    391            {
+    392              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    393              { // Attribute record
+    394                ATTRID_LIGHTING_COLOR_CONTROL_REMAINING_TIME,
+    395                ZCL_DATATYPE_UINT16,
+    396                ACCESS_CONTROL_READ,
+    397                (void *)&zclColor_ColorRemainingTime
+    398              }
+    399            },
+    400            {
+    401              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    402              { // Attribute record
+    403                ATTRID_LIGHTING_COLOR_CONTROL_CURRENT_X,
+    404                ZCL_DATATYPE_UINT16,
+    405                (ACCESS_CONTROL_READ),
+    406                (void *)&zclColor_CurrentX
+    407              }
+    408            },
+    409            {
+    410              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    411              { // Attribute record
+    412                ATTRID_LIGHTING_COLOR_CONTROL_CURRENT_Y,
+    413                ZCL_DATATYPE_UINT16,
+    414                (ACCESS_CONTROL_READ),
+    415                (void *)&zclColor_CurrentY
+    416              }
+    417            },
+    418            {
+    419              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    420              { // Attribute record
+    421                ATTRID_LIGHTING_COLOR_CONTROL_COLOR_MODE,
+    422                ZCL_DATATYPE_ENUM8,
+    423                (ACCESS_CONTROL_READ),
+    424                (void *)&zclColor_ColorMode
+    425              }
+    426            },
+    427            {
+    428              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    429              { // Attribute record
+    430                ATTRID_LIGHTING_COLOR_CONTROL_NUM_PRIMARIES,
+    431                ZCL_DATATYPE_UINT8,
+    432                (ACCESS_CONTROL_READ),
+    433                (void *)&zclColor_NumOfPrimaries
+    434              }
+    435            },
+    436            {
+    437              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    438              { // Attribute record
+    439                ATTRID_LIGHTING_COLOR_CONTROL_ENHANCED_COLOR_MODE,
+    440                ZCL_DATATYPE_ENUM8,
+    441                (ACCESS_CONTROL_READ),
+    442                (void *)&zclColor_EnhancedColorMode
+    443              }
+    444            },
+    445            {
+    446              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    447              { // Attribute record
+    448                ATTRID_LIGHTING_COLOR_CONTROL_ENHANCED_CURRENT_HUE,
+    449                ZCL_DATATYPE_UINT16,
+    450                ACCESS_CONTROL_READ,
+    451                (void *)&zclColor_EnhancedCurrentHue
+    452              }
+    453            },
+    454            {
+    455              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    456              { // Attribute record
+    457                ATTRID_LIGHTING_COLOR_CONTROL_COLOR_LOOP_ACTIVE,
+    458                ZCL_DATATYPE_UINT8,
+    459                ACCESS_CONTROL_READ,
+    460                (void *)&zclColor_ColorLoopActive
+    461              }
+    462            },
+    463            {
+    464              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    465              { // Attribute record
+    466                ATTRID_LIGHTING_COLOR_CONTROL_COLOR_LOOP_DIRECTION,
+    467                ZCL_DATATYPE_UINT8,
+    468                ACCESS_CONTROL_READ,
+    469                (void *)&zclColor_ColorLoopDirection
+    470              }
+    471            },
+    472            {
+    473              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    474              { // Attribute record
+    475                ATTRID_LIGHTING_COLOR_CONTROL_COLOR_LOOP_TIME,
+    476                ZCL_DATATYPE_UINT16,
+    477                ACCESS_CONTROL_READ,
+    478                (void *)&zclColor_ColorLoopTime
+    479              }
+    480            },
+    481            {
+    482              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    483              { // Attribute record
+    484                ATTRID_LIGHTING_COLOR_CONTROL_COLOR_LOOP_START_ENHANCED_HUE,
+    485                ZCL_DATATYPE_UINT16,
+    486                ACCESS_CONTROL_READ,
+    487                (void *)&zclColor_ColorLoopStartEnhancedHue
+    488              }
+    489            },
+    490            {
+    491              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    492              { // Attribute record
+    493                ATTRID_LIGHTING_COLOR_CONTROL_COLOR_LOOP_STORED_ENHANCED_HUE,
+    494                ZCL_DATATYPE_UINT16,
+    495                ACCESS_CONTROL_READ,
+    496                (void *)&zclColor_ColorLoopStoredEnhancedHue
+    497              }
+    498            },
+    499            {
+    500              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    501              { // Attribute record
+    502                ATTRID_LIGHTING_COLOR_CONTROL_COLOR_CAPABILITIES,
+    503                ZCL_DATATYPE_BITMAP16,
+    504                ACCESS_CONTROL_READ,
+    505                (void *)&zclColor_ColorCapabilities
+    506              }
+    507            },
+    508          #ifdef ZLL_HW_LED_LAMP
+    509            {
+    510              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    511              { // Attribute record
+    512                ATTRID_LIGHTING_COLOR_CONTROL_PRIMARY_1_X,
+    513                ZCL_DATATYPE_UINT16,
+    514                ACCESS_CONTROL_READ,
+    515                (void *)&zclColor_Primary1X
+    516              }
+    517            },
+    518            {
+    519              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    520              { // Attribute record
+    521                ATTRID_LIGHTING_COLOR_CONTROL_PRIMARY_1_Y,
+    522                ZCL_DATATYPE_UINT16,
+    523                ACCESS_CONTROL_READ,
+    524                (void *)&zclColor_Primary1Y
+    525              }
+    526            },
+    527            {
+    528              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    529              { // Attribute record
+    530                ATTRID_LIGHTING_COLOR_CONTROL_PRIMARY_1_INTENSITY,
+    531                ZCL_DATATYPE_UINT8,
+    532                ACCESS_CONTROL_READ,
+    533                (void *)&zclColor_Primary1Intensity
+    534              }
+    535            },
+    536            {
+    537              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    538              { // Attribute record
+    539                ATTRID_LIGHTING_COLOR_CONTROL_PRIMARY_2_X,
+    540                ZCL_DATATYPE_UINT16,
+    541                ACCESS_CONTROL_READ,
+    542                (void *)&zclColor_Primary2X
+    543              }
+    544            },
+    545            {
+    546              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    547              { // Attribute record
+    548                ATTRID_LIGHTING_COLOR_CONTROL_PRIMARY_2_Y,
+    549                ZCL_DATATYPE_UINT16,
+    550                ACCESS_CONTROL_READ,
+    551                (void *)&zclColor_Primary2Y
+    552              }
+    553            },
+    554            {
+    555              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    556              { // Attribute record
+    557                ATTRID_LIGHTING_COLOR_CONTROL_PRIMARY_2_INTENSITY,
+    558                ZCL_DATATYPE_UINT8,
+    559                ACCESS_CONTROL_READ,
+    560                (void *)&zclColor_Primary2Intensity
+    561              }
+    562            },
+    563            {
+    564              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    565              { // Attribute record
+    566                ATTRID_LIGHTING_COLOR_CONTROL_PRIMARY_3_X,
+    567                ZCL_DATATYPE_UINT16,
+    568                ACCESS_CONTROL_READ,
+    569                (void *)&zclColor_Primary3X
+    570              }
+    571            },
+    572            {
+    573              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    574              { // Attribute record
+    575                ATTRID_LIGHTING_COLOR_CONTROL_PRIMARY_3_Y,
+    576                ZCL_DATATYPE_UINT16,
+    577                ACCESS_CONTROL_READ,
+    578                (void *)&zclColor_Primary3Y
+    579              }
+    580            },
+    581            {
+    582              ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    583              { // Attribute record
+    584                ATTRID_LIGHTING_COLOR_CONTROL_PRIMARY_3_INTENSITY,
+    585                ZCL_DATATYPE_UINT8,
+    586                ACCESS_CONTROL_READ,
+    587                (void *)&zclColor_Primary3Intensity
+    588              }
+    589            },
+    590          #endif //ZLL_HW_LED_LAMP
+    591          #endif //ZCL_COLOR_CTRL
+    592          };
+    593          
+    594          /*********************************************************************
+    595           * SIMPLE DESCRIPTOR
+    596           */
+    597          // This is the Cluster ID List and should be filled with Application
+    598          // specific cluster IDs.
+    599          
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    600          const cId_t zllSampleLight_InClusterList[] =
+   \                     zllSampleLight_InClusterList:
+   \   000000   0000         DW 0
+   \   000002   0300         DW 3
+   \   000004   0400         DW 4
+   \   000006   0500         DW 5
+   \   000008   0600         DW 6
+   \   00000A   0800         DW 8
+   \   00000C   0003         DW 768
+    601          {
+    602            ZCL_CLUSTER_ID_GEN_BASIC,
+    603            ZCL_CLUSTER_ID_GEN_IDENTIFY,
+    604            ZCL_CLUSTER_ID_GEN_GROUPS,
+    605            ZCL_CLUSTER_ID_GEN_SCENES,
+    606            ZCL_CLUSTER_ID_GEN_ON_OFF,
+    607          #ifdef ZCL_LEVEL_CTRL
+    608            ZCL_CLUSTER_ID_GEN_LEVEL_CONTROL,
+    609          #endif
+    610          #ifdef ZCL_COLOR_CTRL
+    611            ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+    612          #endif
+    613          };
+    614          
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+    615          SimpleDescriptionFormat_t zllSampleLight_SimpleDesc =
+   \                     zllSampleLight_SimpleDesc:
+   \   000000                DS 12
+   \   00000C                REQUIRE `?<Initializer for zllSampleLight_SimpleDesc>`
+   \   00000C                REQUIRE __INIT_XDATA_I
+    616          {
+    617            SAMPLELIGHT_ENDPOINT,                  //  int Endpoint;
+    618            ZCL_HA_PROFILE_ID,                     //  uint16 AppProfId[2];
+    619            HA_DEVICEID,                           //  uint16 AppDeviceId[2];
+    620            ZLL_DEVICE_VERSION,                    //  int   AppDevVer:4;
+    621            SAMPLELIGHT_FLAGS,                     //  int   AppFlags:4;
+    622            ( sizeof(zllSampleLight_InClusterList) / sizeof(cId_t) ),  //  byte  AppNumInClusters;
+    623            (cId_t *)zllSampleLight_InClusterList,                     //  byte *pAppInClusterList;
+    624            0,                                     //  byte  AppNumOutClusters;
+    625            NULL                                   //  byte *pAppOutClusterList;
+    626          };
+    627          
+    628          #ifdef ZLL_1_0_HUB_COMPATIBILITY
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+    629          SimpleDescriptionFormat_t zllSampleLight_SimpleDesc2 =
+   \                     zllSampleLight_SimpleDesc2:
+   \   000000                DS 12
+   \   00000C                REQUIRE `?<Initializer for zllSampleLight_SimpleDesc2>`
+   \   00000C                REQUIRE __INIT_XDATA_I
+    630          {
+    631            SAMPLELIGHT_ENDPOINT2, //  int Endpoint;
+    632            ZCL_HA_PROFILE_ID,     //  uint16 AppProfId[2];
+    633            ZLL_DEVICEID,          //  uint16 AppDeviceId[2];
+    634            ZLL_DEVICE_VERSION,    //  int   AppDevVer:4;
+    635            SAMPLELIGHT_FLAGS,     //  int   AppFlags:4;
+    636            0,                     //  0 AppNumInClusters to evade Match Descriptor Req
+    637            NULL,                  //  byte *pAppInClusterList;
+    638            0,                     //  0 AppNumOutClusters to evade Match Descriptor Req
+    639            NULL                   //  byte *pAppOutClusterList;
+    640          };
+    641          #endif
+    642          
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+    643          zclLLDeviceInfo_t zllSampleLight_DeviceInfo =
+   \                     zllSampleLight_DeviceInfo:
+   \   000000                DS 7
+   \   000007                REQUIRE `?<Initializer for zllSampleLight_DeviceInfo>`
+   \   000007                REQUIRE __INIT_XDATA_I
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for zllSampleLight_GlobalSceneCt`:
+   \   000000   01           DB 1
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for zllSampleLight_GlobalScene>`:
+   \   000000   0000         DW 0
+   \   000002   00           DB 0
+   \   000003   0000         DW 0
+   \   000005   0000         DW 0
+   \   000007   476C6F62     DB "GlobalScene"
+   \            616C5363
+   \            656E6500
+   \   000013   00000000     DB 0, 0, 0, 0
+   \   000017   1F           DB 31
+   \   000018   00           DB 0
+   \   000019   00000000     DB 0, 0, 0, 0, 0, 0, 0, 0
+   \            00000000
+   \   000021   00000000     DB 0, 0, 0, 0, 0, 0, 0, 0
+   \            00000000
+   \   000029   00000000     DB 0, 0, 0, 0, 0, 0, 0, 0
+   \            00000000
+   \   000031   00000000     DB 0, 0, 0, 0, 0, 0
+   \            0000    
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for zclLevel_CurrentLevel>`:
+   \   000000   FE           DB 254
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for zclColor_CurrentX>`:
+   \   000000   6B61         DW 24939
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for zclColor_CurrentY>`:
+   \   000000   7D60         DW 24701
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for zclColor_ColorMode>`:
+   \   000000   01           DB 1
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for zclColor_ColorLoopTime>`:
+   \   000000   1900         DW 25
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for zclColor_ColorLoopStartEnhan`:
+   \   000000   0023         DW 8960
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for zclColor_ColorCapabilities>`:
+   \   000000   0F00         DW 15
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for zllSampleLight_SimpleDesc>`:
+   \   000000   0B           DB 11
+   \   000001   0401         DW 260
+   \   000003   0201         DW 258
+   \   000005   02           DB 2
+   \   000006   07           DB 7
+   \   000007   ....         DW zllSampleLight_InClusterList
+   \   000009   00           DB 0
+   \   00000A   0000         DW 0H
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for zllSampleLight_SimpleDesc2>`:
+   \   000000   0C           DB 12
+   \   000001   0401         DW 260
+   \   000003   0002         DW 512
+   \   000005   02           DB 2
+   \   000006   00           DB 0
+   \   000007   0000         DW 0H
+   \   000009   00           DB 0
+   \   00000A   0000         DW 0H
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for zllSampleLight_DeviceInfo>`:
+   \   000000   0B           DB 11
+   \   000001   5EC0         DW 49246
+   \   000003   0002         DW 512
+   \   000005   02           DB 2
+   \   000006   00           DB 0
+    644          {
+    645            SAMPLELIGHT_ENDPOINT,  //uint8 endpoint;
+    646            ZLL_PROFILE_ID,        //uint16 profileID;
+    647            ZLL_DEVICEID,          //uint16 deviceID;
+    648            ZLL_DEVICE_VERSION,    //uint8 version;
+    649            SAMPLELIGHT_NUM_GRPS   //uint8 grpIdCnt;
+    650          };
+    651          
+    652          /*********************************************************************
+    653           * GLOBAL FUNCTIONS
+    654           */
+    655          
+    656          /*********************************************************************
+    657           * LOCAL FUNCTIONS
+    658           */
+    659          
+    660          /****************************************************************************
+    661          ****************************************************************************/
+    662          
+    663          
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       2  ?<Initializer for zclColor_ColorCapabilities>
+       2  ?<Initializer for zclColor_ColorLoopStartEnhan
+       2  ?<Initializer for zclColor_ColorLoopTime>
+       1  ?<Initializer for zclColor_ColorMode>
+       2  ?<Initializer for zclColor_CurrentX>
+       2  ?<Initializer for zclColor_CurrentY>
+       1  ?<Initializer for zclLevel_CurrentLevel>
+       7  ?<Initializer for zllSampleLight_DeviceInfo>
+      55  ?<Initializer for zllSampleLight_GlobalScene>
+       1  ?<Initializer for zllSampleLight_GlobalSceneCt
+      12  ?<Initializer for zllSampleLight_SimpleDesc2>
+      12  ?<Initializer for zllSampleLight_SimpleDesc>
+       2  zclColor_ColorCapabilities
+       1  zclColor_ColorLoopActive
+       1  zclColor_ColorLoopDirection
+       2  zclColor_ColorLoopStartEnhancedHue
+       2  zclColor_ColorLoopStoredEnhancedHue
+       2  zclColor_ColorLoopTime
+       1  zclColor_ColorMode
+       2  zclColor_ColorRemainingTime
+       1  zclColor_CurrentHue
+       1  zclColor_CurrentSaturation
+       2  zclColor_CurrentX
+       2  zclColor_CurrentY
+       1  zclColor_EnhancedColorMode
+       2  zclColor_EnhancedCurrentHue
+       1  zclColor_NumOfPrimaries
+       1  zclColor_Primary1Intensity
+       2  zclColor_Primary1X
+       2  zclColor_Primary1Y
+       1  zclColor_Primary2Intensity
+       2  zclColor_Primary2X
+       2  zclColor_Primary2Y
+       1  zclColor_Primary3Intensity
+       2  zclColor_Primary3X
+       2  zclColor_Primary3Y
+       1  zclLevel_CurrentLevel
+       2  zclLevel_LevelRemainingTime
+       1  zllSampleLight_AppVersion
+     368  zllSampleLight_Attrs
+       2  zllSampleLight_CurrentGroup
+       1  zllSampleLight_CurrentScene
+       9  zllSampleLight_DateCode
+       7  zllSampleLight_DeviceInfo
+      55  zllSampleLight_GlobalScene
+       1  zllSampleLight_GlobalSceneCtrl
+       1  zllSampleLight_GroupNameSupport
+       1  zllSampleLight_HWVersion
+       2  zllSampleLight_IdentifyTime
+      14  zllSampleLight_InClusterList
+      17  zllSampleLight_ManufacturerName
+      15  zllSampleLight_ModelId
+       2  zllSampleLight_OffWaitTime
+       1  zllSampleLight_OnOff
+       2  zllSampleLight_OnTime
+       1  zllSampleLight_PowerSource
+       6  zllSampleLight_SWBuildID
+       1  zllSampleLight_SceneNameSupport
+       1  zllSampleLight_SceneValid
+      12  zllSampleLight_SimpleDesc
+      12  zllSampleLight_SimpleDesc2
+       1  zllSampleLight_StackVersion
+       1  zllSampleLight_ZCLVersion
+
+ 
+ 368 bytes in segment CODE_C
+  99 bytes in segment XDATA_I
+  99 bytes in segment XDATA_ID
+  84 bytes in segment XDATA_ROM_C
+  24 bytes in segment XDATA_Z
+ 
+ 467 bytes of CODE  memory
+  84 bytes of CONST memory
+ 123 bytes of XDATA memory
+
+Errors: none
+Warnings: none

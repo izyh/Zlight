@@ -1,0 +1,342 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.20.2.41139 for 8051             27/Mar/2014  17:05:53 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Components\mac\low_level\srf04\single_chip\m #
+#                          ac_rffrontend.c                                    #
+#    Command line       =  -f "D:\Texas Instruments\Z-Stack Lighting          #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wRouter.cfg" (-DCPU32MHZ        #
+#                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TRU #
+#                          E -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8       #
+#                          -DMAC_CFG_RX_MAX=5 -DRTR_NWK) -f "D:\Texas         #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wConfig.cfg" (-DZIGBEEPRO       #
+#                          -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR       #
+#                          -DDEFAULT_CHANLIST=0x00000800                      #
+#                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                       #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MA #
+#                          SK=0x007F -DBEACON_REQUEST_DELAY=100               #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                     #
+#                          -DLINK_STATUS_JITTER_MASK=0x007F                   #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_PO #
+#                          LLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7             #
+#                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3    #
+#                          -DNWK_MAX_DATA_RETRIES=2                           #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9         #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40           #
+#                          -DNWK_MAX_BINDING_ENTRIES=4                        #
+#                          -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01,  #
+#                          0x03, 0x05, 0x07, 0x09, 0x0B, 0x0D, 0x0F, 0x00,    #
+#                          0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0D}"         #
+#                          -DMAC_MAX_FRAME_SIZE=116                           #
+#                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const     #
+#                          __code" -DGENERIC=__generic                        #
+#                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000        #
+#                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100    #
+#                          -DREJOIN_POLL_RATE=440) -f "D:\Texas               #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wZCL.cfg" "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Components\mac\low_level\srf04\single_chip\m #
+#                          ac_rffrontend.c" -D FEATURE_GREEN_POWER -D         #
+#                          SECURE=1 -D TC_LINKKEY_JOIN -D                     #
+#                          ZDSECMGR_TC_DEVICE_MAX=2 -D NV_RESTORE -D          #
+#                          HOLD_AUTO_START -D INTER_PAN -D ZTOOL_P1 -D        #
+#                          MT_TASK -D MT_APP_FUNC -D MT_SYS_FUNC -D           #
+#                          MT_ZDO_FUNC -D MT_ZDO_CB_FUNC -D MT_UTIL_FUNC -D   #
+#                          MT_ZDO_MGMT -D LCD_SUPPORTED -D HAL_LCD=FALSE -D   #
+#                          HAL_KEY=FALSE -D ZCL_BASIC -D ZCL_READ -D          #
+#                          ZCL_WRITE -D ZCL_IDENTIFY -D ZCL_ON_OFF -D         #
+#                          ZCL_SCENES -D ZCL_GROUPS -D                        #
+#                          ZCL_LIGHT_LINK_ENHANCE -D ZCL_LEVEL_CTRL -D        #
+#                          ZCL_COLOR_CTRL -D xMAX_CHANNELS_24GHZ=0x02108800   #
+#                          -lC "D:\Texas Instruments\Z-Stack Lighting         #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\BridgeE #
+#                          B-Pro\List\" -lA "D:\Texas Instruments\Z-Stack     #
+#                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC253 #
+#                          x\BridgeEB-Pro\List\" --diag_suppress Pe001,Pa010  #
+#                          -o "D:\Texas Instruments\Z-Stack Lighting          #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\BridgeE #
+#                          B-Pro\Obj\" -e --debug --core=plain --dptr=16,1    #
+#                          --data_model=large --code_model=banked             #
+#                          --calling_convention=xdata_reentrant               #
+#                          --place_constants=data_rom --nr_virtual_regs 16    #
+#                          -I "D:\Texas Instruments\Z-Stack Lighting          #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\" -I    #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\Sour #
+#                          ce\" -I "D:\Texas Instruments\Z-Stack Lighting     #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\S #
+#                          ource\" -I "D:\Texas Instruments\Z-Stack Lighting  #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\HomeAutomation\Source\" -I "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\HomeAutomation\SampleLight\Source\" -I           #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\ZMain\TI2530DB\" -I "D:\Texas                    #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\hal\include\" -I "D:\Texas      #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\hal\target\CC2530EB\" -I        #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\include\" -I "D:\Texas      #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\high_level\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\low_level\srf04\" -I        #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\low_level\srf04\single_chip #
+#                          \" -I "D:\Texas Instruments\Z-Stack Lighting       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mt\" -I "D:\Texas               #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\osal\include\" -I "D:\Texas     #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\services\saddr\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\services\sdata\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\af\" -I "D:\Texas         #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\nwk\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sapi\" -I "D:\Texas       #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sec\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sys\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\zcl\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\zdo\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\zmac\" -I "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\zmac\f8w\" -Ohz                 #
+#                          --require_prototypes                               #
+#    List file          =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\BridgeE #
+#                          B-Pro\List\mac_rffrontend.lst                      #
+#    Object file        =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\BridgeE #
+#                          B-Pro\Obj\mac_rffrontend.r51                       #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\Texas Instruments\Z-Stack Lighting 1.0.2\Components\mac\low_level\srf04\single_chip\mac_rffrontend.c
+      1          /**************************************************************************************************
+      2            Filename:       mac_rffrontend.c
+      3            Revised:        $Date: 2012-12-07 13:18:43 -0800 (Fri, 07 Dec 2012) $
+      4            Revision:       $Revision: 32494 $
+      5          
+      6            Description:    RF frontend configuration module
+      7          
+      8          
+      9            Copyright 2009-2012 Texas Instruments Incorporated. All rights reserved.
+     10          
+     11            IMPORTANT: Your use of this Software is limited to those specific rights
+     12            granted under the terms of a software license agreement between the user
+     13            who downloaded the software, his/her employer (which must be your employer)
+     14            and Texas Instruments Incorporated (the "License").  You may not use this
+     15            Software unless you agree to abide by the terms of the License. The License
+     16            limits your use, and you acknowledge, that the Software may not be modified,
+     17            copied or distributed unless embedded on a Texas Instruments microcontroller
+     18            or used solely and exclusively in conjunction with a Texas Instruments radio
+     19            frequency transceiver, which is integrated into your product.  Other than for
+     20            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     21            works of, modify, distribute, perform, display or sell this Software and/or
+     22            its documentation for any purpose.
+     23          
+     24            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     25            PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     26            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     27            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     28            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     29            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     30            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     31            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     32            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     33            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     34            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     35          
+     36            Should you have any questions regarding your right to use this Software,
+     37            contact Texas Instruments Incorporated at www.TI.com.
+     38          **************************************************************************************************/
+     39          
+     40          /* ------------------------------------------------------------------------------------------------
+     41           *                                             Includes
+     42           * ------------------------------------------------------------------------------------------------
+     43           */
+     44          #include "hal_types.h"
+     45          #include "hal_board_cfg.h"
+
+   \                                 In  segment SFR_AN, at 0x80
+   \   union <unnamed> volatile __sfr _A_P0
+   \                     _A_P0:
+   \   000000                DS 1
+     46          #include "hal_assert.h"
+     47          #include "mac_api.h"
+     48          #include "mac_radio_defs.h"
+     49          
+     50          
+     51          /* ------------------------------------------------------------------------------------------------
+     52           *                                        Global Constants
+     53           * ------------------------------------------------------------------------------------------------
+     54           */
+     55          
+     56          /* The following table index definitions are specific to
+     57           * a build with both MAC_RUNTIME_CC2590 and MAC_RUNTIME_CC2591
+     58           * compile flags defined. */
+     59          #define MAC_CC2591_TX_PWR_TABLE_IDX   1
+     60          #define MAC_CC2590_TX_PWR_TABLE_IDX   2
+     61          #define MAC_CC2591_HGM_RSSI_ADJ_IDX   1
+     62          #define MAC_CC2591_LGM_RSSI_ADJ_IDX   2
+     63          #define MAC_CC2590_HGM_RSSI_ADJ_IDX   3
+     64          #define MAC_CC2590_LGM_RSSI_ADJ_IDX   4
+     65          
+     66          /* Set of indices when only one of either MAC_RUNTIME_CC2590
+     67           * or MAC_RUNTIME_CC2591 was configured in the build.
+     68           */
+     69          #define MAC_CC259X_TX_PWR_TABLE_IDX 1
+     70          #define MAC_CC259X_HGM_RSSI_ADJ_IDX 1
+     71          #define MAC_CC259X_LGM_RSSI_ADJ_IDX 2
+     72          
+     73          /* Set of indices when only one one of either HAL_PA_LNA
+     74           * or HAL_PA_LNA_CC2590 was configured in the build
+     75           */
+     76          #define MAC_PA_LNA_HGM_RSSI_ADJ_IDX 0
+     77          #define MAC_PA_LNA_LGM_RSSI_ADJ_IDX 1
+     78          
+     79          /* ------------------------------------------------------------------------------------------------
+     80           *                                           MACROS
+     81           * ------------------------------------------------------------------------------------------------
+     82           */
+     83          
+     84          /* ------------------------------------------------------------------------------------------------
+     85           *                                       Function Prototypes
+     86           * ------------------------------------------------------------------------------------------------
+     87           */
+     88          void MAC_RfFrontendSetup(void);
+     89          
+     90          /**************************************************************************************************
+     91           * @fn          MAC_RfFrontendSetup
+     92           *
+     93           * @brief       Setup RF frontend.
+     94           *
+     95           * @param       none
+     96           *
+     97           * @return      none
+     98           **************************************************************************************************
+     99           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    100          void MAC_RfFrontendSetup(void)
+   \                     MAC_RfFrontendSetup:
+    101          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    102            /* CC2591 HGM pin control configuration.
+    103             *   P0_7 -> HGM
+    104             */
+    105            HAL_PA_LNA_RX_HGM();
+   \   000004   D287         SETB    0x80.7
+    106          
+    107            /* Raises the CCA threshold to about -70 dBm input level.
+    108             */
+    109            CCACTRL0 = CCA_THR_HGM;
+   \   000006   906196       MOV     DPTR,#0x6196
+   \   000009   7406         MOV     A,#0x6
+   \   00000B   F0           MOVX    @DPTR,A
+    110          
+    111            /* Select power register value table and RSSI adjustment value table */
+    112            #if (defined MAC_RUNTIME_CC2591 && defined MAC_RUNTIME_CC2590)
+    113            /* Select power register value table and RSSI adjustment value table.
+    114             * Note that this file selected CC2591. The file has to be modified
+    115             * if the target board has CC2590 instead.
+    116             */
+    117            MAC_SetRadioRegTable(MAC_CC2591_TX_PWR_TABLE_IDX, MAC_CC2591_HGM_RSSI_ADJ_IDX);
+    118          
+    119            #elif defined (MAC_RUNTIME_CC2591) || defined (MAC_RUNTIME_CC2590)
+    120            /* Select power register value table and RSSI adjustment value table */
+    121            MAC_SetRadioRegTable(MAC_CC259X_TX_PWR_TABLE_IDX, MAC_CC259X_HGM_RSSI_ADJ_IDX);
+    122          
+    123            #elif defined (HAL_PA_LNA) || defined (HAL_PA_LNA_CC2590)
+    124            /* No need to do anything here because by default macRadioDefsRefTableId = 0 hence,
+    125             * automatically setup for HGM. However if you want LGM modify this file and call
+    126             * MAC_SetRadioRegTable(0,  MAC_PA_LNA_LGM_RSSI_ADJ_IDX);
+    127             */
+    128            #endif
+    129          }
+   \   00000C   D083         POP     DPH
+   \   00000E   D082         POP     DPL
+   \   000010   02....       LJMP    ?BRET
+   \   000013                REQUIRE _A_P0
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??MAC_RfFrontendSetup?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    MAC_RfFrontendSetup
+    130          
+    131          /**************************************************************************************************
+    132           */
+
+   Maximum stack usage in bytes:
+
+   ISTACK PSTACK XSTACK Function
+   ------ ------ ------ --------
+       2      0      0  MAC_RfFrontendSetup
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       6  ??MAC_RfFrontendSetup?relay
+      19  MAC_RfFrontendSetup
+       1  _A_P0
+
+ 
+ 19 bytes in segment BANKED_CODE
+  6 bytes in segment BANK_RELAYS
+  1 byte  in segment SFR_AN
+ 
+ 25 bytes of CODE memory
+  0 bytes of DATA memory (+ 1 byte shared)
+
+Errors: none
+Warnings: none

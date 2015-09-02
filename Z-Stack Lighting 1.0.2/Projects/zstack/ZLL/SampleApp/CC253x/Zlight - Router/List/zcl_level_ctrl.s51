@@ -1,0 +1,2418 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V8.20.2.41139 for 8051            27/May/2014  19:14:24 /
+// Copyright 2004-2013 IAR Systems AB.                                        /
+//                                                                            /
+//    Core               =  plain                                             /
+//    Code model         =  banked                                            /
+//    Data model         =  large                                             /
+//    Calling convention =  xdata reentrant                                   /
+//    Constant location  =  data_rom                                          /
+//    Dptr setup         =  1,16                                              /
+//                                                                            /
+//    Source file        =  D:\Texas Instruments\Z-Stack Lighting             /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\Source\Light\ /
+//                          zcl_level_ctrl.c                                  /
+//    Command line       =  -f "D:\Texas Instruments\Z-Stack Lighting         /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\Tools\CC2530DB\f8wRouter.cfg" (-DCPU32MHZ      /
+//                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TR /
+//                          UE -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8     /
+//                          -DMAC_CFG_RX_MAX=5 -DRTR_NWK) -f "D:\Texas        /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\Tools\CC2530DB\f8wConfig.cfg" (-DZIGBEEPRO     /
+//                          -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR      /
+//                          -DDEFAULT_CHANLIST=0x00000800                     /
+//                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                      /
+//                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_M /
+//                          ASK=0x007F -DBEACON_REQUEST_DELAY=100             /
+//                          -DBEACON_REQ_DELAY_MASK=0x00FF                    /
+//                          -DLINK_STATUS_JITTER_MASK=0x007F                  /
+//                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_P /
+//                          OLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7           /
+//                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3   /
+//                          -DNWK_MAX_DATA_RETRIES=2                          /
+//                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9        /
+//                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40          /
+//                          -DNWK_MAX_BINDING_ENTRIES=4                       /
+//                          -DMAX_BINDING_CLUSTER_IDS=4                       /
+//                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,     /
+//                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,   /
+//                          0x0A, 0x0C, 0x0D}" -DMAC_MAX_FRAME_SIZE=116       /
+//                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const    /
+//                          __code" -DGENERIC=__generic                       /
+//                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000       /
+//                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100   /
+//                          -DREJOIN_POLL_RATE=440) -f "D:\Texas              /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\Tools\CC2530DB\f8wZCL.cfg" "D:\Texas           /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\Source\Light\ /
+//                          zcl_level_ctrl.c" -D FEATURE_GREEN_POWER -D       /
+//                          SECURE=1 -D TC_LINKKEY_JOIN -D                    /
+//                          ZDSECMGR_TC_DEVICE_MAX=2 -D NV_RESTORE -D         /
+//                          HOLD_AUTO_START -D INTER_PAN -D                   /
+//                          LCD_SUPPORTED=DEBUG -D ZCL_BASIC -D ZCL_READ -D   /
+//                          ZCL_WRITE -D ZCL_IDENTIFY -D ZCL_ON_OFF -D        /
+//                          ZCL_SCENES -D ZCL_GROUPS -D                       /
+//                          ZCL_LIGHT_LINK_ENHANCE -D ZCL_LEVEL_CTRL -D       /
+//                          ZCL_COLOR_CTRL -D MAX_CHANNELS_24GHZ=0x02108800   /
+//                          -D xPWM_ALT2 -D xTHERMAL_SHUTDOWN -D              /
+//                          ZLL_1_0_HUB_COMPATIBILITY -D DALI_LIGHT -lC       /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight /
+//                           - Router\List\" -lA "D:\Texas                    /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight /
+//                           - Router\List\" --diag_suppress Pe001,Pa010 -o   /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight /
+//                           - Router\Obj\" -e --debug --core=plain           /
+//                          --dptr=16,1 --data_model=large                    /
+//                          --code_model=banked --calling_convention=xdata_re /
+//                          entrant --place_constants=data_rom                /
+//                          --nr_virtual_regs 16 -I "D:\Texas                 /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\" -I   /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\Sou /
+//                          rce\" -I "D:\Texas Instruments\Z-Stack Lighting   /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          Source\" -I "D:\Texas Instruments\Z-Stack         /
+//                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC25 /
+//                          3x\..\..\..\HomeAutomation\Source\" -I "D:\Texas  /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\HomeAutomation\SampleLight\Source\" -I         /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\ZMain\TI2530DB\" -I "D:\Texas                  /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\hal\include\" -I "D:\Texas    /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\hal\target\CC2530PMP4712\"    /
+//                          -I "D:\Texas Instruments\Z-Stack Lighting         /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\mac\include\" -I "D:\Texas    /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\mac\high_level\" -I           /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\mac\low_level\srf04\" -I      /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\mac\low_level\srf04\single_ch /
+//                          ip\" -I "D:\Texas Instruments\Z-Stack Lighting    /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\mt\" -I "D:\Texas             /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\osal\include\" -I "D:\Texas   /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\services\saddr\" -I           /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\services\sdata\" -I           /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\af\" -I "D:\Texas       /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\nwk\" -I "D:\Texas      /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\sapi\" -I "D:\Texas     /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\sec\" -I "D:\Texas      /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\sys\" -I "D:\Texas      /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\zcl\" -I "D:\Texas      /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\zdo\" -I "D:\Texas      /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\zmac\" -I "D:\Texas           /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\zmac\f8w\" -Ohz               /
+//                          --require_prototypes                              /
+//    List file          =  D:\Texas Instruments\Z-Stack Lighting             /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight /
+//                           - Router\List\zcl_level_ctrl.s51                 /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME zcl_level_ctrl
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?BANKED_ENTER_XDATA
+        EXTERN ?BANKED_LEAVE_XDATA
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+        EXTERN ?CALL_IND
+        EXTERN ?DEALLOC_XSTACK8
+        EXTERN ?L_DIV_MOD
+        EXTERN ?L_MOV_TO_X
+        EXTERN ?L_MOV_X
+        EXTERN ?L_NEG
+        EXTERN ?L_SHL
+        EXTERN ?PUSH_XSTACK8_X_FOUR
+        EXTERN ?PUSH_XSTACK_I_ONE
+        EXTERN ?PUSH_XSTACK_I_TWO
+        EXTERN ?SL_GT_X
+        EXTERN ?US_DIV_MOD
+        EXTERN ?V0
+        EXTERN __INIT_XDATA_I
+        EXTERN __INIT_XDATA_Z
+
+        PUBLIC ??zclLevel_MoveCB?relay
+        FUNCTION ??zclLevel_MoveCB?relay,0203H
+        PUBLIC ??zclLevel_MoveToLevelCB?relay
+        FUNCTION ??zclLevel_MoveToLevelCB?relay,0203H
+        PUBLIC ??zclLevel_StepCB?relay
+        FUNCTION ??zclLevel_StepCB?relay,0203H
+        PUBLIC ??zclLevel_StopCB?relay
+        FUNCTION ??zclLevel_StopCB?relay,0203H
+        PUBLIC ??zclLevel_init?relay
+        FUNCTION ??zclLevel_init?relay,0203H
+        PUBLIC ??zclLevel_process?relay
+        FUNCTION ??zclLevel_process?relay,0203H
+        PUBWEAK __Constant_1
+        PUBWEAK __Constant_64
+        PUBLIC zclLevel_MoveCB
+        FUNCTION zclLevel_MoveCB,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 18, STACK
+        PUBLIC zclLevel_MoveToLevelCB
+        FUNCTION zclLevel_MoveToLevelCB,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 22, STACK
+        PUBLIC zclLevel_StepCB
+        FUNCTION zclLevel_StepCB,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 18, STACK
+        PUBLIC zclLevel_StopCB
+        FUNCTION zclLevel_StopCB,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC zclLevel_init
+        FUNCTION zclLevel_init,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        PUBLIC zclLevel_process
+        FUNCTION zclLevel_process,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_SP SP IDATA
+          CFI StackFrame CFA_PSP16 PSP16 XDATA
+          CFI StackFrame CFA_XSP16 XSP16 XDATA
+          CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+          CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+          CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+          CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+          CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+          CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+          CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+          CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+          CFI Resource V8:8, V9:8, V10:8, V11:8, V12:8, V13:8, V14:8, V15:8, SP:8
+          CFI Resource PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+          CFI VirtualResource ?RET:24
+          CFI Resource ?BRET_EXT:8
+          CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+          CFI ResourceParts PSP16 PSPH, PSPL
+          CFI ResourceParts XSP16 XSPH, XSPL
+          CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-3
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B Undefined
+          CFI A Undefined
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 Undefined
+          CFI R5 Undefined
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI V8 SameValue
+          CFI V9 SameValue
+          CFI V10 SameValue
+          CFI V11 SameValue
+          CFI V12 SameValue
+          CFI V13 SameValue
+          CFI V14 SameValue
+          CFI V15 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT Frame(CFA_SP, 3)
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-2
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B SameValue
+          CFI A SameValue
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI V8 SameValue
+          CFI V9 SameValue
+          CFI V10 SameValue
+          CFI V11 SameValue
+          CFI V12 SameValue
+          CFI V13 SameValue
+          CFI V14 SameValue
+          CFI V15 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT SameValue
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon1
+        
+hwLight_ApplyUpdate SYMBOL "hwLight_ApplyUpdate"
+??hwLight_ApplyUpdate?relay SYMBOL "?relay", hwLight_ApplyUpdate
+osal_start_timerEx  SYMBOL "osal_start_timerEx"
+??osal_start_timerEx?relay SYMBOL "?relay", osal_start_timerEx
+osal_stop_timerEx   SYMBOL "osal_stop_timerEx"
+??osal_stop_timerEx?relay SYMBOL "?relay", osal_stop_timerEx
+zclLevel_MoveCB     SYMBOL "zclLevel_MoveCB"
+??zclLevel_MoveCB?relay SYMBOL "?relay", zclLevel_MoveCB
+zclLevel_MoveToLevelCB SYMBOL "zclLevel_MoveToLevelCB"
+??zclLevel_MoveToLevelCB?relay SYMBOL "?relay", zclLevel_MoveToLevelCB
+zclLevel_StepCB     SYMBOL "zclLevel_StepCB"
+??zclLevel_StepCB?relay SYMBOL "?relay", zclLevel_StepCB
+zclLevel_StopCB     SYMBOL "zclLevel_StopCB"
+??zclLevel_StopCB?relay SYMBOL "?relay", zclLevel_StopCB
+zclLevel_init       SYMBOL "zclLevel_init"
+??zclLevel_init?relay SYMBOL "?relay", zclLevel_init
+zclLevel_process    SYMBOL "zclLevel_process"
+??zclLevel_process?relay SYMBOL "?relay", zclLevel_process
+
+        EXTERN ??hwLight_ApplyUpdate?relay
+        FUNCTION ??hwLight_ApplyUpdate?relay,00H
+        EXTERN ??osal_start_timerEx?relay
+        FUNCTION ??osal_start_timerEx?relay,00H
+        EXTERN ??osal_stop_timerEx?relay
+        FUNCTION ??osal_stop_timerEx?relay,00H
+        EXTERN hwLight_ApplyUpdate
+        FUNCTION hwLight_ApplyUpdate,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 22, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN osal_start_timerEx
+        FUNCTION osal_start_timerEx,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 20, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN osal_stop_timerEx
+        FUNCTION osal_stop_timerEx,0202H
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN zclLevel_CurrentLevel
+        EXTERN zclLevel_LevelRemainingTime
+
+// D:\Texas Instruments\Z-Stack Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\Source\Light\zcl_level_ctrl.c
+//    1 /**************************************************************************************************
+//    2   Filename:       zcl_level_ctrl.c
+//    3   Revised:        $Date: 2013-04-03 14:59:11 -0700 (Wed, 03 Apr 2013) $
+//    4   Revision:       $Revision: 33727 $
+//    5 
+//    6 
+//    7   Description:    This file contains the Zigbee Cluster Library Level Control
+//    8                   application callbacks code.
+//    9 
+//   10 
+//   11   Copyright 2010-2011 Texas Instruments Incorporated. All rights reserved.
+//   12 
+//   13   IMPORTANT: Your use of this Software is limited to those specific rights
+//   14   granted under the terms of a software license agreement between the user
+//   15   who downloaded the software, his/her employer (which must be your employer)
+//   16   and Texas Instruments Incorporated (the "License").  You may not use this
+//   17   Software unless you agree to abide by the terms of the License. The License
+//   18   limits your use, and you acknowledge, that the Software may not be modified,
+//   19   copied or distributed unless embedded on a Texas Instruments microcontroller
+//   20   or used solely and exclusively in conjunction with a Texas Instruments radio
+//   21   frequency transceiver, which is integrated into your product.  Other than for
+//   22   the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+//   23   works of, modify, distribute, perform, display or sell this Software and/or
+//   24   its documentation for any purpose.
+//   25 
+//   26   YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+//   27   PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+//   28   INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+//   29   NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+//   30   TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+//   31   NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+//   32   LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+//   33   INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+//   34   OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+//   35   OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+//   36   (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+//   37 
+//   38   Should you have any questions regarding your right to use this Software,
+//   39   contact Texas Instruments Incorporated at www.TI.com.
+//   40 **************************************************************************************************/
+//   41 
+//   42 /*********************************************************************
+//   43   This device will be like a Light device.  This application is not
+//   44   intended to be a Light device, but will use the device description
+//   45   to implement this sample code.
+//   46 *********************************************************************/
+//   47 
+//   48 #ifdef ZCL_LEVEL_CTRL
+//   49 /*********************************************************************
+//   50  * INCLUDES
+//   51  */
+//   52 
+//   53 #include "zcl_level_ctrl.h"
+//   54 
+//   55 /*********************************************************************
+//   56  * MACROS
+//   57  */
+//   58 
+//   59 /*********************************************************************
+//   60  * CONSTANTS
+//   61  */
+//   62 /*********************************************************************
+//   63  * TYPEDEFS
+//   64  */
+//   65 
+//   66 /*********************************************************************
+//   67  * GLOBAL VARIABLES
+//   68  */
+//   69 
+//   70 /*********************************************************************
+//   71  * GLOBAL FUNCTIONS
+//   72  */
+//   73 
+//   74 /*********************************************************************
+//   75  * LOCAL VARIABLES
+//   76  */
+//   77 //static afAddrType_t zclLevel_DstAddr;
+//   78 
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA32
+//   79 static int32 zclLevel_StepLevel_256 = 0;
+zclLevel_StepLevel_256:
+        DS 4
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//   80 static uint16 zclLevel_CurrentLevel_256 = ((uint16)LEVEL_MAX)<<8;
+zclLevel_CurrentLevel_256:
+        DATA16
+        DS 2
+        REQUIRE `?<Initializer for zclLevel_CurrentLevel_256>`
+        REQUIRE __INIT_XDATA_I
+//   81 
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA16
+//   82 static uint16 zclLevel_LevelWithOnOff = 0;
+zclLevel_LevelWithOnOff:
+        DS 2
+        REQUIRE __INIT_XDATA_Z
+//   83 
+//   84 /*********************************************************************
+//   85  * LOCAL FUNCTIONS
+//   86  */
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//   87 static byte zclLight_TaskID;
+zclLight_TaskID:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA16
+//   88 static zclGCB_OnOff_t zclLevel_OnOffCB;
+zclLevel_OnOffCB:
+        DS 2
+        REQUIRE __INIT_XDATA_Z
+//   89 /*********************************************************************
+//   90  * LOCAL FUNCTIONS
+//   91  */
+//   92 
+//   93 
+//   94 /*********************************************************************
+//   95  * @fn          zclLevel_init
+//   96  *
+//   97  * @brief
+//   98  *
+//   99  * @param       none
+//  100  *
+//  101  * @return      none
+//  102  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  103 void zclLevel_init( byte taskID, zclGCB_OnOff_t OnOffCB )
+zclLevel_init:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function zclLevel_init
+        CODE
+//  104 {
+        FUNCALL zclLevel_init, hwLight_ApplyUpdate
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV     A,#-0xa
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 10)
+        ; Saved register size: 10
+        ; Auto size: 0
+        MOV     A,R1
+//  105   zclLight_TaskID = taskID;
+        MOV     DPTR,#zclLight_TaskID
+        MOVX    @DPTR,A
+//  106   zclLevel_OnOffCB = OnOffCB;
+        MOV     DPTR,#zclLevel_OnOffCB
+        MOV     A,R2
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R3
+        MOVX    @DPTR,A
+//  107 
+//  108   //Move lamp to default level
+//  109   zclLevel_LevelRemainingTime = 0;
+        MOV     DPTR,#zclLevel_LevelRemainingTime
+        CLR     A
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOVX    @DPTR,A
+//  110    hwLight_ApplyUpdate( &zclLevel_CurrentLevel,
+//  111                         &zclLevel_CurrentLevel_256,
+//  112                         &zclLevel_StepLevel_256,
+//  113                         &zclLevel_LevelRemainingTime,
+//  114                         LEVEL_MIN, LEVEL_MAX, FALSE );
+        ; Setup parameters for call to function hwLight_ApplyUpdate
+        MOV     ?V0 + 0,A
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_ONE
+          CFI CFA_XSP16 add(XSP16, 11)
+        MOV     ?V0 + 0,#-0x2
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_ONE
+          CFI CFA_XSP16 add(XSP16, 12)
+        MOV     ?V0 + 0,#zclLevel_LevelRemainingTime & 0xff
+        MOV     ?V0 + 1,#(zclLevel_LevelRemainingTime >> 8) & 0xff
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 14)
+        MOV     ?V0 + 0,#zclLevel_StepLevel_256 & 0xff
+        MOV     ?V0 + 1,#(zclLevel_StepLevel_256 >> 8) & 0xff
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 16)
+        MOV     R1,#0x1
+        MOV     R4,#zclLevel_CurrentLevel_256 & 0xff
+        MOV     R5,#(zclLevel_CurrentLevel_256 >> 8) & 0xff
+        MOV     R2,#zclLevel_CurrentLevel & 0xff
+        MOV     R3,#(zclLevel_CurrentLevel >> 8) & 0xff
+        LCALL   ??hwLight_ApplyUpdate?relay
+        MOV     A,#0x6
+        LCALL   ?DEALLOC_XSTACK8
+          CFI EndBlock cfiBlock0
+//  115 }
+        REQUIRE ?Subroutine0
+        ; // Fall through to label ?Subroutine0
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine0:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 10)
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        MOV     R7,#0x2
+        LJMP    ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock1
+//  116 
+//  117 /*********************************************************************
+//  118  * @fn          zclLevel_process_level_event
+//  119  *
+//  120  * @brief       Level Event Processor for zclGeneral.
+//  121  *
+//  122  * @param       none
+//  123  *
+//  124  * @return      none
+//  125  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  126 void zclLevel_process( uint16 *events )
+zclLevel_process:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function zclLevel_process
+        CODE
+//  127 {
+        FUNCALL zclLevel_process, hwLight_ApplyUpdate
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL zclLevel_process, osal_start_timerEx
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 14, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 14, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV     A,#-0xa
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 10)
+        ; Saved register size: 10
+        ; Auto size: 0
+        MOV     A,R2
+        MOV     R6,A
+        MOV     A,R3
+        MOV     R7,A
+//  128   if ( *events & LEVEL_PROCESS_EVT )
+        MOV     DPL,R6
+        MOV     DPH,R7
+        MOVX    A,@DPTR
+        ANL     A,#0x8
+        JNZ     $+5
+        LJMP    ??zclLevel_process_0 & 0xFFFF
+//  129   {
+//  130     //update the level
+//  131     if(zclLevel_LevelRemainingTime)
+        LCALL   ?Subroutine2 & 0xFFFF
+??CrossCallReturnLabel_18:
+        JZ      ??zclLevel_process_1
+//  132     {
+//  133       hwLight_ApplyUpdate( &zclLevel_CurrentLevel,
+//  134                            &zclLevel_CurrentLevel_256,
+//  135                            &zclLevel_StepLevel_256,
+//  136                            &zclLevel_LevelRemainingTime,
+//  137                            LEVEL_MIN, LEVEL_MAX, FALSE );
+        ; Setup parameters for call to function hwLight_ApplyUpdate
+        MOV     ?V0 + 0,#0x0
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_ONE
+          CFI CFA_XSP16 add(XSP16, 11)
+        MOV     ?V0 + 0,#-0x2
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_ONE
+          CFI CFA_XSP16 add(XSP16, 12)
+        MOV     ?V0 + 0,#zclLevel_LevelRemainingTime & 0xff
+        MOV     ?V0 + 1,#(zclLevel_LevelRemainingTime >> 8) & 0xff
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 14)
+        MOV     ?V0 + 0,#zclLevel_StepLevel_256 & 0xff
+        MOV     ?V0 + 1,#(zclLevel_StepLevel_256 >> 8) & 0xff
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 16)
+        MOV     R1,#0x1
+        MOV     R4,#zclLevel_CurrentLevel_256 & 0xff
+        MOV     R5,#(zclLevel_CurrentLevel_256 >> 8) & 0xff
+        MOV     R2,#zclLevel_CurrentLevel & 0xff
+        MOV     R3,#(zclLevel_CurrentLevel >> 8) & 0xff
+        LCALL   ??hwLight_ApplyUpdate?relay
+        MOV     A,#0x6
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 10)
+//  138 
+//  139       if( (zclLevel_CurrentLevel == LEVEL_MIN) && (zclLevel_LevelWithOnOff) )
+        MOV     DPTR,#zclLevel_CurrentLevel
+        MOVX    A,@DPTR
+        XRL     A,#0x1
+        JNZ     ??zclLevel_process_1
+        MOV     DPTR,#zclLevel_LevelWithOnOff
+        LCALL   ??Subroutine7_0 & 0xFFFF
+??CrossCallReturnLabel_11:
+        JZ      ??zclLevel_process_2
+//  140       {
+//  141         zclLevel_OnOffCB(COMMAND_OFF);
+        ; Setup parameters for indirect call
+        LCALL   ?Subroutine3 & 0xFFFF
+//  142       }
+//  143     }
+??CrossCallReturnLabel_8:
+        LCALL   ?CALL_IND
+//  144 
+//  145     if(zclLevel_LevelWithOnOff)
+??zclLevel_process_1:
+        MOV     DPTR,#zclLevel_LevelWithOnOff
+        LCALL   ??Subroutine7_0 & 0xFFFF
+??CrossCallReturnLabel_12:
+        JZ      ??zclLevel_process_2
+//  146     {
+//  147       if(zclLevel_CurrentLevel == LEVEL_MIN)
+        MOV     DPTR,#zclLevel_CurrentLevel
+        MOVX    A,@DPTR
+        XRL     A,#0x1
+        JNZ     ??zclLevel_process_3
+//  148       {
+//  149         zclLevel_OnOffCB(COMMAND_OFF);
+        ; Setup parameters for indirect call
+        MOV     R1,#0x0
+        SJMP    ??zclLevel_process_4
+//  150       }
+//  151       else
+//  152       {
+//  153         zclLevel_OnOffCB(COMMAND_ON);
+??zclLevel_process_3:
+        ; Setup parameters for indirect call
+        MOV     R1,#0x1
+//  154       }
+//  155     }
+??zclLevel_process_4:
+        LCALL   ??Subroutine6_0 & 0xFFFF
+??CrossCallReturnLabel_4:
+        LCALL   ?CALL_IND
+//  156 
+//  157     if (zclLevel_LevelRemainingTime)
+??zclLevel_process_2:
+        LCALL   ?Subroutine2 & 0xFFFF
+??CrossCallReturnLabel_19:
+        JZ      ??zclLevel_process_5
+//  158     {
+//  159       //set a timer to make the change over zclLevel_StepTime 100ms
+//  160       osal_start_timerEx( zclLight_TaskID, LEVEL_PROCESS_EVT , 100 );
+        ; Setup parameters for call to function osal_start_timerEx
+        MOV     DPTR,#__Constant_64
+        LCALL   ?PUSH_XSTACK8_X_FOUR
+          CFI CFA_XSP16 add(XSP16, 14)
+        MOV     R2,#0x8
+        MOV     R3,#0x0
+        MOV     DPTR,#zclLight_TaskID
+        MOVX    A,@DPTR
+        MOV     R1,A
+        LCALL   ??osal_start_timerEx?relay
+        MOV     A,#0x4
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 10)
+//  161     }
+//  162 
+//  163     *events = *events ^ LEVEL_PROCESS_EVT;
+??zclLevel_process_5:
+        MOV     DPL,R6
+        MOV     DPH,R7
+        MOVX    A,@DPTR
+        XRL     A,#0x8
+        MOVX    @DPTR,A
+//  164   }
+//  165 
+//  166   return;
+??zclLevel_process_0:
+        LJMP    ?Subroutine0 & 0xFFFF
+          CFI EndBlock cfiBlock2
+//  167 }
+//  168 
+//  169 
+//  170 
+//  171 /*********************************************************************
+//  172  * @fn      zclLevel_LevelControlMoveToLevelCB
+//  173  *
+//  174  * @brief   This callback is called to process a move to color
+//  175  *          Request command.
+//  176  *
+//  177  * @param   pCmd - command
+//  178  *
+//  179  * @return  ZStatus_t
+//  180  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  181 void zclLevel_MoveToLevelCB( zclLCMoveToLevel_t *pCmd )
+zclLevel_MoveToLevelCB:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI Function zclLevel_MoveToLevelCB
+        CODE
+//  182 {
+        FUNCALL zclLevel_MoveToLevelCB, hwLight_ApplyUpdate
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 22, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 22, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL zclLevel_MoveToLevelCB, osal_start_timerEx
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 20, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 20, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV     A,#-0x10
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 16)
+        ; Saved register size: 16
+        ; Auto size: 0
+//  183   zclLevel_LevelWithOnOff = pCmd->withOnOff;
+        MOV     DPL,R2
+        MOV     DPH,R3
+        INC     DPTR
+        LCALL   ?Subroutine5 & 0xFFFF
+//  184 
+//  185   //if transition time = 0 then do immediately
+//  186   if ( pCmd->transitionTime == 0 )
+??CrossCallReturnLabel_2:
+        MOV     DPL,R2
+        MOV     DPH,R3
+        INC     DPTR
+        LCALL   ??Subroutine7_0 & 0xFFFF
+??CrossCallReturnLabel_13:
+        MOV     DPTR,#zclLevel_LevelRemainingTime
+        JNZ     ??zclLevel_MoveToLevelCB_0
+//  187   {
+//  188       zclLevel_LevelRemainingTime = 1;
+        MOV     A,#0x1
+        MOVX    @DPTR,A
+        INC     DPTR
+        CLR     A
+        SJMP    ??zclLevel_MoveToLevelCB_1
+//  189   }
+//  190   else
+//  191   {
+//  192     zclLevel_LevelRemainingTime = pCmd->transitionTime;
+??zclLevel_MoveToLevelCB_0:
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+??zclLevel_MoveToLevelCB_1:
+        MOVX    @DPTR,A
+//  193   }
+//  194     zclLevel_StepLevel_256 = ((int32)(pCmd->level - zclLevel_CurrentLevel))<<8;
+//  195     zclLevel_StepLevel_256 /= (int32)zclLevel_LevelRemainingTime;
+        MOV     DPL,R2
+        MOV     DPH,R3
+        MOVX    A,@DPTR
+        MOV     R0,A
+        MOV     DPTR,#zclLevel_CurrentLevel
+        MOVX    A,@DPTR
+        MOV     R2,A
+        MOV     A,R0
+        CLR     C
+        SUBB    A,R2
+        MOV     ?V0 + 0,A
+        SUBB    A,0xE0 /* A   */
+        MOV     ?V0 + 4,?V0 + 0
+        MOV     ?V0 + 5,A
+        SUBB    A,0xE0 /* A   */
+        MOV     ?V0 + 6,A
+        MOV     ?V0 + 7,A
+        MOV     A,#0x8
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_SHL
+        MOV     DPTR,#zclLevel_LevelRemainingTime
+        MOVX    A,@DPTR
+        MOV     ?V0 + 0,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     ?V0 + 1,A
+        CLR     A
+        MOV     ?V0 + 2,A
+        MOV     ?V0 + 3,A
+        MOV     R0,#?V0 + 4
+        MOV     R1,#?V0 + 0
+        LCALL   ?L_DIV_MOD
+        MOV     DPTR,#zclLevel_StepLevel_256
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_MOV_TO_X
+//  196 
+//  197   hwLight_ApplyUpdate( &zclLevel_CurrentLevel,
+//  198                        &zclLevel_CurrentLevel_256,
+//  199                        &zclLevel_StepLevel_256,
+//  200                        &zclLevel_LevelRemainingTime,
+//  201                        LEVEL_MIN, LEVEL_MAX, FALSE );
+        ; Setup parameters for call to function hwLight_ApplyUpdate
+        MOV     ?V0 + 0,#0x0
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_ONE
+          CFI CFA_XSP16 add(XSP16, 17)
+        MOV     ?V0 + 0,#-0x2
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_ONE
+          CFI CFA_XSP16 add(XSP16, 18)
+        MOV     ?V0 + 0,#zclLevel_LevelRemainingTime & 0xff
+        MOV     ?V0 + 1,#(zclLevel_LevelRemainingTime >> 8) & 0xff
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 20)
+        MOV     ?V0 + 0,#zclLevel_StepLevel_256 & 0xff
+        MOV     ?V0 + 1,#(zclLevel_StepLevel_256 >> 8) & 0xff
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 22)
+        MOV     R1,#0x1
+        MOV     R4,#zclLevel_CurrentLevel_256 & 0xff
+        MOV     R5,#(zclLevel_CurrentLevel_256 >> 8) & 0xff
+        MOV     R2,#zclLevel_CurrentLevel & 0xff
+        MOV     R3,#(zclLevel_CurrentLevel >> 8) & 0xff
+        LCALL   ??hwLight_ApplyUpdate?relay
+        MOV     A,#0x6
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 16)
+//  202 
+//  203   if ( zclLevel_LevelWithOnOff )
+        MOV     DPTR,#zclLevel_LevelWithOnOff
+        LCALL   ??Subroutine7_0 & 0xFFFF
+??CrossCallReturnLabel_14:
+        JZ      ??zclLevel_MoveToLevelCB_2
+//  204   {
+//  205     if ( zclLevel_StepLevel_256 > 0 )
+        MOV     DPTR,#__Constant_1
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_X
+        MOV     DPTR,#zclLevel_StepLevel_256
+        MOV     R0,#?V0 + 0
+        LCALL   ?SL_GT_X
+        JC      ??zclLevel_MoveToLevelCB_3
+//  206     {
+//  207       zclLevel_OnOffCB(COMMAND_ON);
+        ; Setup parameters for indirect call
+        MOV     R1,#0x1
+        SJMP    ??zclLevel_MoveToLevelCB_4
+//  208     }
+//  209     else if( (zclLevel_CurrentLevel == LEVEL_MIN) && (zclLevel_LevelWithOnOff) )
+??zclLevel_MoveToLevelCB_3:
+        MOV     DPTR,#zclLevel_CurrentLevel
+        MOVX    A,@DPTR
+        XRL     A,#0x1
+        JNZ     ??zclLevel_MoveToLevelCB_2
+//  210     {
+//  211       zclLevel_OnOffCB(COMMAND_OFF);
+        ; Setup parameters for indirect call
+        MOV     R1,#0x0
+//  212     }
+//  213   }
+??zclLevel_MoveToLevelCB_4:
+        LCALL   ??Subroutine6_0 & 0xFFFF
+??CrossCallReturnLabel_5:
+        LCALL   ?CALL_IND
+//  214 
+//  215   if (zclLevel_LevelRemainingTime)
+??zclLevel_MoveToLevelCB_2:
+        LCALL   ?Subroutine2 & 0xFFFF
+??CrossCallReturnLabel_20:
+        JZ      ??zclLevel_MoveToLevelCB_5
+//  216   {
+//  217     //set a timer to make the change over zclLevel_StepTime 100ms
+//  218     osal_start_timerEx( zclLight_TaskID, LEVEL_PROCESS_EVT , 100 );
+        ; Setup parameters for call to function osal_start_timerEx
+        MOV     DPTR,#__Constant_64
+        LCALL   ?PUSH_XSTACK8_X_FOUR
+          CFI CFA_XSP16 add(XSP16, 20)
+        MOV     R2,#0x8
+        MOV     R3,#0x0
+        MOV     DPTR,#zclLight_TaskID
+        MOVX    A,@DPTR
+        MOV     R1,A
+        LCALL   ??osal_start_timerEx?relay
+        MOV     A,#0x4
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 16)
+//  219   }
+//  220 
+//  221   return;
+??zclLevel_MoveToLevelCB_5:
+        MOV     R7,#0x8
+        LJMP    ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock3
+//  222 }
+//  223 
+//  224 /*********************************************************************
+//  225  * @fn      zclLevel_MoveCB
+//  226  *
+//  227  * @brief   Callback from the ZCL General Cluster Library when
+//  228  *          it received a Level Control - Move Command for
+//  229  *          this application.
+//  230  *
+//  231  * @param   moveMode -
+//  232  * @param   rate -
+//  233  * @param   withOnOff - with On/off command
+//  234  *
+//  235  * @return  none
+//  236  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  237 void zclLevel_MoveCB( zclLCMove_t *pCmd )
+zclLevel_MoveCB:
+          CFI Block cfiBlock4 Using cfiCommon0
+          CFI Function zclLevel_MoveCB
+        CODE
+//  238 {
+        FUNCALL zclLevel_MoveCB, hwLight_ApplyUpdate
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 18, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 18, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL zclLevel_MoveCB, osal_start_timerEx
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV     A,#-0xc
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 12)
+        ; Saved register size: 12
+        ; Auto size: 0
+        MOV     A,R2
+        MOV     R4,A
+        MOV     A,R3
+        MOV     R5,A
+//  239   zclLevel_LevelWithOnOff = pCmd->withOnOff;
+        MOV     DPL,R4
+        MOV     DPH,R5
+        LCALL   ?Subroutine4 & 0xFFFF
+//  240   zclLevel_StepLevel_256 = (((int32)pCmd->rate)<<8)/10;
+??CrossCallReturnLabel_0:
+        MOVX    A,@DPTR
+        MOV     R0,A
+        CLR     A
+        XCH     A,R0
+        MOV     R1,A
+        MOV     R2,#0xa
+        MOV     R3,#0x0
+        LCALL   ?US_DIV_MOD
+        MOV     ?V0 + 0,R0
+        MOV     ?V0 + 1,R1
+        CLR     A
+        MOV     ?V0 + 2,A
+        MOV     ?V0 + 3,A
+        MOV     DPTR,#zclLevel_StepLevel_256
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_TO_X
+//  241 
+//  242   switch (pCmd->moveMode)
+        MOV     DPL,R4
+        MOV     DPH,R5
+        MOVX    A,@DPTR
+        JZ      ??zclLevel_MoveCB_0
+        DEC     A
+        JZ      ??zclLevel_MoveCB_1
+        SJMP    ??zclLevel_MoveCB_2
+//  243   {
+//  244     case LEVEL_MOVE_UP:
+//  245       if(zclLevel_LevelWithOnOff)
+??zclLevel_MoveCB_0:
+        MOV     DPTR,#zclLevel_LevelWithOnOff
+        MOVX    A,@DPTR
+        JZ      ??zclLevel_MoveCB_2
+//  246       {
+//  247         zclLevel_OnOffCB(COMMAND_ON);
+        ; Setup parameters for indirect call
+        MOV     R1,#0x1
+        LCALL   ??Subroutine6_0 & 0xFFFF
+//  248       }
+??CrossCallReturnLabel_6:
+        LCALL   ?CALL_IND
+        SJMP    ??zclLevel_MoveCB_2
+//  249       break;
+//  250     case LEVEL_MOVE_DOWN:
+//  251       zclLevel_StepLevel_256 = -zclLevel_StepLevel_256;
+??zclLevel_MoveCB_1:
+        MOV     DPTR,#zclLevel_StepLevel_256
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_NEG
+        MOV     DPTR,#zclLevel_StepLevel_256
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_TO_X
+//  252       break;
+//  253   }
+//  254 
+//  255   //Change for ever - level stop call back will stop this command
+//  256   zclLevel_LevelRemainingTime = 0xFFFF;
+??zclLevel_MoveCB_2:
+        MOV     DPTR,#zclLevel_LevelRemainingTime
+        MOV     A,#-0x1
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOVX    @DPTR,A
+//  257 
+//  258   hwLight_ApplyUpdate( &zclLevel_CurrentLevel,
+//  259                        &zclLevel_CurrentLevel_256,
+//  260                        &zclLevel_StepLevel_256,
+//  261                        &zclLevel_LevelRemainingTime,
+//  262                        LEVEL_MIN, LEVEL_MAX, FALSE);
+        ; Setup parameters for call to function hwLight_ApplyUpdate
+        MOV     ?V0 + 0,#0x0
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_ONE
+          CFI CFA_XSP16 add(XSP16, 13)
+        MOV     ?V0 + 0,#-0x2
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_ONE
+          CFI CFA_XSP16 add(XSP16, 14)
+        MOV     ?V0 + 0,#zclLevel_LevelRemainingTime & 0xff
+        MOV     ?V0 + 1,#(zclLevel_LevelRemainingTime >> 8) & 0xff
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 16)
+        MOV     ?V0 + 0,#zclLevel_StepLevel_256 & 0xff
+        MOV     ?V0 + 1,#(zclLevel_StepLevel_256 >> 8) & 0xff
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 18)
+        MOV     R1,#0x1
+        MOV     R4,#zclLevel_CurrentLevel_256 & 0xff
+        MOV     R5,#(zclLevel_CurrentLevel_256 >> 8) & 0xff
+        MOV     R2,#zclLevel_CurrentLevel & 0xff
+        MOV     R3,#(zclLevel_CurrentLevel >> 8) & 0xff
+        LCALL   ??hwLight_ApplyUpdate?relay
+        MOV     A,#0x6
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 12)
+//  263 
+//  264   if( (zclLevel_CurrentLevel == LEVEL_MIN) && (zclLevel_LevelWithOnOff) )
+        MOV     DPTR,#zclLevel_CurrentLevel
+        MOVX    A,@DPTR
+        XRL     A,#0x1
+        JNZ     ??zclLevel_MoveCB_3
+        MOV     DPTR,#zclLevel_LevelWithOnOff
+        LCALL   ??Subroutine7_0 & 0xFFFF
+??CrossCallReturnLabel_15:
+        JZ      ??zclLevel_MoveCB_3
+//  265   {
+//  266     zclLevel_OnOffCB(COMMAND_OFF);
+        ; Setup parameters for indirect call
+        LCALL   ?Subroutine3 & 0xFFFF
+//  267   }
+??CrossCallReturnLabel_9:
+        LCALL   ?CALL_IND
+//  268 
+//  269   if (zclLevel_LevelRemainingTime)
+??zclLevel_MoveCB_3:
+        LCALL   ?Subroutine2 & 0xFFFF
+??CrossCallReturnLabel_21:
+        JZ      ??zclLevel_MoveCB_4
+//  270   {
+//  271     //set a timer to make the change over zclLevel_StepTime 100ms
+//  272     osal_start_timerEx( zclLight_TaskID, LEVEL_PROCESS_EVT , 100);
+        ; Setup parameters for call to function osal_start_timerEx
+        MOV     DPTR,#__Constant_64
+        LCALL   ?PUSH_XSTACK8_X_FOUR
+          CFI CFA_XSP16 add(XSP16, 16)
+        MOV     R2,#0x8
+        MOV     R3,#0x0
+        MOV     DPTR,#zclLight_TaskID
+        MOVX    A,@DPTR
+        MOV     R1,A
+        LCALL   ??osal_start_timerEx?relay
+        MOV     A,#0x4
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 12)
+          CFI EndBlock cfiBlock4
+//  273   }
+//  274 
+//  275   return;
+??zclLevel_MoveCB_4:
+        REQUIRE ?Subroutine1
+        ; // Fall through to label ?Subroutine1
+//  276 }
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine1:
+          CFI Block cfiBlock5 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 12)
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        MOV     R7,#0x4
+        LJMP    ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock5
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine3:
+          CFI Block cfiCond6 Using cfiCommon0
+          CFI Function zclLevel_process
+          CFI Conditional ??CrossCallReturnLabel_8
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 10)
+          CFI Block cfiCond7 Using cfiCommon0
+          CFI (cfiCond7) Function zclLevel_MoveCB
+          CFI (cfiCond7) Conditional ??CrossCallReturnLabel_9
+          CFI (cfiCond7) R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond7) VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond7) V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond7) V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond7) V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond7) V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond7) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond7) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond7) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond7) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond7) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond7) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond7) CFA_SP SP+0
+          CFI (cfiCond7) CFA_XSP16 add(XSP16, 12)
+          CFI Block cfiCond8 Using cfiCommon0
+          CFI (cfiCond8) Function zclLevel_StepCB
+          CFI (cfiCond8) Conditional ??CrossCallReturnLabel_10
+          CFI (cfiCond8) R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond8) VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond8) V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond8) V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond8) V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond8) V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond8) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond8) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond8) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond8) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond8) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond8) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond8) CFA_SP SP+0
+          CFI (cfiCond8) CFA_XSP16 add(XSP16, 12)
+          CFI Block cfiPicker9 Using cfiCommon1
+          CFI (cfiPicker9) NoFunction
+          CFI (cfiPicker9) Picker
+        MOV     R1,#0x0
+          CFI EndBlock cfiCond6
+          CFI EndBlock cfiCond7
+          CFI EndBlock cfiCond8
+          CFI EndBlock cfiPicker9
+        REQUIRE ??Subroutine6_0
+        ; // Fall through to label ??Subroutine6_0
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+??Subroutine6_0:
+          CFI Block cfiCond10 Using cfiCommon0
+          CFI Function zclLevel_process
+          CFI Conditional ??CrossCallReturnLabel_4
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 10)
+          CFI Block cfiCond11 Using cfiCommon0
+          CFI (cfiCond11) Function zclLevel_MoveToLevelCB
+          CFI (cfiCond11) Conditional ??CrossCallReturnLabel_5
+          CFI (cfiCond11) R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI (cfiCond11) VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI (cfiCond11) V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond11) V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond11) V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond11) V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond11) V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond11) V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond11) V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond11) V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond11) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond11) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond11) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond11) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond11) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond11) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond11) CFA_SP SP+0
+          CFI (cfiCond11) CFA_XSP16 add(XSP16, 16)
+          CFI Block cfiCond12 Using cfiCommon0
+          CFI (cfiCond12) Function zclLevel_MoveCB
+          CFI (cfiCond12) Conditional ??CrossCallReturnLabel_6
+          CFI (cfiCond12) R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond12) VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond12) V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond12) V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond12) V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond12) V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond12) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond12) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond12) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond12) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond12) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond12) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond12) CFA_SP SP+0
+          CFI (cfiCond12) CFA_XSP16 add(XSP16, 12)
+          CFI Block cfiCond13 Using cfiCommon0
+          CFI (cfiCond13) Function zclLevel_StepCB
+          CFI (cfiCond13) Conditional ??CrossCallReturnLabel_7
+          CFI (cfiCond13) R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond13) VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond13) V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond13) V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond13) V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond13) V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond13) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond13) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond13) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond13) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond13) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond13) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond13) CFA_SP SP+0
+          CFI (cfiCond13) CFA_XSP16 add(XSP16, 12)
+          CFI Block cfiCond14 Using cfiCommon0
+          CFI (cfiCond14) Function zclLevel_process
+          CFI (cfiCond14) Conditional ??CrossCallReturnLabel_8
+          CFI (cfiCond14) R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond14) VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond14) V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond14) V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond14) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond14) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond14) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond14) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond14) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond14) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond14) CFA_SP SP+0
+          CFI (cfiCond14) CFA_XSP16 add(XSP16, 10)
+          CFI Block cfiCond15 Using cfiCommon0
+          CFI (cfiCond15) Function zclLevel_MoveCB
+          CFI (cfiCond15) Conditional ??CrossCallReturnLabel_9
+          CFI (cfiCond15) R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond15) VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond15) V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond15) V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond15) V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond15) V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond15) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond15) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond15) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond15) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond15) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond15) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond15) CFA_SP SP+0
+          CFI (cfiCond15) CFA_XSP16 add(XSP16, 12)
+          CFI Block cfiCond16 Using cfiCommon0
+          CFI (cfiCond16) Function zclLevel_StepCB
+          CFI (cfiCond16) Conditional ??CrossCallReturnLabel_10
+          CFI (cfiCond16) R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond16) VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond16) V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond16) V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond16) V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond16) V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond16) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond16) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond16) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond16) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond16) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond16) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond16) CFA_SP SP+0
+          CFI (cfiCond16) CFA_XSP16 add(XSP16, 12)
+          CFI Block cfiPicker17 Using cfiCommon1
+          CFI (cfiPicker17) NoFunction
+          CFI (cfiPicker17) Picker
+        MOV     DPTR,#zclLevel_OnOffCB
+        MOVX    A,@DPTR
+        MOV     R0,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     DPH,A
+        MOV     DPL,R0
+        RET
+          CFI EndBlock cfiCond10
+          CFI EndBlock cfiCond11
+          CFI EndBlock cfiCond12
+          CFI EndBlock cfiCond13
+          CFI EndBlock cfiCond14
+          CFI EndBlock cfiCond15
+          CFI EndBlock cfiCond16
+          CFI EndBlock cfiPicker17
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine2:
+          CFI Block cfiCond18 Using cfiCommon0
+          CFI Function zclLevel_process
+          CFI Conditional ??CrossCallReturnLabel_18
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 10)
+          CFI Block cfiCond19 Using cfiCommon0
+          CFI (cfiCond19) Function zclLevel_process
+          CFI (cfiCond19) Conditional ??CrossCallReturnLabel_19
+          CFI (cfiCond19) R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond19) VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond19) V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond19) V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond19) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond19) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond19) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond19) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond19) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond19) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond19) CFA_SP SP+0
+          CFI (cfiCond19) CFA_XSP16 add(XSP16, 10)
+          CFI Block cfiCond20 Using cfiCommon0
+          CFI (cfiCond20) Function zclLevel_MoveToLevelCB
+          CFI (cfiCond20) Conditional ??CrossCallReturnLabel_20
+          CFI (cfiCond20) R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI (cfiCond20) VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI (cfiCond20) V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond20) V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond20) V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond20) V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond20) V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond20) V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond20) V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond20) V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond20) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond20) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond20) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond20) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond20) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond20) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond20) CFA_SP SP+0
+          CFI (cfiCond20) CFA_XSP16 add(XSP16, 16)
+          CFI Block cfiCond21 Using cfiCommon0
+          CFI (cfiCond21) Function zclLevel_MoveCB
+          CFI (cfiCond21) Conditional ??CrossCallReturnLabel_21
+          CFI (cfiCond21) R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond21) VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond21) V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond21) V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond21) V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond21) V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond21) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond21) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond21) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond21) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond21) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond21) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond21) CFA_SP SP+0
+          CFI (cfiCond21) CFA_XSP16 add(XSP16, 12)
+          CFI Block cfiCond22 Using cfiCommon0
+          CFI (cfiCond22) Function zclLevel_StepCB
+          CFI (cfiCond22) Conditional ??CrossCallReturnLabel_22
+          CFI (cfiCond22) R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond22) VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond22) V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond22) V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond22) V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond22) V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond22) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond22) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond22) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond22) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond22) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond22) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond22) CFA_SP SP+0
+          CFI (cfiCond22) CFA_XSP16 add(XSP16, 12)
+          CFI Block cfiPicker23 Using cfiCommon1
+          CFI (cfiPicker23) NoFunction
+          CFI (cfiPicker23) Picker
+        MOV     DPTR,#zclLevel_LevelRemainingTime
+          CFI EndBlock cfiCond18
+          CFI EndBlock cfiCond19
+          CFI EndBlock cfiCond20
+          CFI EndBlock cfiCond21
+          CFI EndBlock cfiCond22
+          CFI EndBlock cfiPicker23
+        REQUIRE ??Subroutine7_0
+        ; // Fall through to label ??Subroutine7_0
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+??Subroutine7_0:
+          CFI Block cfiCond24 Using cfiCommon0
+          CFI Function zclLevel_process
+          CFI Conditional ??CrossCallReturnLabel_11
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 10)
+          CFI Block cfiCond25 Using cfiCommon0
+          CFI (cfiCond25) Function zclLevel_process
+          CFI (cfiCond25) Conditional ??CrossCallReturnLabel_12
+          CFI (cfiCond25) R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond25) VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond25) V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond25) V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond25) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond25) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond25) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond25) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond25) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond25) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond25) CFA_SP SP+0
+          CFI (cfiCond25) CFA_XSP16 add(XSP16, 10)
+          CFI Block cfiCond26 Using cfiCommon0
+          CFI (cfiCond26) Function zclLevel_MoveToLevelCB
+          CFI (cfiCond26) Conditional ??CrossCallReturnLabel_13
+          CFI (cfiCond26) R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI (cfiCond26) VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI (cfiCond26) V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond26) V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond26) V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond26) V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond26) V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond26) V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond26) V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond26) V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond26) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond26) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond26) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond26) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond26) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond26) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond26) CFA_SP SP+0
+          CFI (cfiCond26) CFA_XSP16 add(XSP16, 16)
+          CFI Block cfiCond27 Using cfiCommon0
+          CFI (cfiCond27) Function zclLevel_MoveToLevelCB
+          CFI (cfiCond27) Conditional ??CrossCallReturnLabel_14
+          CFI (cfiCond27) R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI (cfiCond27) VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI (cfiCond27) V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond27) V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond27) V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond27) V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond27) V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond27) V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond27) V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond27) V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond27) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond27) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond27) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond27) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond27) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond27) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond27) CFA_SP SP+0
+          CFI (cfiCond27) CFA_XSP16 add(XSP16, 16)
+          CFI Block cfiCond28 Using cfiCommon0
+          CFI (cfiCond28) Function zclLevel_MoveCB
+          CFI (cfiCond28) Conditional ??CrossCallReturnLabel_15
+          CFI (cfiCond28) R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond28) VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond28) V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond28) V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond28) V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond28) V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond28) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond28) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond28) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond28) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond28) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond28) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond28) CFA_SP SP+0
+          CFI (cfiCond28) CFA_XSP16 add(XSP16, 12)
+          CFI Block cfiCond29 Using cfiCommon0
+          CFI (cfiCond29) Function zclLevel_StepCB
+          CFI (cfiCond29) Conditional ??CrossCallReturnLabel_16
+          CFI (cfiCond29) R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond29) VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond29) V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond29) V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond29) V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond29) V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond29) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond29) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond29) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond29) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond29) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond29) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond29) CFA_SP SP+0
+          CFI (cfiCond29) CFA_XSP16 add(XSP16, 12)
+          CFI Block cfiCond30 Using cfiCommon0
+          CFI (cfiCond30) Function zclLevel_StepCB
+          CFI (cfiCond30) Conditional ??CrossCallReturnLabel_17
+          CFI (cfiCond30) R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond30) VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond30) V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond30) V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond30) V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond30) V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond30) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond30) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond30) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond30) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond30) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond30) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond30) CFA_SP SP+0
+          CFI (cfiCond30) CFA_XSP16 add(XSP16, 12)
+          CFI Block cfiCond31 Using cfiCommon0
+          CFI (cfiCond31) Function zclLevel_process
+          CFI (cfiCond31) Conditional ??CrossCallReturnLabel_18
+          CFI (cfiCond31) R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond31) VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond31) V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond31) V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond31) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond31) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond31) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond31) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond31) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond31) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond31) CFA_SP SP+0
+          CFI (cfiCond31) CFA_XSP16 add(XSP16, 10)
+          CFI Block cfiCond32 Using cfiCommon0
+          CFI (cfiCond32) Function zclLevel_process
+          CFI (cfiCond32) Conditional ??CrossCallReturnLabel_19
+          CFI (cfiCond32) R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond32) VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond32) V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond32) V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond32) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond32) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond32) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond32) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond32) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond32) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond32) CFA_SP SP+0
+          CFI (cfiCond32) CFA_XSP16 add(XSP16, 10)
+          CFI Block cfiCond33 Using cfiCommon0
+          CFI (cfiCond33) Function zclLevel_MoveToLevelCB
+          CFI (cfiCond33) Conditional ??CrossCallReturnLabel_20
+          CFI (cfiCond33) R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI (cfiCond33) VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI (cfiCond33) V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond33) V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond33) V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond33) V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond33) V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond33) V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond33) V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond33) V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond33) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond33) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond33) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond33) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond33) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond33) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond33) CFA_SP SP+0
+          CFI (cfiCond33) CFA_XSP16 add(XSP16, 16)
+          CFI Block cfiCond34 Using cfiCommon0
+          CFI (cfiCond34) Function zclLevel_MoveCB
+          CFI (cfiCond34) Conditional ??CrossCallReturnLabel_21
+          CFI (cfiCond34) R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond34) VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond34) V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond34) V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond34) V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond34) V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond34) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond34) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond34) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond34) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond34) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond34) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond34) CFA_SP SP+0
+          CFI (cfiCond34) CFA_XSP16 add(XSP16, 12)
+          CFI Block cfiCond35 Using cfiCommon0
+          CFI (cfiCond35) Function zclLevel_StepCB
+          CFI (cfiCond35) Conditional ??CrossCallReturnLabel_22
+          CFI (cfiCond35) R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond35) VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond35) V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond35) V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond35) V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond35) V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond35) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond35) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond35) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond35) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond35) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond35) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond35) CFA_SP SP+0
+          CFI (cfiCond35) CFA_XSP16 add(XSP16, 12)
+          CFI Block cfiPicker36 Using cfiCommon1
+          CFI (cfiPicker36) NoFunction
+          CFI (cfiPicker36) Picker
+        MOVX    A,@DPTR
+        MOV     R0,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R1,A
+        MOV     A,R0
+        ORL     A,R1
+        RET
+          CFI EndBlock cfiCond24
+          CFI EndBlock cfiCond25
+          CFI EndBlock cfiCond26
+          CFI EndBlock cfiCond27
+          CFI EndBlock cfiCond28
+          CFI EndBlock cfiCond29
+          CFI EndBlock cfiCond30
+          CFI EndBlock cfiCond31
+          CFI EndBlock cfiCond32
+          CFI EndBlock cfiCond33
+          CFI EndBlock cfiCond34
+          CFI EndBlock cfiCond35
+          CFI EndBlock cfiPicker36
+//  277 
+//  278 /*********************************************************************
+//  279  * @fn      zclLevel_StepCB
+//  280  *
+//  281  * @brief   This callback is called to process a Level step
+//  282  *          Request command.
+//  283  *
+//  284  * @param   pCmd - command
+//  285  *
+//  286  * @return  ZStatus_t
+//  287  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  288 void zclLevel_StepCB(zclLCStep_t *pCmd )
+zclLevel_StepCB:
+          CFI Block cfiBlock37 Using cfiCommon0
+          CFI Function zclLevel_StepCB
+        CODE
+//  289 {
+        FUNCALL zclLevel_StepCB, hwLight_ApplyUpdate
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 18, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 18, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL zclLevel_StepCB, osal_start_timerEx
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV     A,#-0xc
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 12)
+        ; Saved register size: 12
+        ; Auto size: 0
+        MOV     A,R2
+        MOV     R4,A
+        MOV     A,R3
+        MOV     R5,A
+//  290   zclLevel_LevelWithOnOff = pCmd->withOnOff;
+        MOV     DPL,R4
+        MOV     DPH,R5
+        INC     DPTR
+        INC     DPTR
+        LCALL   ?Subroutine4 & 0xFFFF
+//  291 
+//  292   if ( (pCmd->transitionTime == 0) || (pCmd->transitionTime == 0xFFFF) )
+??CrossCallReturnLabel_1:
+        INC     DPTR
+        LCALL   ??Subroutine7_0 & 0xFFFF
+??CrossCallReturnLabel_16:
+        JZ      ??zclLevel_StepCB_0
+        MOV     A,#-0x1
+        XRL     A,R0
+        JNZ     ??zclLevel_StepCB_1
+        MOV     A,#-0x1
+        XRL     A,R1
+??zclLevel_StepCB_1:
+        JNZ     ??zclLevel_StepCB_2
+//  293   {
+//  294     zclLevel_LevelRemainingTime = 1;
+??zclLevel_StepCB_0:
+        MOV     DPTR,#zclLevel_LevelRemainingTime
+        MOV     A,#0x1
+        MOVX    @DPTR,A
+        INC     DPTR
+        CLR     A
+        SJMP    ??zclLevel_StepCB_3
+//  295   }
+//  296   else
+//  297   {
+//  298     zclLevel_LevelRemainingTime = pCmd->transitionTime;
+??zclLevel_StepCB_2:
+        MOV     DPTR,#zclLevel_LevelRemainingTime
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+??zclLevel_StepCB_3:
+        MOVX    @DPTR,A
+//  299   }
+//  300 
+//  301   zclLevel_StepLevel_256 = ((((int32)pCmd->amount)<<8) / zclLevel_LevelRemainingTime);
+        MOV     DPL,R4
+        MOV     DPH,R5
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R0,A
+        CLR     A
+        XCH     A,R0
+        MOV     R1,A
+        MOV     DPTR,#zclLevel_LevelRemainingTime
+        MOVX    A,@DPTR
+        MOV     R2,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R3,A
+        LCALL   ?US_DIV_MOD
+        MOV     ?V0 + 0,R0
+        MOV     ?V0 + 1,R1
+        CLR     A
+        MOV     ?V0 + 2,A
+        MOV     ?V0 + 3,A
+        MOV     DPTR,#zclLevel_StepLevel_256
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_TO_X
+//  302   switch (pCmd->stepMode)
+        MOV     DPL,R4
+        MOV     DPH,R5
+        MOVX    A,@DPTR
+        JZ      ??zclLevel_StepCB_4
+        DEC     A
+        JZ      ??zclLevel_StepCB_5
+        SJMP    ??zclLevel_StepCB_6
+//  303   {
+//  304     case LEVEL_STEP_UP:
+//  305       if(zclLevel_LevelWithOnOff)
+??zclLevel_StepCB_4:
+        MOV     DPTR,#zclLevel_LevelWithOnOff
+        MOVX    A,@DPTR
+        JZ      ??zclLevel_StepCB_6
+//  306       {
+//  307         zclLevel_OnOffCB(COMMAND_ON);
+        ; Setup parameters for indirect call
+        MOV     R1,#0x1
+        LCALL   ??Subroutine6_0 & 0xFFFF
+//  308       }
+??CrossCallReturnLabel_7:
+        LCALL   ?CALL_IND
+        SJMP    ??zclLevel_StepCB_6
+//  309       break;
+//  310     case LEVEL_STEP_DOWN:
+//  311       zclLevel_StepLevel_256 = -zclLevel_StepLevel_256;
+??zclLevel_StepCB_5:
+        MOV     DPTR,#zclLevel_StepLevel_256
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_NEG
+        MOV     DPTR,#zclLevel_StepLevel_256
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_TO_X
+//  312       break;
+//  313   }
+//  314 
+//  315   hwLight_ApplyUpdate( &zclLevel_CurrentLevel,
+//  316                        &zclLevel_CurrentLevel_256,
+//  317                        &zclLevel_StepLevel_256,
+//  318                        &zclLevel_LevelRemainingTime,
+//  319                        LEVEL_MIN, LEVEL_MAX, FALSE );
+??zclLevel_StepCB_6:
+        ; Setup parameters for call to function hwLight_ApplyUpdate
+        MOV     ?V0 + 0,#0x0
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_ONE
+          CFI CFA_XSP16 add(XSP16, 13)
+        MOV     ?V0 + 0,#-0x2
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_ONE
+          CFI CFA_XSP16 add(XSP16, 14)
+        MOV     ?V0 + 0,#zclLevel_LevelRemainingTime & 0xff
+        MOV     ?V0 + 1,#(zclLevel_LevelRemainingTime >> 8) & 0xff
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 16)
+        MOV     ?V0 + 0,#zclLevel_StepLevel_256 & 0xff
+        MOV     ?V0 + 1,#(zclLevel_StepLevel_256 >> 8) & 0xff
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 18)
+        MOV     R1,#0x1
+        MOV     R4,#zclLevel_CurrentLevel_256 & 0xff
+        MOV     R5,#(zclLevel_CurrentLevel_256 >> 8) & 0xff
+        MOV     R2,#zclLevel_CurrentLevel & 0xff
+        MOV     R3,#(zclLevel_CurrentLevel >> 8) & 0xff
+        LCALL   ??hwLight_ApplyUpdate?relay
+        MOV     A,#0x6
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 12)
+//  320 
+//  321   if( (zclLevel_CurrentLevel == LEVEL_MIN) && (zclLevel_LevelWithOnOff) )
+        MOV     DPTR,#zclLevel_CurrentLevel
+        MOVX    A,@DPTR
+        XRL     A,#0x1
+        JNZ     ??zclLevel_StepCB_7
+        MOV     DPTR,#zclLevel_LevelWithOnOff
+        LCALL   ??Subroutine7_0 & 0xFFFF
+??CrossCallReturnLabel_17:
+        JZ      ??zclLevel_StepCB_7
+//  322   {
+//  323     zclLevel_OnOffCB(COMMAND_OFF);
+        ; Setup parameters for indirect call
+        LCALL   ?Subroutine3 & 0xFFFF
+//  324   }
+??CrossCallReturnLabel_10:
+        LCALL   ?CALL_IND
+//  325 
+//  326   if (zclLevel_LevelRemainingTime)
+??zclLevel_StepCB_7:
+        LCALL   ?Subroutine2 & 0xFFFF
+??CrossCallReturnLabel_22:
+        JZ      ??zclLevel_StepCB_8
+//  327   {
+//  328     //set a timer to make the change over zclLevel_StepTime 100ms
+//  329     osal_start_timerEx( zclLight_TaskID, LEVEL_PROCESS_EVT , 100 );
+        ; Setup parameters for call to function osal_start_timerEx
+        MOV     DPTR,#__Constant_64
+        LCALL   ?PUSH_XSTACK8_X_FOUR
+          CFI CFA_XSP16 add(XSP16, 16)
+        MOV     R2,#0x8
+        MOV     R3,#0x0
+        MOV     DPTR,#zclLight_TaskID
+        MOVX    A,@DPTR
+        MOV     R1,A
+        LCALL   ??osal_start_timerEx?relay
+        MOV     A,#0x4
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 12)
+//  330   }
+//  331 
+//  332   return;
+??zclLevel_StepCB_8:
+        LJMP    ?Subroutine1 & 0xFFFF
+          CFI EndBlock cfiBlock37
+//  333 
+//  334 }
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine4:
+          CFI Block cfiCond38 Using cfiCommon0
+          CFI Function zclLevel_MoveCB
+          CFI Conditional ??CrossCallReturnLabel_0
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 12)
+          CFI Block cfiCond39 Using cfiCommon0
+          CFI (cfiCond39) Function zclLevel_StepCB
+          CFI (cfiCond39) Conditional ??CrossCallReturnLabel_1
+          CFI (cfiCond39) R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond39) VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond39) V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond39) V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond39) V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond39) V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond39) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond39) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond39) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond39) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond39) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond39) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond39) CFA_SP SP+0
+          CFI (cfiCond39) CFA_XSP16 add(XSP16, 12)
+          CFI Block cfiPicker40 Using cfiCommon1
+          CFI (cfiPicker40) NoFunction
+          CFI (cfiPicker40) Picker
+        LCALL   ?Subroutine5 & 0xFFFF
+??CrossCallReturnLabel_3:
+        MOV     DPL,R4
+        MOV     DPH,R5
+        INC     DPTR
+        RET
+          CFI EndBlock cfiCond38
+          CFI EndBlock cfiCond39
+          CFI EndBlock cfiPicker40
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine5:
+          CFI Block cfiCond41 Using cfiCommon0
+          CFI Function zclLevel_MoveToLevelCB
+          CFI Conditional ??CrossCallReturnLabel_2
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 16)
+          CFI Block cfiCond42 Using cfiCommon0
+          CFI (cfiCond42) Function zclLevel_MoveCB
+          CFI (cfiCond42) Conditional ??CrossCallReturnLabel_3, ??CrossCallReturnLabel_0
+          CFI (cfiCond42) R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond42) VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond42) V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond42) V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond42) V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond42) V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond42) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond42) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond42) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond42) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond42) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond42) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond42) CFA_SP SP+0
+          CFI (cfiCond42) CFA_XSP16 add(XSP16, 12)
+          CFI Block cfiCond43 Using cfiCommon0
+          CFI (cfiCond43) Function zclLevel_StepCB
+          CFI (cfiCond43) Conditional ??CrossCallReturnLabel_3, ??CrossCallReturnLabel_1
+          CFI (cfiCond43) R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond43) VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond43) V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond43) V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond43) V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond43) V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond43) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond43) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond43) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond43) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond43) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond43) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond43) CFA_SP SP+0
+          CFI (cfiCond43) CFA_XSP16 add(XSP16, 12)
+          CFI Block cfiPicker44 Using cfiCommon1
+          CFI (cfiPicker44) NoFunction
+          CFI (cfiPicker44) Picker
+        INC     DPTR
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     DPTR,#zclLevel_LevelWithOnOff
+        MOVX    @DPTR,A
+        INC     DPTR
+        CLR     A
+        MOVX    @DPTR,A
+        RET
+          CFI EndBlock cfiCond41
+          CFI EndBlock cfiCond42
+          CFI EndBlock cfiCond43
+          CFI EndBlock cfiPicker44
+//  335 
+//  336 /*********************************************************************
+//  337  * @fn      zclLevel_StopCB
+//  338  *
+//  339  * @brief   Callback from the ZCL General Cluster Library when
+//  340  *          it received a Level Control - Stop Command for
+//  341  *          this application.
+//  342  *
+//  343  * @param   stepMode -
+//  344  * @param   amount - number of levels to step
+//  345  * @param   transitionTime - time to take a single step
+//  346  *
+//  347  * @return  none
+//  348  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  349 void zclLevel_StopCB( void )
+zclLevel_StopCB:
+          CFI Block cfiBlock45 Using cfiCommon0
+          CFI Function zclLevel_StopCB
+        CODE
+//  350 {
+        FUNCALL zclLevel_StopCB, osal_stop_timerEx
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUSH    DPL
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH    DPH
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  351     osal_stop_timerEx( zclLight_TaskID, LEVEL_PROCESS_EVT);
+        ; Setup parameters for call to function osal_stop_timerEx
+        MOV     R2,#0x8
+        MOV     R3,#0x0
+        MOV     DPTR,#zclLight_TaskID
+        MOVX    A,@DPTR
+        MOV     R1,A
+        LCALL   ??osal_stop_timerEx?relay
+//  352     zclLevel_LevelRemainingTime = 0;
+        MOV     DPTR,#zclLevel_LevelRemainingTime
+        CLR     A
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOVX    @DPTR,A
+//  353     // align variables
+//  354     zclLevel_CurrentLevel_256 = ((int32)zclLevel_CurrentLevel)<<8;
+        MOV     DPTR,#zclLevel_CurrentLevel
+        MOVX    A,@DPTR
+        MOV     R1,A
+        MOV     DPTR,#zclLevel_CurrentLevel_256
+        CLR     A
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+        MOVX    @DPTR,A
+//  355 }
+        POP     DPH
+          CFI DPH0 SameValue
+          CFI CFA_SP SP+-4
+        POP     DPL
+          CFI DPL0 SameValue
+          CFI CFA_SP SP+-3
+        LJMP    ?BRET
+          CFI EndBlock cfiBlock45
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for zclLevel_CurrentLevel_256>`:
+        DATA16
+        DW 65024
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA32
+__Constant_64:
+        DD 100
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA32
+__Constant_1:
+        DD 1
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??zclLevel_init?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    zclLevel_init
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??zclLevel_process?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    zclLevel_process
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??zclLevel_MoveToLevelCB?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    zclLevel_MoveToLevelCB
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??zclLevel_MoveCB?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    zclLevel_MoveCB
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??zclLevel_StepCB?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    zclLevel_StepCB
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??zclLevel_StopCB?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    zclLevel_StopCB
+
+        END
+//  356 
+//  357 #endif //ZCL_LEVEL_CTRL
+//  358 /****************************************************************************
+//  359 ****************************************************************************/
+//  360 
+//  361 
+// 
+// 1 044 bytes in segment BANKED_CODE
+//    36 bytes in segment BANK_RELAYS
+//     2 bytes in segment XDATA_I
+//     2 bytes in segment XDATA_ID
+//     8 bytes in segment XDATA_ROM_C
+//     9 bytes in segment XDATA_Z
+// 
+// 1 082 bytes of CODE  memory
+//     0 bytes of CONST memory (+ 8 bytes shared)
+//    11 bytes of XDATA memory
+//
+//Errors: none
+//Warnings: none

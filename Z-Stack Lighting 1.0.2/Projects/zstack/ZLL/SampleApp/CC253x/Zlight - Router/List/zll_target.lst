@@ -1,0 +1,3091 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.20.2.41139 for 8051             27/May/2014  19:14:31 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\Source\zll_target.c      #
+#    Command line       =  -f "D:\Texas Instruments\Z-Stack Lighting          #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wRouter.cfg" (-DCPU32MHZ        #
+#                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TRU #
+#                          E -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8       #
+#                          -DMAC_CFG_RX_MAX=5 -DRTR_NWK) -f "D:\Texas         #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wConfig.cfg" (-DZIGBEEPRO       #
+#                          -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR       #
+#                          -DDEFAULT_CHANLIST=0x00000800                      #
+#                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                       #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MA #
+#                          SK=0x007F -DBEACON_REQUEST_DELAY=100               #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                     #
+#                          -DLINK_STATUS_JITTER_MASK=0x007F                   #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_PO #
+#                          LLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7             #
+#                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3    #
+#                          -DNWK_MAX_DATA_RETRIES=2                           #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9         #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40           #
+#                          -DNWK_MAX_BINDING_ENTRIES=4                        #
+#                          -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01,  #
+#                          0x03, 0x05, 0x07, 0x09, 0x0B, 0x0D, 0x0F, 0x00,    #
+#                          0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0D}"         #
+#                          -DMAC_MAX_FRAME_SIZE=116                           #
+#                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const     #
+#                          __code" -DGENERIC=__generic                        #
+#                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000        #
+#                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100    #
+#                          -DREJOIN_POLL_RATE=440) -f "D:\Texas               #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wZCL.cfg" "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\Source\zll_target.c" -D  #
+#                          FEATURE_GREEN_POWER -D SECURE=1 -D                 #
+#                          TC_LINKKEY_JOIN -D ZDSECMGR_TC_DEVICE_MAX=2 -D     #
+#                          NV_RESTORE -D HOLD_AUTO_START -D INTER_PAN -D      #
+#                          LCD_SUPPORTED=DEBUG -D ZCL_BASIC -D ZCL_READ -D    #
+#                          ZCL_WRITE -D ZCL_IDENTIFY -D ZCL_ON_OFF -D         #
+#                          ZCL_SCENES -D ZCL_GROUPS -D                        #
+#                          ZCL_LIGHT_LINK_ENHANCE -D ZCL_LEVEL_CTRL -D        #
+#                          ZCL_COLOR_CTRL -D MAX_CHANNELS_24GHZ=0x02108800    #
+#                          -D xPWM_ALT2 -D xTHERMAL_SHUTDOWN -D               #
+#                          ZLL_1_0_HUB_COMPATIBILITY -D DALI_LIGHT -lC        #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\List\" -lA "D:\Texas Instruments\Z-Stack  #
+#                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC253 #
+#                          x\Zlight - Router\List\" --diag_suppress           #
+#                          Pe001,Pa010 -o "D:\Texas Instruments\Z-Stack       #
+#                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC253 #
+#                          x\Zlight - Router\Obj\" -e --debug --core=plain    #
+#                          --dptr=16,1 --data_model=large                     #
+#                          --code_model=banked --calling_convention=xdata_ree #
+#                          ntrant --place_constants=data_rom                  #
+#                          --nr_virtual_regs 16 -I "D:\Texas                  #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\" -I    #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\Sour #
+#                          ce\" -I "D:\Texas Instruments\Z-Stack Lighting     #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\S #
+#                          ource\" -I "D:\Texas Instruments\Z-Stack Lighting  #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\HomeAutomation\Source\" -I "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\HomeAutomation\SampleLight\Source\" -I           #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\ZMain\TI2530DB\" -I "D:\Texas                    #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\hal\include\" -I "D:\Texas      #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\hal\target\CC2530PMP4712\" -I   #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\include\" -I "D:\Texas      #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\high_level\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\low_level\srf04\" -I        #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\low_level\srf04\single_chip #
+#                          \" -I "D:\Texas Instruments\Z-Stack Lighting       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mt\" -I "D:\Texas               #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\osal\include\" -I "D:\Texas     #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\services\saddr\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\services\sdata\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\af\" -I "D:\Texas         #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\nwk\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sapi\" -I "D:\Texas       #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sec\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sys\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\zcl\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\zdo\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\zmac\" -I "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\zmac\f8w\" -Ohz                 #
+#                          --require_prototypes                               #
+#    List file          =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\List\zll_target.lst                       #
+#    Object file        =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\Obj\zll_target.r51                        #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\Texas Instruments\Z-Stack Lighting 1.0.2\Projects\zstack\ZLL\Source\zll_target.c
+      1          /**************************************************************************************************
+      2            Filename:       zll_target.c
+      3            Revised:        $Date: 2013-11-26 15:12:49 -0800 (Tue, 26 Nov 2013) $
+      4            Revision:       $Revision: 36298 $
+      5          
+      6            Description:    Zigbee Cluster Library - Light Link Target.
+      7          
+      8          
+      9            Copyright 2011-2013 Texas Instruments Incorporated. All rights reserved.
+     10          
+     11            IMPORTANT: Your use of this Software is limited to those specific rights
+     12            granted under the terms of a software license agreement between the user
+     13            who downloaded the software, his/her employer (which must be your employer)
+     14            and Texas Instruments Incorporated (the "License").  You may not use this
+     15            Software unless you agree to abide by the terms of the License. The License
+     16            limits your use, and you acknowledge, that the Software may not be modified,
+     17            copied or distributed unless embedded on a Texas Instruments microcontroller
+     18            or used solely and exclusively in conjunction with a Texas Instruments radio
+     19            frequency transceiver, which is integrated into your product.  Other than for
+     20            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     21            works of, modify, distribute, perform, display or sell this Software and/or
+     22            its documentation for any purpose.
+     23          
+     24            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     25            PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     26            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     27            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     28            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     29            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     30            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     31            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     32            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     33            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     34            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     35          
+     36            Should you have any questions regarding your right to use this Software,
+     37            contact Texas Instruments Incorporated at www.TI.com.
+     38          **************************************************************************************************/
+     39          
+     40          
+     41          /*********************************************************************
+     42           * INCLUDES
+     43           */
+     44          #include "ZComDef.h"
+     45          #include "OSAL.h"
+     46          #include "OSAL_Nv.h"
+     47          #include "AF.h"
+     48          #include "ZDApp.h"
+     49          #include "nwk_util.h"
+     50          #include "AddrMgr.h"
+     51          #include "ZDSecMgr.h"
+     52          
+     53          #if defined( INTER_PAN )
+     54            #include "stub_aps.h"
+     55          #endif
+     56          
+     57          #include "zcl.h"
+     58          #include "zcl_general.h"
+     59          #include "zcl_ll.h"
+     60          #include "zll.h"
+     61          
+     62          #if defined ( MT_APP_FUNC )
+     63          #include "MT_APP.h"
+     64          #include "zll_rpc.h"
+     65          #endif
+     66          
+     67          #include "zll_target.h"
+     68          
+     69          /*********************************************************************
+     70           * MACROS
+     71           */
+     72          
+     73          /*********************************************************************
+     74           * CONSTANTS
+     75           */
+     76          
+     77          #define ZLL_NWK_START_EVT                                  ZLL_AUX_1_EVT
+     78          #define ZLL_ROUTER_JOIN_EVT                                ZLL_NWK_JOIN_EVT
+     79          
+     80          /*********************************************************************
+     81           * TYPEDEFS
+     82           */
+     83          
+     84          
+     85          typedef union
+     86          {
+     87            zclLLNwkStartReq_t nwkStartReq;
+     88            zclLLNwkJoinReq_t nwkJoinReq;
+     89          } zclLLReq_t;
+     90          
+     91          /*********************************************************************
+     92           * GLOBAL VARIABLES
+     93           */
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+     94          uint8 zllTarget_TaskID;
+   \                     zllTarget_TaskID:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+     95          
+     96          /*********************************************************************
+     97           * EXTERNAL VARIABLES
+     98           */
+     99          
+    100          /*********************************************************************
+    101           * EXTERNAL FUNCTIONS
+    102           */
+    103          
+    104          /*********************************************************************
+    105           * LOCAL VARIABLES
+    106           */
+    107          
+    108          
+    109          // Info related to the received request
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    110          static zclLLReq_t rxReq; // network start or join request
+   \                     rxReq:
+   \   000000                DS 56
+   \   000038                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    111          static uint8 rxSeqNum;
+   \                     rxSeqNum:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    112          static afAddrType_t dstAddr;
+   \                     dstAddr:
+   \   000000                DS 12
+   \   00000C                REQUIRE __INIT_XDATA_Z
+    113          
+    114          // Application callback
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    115          static zclGCB_Identify_t pfnIdentifyCB = NULL;
+   \                     pfnIdentifyCB:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+    116          
+    117          /*********************************************************************
+    118           * LOCAL FUNCTIONS
+    119           */
+    120          
+    121          // This callback is called to process a Scan Request command
+    122          static ZStatus_t targetScanReqCB( afAddrType_t *srcAddr, zclLLScanReq_t *pReq, uint8 seqNum );
+    123          
+    124          // This callback is called to process a Device Information Request command
+    125          static ZStatus_t targetDeviceInfoReqCB( afAddrType_t *srcAddr, zclLLDeviceInfoReq_t *pReq, uint8 seqNum );
+    126          
+    127          // This callback is called to process an Identify Request command
+    128          static ZStatus_t targetIdentifyReqCB( afAddrType_t *srcAddr, zclLLIdentifyReq_t *pReq );
+    129          
+    130          // This callback is called to process a Reset to Factory New Request command
+    131          static ZStatus_t targetResetToFNReqCB( afAddrType_t *srcAddr, zclLLResetToFNReq_t *pReq );
+    132          
+    133          // This callback is called to process a Network Start Request command
+    134          static ZStatus_t targetNwkStartReqCB( afAddrType_t *srcAddr, zclLLNwkStartReq_t *pReq, uint8 seqNum );
+    135          
+    136          // This callback is called to process a Network Join Router Request command
+    137          static ZStatus_t targetNwkJoinRtrReqCB( afAddrType_t *srcAddr, zclLLNwkJoinReq_t *pReq, uint8 seqNum );
+    138          
+    139          // This callback is called to process a Network Update Request command
+    140          static ZStatus_t targetNwkUpdateReqCB( afAddrType_t *srcAddr, zclLLNwkUpdateReq_t *pReq );
+    141          
+    142          // This callback is called to process a Leave Confirmation message
+    143          static void *targetZdoLeaveCnfCB( void *pParam );
+    144          
+    145          static void targetProcessStateChange( devStates_t devState );
+    146          
+    147          static void targetStartRtr( zclLLNwkParams_t *pParams, uint32 transID );
+    148          
+    149          static void targetSendNwkStartRsp( afAddrType_t *dstAddr, uint32 transID, uint8 status,
+    150                                             zclLLNwkParams_t *pNwkParams, uint8 nwkUpdateId, uint8 seqNum );
+    151          static void targetSelectNwkParams( void );
+    152          static ZStatus_t targetVerifyNwkParams( uint16 PANID, uint8 *pExtendedPANID );
+    153          
+    154          #if defined (MT_APP_FUNC)
+    155          static void targetProcessRpcMsg( uint8 srcEP, uint8 len, uint8 *msg );
+    156          #endif
+    157          
+    158          /*********************************************************************
+    159           * ZLL Target Callback Table
+    160           */
+    161          // Target Command Callbacks table
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+    162          static zclLL_InterPANCallbacks_t zllTarget_CmdCBs =
+   \                     zllTarget_CmdCBs:
+   \   000000                DS 26
+   \   00001A                REQUIRE `?<Initializer for zllTarget_CmdCBs>`
+   \   00001A                REQUIRE __INIT_XDATA_I
+    163          {
+    164            // Received Server Commands
+    165            targetScanReqCB,       // Scan Request command
+    166            targetDeviceInfoReqCB, // Device Information Request command
+    167            targetIdentifyReqCB,   // Identify Request command
+    168            targetResetToFNReqCB,  // Reset to Factory New Request command
+    169            targetNwkStartReqCB,   // Network Start Request command
+    170            targetNwkJoinRtrReqCB, // Network Join Router Request command
+    171            NULL,                  // Network Join End Device Request command
+    172            targetNwkUpdateReqCB,  // Network Update Request command
+    173          
+    174            // Received Client Commands
+    175            NULL,                  // Scan Response command
+    176            NULL,                  // Device Information Response command
+    177            NULL,                  // Network Start Response command
+    178            NULL,                  // Network Join Router Response command
+    179            NULL                   // Network Join End Device Response command
+    180          };
+    181          
+    182          /*********************************************************************
+    183           * PUBLIC FUNCTIONS
+    184           */
+    185          
+    186          /*********************************************************************
+    187           * @fn      zllTarget_InitDevice
+    188           *
+    189           * @brief   Start the ZLL Target device in the network if it's not
+    190           *          factory new. Otherwise, determine the network parameters
+    191           *          and wait for a touchlink command.
+    192           *
+    193           * @param   none
+    194           *
+    195           * @return  status
+    196           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    197          ZStatus_t zllTarget_InitDevice( void )
+   \                     zllTarget_InitDevice:
+    198          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 1
+   \   000004   74FF         MOV     A,#-0x1
+   \   000006   12....       LCALL   ?ALLOC_XSTACK8
+    199            if ( !zll_IsFactoryNew() )
+   \   000009                ; Setup parameters for call to function zll_IsFactoryNew
+   \   000009   12....       LCALL   ??zll_IsFactoryNew?relay
+   \   00000C   E9           MOV     A,R1
+   \   00000D   7009         JNZ     ??zllTarget_InitDevice_0
+    200            {
+    201              // Resume ZigBee functionality based on the info stored in NV
+    202              ZDOInitDevice( 0 );
+   \   00000F                ; Setup parameters for call to function ZDOInitDevice
+   \   00000F   7A00         MOV     R2,#0x0
+   \   000011   7B00         MOV     R3,#0x0
+   \   000013   12....       LCALL   ??ZDOInitDevice?relay
+   \   000016   8015         SJMP    ??zllTarget_InitDevice_1
+    203            }
+    204            else
+    205            {
+    206              uint8 x = TRUE;
+   \                     ??zllTarget_InitDevice_0:
+   \   000018   85..82       MOV     DPL,?XSP + 0
+   \   00001B   85..83       MOV     DPH,?XSP + 1
+   \   00001E   7401         MOV     A,#0x1
+   \   000020   F0           MOVX    @DPTR,A
+    207          
+    208              // Enable our receiver
+    209              ZMacSetReq( ZMacRxOnIdle, &x );
+   \   000021                ; Setup parameters for call to function ZMacSetReq
+   \   000021   AA82         MOV     R2,DPL
+   \   000023   AB83         MOV     R3,DPH
+   \   000025   7952         MOV     R1,#0x52
+   \   000027   12....       LCALL   ??ZMacSetReq?relay
+    210          
+    211              // Determine unique PAN Id and Extended PAN Id
+    212              targetSelectNwkParams();
+   \   00002A                ; Setup parameters for call to function targetSelectNwkParams
+   \   00002A   12....       LCALL   ??targetSelectNwkParams?relay
+    213          
+    214          #ifndef HOLD_AUTO_START
+    215              zll_ClassicalCommissioningInit();
+    216          #endif
+    217          
+    218              // Wait for a touchlink command
+    219            }
+    220          
+    221            zllTarget_PermitJoin(0);
+   \                     ??zllTarget_InitDevice_1:
+   \   00002D                ; Setup parameters for call to function zll_PermitJoin
+   \   00002D   7900         MOV     R1,#0x0
+   \   00002F   12....       LCALL   ??zll_PermitJoin?relay
+    222          
+    223            return ( ZSuccess );
+   \   000032   7900         MOV     R1,#0x0
+   \   000034   7401         MOV     A,#0x1
+   \   000036   12....       LCALL   ?DEALLOC_XSTACK8
+   \   000039   02....       LJMP    ?Subroutine0 & 0xFFFF
+    224          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   D083         POP     DPH
+   \   000002   D082         POP     DPL
+   \   000004   02....       LJMP    ?BRET
+    225          
+    226          /*********************************************************************
+    227           * @fn      targetProcessStateChange
+    228           *
+    229           * @brief   Process ZDO device state change
+    230           *
+    231           * @param   devState - The device's network state
+    232           *
+    233           * @return  none
+    234           */
+    235          static void targetProcessStateChange( devStates_t devState )
+    236          {
+    237            if ( ( devState == DEV_ROUTER ) || ( devState == DEV_END_DEVICE ) )
+    238            {
+    239              ZDP_DeviceAnnce( NLME_GetShortAddr(), NLME_GetExtAddr(),
+    240                               ZDO_Config_Node_Descriptor.CapabilityFlags, 0 );
+    241            }
+    242          }
+    243          
+    244          /*********************************************************************
+    245           * @fn      zllTarget_RegisterIdentifyCB
+    246           *
+    247           * @brief   Register an Application's Idnetify callback function.
+    248           *
+    249           * @param   pfnIdentify - application callback
+    250           *
+    251           * @return  none
+    252           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    253          void zllTarget_RegisterIdentifyCB( zclGCB_Identify_t pfnIdentify )
+   \                     zllTarget_RegisterIdentifyCB:
+    254          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    255            pfnIdentifyCB = pfnIdentify;
+   \   000004   90....       MOV     DPTR,#pfnIdentifyCB
+   \   000007   EA           MOV     A,R2
+   \   000008   F0           MOVX    @DPTR,A
+   \   000009   A3           INC     DPTR
+   \   00000A   EB           MOV     A,R3
+   \   00000B   F0           MOVX    @DPTR,A
+    256          }
+   \   00000C   02....       LJMP    ?Subroutine0 & 0xFFFF
+    257          
+    258          /*********************************************************************
+    259           * @fn      zllTarget_Init
+    260           *
+    261           * @brief   Initialization function for the ZLL Target task.
+    262           *
+    263           * @param   task_id - ZLL Target task id
+    264           *
+    265           * @return  none
+    266           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    267          void zllTarget_Init( uint8 task_id )
+   \                     zllTarget_Init:
+    268          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+    269            // Save our own Task ID
+    270            zllTarget_TaskID = task_id;
+   \   000006   90....       MOV     DPTR,#zllTarget_TaskID
+   \   000009   F0           MOVX    @DPTR,A
+    271          
+    272            zll_SetZllTaskId( zllTarget_TaskID );
+   \   00000A                ; Setup parameters for call to function zll_SetZllTaskId
+   \   00000A   12....       LCALL   ??zll_SetZllTaskId?relay
+    273          
+    274            // Initialize ZLL common variables
+    275            zll_InitVariables( FALSE );
+   \   00000D                ; Setup parameters for call to function zll_InitVariables
+   \   00000D   7900         MOV     R1,#0x0
+   \   00000F   12....       LCALL   ??zll_InitVariables?relay
+    276          
+    277            // Register the Application to receive the unprocessed Foundation command/response messages
+    278            zcl_registerForMsg( zllTarget_TaskID );
+   \   000012                ; Setup parameters for call to function zcl_registerForMsg
+   \   000012   90....       MOV     DPTR,#zllTarget_TaskID
+   \   000015   E0           MOVX    A,@DPTR
+   \   000016   F9           MOV     R1,A
+   \   000017   12....       LCALL   ??zcl_registerForMsg?relay
+    279          
+    280            // Register for ZLL Target callbacks (for Inter-PAN commands)
+    281            zclLL_RegisterInterPANCmdCallbacks( &zllTarget_CmdCBs );
+   \   00001A                ; Setup parameters for call to function zclLL_RegisterInterPANCmdCallbacks
+   \   00001A   7A..         MOV     R2,#zllTarget_CmdCBs & 0xff
+   \   00001C   7B..         MOV     R3,#(zllTarget_CmdCBs >> 8) & 0xff
+   \   00001E   12....       LCALL   ??zclLL_RegisterInterPANCmdCallbacks?relay
+    282          
+    283            // Register for Initiator to receive Leave Confirm
+    284            ZDO_RegisterForZdoCB( ZDO_LEAVE_CNF_CBID, targetZdoLeaveCnfCB );
+   \   000021                ; Setup parameters for call to function ZDO_RegisterForZdoCB
+   \   000021   7A..         MOV     R2,#??targetZdoLeaveCnfCB?relay & 0xff
+   \   000023   7B..         MOV     R3,#(??targetZdoLeaveCnfCB?relay >> 8) & 0xff
+   \   000025   7905         MOV     R1,#0x5
+   \   000027   12....       LCALL   ??ZDO_RegisterForZdoCB?relay
+    285          
+    286            // Register to process ZDO messages
+    287            ZDO_RegisterForZDOMsg( zllTarget_TaskID, Mgmt_Permit_Join_req );
+   \   00002A                ; Setup parameters for call to function ZDO_RegisterForZDOMsg
+   \   00002A   7A36         MOV     R2,#0x36
+   \   00002C   7B00         MOV     R3,#0x0
+   \   00002E   90....       MOV     DPTR,#zllTarget_TaskID
+   \   000031   E0           MOVX    A,@DPTR
+   \   000032   F9           MOV     R1,A
+   \   000033   12....       LCALL   ??ZDO_RegisterForZDOMsg?relay
+    288            ZDO_RegisterForZDOMsg( zllTarget_TaskID, Device_annce );
+   \   000036                ; Setup parameters for call to function ZDO_RegisterForZDOMsg
+   \   000036   7A13         MOV     R2,#0x13
+   \   000038   7B00         MOV     R3,#0x0
+   \   00003A   90....       MOV     DPTR,#zllTarget_TaskID
+   \   00003D   E0           MOVX    A,@DPTR
+   \   00003E   F9           MOV     R1,A
+   \   00003F   12....       LCALL   ??ZDO_RegisterForZDOMsg?relay
+    289          }
+   \   000042                REQUIRE ?Subroutine1
+   \   000042                ; // Fall through to label ?Subroutine1
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000   7F01         MOV     R7,#0x1
+   \   000002   02....       LJMP    ?BANKED_LEAVE_XDATA
+    290          
+    291          /*********************************************************************
+    292           * @fn      zllTarget_RegisterApp
+    293           *
+    294           * @brief   Register an Application's EndPoint with the ZLL profile.
+    295           *
+    296           * @param   simpleDesc -  application simple description
+    297           * @param   pDeviceInfo - ZLL application device info
+    298           *
+    299           * @return  ZSuccess - Registered
+    300           *          ZInvalidParameter - invalid or duplicate endpoint
+    301           *          ZMemError - not enough memory to add
+    302           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    303          ZStatus_t zllTarget_RegisterApp( SimpleDescriptionFormat_t *simpleDesc, zclLLDeviceInfo_t *pDeviceInfo )
+   \                     zllTarget_RegisterApp:
+    304          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    305            return zll_RegisterApp( simpleDesc, pDeviceInfo );
+   \   000004                ; Setup parameters for call to function zll_RegisterApp
+   \   000004   12....       LCALL   ??zll_RegisterApp?relay
+   \   000007   02....       LJMP    ?Subroutine0 & 0xFFFF
+    306          }
+    307          
+    308          /*********************************************************************
+    309           * @fn      zllTarget_PermitJoin
+    310           *
+    311           * @brief   Set the router permit join flag, to allow or deny classical
+    312           *          commissioning by other ZigBee devices.
+    313           *
+    314           * @param   duration - enable up to aplcMaxPermitJoinDuration seconds,
+    315           *                     0 to disable
+    316           *
+    317           * @return  status
+    318           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    319          ZStatus_t zllTarget_PermitJoin( uint8 duration )
+   \                     zllTarget_PermitJoin:
+    320          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+    321            return zll_PermitJoin( duration );
+   \   000005                ; Setup parameters for call to function zll_PermitJoin
+   \   000005   12....       LCALL   ??zll_PermitJoin?relay
+   \   000008   80..         SJMP    ?Subroutine1
+    322          }
+    323          
+    324          /*********************************************************************
+    325           * @fn      zllTarget_event_loop
+    326           *
+    327           * @brief   Event Loop Processor for ZLL Target.
+    328           *
+    329           * @param   task_id - task id
+    330           * @param   events - event bitmap
+    331           *
+    332           * @return  unprocessed events
+    333           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    334          uint16 zllTarget_event_loop( uint8 task_id, uint16 events )
+   \                     zllTarget_event_loop:
+    335          {
+   \   000000   74F0         MOV     A,#-0x10
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 16
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV     A,R2
+   \   000006   FE           MOV     R6,A
+   \   000007   EB           MOV     A,R3
+   \   000008   FF           MOV     R7,A
+    336            if ( events & SYS_EVENT_MSG )
+   \   000009   5480         ANL     A,#0x80
+   \   00000B   605D         JZ      ??zllTarget_event_loop_0
+    337            {
+    338              osal_event_hdr_t *pMsg;
+    339          
+    340              if ( (pMsg = (osal_event_hdr_t *)osal_msg_receive( task_id )) != NULL )
+   \   00000D                ; Setup parameters for call to function osal_msg_receive
+   \   00000D   12....       LCALL   ??osal_msg_receive?relay
+   \   000010   8A..         MOV     ?V0 + 0,R2
+   \   000012   8B..         MOV     ?V0 + 1,R3
+   \   000014   EA           MOV     A,R2
+   \   000015   45..         ORL     A,?V0 + 1
+   \   000017   6049         JZ      ??zllTarget_event_loop_1
+    341              {
+    342                switch (pMsg->event )
+   \   000019   8A82         MOV     DPL,R2
+   \   00001B   8B83         MOV     DPH,R3
+   \   00001D   E0           MOVX    A,@DPTR
+   \   00001E   242F         ADD     A,#0x2f
+   \   000020   6009         JZ      ??zllTarget_event_loop_2
+   \   000022   24FE         ADD     A,#-0x2
+   \   000024   7035         JNZ     ??zllTarget_event_loop_3
+    343                {
+    344                  case ZDO_CB_MSG:
+    345                    // ZDO sends the message that we registered for
+    346                    zll_RouterProcessZDOMsg( (zdoIncomingMsg_t *)pMsg );
+   \   000026                ; Setup parameters for call to function zll_RouterProcessZDOMsg
+   \   000026   12....       LCALL   ??zll_RouterProcessZDOMsg?relay
+    347                    break;
+   \   000029   8030         SJMP    ??zllTarget_event_loop_3
+    348          
+    349                  case ZDO_STATE_CHANGE:
+    350                    targetProcessStateChange( (devStates_t)pMsg->status );
+   \                     ??zllTarget_event_loop_2:
+   \   00002B   A3           INC     DPTR
+   \   00002C   E0           MOVX    A,@DPTR
+   \   00002D   F8           MOV     R0,A
+   \   00002E   7407         MOV     A,#0x7
+   \   000030   68           XRL     A,R0
+   \   000031   6005         JZ      ??zllTarget_event_loop_4
+   \   000033   7406         MOV     A,#0x6
+   \   000035   68           XRL     A,R0
+   \   000036   7023         JNZ     ??zllTarget_event_loop_3
+   \                     ??zllTarget_event_loop_4:
+   \   000038                ; Setup parameters for call to function NLME_GetExtAddr
+   \   000038   12....       LCALL   ??NLME_GetExtAddr?relay
+   \   00003B   8A..         MOV     ?V0 + 4,R2
+   \   00003D   8B..         MOV     ?V0 + 5,R3
+   \   00003F                ; Setup parameters for call to function NLME_GetShortAddr
+   \   00003F   12....       LCALL   ??NLME_GetShortAddr?relay
+   \   000042                ; Setup parameters for call to function ZDP_DeviceAnnce
+   \   000042   75..00       MOV     ?V0 + 3,#0x0
+   \   000045   78..         MOV     R0,#?V0 + 3
+   \   000047   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   00004A   90....       MOV     DPTR,#ZDO_Config_Node_Descriptor + 2
+   \   00004D   E0           MOVX    A,@DPTR
+   \   00004E   F9           MOV     R1,A
+   \   00004F   AC..         MOV     R4,?V0 + 4
+   \   000051   AD..         MOV     R5,?V0 + 5
+   \   000053   12....       LCALL   ??ZDP_DeviceAnnce?relay
+   \   000056   7401         MOV     A,#0x1
+   \   000058   12....       LCALL   ?DEALLOC_XSTACK8
+    351                    break;
+    352          
+    353          #if defined (MT_APP_FUNC)
+    354                  case MT_SYS_APP_MSG:
+    355                    // Message received from MT
+    356                   targetProcessRpcMsg( ((mtSysAppMsg_t *)pMsg)->endpoint,
+    357                                        ((mtSysAppMsg_t *)pMsg)->appDataLen,
+    358                                        ((mtSysAppMsg_t *)pMsg)->appData );
+    359                    break;
+    360          #endif
+    361          
+    362                  default:
+    363                    break;
+    364                }
+    365          
+    366                // Release the OSAL message
+    367                VOID osal_msg_deallocate( (uint8 *)pMsg );
+   \                     ??zllTarget_event_loop_3:
+   \   00005B                ; Setup parameters for call to function osal_msg_deallocate
+   \   00005B   AA..         MOV     R2,?V0 + 0
+   \   00005D   AB..         MOV     R3,?V0 + 1
+   \   00005F   12....       LCALL   ??osal_msg_deallocate?relay
+    368              }
+    369          
+    370              // return unprocessed events
+    371              return ( events ^ SYS_EVENT_MSG );
+   \                     ??zllTarget_event_loop_1:
+   \   000062   EE           MOV     A,R6
+   \   000063   FA           MOV     R2,A
+   \   000064   EF           MOV     A,R7
+   \   000065   6480         XRL     A,#0x80
+   \   000067   02....       LJMP    ??zllTarget_event_loop_5 & 0xFFFF
+    372            }
+    373          
+    374            if ( events & ZLL_NWK_START_EVT )
+   \                     ??zllTarget_event_loop_0:
+   \   00006A   EE           MOV     A,R6
+   \   00006B   5440         ANL     A,#0x40
+   \   00006D   606D         JZ      ??zllTarget_event_loop_6
+    375            {
+    376              zclLLNwkStartReq_t *pReq = &(rxReq.nwkStartReq);
+    377          
+    378              // If the PAN Id, Extended PAN Id or Logical Channel are zero then
+    379              // determine each of these parameters
+    380              if ( !nwk_ExtPANIDValid( pReq->nwkParams.extendedPANID ) )
+   \   00006F                ; Setup parameters for call to function nwk_ExtPANIDValid
+   \   00006F   7A..         MOV     R2,#(rxReq + 4) & 0xff
+   \   000071   7B..         MOV     R3,#((rxReq + 4) >> 8) & 0xff
+   \   000073   12....       LCALL   ??nwk_ExtPANIDValid?relay
+   \   000076   E9           MOV     A,R1
+   \   000077   7009         JNZ     ??zllTarget_event_loop_7
+    381              {
+    382                zll_GenerateRandNum( pReq->nwkParams.extendedPANID, Z_EXTADDR_LEN );
+   \   000079                ; Setup parameters for call to function zll_GenerateRandNum
+   \   000079   7908         MOV     R1,#0x8
+   \   00007B   7A..         MOV     R2,#(rxReq + 4) & 0xff
+   \   00007D   7B..         MOV     R3,#((rxReq + 4) >> 8) & 0xff
+   \   00007F   12....       LCALL   ??zll_GenerateRandNum?relay
+    383              }
+    384          
+    385              if ( pReq->nwkParams.panId == 0 )
+   \                     ??zllTarget_event_loop_7:
+   \   000082   90....       MOV     DPTR,#rxReq + 30
+   \   000085   12....       LCALL   ?Subroutine7 & 0xFFFF
+   \                     ??CrossCallReturnLabel_2:
+   \   000088   700B         JNZ     ??zllTarget_event_loop_8
+    386              {
+    387                pReq->nwkParams.panId = osal_rand();
+   \   00008A                ; Setup parameters for call to function osal_rand
+   \   00008A   12....       LCALL   ??osal_rand?relay
+   \   00008D   90....       MOV     DPTR,#rxReq + 30
+   \   000090   EA           MOV     A,R2
+   \   000091   F0           MOVX    @DPTR,A
+   \   000092   A3           INC     DPTR
+   \   000093   EB           MOV     A,R3
+   \   000094   F0           MOVX    @DPTR,A
+    388              }
+    389          
+    390              if ( pReq->nwkParams.logicalChannel == 0 )
+   \                     ??zllTarget_event_loop_8:
+   \   000095   90....       MOV     DPTR,#rxReq + 29
+   \   000098   E0           MOVX    A,@DPTR
+   \   000099   7008         JNZ     ??zllTarget_event_loop_9
+    391              {
+    392                pReq->nwkParams.logicalChannel = zll_GetRandPrimaryChannel();
+   \   00009B                ; Setup parameters for call to function zll_GetRandPrimaryChannel
+   \   00009B   12....       LCALL   ??zll_GetRandPrimaryChannel?relay
+   \   00009E   E9           MOV     A,R1
+   \   00009F   90....       MOV     DPTR,#rxReq + 29
+   \   0000A2   F0           MOVX    @DPTR,A
+    393              }
+    394          
+    395              if ( pReq->nwkParams.nwkAddr == 0 )
+   \                     ??zllTarget_event_loop_9:
+   \   0000A3   90....       MOV     DPTR,#rxReq + 32
+   \   0000A6   12....       LCALL   ?Subroutine7 & 0xFFFF
+   \                     ??CrossCallReturnLabel_3:
+   \   0000A9   700B         JNZ     ??zllTarget_event_loop_10
+    396              {
+    397                pReq->nwkParams.nwkAddr = osal_rand();
+   \   0000AB                ; Setup parameters for call to function osal_rand
+   \   0000AB   12....       LCALL   ??osal_rand?relay
+   \   0000AE   90....       MOV     DPTR,#rxReq + 32
+   \   0000B1   EA           MOV     A,R2
+   \   0000B2   F0           MOVX    @DPTR,A
+   \   0000B3   A3           INC     DPTR
+   \   0000B4   EB           MOV     A,R3
+   \   0000B5   F0           MOVX    @DPTR,A
+    398              }
+    399          
+    400              // Perform Network Discovery to verify our new network parameters uniqeness
+    401              zll_PerformNetworkDisc( (uint32)1 << _NIB.nwkLogicalChannel );
+   \                     ??zllTarget_event_loop_10:
+   \   0000B6                ; Setup parameters for call to function zll_PerformNetworkDisc
+   \   0000B6   75..01       MOV     ?V0 + 4,#0x1
+   \   0000B9   75..00       MOV     ?V0 + 5,#0x0
+   \   0000BC   75..00       MOV     ?V0 + 6,#0x0
+   \   0000BF   75..00       MOV     ?V0 + 7,#0x0
+   \   0000C2   90....       MOV     DPTR,#_NIB + 22
+   \   0000C5   E0           MOVX    A,@DPTR
+   \   0000C6   78..         MOV     R0,#?V0 + 4
+   \   0000C8   12....       LCALL   ?L_SHL
+   \   0000CB   AA..         MOV     R2,?V0 + 4
+   \   0000CD   AB..         MOV     R3,?V0 + 5
+   \   0000CF   AC..         MOV     R4,?V0 + 6
+   \   0000D1   AD..         MOV     R5,?V0 + 7
+   \   0000D3   12....       LCALL   ??zll_PerformNetworkDisc?relay
+    402          
+    403              // return unprocessed events
+    404              return ( events ^ ZLL_NWK_START_EVT );
+   \   0000D6   EE           MOV     A,R6
+   \   0000D7   6440         XRL     A,#0x40
+   \   0000D9   02....       LJMP    ??zllTarget_event_loop_11 & 0xFFFF
+    405            }
+    406          
+    407            if ( events & ZLL_NWK_DISC_CNF_EVT )
+   \                     ??zllTarget_event_loop_6:
+   \   0000DC   EE           MOV     A,R6
+   \   0000DD   A2E0         MOV     C,0xE0 /* A   */.0
+   \   0000DF   4003         JC      $+5
+   \   0000E1   02....       LJMP    ??zllTarget_event_loop_12 & 0xFFFF
+    408            {
+    409              if ( ( zllHAScanInitiated ) && (zllHAScanInitiated != ZLL_SCAN_FOUND_NOTHING) )
+   \   0000E4   90....       MOV     DPTR,#zllHAScanInitiated
+   \   0000E7   E0           MOVX    A,@DPTR
+   \   0000E8   600F         JZ      ??zllTarget_event_loop_13
+   \   0000EA   6403         XRL     A,#0x3
+   \   0000EC   607D         JZ      ??zllTarget_event_loop_14
+    410              {
+    411                if ( zll_ClassicalCommissioningJoinDiscoveredNwk() != ZSuccess )
+   \   0000EE                ; Setup parameters for call to function zll_ClassicalCommissioningJoinDiscoveredNwk
+   \   0000EE   12....       LCALL   ??zll_ClassicalCommissioningJoinDiscoveredNwk?r
+   \   0000F1   E9           MOV     A,R1
+   \   0000F2   6079         JZ      ??zllTarget_event_loop_15
+    412                {
+    413                  // Select our Network Parameters
+    414                  targetSelectNwkParams();
+   \   0000F4                ; Setup parameters for call to function targetSelectNwkParams
+   \   0000F4   12....       LCALL   ??targetSelectNwkParams?relay
+   \   0000F7   8074         SJMP    ??zllTarget_event_loop_15
+    415          
+    416                  // Wait for a touchlink command
+    417                }
+    418              }
+    419              else if ( zllHAScanInitiated != ZLL_SCAN_FOUND_NOTHING )
+    420              {
+    421                zclLLNwkStartReq_t *pReq = &(rxReq.nwkStartReq);
+    422                zclLLNwkParams_t *pParams = &(pReq->nwkParams);
+    423                uint8 status;
+    424          
+    425                // Verify the received Network Parameters
+    426                if ( targetVerifyNwkParams( pParams->panId, pParams->extendedPANID ) == ZSuccess )
+   \                     ??zllTarget_event_loop_13:
+   \   0000F9                ; Setup parameters for call to function targetVerifyNwkParams
+   \   0000F9   7C..         MOV     R4,#(rxReq + 4) & 0xff
+   \   0000FB   7D..         MOV     R5,#((rxReq + 4) >> 8) & 0xff
+   \   0000FD   90....       MOV     DPTR,#rxReq + 30
+   \   000100   E0           MOVX    A,@DPTR
+   \   000101   FA           MOV     R2,A
+   \   000102   A3           INC     DPTR
+   \   000103   E0           MOVX    A,@DPTR
+   \   000104   FB           MOV     R3,A
+   \   000105   12....       LCALL   ??targetVerifyNwkParams?relay
+   \   000108   E9           MOV     A,R1
+   \   000109   7005         JNZ     ??zllTarget_event_loop_16
+    427                {
+    428                  status = ZLL_NETWORK_START_RSP_STATUS_SUCCESS;
+   \   00010B   75..00       MOV     ?V0 + 0,#0x0
+   \   00010E   8003         SJMP    ??zllTarget_event_loop_17
+    429                }
+    430                else
+    431                {
+    432                  status = ZLL_NETWORK_START_RSP_STATUS_FAILURE;
+   \                     ??zllTarget_event_loop_16:
+   \   000110   75..01       MOV     ?V0 + 0,#0x1
+    433                }
+    434          
+    435                zll_FreeNwkParamList();
+   \                     ??zllTarget_event_loop_17:
+   \   000113                ; Setup parameters for call to function zll_FreeNwkParamList
+   \   000113   12....       LCALL   ??zll_FreeNwkParamList?relay
+    436          
+    437                // Send a response back
+    438                targetSendNwkStartRsp( &dstAddr, pReq->transID, status, pParams, _NIB.nwkUpdateId, rxSeqNum );
+   \   000116                ; Setup parameters for call to function targetSendNwkStartRsp
+   \   000116   90....       MOV     DPTR,#rxSeqNum
+   \   000119   E0           MOVX    A,@DPTR
+   \   00011A   F5..         MOV     ?V0 + 1,A
+   \   00011C   78..         MOV     R0,#?V0 + 1
+   \   00011E   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   000121   90....       MOV     DPTR,#_NIB + 109
+   \   000124   E0           MOVX    A,@DPTR
+   \   000125   F5..         MOV     ?V0 + 1,A
+   \   000127   78..         MOV     R0,#?V0 + 1
+   \   000129   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   00012C   90....       MOV     DPTR,#rxReq
+   \   00012F   12....       LCALL   ?PUSH_XSTACK8_X_FOUR
+   \   000132   7C..         MOV     R4,#(rxReq + 4) & 0xff
+   \   000134   7D..         MOV     R5,#((rxReq + 4) >> 8) & 0xff
+   \   000136   A9..         MOV     R1,?V0 + 0
+   \   000138   7A..         MOV     R2,#dstAddr & 0xff
+   \   00013A   7B..         MOV     R3,#(dstAddr >> 8) & 0xff
+   \   00013C   12....       LCALL   ??targetSendNwkStartRsp?relay
+   \   00013F   7406         MOV     A,#0x6
+   \   000141   12....       LCALL   ?DEALLOC_XSTACK8
+    439                if ( status == ZLL_NETWORK_START_RSP_STATUS_SUCCESS )
+   \   000144   E5..         MOV     A,?V0 + 0
+   \   000146   A2E0         MOV     C,0xE0 /* A   */.0
+   \   000148   4023         JC      ??zllTarget_event_loop_15
+    440                {
+    441                  // If not factory new, perform a Leave on our old network
+    442                  if ( ( zll_IsFactoryNew() == FALSE ) && ( zll_SendLeaveReq() == ZSuccess ) )
+   \   00014A                ; Setup parameters for call to function zll_IsFactoryNew
+   \   00014A   12....       LCALL   ??zll_IsFactoryNew?relay
+   \   00014D   E9           MOV     A,R1
+   \   00014E   700D         JNZ     ??zllTarget_event_loop_18
+   \   000150                ; Setup parameters for call to function zll_SendLeaveReq
+   \   000150   12....       LCALL   ??zll_SendLeaveReq?relay
+   \   000153   E9           MOV     A,R1
+   \   000154   7007         JNZ     ??zllTarget_event_loop_18
+    443                  {
+    444                    // Wait for Leave confirmation before joining the new network
+    445                    zllLeaveInitiated = ZLL_LEAVE_TO_START_NWK;
+   \   000156   90....       MOV     DPTR,#zllLeaveInitiated
+   \   000159   7402         MOV     A,#0x2
+   \   00015B   800F         SJMP    ??zllTarget_event_loop_19
+    446                  }
+    447                  else
+    448                  {
+    449                    // Notify our task to start the network
+    450                    osal_set_event( zllTarget_TaskID, ZLL_START_NWK_EVT );
+   \                     ??zllTarget_event_loop_18:
+   \   00015D                ; Setup parameters for call to function osal_set_event
+   \   00015D   7A08         MOV     R2,#0x8
+   \   00015F   7B00         MOV     R3,#0x0
+   \   000161   90....       MOV     DPTR,#zllTarget_TaskID
+   \   000164   E0           MOVX    A,@DPTR
+   \   000165   F9           MOV     R1,A
+   \   000166   12....       LCALL   ??osal_set_event?relay
+   \   000169   8002         SJMP    ??zllTarget_event_loop_15
+    451                  }
+    452                }
+    453                else
+    454                {
+    455                  //NOTE - chosen network params were found in scan.
+    456                }
+    457              }
+    458              else //zllHAScanInitiated == ZLL_SCAN_FOUND_NOTHING
+    459              {
+    460                zllHAScanInitiated = FALSE;
+   \                     ??zllTarget_event_loop_14:
+   \   00016B   E4           CLR     A
+   \                     ??zllTarget_event_loop_19:
+   \   00016C   F0           MOVX    @DPTR,A
+    461          #ifndef HOLD_AUTO_START
+    462                _NIB.nwkState = NWK_ROUTER;
+    463          #endif
+    464              }
+    465          
+    466              // return unprocessed events
+    467              return ( events ^ ZLL_NWK_DISC_CNF_EVT );
+   \                     ??zllTarget_event_loop_15:
+   \   00016D   EE           MOV     A,R6
+   \   00016E   6401         XRL     A,#0x1
+   \   000170   807F         SJMP    ??zllTarget_event_loop_11
+    468            }
+    469          
+    470            if ( events & ZLL_ROUTER_JOIN_EVT )
+   \                     ??zllTarget_event_loop_12:
+   \   000172   5402         ANL     A,#0x2
+   \   000174   6025         JZ      ??zllTarget_event_loop_20
+    471            {
+    472          
+    473              // If not factory new, perform a Leave on our old network
+    474              if ( ( zll_IsFactoryNew() == FALSE ) && ( zll_SendLeaveReq() == ZSuccess ) )
+   \   000176                ; Setup parameters for call to function zll_IsFactoryNew
+   \   000176   12....       LCALL   ??zll_IsFactoryNew?relay
+   \   000179   E9           MOV     A,R1
+   \   00017A   700E         JNZ     ??zllTarget_event_loop_21
+   \   00017C                ; Setup parameters for call to function zll_SendLeaveReq
+   \   00017C   12....       LCALL   ??zll_SendLeaveReq?relay
+   \   00017F   E9           MOV     A,R1
+   \   000180   7008         JNZ     ??zllTarget_event_loop_21
+    475              {
+    476                // Wait for Leave confirmation before joining the new network
+    477                zllLeaveInitiated = ZLL_LEAVE_TO_JOIN_NWK;
+   \   000182   90....       MOV     DPTR,#zllLeaveInitiated
+   \   000185   7401         MOV     A,#0x1
+   \   000187   F0           MOVX    @DPTR,A
+   \   000188   800C         SJMP    ??zllTarget_event_loop_22
+    478              }
+    479              else
+    480              {
+    481                // Notify our task to join this network
+    482                osal_set_event( zllTarget_TaskID, ZLL_JOIN_NWK_EVT );
+   \                     ??zllTarget_event_loop_21:
+   \   00018A                ; Setup parameters for call to function osal_set_event
+   \   00018A   7A10         MOV     R2,#0x10
+   \   00018C   7B00         MOV     R3,#0x0
+   \   00018E   90....       MOV     DPTR,#zllTarget_TaskID
+   \   000191   E0           MOVX    A,@DPTR
+   \   000192   F9           MOV     R1,A
+   \   000193   12....       LCALL   ??osal_set_event?relay
+    483              }
+    484          
+    485              // return unprocessed events
+    486              return ( events ^ ZLL_ROUTER_JOIN_EVT );
+   \                     ??zllTarget_event_loop_22:
+   \   000196   EE           MOV     A,R6
+   \   000197   6402         XRL     A,#0x2
+   \   000199   8056         SJMP    ??zllTarget_event_loop_11
+    487            }
+    488          
+    489            if ( events & ZLL_START_NWK_EVT )
+   \                     ??zllTarget_event_loop_20:
+   \   00019B   EE           MOV     A,R6
+   \   00019C   5408         ANL     A,#0x8
+   \   00019E   6028         JZ      ??zllTarget_event_loop_23
+    490            {
+    491              zclLLNwkStartReq_t *pReq = &(rxReq.nwkStartReq);
+    492          
+    493              // Start operating on the new network
+    494              targetStartRtr( &(pReq->nwkParams), pReq->transID );
+   \   0001A0                ; Setup parameters for call to function targetStartRtr
+   \   0001A0   90....       MOV     DPTR,#rxReq
+   \   0001A3   12....       LCALL   ?PUSH_XSTACK8_X_FOUR
+   \   0001A6   7A..         MOV     R2,#(rxReq + 4) & 0xff
+   \   0001A8   7B..         MOV     R3,#((rxReq + 4) >> 8) & 0xff
+   \   0001AA   12....       LCALL   ??targetStartRtr?relay
+   \   0001AD   7404         MOV     A,#0x4
+   \   0001AF   12....       LCALL   ?DEALLOC_XSTACK8
+    495          
+    496              // Perform a ZigBee Direct Join in order to allow direct communication
+    497              // via the ZigBee network between the Initiator and the Target (i.e.,
+    498              // create an entry in the neighbor table with the IEEE address and the
+    499              // network address of the Initiator).
+    500              NLME_DirectJoinRequestWithAddr( pReq->initiatorIeeeAddr, pReq->initiatorNwkAddr,
+    501                                              CAPINFO_DEVICETYPE_RFD );
+   \   0001B2                ; Setup parameters for call to function NLME_DirectJoinRequestWithAddr
+   \   0001B2   7900         MOV     R1,#0x0
+   \   0001B4   90....       MOV     DPTR,#rxReq + 54
+   \   0001B7   E0           MOVX    A,@DPTR
+   \   0001B8   FC           MOV     R4,A
+   \   0001B9   A3           INC     DPTR
+   \   0001BA   E0           MOVX    A,@DPTR
+   \   0001BB   FD           MOV     R5,A
+   \   0001BC   7A..         MOV     R2,#(rxReq + 46) & 0xff
+   \   0001BE   7B..         MOV     R3,#((rxReq + 46) >> 8) & 0xff
+   \   0001C0   12....       LCALL   ??NLME_DirectJoinRequestWithAddr?relay
+    502          
+    503              // return unprocessed events
+    504              return ( events ^ ZLL_START_NWK_EVT );
+   \   0001C3   EE           MOV     A,R6
+   \   0001C4   6408         XRL     A,#0x8
+   \   0001C6   8029         SJMP    ??zllTarget_event_loop_11
+    505            }
+    506          
+    507            if ( events & ZLL_JOIN_NWK_EVT )
+   \                     ??zllTarget_event_loop_23:
+   \   0001C8   EE           MOV     A,R6
+   \   0001C9   5410         ANL     A,#0x10
+   \   0001CB   6017         JZ      ??zllTarget_event_loop_24
+    508            {
+    509              zclLLNwkJoinReq_t *pReq = &(rxReq.nwkJoinReq);
+    510          
+    511              // Start operating on the new network
+    512              targetStartRtr( &(pReq->nwkParams), pReq->transID );
+   \   0001CD                ; Setup parameters for call to function targetStartRtr
+   \   0001CD   90....       MOV     DPTR,#rxReq
+   \   0001D0   12....       LCALL   ?PUSH_XSTACK8_X_FOUR
+   \   0001D3   7A..         MOV     R2,#(rxReq + 4) & 0xff
+   \   0001D5   7B..         MOV     R3,#((rxReq + 4) >> 8) & 0xff
+   \   0001D7   12....       LCALL   ??targetStartRtr?relay
+   \   0001DA   7404         MOV     A,#0x4
+   \   0001DC   12....       LCALL   ?DEALLOC_XSTACK8
+    513          
+    514              // return unprocessed events
+    515              return ( events ^ ZLL_JOIN_NWK_EVT );
+   \   0001DF   EE           MOV     A,R6
+   \   0001E0   6410         XRL     A,#0x10
+   \   0001E2   800D         SJMP    ??zllTarget_event_loop_11
+    516            }
+    517          
+    518            if ( events & ZLL_RESET_TO_FN_EVT )
+   \                     ??zllTarget_event_loop_24:
+   \   0001E4   EE           MOV     A,R6
+   \   0001E5   5404         ANL     A,#0x4
+   \   0001E7   600D         JZ      ??zllTarget_event_loop_25
+    519            {
+    520              zllTarget_ResetToFactoryNew();
+   \   0001E9                ; Setup parameters for call to function zll_ResetToFactoryNew
+   \   0001E9   7900         MOV     R1,#0x0
+   \   0001EB   12....       LCALL   ??zll_ResetToFactoryNew?relay
+    521          
+    522              // return unprocessed events
+    523              return ( events ^ ZLL_RESET_TO_FN_EVT );
+   \   0001EE   EE           MOV     A,R6
+   \   0001EF   6404         XRL     A,#0x4
+   \                     ??zllTarget_event_loop_11:
+   \   0001F1   FA           MOV     R2,A
+   \   0001F2   EF           MOV     A,R7
+   \                     ??zllTarget_event_loop_5:
+   \   0001F3   FB           MOV     R3,A
+   \   0001F4   801A         SJMP    ??zllTarget_event_loop_26
+    524            }
+    525          
+    526            if ( events & ZLL_TRANS_LIFETIME_EXPIRED_EVT )
+   \                     ??zllTarget_event_loop_25:
+   \   0001F6   EE           MOV     A,R6
+   \   0001F7   5420         ANL     A,#0x20
+   \   0001F9   6011         JZ      ??zllTarget_event_loop_27
+    527            {
+    528              zllTransID = 0;
+   \   0001FB   90....       MOV     DPTR,#zllTransID
+   \   0001FE   E4           CLR     A
+   \   0001FF   F0           MOVX    @DPTR,A
+   \   000200   A3           INC     DPTR
+   \   000201   F0           MOVX    @DPTR,A
+   \   000202   A3           INC     DPTR
+   \   000203   F0           MOVX    @DPTR,A
+   \   000204   A3           INC     DPTR
+   \   000205   F0           MOVX    @DPTR,A
+    529              // return unprocessed events
+    530              return ( events ^ ZLL_TRANS_LIFETIME_EXPIRED_EVT );
+   \   000206   EE           MOV     A,R6
+   \   000207   6420         XRL     A,#0x20
+   \   000209   FA           MOV     R2,A
+   \   00020A   8004         SJMP    ??zllTarget_event_loop_26
+    531            }
+    532          
+    533            // If reach here, the events are unknown
+    534            // Discard or make more handlers
+    535            return 0;
+   \                     ??zllTarget_event_loop_27:
+   \   00020C   7A00         MOV     R2,#0x0
+   \   00020E   7B00         MOV     R3,#0x0
+   \                     ??zllTarget_event_loop_26:
+   \   000210   7F08         MOV     R7,#0x8
+   \   000212   02....       LJMP    ?BANKED_LEAVE_XDATA
+    536          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine7:
+   \   000000   12....       LCALL   ?Subroutine9 & 0xFFFF
+   \                     ??CrossCallReturnLabel_9:
+   \   000003   E8           MOV     A,R0
+   \   000004   49           ORL     A,R1
+   \   000005   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine9:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   F8           MOV     R0,A
+   \   000002   A3           INC     DPTR
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   F9           MOV     R1,A
+   \   000005   22           RET
+    537          
+    538          /*********************************************************************
+    539           * @fn      targetStartRtr
+    540           *
+    541           * @brief   Start operating on the new network.
+    542           *
+    543           * @param   pParams - pointer to received network parameters
+    544           * @param   transID - transaction id
+    545           *
+    546           * @return  none
+    547           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    548          static void targetStartRtr( zclLLNwkParams_t *pParams, uint32 transID )
+   \                     targetStartRtr:
+    549          {
+   \   000000   74F3         MOV     A,#-0xd
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 13
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV     A,R2
+   \   000006   FE           MOV     R6,A
+   \   000007   EB           MOV     A,R3
+   \   000008   FF           MOV     R7,A
+   \   000009   740D         MOV     A,#0xd
+   \   00000B   12....       LCALL   ?XSTACK_DISP0_8
+   \   00000E   78..         MOV     R0,#?V0 + 0
+   \   000010   12....       LCALL   ?L_MOV_X
+    550            // Copy the new network parameters to
+    551            zll_SetNIB( NWK_ROUTER, pParams->nwkAddr, pParams->extendedPANID,
+    552                        pParams->logicalChannel, pParams->panId, _NIB.nwkUpdateId );
+   \   000013                ; Setup parameters for call to function zll_SetNIB
+   \   000013   90....       MOV     DPTR,#_NIB + 109
+   \   000016   E0           MOVX    A,@DPTR
+   \   000017   F5..         MOV     ?V0 + 4,A
+   \   000019   78..         MOV     R0,#?V0 + 4
+   \   00001B   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   00001E   EE           MOV     A,R6
+   \   00001F   241A         ADD     A,#0x1a
+   \   000021   F582         MOV     DPL,A
+   \   000023   EF           MOV     A,R7
+   \   000024   3400         ADDC    A,#0x0
+   \   000026   F583         MOV     DPH,A
+   \   000028   12....       LCALL   ?PUSH_XSTACK8_X_TWO
+   \   00002B   EE           MOV     A,R6
+   \   00002C   2419         ADD     A,#0x19
+   \   00002E   12....       LCALL   ?Subroutine8 & 0xFFFF
+   \                     ??CrossCallReturnLabel_13:
+   \   000031   F5..         MOV     ?V0 + 4,A
+   \   000033   78..         MOV     R0,#?V0 + 4
+   \   000035   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   000038   EE           MOV     A,R6
+   \   000039   FC           MOV     R4,A
+   \   00003A   EF           MOV     A,R7
+   \   00003B   FD           MOV     R5,A
+   \   00003C   EE           MOV     A,R6
+   \   00003D   241C         ADD     A,#0x1c
+   \   00003F   12....       LCALL   ?Subroutine8 & 0xFFFF
+   \                     ??CrossCallReturnLabel_14:
+   \   000042   FA           MOV     R2,A
+   \   000043   A3           INC     DPTR
+   \   000044   E0           MOVX    A,@DPTR
+   \   000045   FB           MOV     R3,A
+   \   000046   7908         MOV     R1,#0x8
+   \   000048   12....       LCALL   ??zll_SetNIB?relay
+   \   00004B   7404         MOV     A,#0x4
+   \   00004D   12....       LCALL   ?DEALLOC_XSTACK8
+    553          
+    554            // Apply the received network key
+    555            zll_DecryptNwkKey( pParams->nwkKey, pParams->keyIndex, transID, zllResponseID );
+   \   000050                ; Setup parameters for call to function zll_DecryptNwkKey
+   \   000050   90....       MOV     DPTR,#zllResponseID
+   \   000053   12....       LCALL   ?PUSH_XSTACK8_X_FOUR
+   \   000056   78..         MOV     R0,#?V0 + 0
+   \   000058   12....       LCALL   ?PUSH_XSTACK_I_FOUR
+   \   00005B   8E82         MOV     DPL,R6
+   \   00005D   8F83         MOV     DPH,R7
+   \   00005F   A3           INC     DPTR
+   \   000060   A3           INC     DPTR
+   \   000061   A3           INC     DPTR
+   \   000062   A3           INC     DPTR
+   \   000063   A3           INC     DPTR
+   \   000064   A3           INC     DPTR
+   \   000065   A3           INC     DPTR
+   \   000066   A3           INC     DPTR
+   \   000067   E0           MOVX    A,@DPTR
+   \   000068   F9           MOV     R1,A
+   \   000069   EE           MOV     A,R6
+   \   00006A   2409         ADD     A,#0x9
+   \   00006C   FA           MOV     R2,A
+   \   00006D   EF           MOV     A,R7
+   \   00006E   3400         ADDC    A,#0x0
+   \   000070   FB           MOV     R3,A
+   \   000071   12....       LCALL   ??zll_DecryptNwkKey?relay
+   \   000074   7408         MOV     A,#0x8
+   \   000076   12....       LCALL   ?DEALLOC_XSTACK8
+    556          
+    557            // setting apsTrustCenterAddress to 0xffffffff
+    558            ZDSecMgrUpdateTCAddress( NULL );
+   \   000079                ; Setup parameters for call to function ZDSecMgrUpdateTCAddress
+   \   000079   7A00         MOV     R2,#0x0
+   \   00007B   7B00         MOV     R3,#0x0
+   \   00007D   12....       LCALL   ??ZDSecMgrUpdateTCAddress?relay
+    559          
+    560            zllTarget_PermitJoin(0);
+   \   000080                ; Setup parameters for call to function zll_PermitJoin
+   \   000080   7900         MOV     R1,#0x0
+   \   000082   12....       LCALL   ??zll_PermitJoin?relay
+    561          
+    562            // Use the new free ranges
+    563            zll_UpdateFreeRanges( pParams );
+   \   000085                ; Setup parameters for call to function zll_UpdateFreeRanges
+   \   000085   EE           MOV     A,R6
+   \   000086   FA           MOV     R2,A
+   \   000087   EF           MOV     A,R7
+   \   000088   FB           MOV     R3,A
+   \   000089   12....       LCALL   ??zll_UpdateFreeRanges?relay
+    564          
+    565            // Save free ranges
+    566            zll_UpdateNV( ZLL_UPDATE_NV_RANGES );
+   \   00008C                ; Setup parameters for call to function zll_UpdateNV
+   \   00008C   7902         MOV     R1,#0x2
+   \   00008E   12....       LCALL   ??zll_UpdateNV?relay
+    567          
+    568            // In case we're here after a leave
+    569            zllLeaveInitiated = FALSE;
+   \   000091   90....       MOV     DPTR,#zllLeaveInitiated
+   \   000094   E4           CLR     A
+   \   000095   F0           MOVX    @DPTR,A
+    570          
+    571            // Clear leave control logic
+    572            ZDApp_LeaveCtrlReset();
+   \   000096                ; Setup parameters for call to function ZDApp_LeaveCtrlReset
+   \   000096   12....       LCALL   ??ZDApp_LeaveCtrlReset?relay
+    573          
+    574            // Start operating on the new network
+    575            ZDOInitDevice( 0 );
+   \   000099                ; Setup parameters for call to function ZDOInitDevice
+   \   000099   7A00         MOV     R2,#0x0
+   \   00009B   7B00         MOV     R3,#0x0
+   \   00009D   12....       LCALL   ??ZDOInitDevice?relay
+    576          }
+   \   0000A0   7F05         MOV     R7,#0x5
+   \   0000A2   02....       LJMP    ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine8:
+   \   000000   F582         MOV     DPL,A
+   \   000002   EF           MOV     A,R7
+   \   000003                REQUIRE ??Subroutine11_0
+   \   000003                ; // Fall through to label ??Subroutine11_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine11_0:
+   \   000000   3400         ADDC    A,#0x0
+   \   000002   F583         MOV     DPH,A
+   \   000004   E0           MOVX    A,@DPTR
+   \   000005   22           RET
+    577          
+    578          
+    579          /*********************************************************************
+    580           * @fn      targetSelectNwkParams
+    581           *
+    582           * @brief   Select a unique PAN ID and Extended PAN ID when compared to
+    583           *          the PAN IDs and Extended PAN IDs of the networks detected
+    584           *          on the ZLL channels. The selected Extended PAN ID must be
+    585           *          a random number (and not equal to our IEEE address).
+    586           *
+    587           * @param   void
+    588           *
+    589           * @return  void
+    590           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    591          static void targetSelectNwkParams( void )
+   \                     targetSelectNwkParams:
+    592          {
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+    593            uint8 status = ZFailure;
+    594          
+    595            while ( status == ZFailure )
+    596            {
+    597              // Select a random Extended PAN ID
+    598              zll_GenerateRandNum( _NIB.extendedPANID, Z_EXTADDR_LEN );
+   \                     ??targetSelectNwkParams_0:
+   \   000005                ; Setup parameters for call to function zll_GenerateRandNum
+   \   000005   7908         MOV     R1,#0x8
+   \   000007   7A..         MOV     R2,#(_NIB + 53) & 0xff
+   \   000009   7B..         MOV     R3,#((_NIB + 53) >> 8) & 0xff
+   \   00000B   12....       LCALL   ??zll_GenerateRandNum?relay
+    599          
+    600              // Select a random PAN ID
+    601              _NIB.nwkPanId = osal_rand();
+   \   00000E                ; Setup parameters for call to function osal_rand
+   \   00000E   12....       LCALL   ??osal_rand?relay
+   \   000011   90....       MOV     DPTR,#_NIB + 33
+   \   000014   EA           MOV     A,R2
+   \   000015   F0           MOVX    @DPTR,A
+   \   000016   A3           INC     DPTR
+   \   000017   EB           MOV     A,R3
+   \   000018   F0           MOVX    @DPTR,A
+    602          
+    603              // Make sure they're unique
+    604              status = targetVerifyNwkParams( _NIB.nwkPanId, _NIB.extendedPANID );
+    605            }
+   \   000019                ; Setup parameters for call to function targetVerifyNwkParams
+   \   000019   7C..         MOV     R4,#(_NIB + 53) & 0xff
+   \   00001B   7D..         MOV     R5,#((_NIB + 53) >> 8) & 0xff
+   \   00001D   12....       LCALL   ??targetVerifyNwkParams?relay
+   \   000020   E9           MOV     A,R1
+   \   000021   6401         XRL     A,#0x1
+   \   000023   60E0         JZ      ??targetSelectNwkParams_0
+    606          
+    607            // Select randomly one of the ZLL channels as our logical channel
+    608            _NIB.nwkLogicalChannel = zll_GetRandPrimaryChannel();
+   \   000025                ; Setup parameters for call to function zll_GetRandPrimaryChannel
+   \   000025   12....       LCALL   ??zll_GetRandPrimaryChannel?relay
+   \   000028   E9           MOV     A,R1
+   \   000029   90....       MOV     DPTR,#_NIB + 22
+   \   00002C   F0           MOVX    @DPTR,A
+    609          
+    610            _NIB.nwkDevAddress = osal_rand();
+   \   00002D                ; Setup parameters for call to function osal_rand
+   \   00002D   12....       LCALL   ??osal_rand?relay
+   \   000030   90....       MOV     DPTR,#_NIB + 20
+   \   000033   EA           MOV     A,R2
+   \   000034   F0           MOVX    @DPTR,A
+   \   000035   A3           INC     DPTR
+   \   000036   EB           MOV     A,R3
+   \   000037   F0           MOVX    @DPTR,A
+    611          
+    612            // Configure MAC with our network parameters
+    613            zll_SetMacNwkParams( _NIB.nwkDevAddress, _NIB.nwkPanId, _NIB.nwkLogicalChannel );
+   \   000038                ; Setup parameters for call to function zll_SetMacNwkParams
+   \   000038   A3           INC     DPTR
+   \   000039   E0           MOVX    A,@DPTR
+   \   00003A   F9           MOV     R1,A
+   \   00003B   90....       MOV     DPTR,#_NIB + 33
+   \   00003E   E0           MOVX    A,@DPTR
+   \   00003F   FC           MOV     R4,A
+   \   000040   A3           INC     DPTR
+   \   000041   E0           MOVX    A,@DPTR
+   \   000042   FD           MOV     R5,A
+   \   000043   12....       LCALL   ??zll_SetMacNwkParams?relay
+    614          }
+   \   000046                REQUIRE ?Subroutine2
+   \   000046                ; // Fall through to label ?Subroutine2
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine2:
+   \   000000   7F02         MOV     R7,#0x2
+   \   000002   02....       LJMP    ?BANKED_LEAVE_XDATA
+    615          
+    616          /*********************************************************************
+    617           * @fn      targetVerifyNwkParams
+    618           *
+    619           * @brief   Verify that the PAN ID and Extended PAN ID are unique.
+    620           *
+    621           * @param   PANID - PAN Identifier
+    622           * @param   pExtendedPANID - extended PAN Identifier
+    623           *
+    624           * @return  status
+    625           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    626          static ZStatus_t targetVerifyNwkParams( uint16 PANID, uint8 *pExtendedPANID )
+   \                     targetVerifyNwkParams:
+    627          {
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 0
+   \   000005   8A..         MOV     ?V0 + 2,R2
+   \   000007   8B..         MOV     ?V0 + 3,R3
+   \   000009   EC           MOV     A,R4
+   \   00000A   FE           MOV     R6,A
+   \   00000B   ED           MOV     A,R5
+   \   00000C   FF           MOV     R7,A
+    628            zllDiscoveredNwkParam_t *pParam = pDiscoveredNwkParamList;
+   \   00000D   90....       MOV     DPTR,#pDiscoveredNwkParamList
+   \   000010   8006         SJMP    ??targetVerifyNwkParams_0
+    629          
+    630            // Add for our network parameters in the Network Parameter List
+    631            while ( pParam != NULL )
+    632            {
+    633              if ( ( pParam->PANID == PANID ) &&
+    634                   ( osal_ExtAddrEqual( pParam->extendedPANID, pExtendedPANID ) ) )
+    635              {
+    636                return ( ZFailure );
+    637              }
+    638          
+    639              pParam = pParam->nextParam;
+   \                     ??targetVerifyNwkParams_1:
+   \   000012   85..82       MOV     DPL,?V0 + 0
+   \   000015   85..83       MOV     DPH,?V0 + 1
+   \                     ??targetVerifyNwkParams_0:
+   \   000018   E0           MOVX    A,@DPTR
+   \   000019   F5..         MOV     ?V0 + 0,A
+   \   00001B   A3           INC     DPTR
+   \   00001C   E0           MOVX    A,@DPTR
+   \   00001D   F5..         MOV     ?V0 + 1,A
+   \   00001F   E5..         MOV     A,?V0 + 0
+   \   000021   45..         ORL     A,?V0 + 1
+   \   000023   602B         JZ      ??targetVerifyNwkParams_2
+   \   000025   85..82       MOV     DPL,?V0 + 0
+   \   000028   85..83       MOV     DPH,?V0 + 1
+   \   00002B   A3           INC     DPTR
+   \   00002C   A3           INC     DPTR
+   \   00002D   E0           MOVX    A,@DPTR
+   \   00002E   65..         XRL     A,?V0 + 2
+   \   000030   7004         JNZ     ??targetVerifyNwkParams_3
+   \   000032   A3           INC     DPTR
+   \   000033   E0           MOVX    A,@DPTR
+   \   000034   65..         XRL     A,?V0 + 3
+   \                     ??targetVerifyNwkParams_3:
+   \   000036   70DA         JNZ     ??targetVerifyNwkParams_1
+   \   000038                ; Setup parameters for call to function sAddrExtCmp
+   \   000038   EE           MOV     A,R6
+   \   000039   FC           MOV     R4,A
+   \   00003A   EF           MOV     A,R7
+   \   00003B   FD           MOV     R5,A
+   \   00003C   E5..         MOV     A,?V0 + 0
+   \   00003E   2405         ADD     A,#0x5
+   \   000040   FA           MOV     R2,A
+   \   000041   E5..         MOV     A,?V0 + 1
+   \   000043   3400         ADDC    A,#0x0
+   \   000045   FB           MOV     R3,A
+   \   000046   12....       LCALL   ??sAddrExtCmp?relay
+   \   000049   E9           MOV     A,R1
+   \   00004A   60C6         JZ      ??targetVerifyNwkParams_1
+   \   00004C   7901         MOV     R1,#0x1
+   \   00004E   8002         SJMP    ??targetVerifyNwkParams_4
+    640            }
+    641          
+    642            return ( ZSuccess );
+   \                     ??targetVerifyNwkParams_2:
+   \   000050   7900         MOV     R1,#0x0
+   \                     ??targetVerifyNwkParams_4:
+   \   000052                REQUIRE ?Subroutine3
+   \   000052                ; // Fall through to label ?Subroutine3
+    643          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine3:
+   \   000000   7F04         MOV     R7,#0x4
+   \   000002   02....       LJMP    ?BANKED_LEAVE_XDATA
+    644          
+    645          
+    646          /*********************************************************************
+    647           * @fn      targetScanReqCB
+    648           *
+    649           * @brief   This callback is called to process a Scan Request command.
+    650           *
+    651           * @param   srcAddr - sender's address
+    652           * @param   pReq - parsed command
+    653           * @param   seqNum - command sequence number
+    654           *
+    655           * @return  ZStatus_t
+    656           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    657          static ZStatus_t targetScanReqCB( afAddrType_t *srcAddr, zclLLScanReq_t *pReq, uint8 seqNum )
+   \                     targetScanReqCB:
+    658          {
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 0
+   \   000005   8A..         MOV     ?V0 + 0,R2
+   \   000007   8B..         MOV     ?V0 + 1,R3
+   \   000009   EC           MOV     A,R4
+   \   00000A   FE           MOV     R6,A
+   \   00000B   ED           MOV     A,R5
+   \   00000C   FF           MOV     R7,A
+   \   00000D   89..         MOV     ?V0 + 2,R1
+    659            ZStatus_t ret = ZSuccess;
+   \   00000F   75..00       MOV     ?V0 + 3,#0x0
+    660            int8 rssi;
+    661            rssi = zll_GetMsgRssi();
+    662            if( rssi > ZLL_TL_WORST_RSSI )
+   \   000012                ; Setup parameters for call to function zll_GetMsgRssi
+   \   000012   12....       LCALL   ??zll_GetMsgRssi?relay
+   \   000015   E9           MOV     A,R1
+   \   000016   C3           CLR     C
+   \   000017   94D9         SUBB    A,#-0x27
+   \   000019   A2D2         MOV     C,0xD0 /* PSW */.2
+   \   00001B   65D0         XRL     A,PSW
+   \   00001D   33           RLC     A
+   \   00001E   4048         JC      ??targetScanReqCB_0
+    663            {
+    664              if ( pDiscoveredNwkParamList == NULL )
+   \   000020   90....       MOV     DPTR,#pDiscoveredNwkParamList
+   \   000023   12....       LCALL   ?Subroutine7 & 0xFFFF
+   \                     ??CrossCallReturnLabel_4:
+   \   000026   7040         JNZ     ??targetScanReqCB_0
+    665              {
+    666                dstAddr = *srcAddr;
+   \   000028   85..82       MOV     DPL,?V0 + 0
+   \   00002B   85..83       MOV     DPH,?V0 + 1
+   \   00002E   7C..         MOV     R4,#dstAddr & 0xff
+   \   000030   7D..         MOV     R5,#(dstAddr >> 8) & 0xff
+   \   000032   740C         MOV     A,#0xc
+   \   000034   12....       LCALL   ?MOVE_LONG8_XDATA_XDATA
+    667                dstAddr.panId = 0xFFFF;
+   \   000037   90....       MOV     DPTR,#dstAddr + 10
+   \   00003A   74FF         MOV     A,#-0x1
+   \   00003C   F0           MOVX    @DPTR,A
+   \   00003D   A3           INC     DPTR
+   \   00003E   F0           MOVX    @DPTR,A
+    668          
+    669                ret = zll_SendScanRsp( ZLL_INTERNAL_ENDPOINT, &dstAddr, pReq->transID, seqNum );
+   \   00003F                ; Setup parameters for call to function zll_SendScanRsp
+   \   00003F   8E82         MOV     DPL,R6
+   \   000041   8F83         MOV     DPH,R7
+   \   000043   12....       LCALL   ?PUSH_XSTACK8_X_FOUR
+   \   000046   AC..         MOV     R4,?V0 + 2
+   \   000048   7A..         MOV     R2,#dstAddr & 0xff
+   \   00004A   7B..         MOV     R3,#(dstAddr >> 8) & 0xff
+   \   00004C   790D         MOV     R1,#0xd
+   \   00004E   12....       LCALL   ??zll_SendScanRsp?relay
+   \   000051   7404         MOV     A,#0x4
+   \   000053   12....       LCALL   ?DEALLOC_XSTACK8
+   \   000056   E9           MOV     A,R1
+   \   000057   F5..         MOV     ?V0 + 3,A
+    670                if ( ret == ZSuccess )
+   \   000059   700D         JNZ     ??targetScanReqCB_0
+    671                {
+    672                  zllTransID = pReq->transID;
+   \   00005B   8E82         MOV     DPL,R6
+   \   00005D   8F83         MOV     DPH,R7
+   \   00005F   12....       LCALL   ?XLOAD_R2345
+   \   000062   90....       MOV     DPTR,#zllTransID
+   \   000065   12....       LCALL   ?XSTORE_R2345
+    673                }
+    674              }
+    675            }
+    676          
+    677            return ( ret );
+   \                     ??targetScanReqCB_0:
+   \   000068   A9..         MOV     R1,?V0 + 3
+   \   00006A   80..         SJMP    ?Subroutine3
+    678          }
+    679          
+    680          /*********************************************************************
+    681           * @fn      targetDeviceInfoReqCB
+    682           *
+    683           * @brief   This callback is called to process a Device Information
+    684           *          Request command.
+    685           *
+    686           * @param   srcAddr - sender's address
+    687           * @param   pReq - parsed command
+    688           * @param   seqNum - command sequence number
+    689           *
+    690           * @return  ZStatus_t
+    691           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    692          static ZStatus_t targetDeviceInfoReqCB( afAddrType_t *srcAddr, zclLLDeviceInfoReq_t *pReq, uint8 seqNum )
+   \                     targetDeviceInfoReqCB:
+    693          {
+   \   000000   74F5         MOV     A,#-0xb
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 11
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV     A,R2
+   \   000006   FE           MOV     R6,A
+   \   000007   EB           MOV     A,R3
+   \   000008   FF           MOV     R7,A
+   \   000009   8C..         MOV     ?V0 + 0,R4
+   \   00000B   8D..         MOV     ?V0 + 1,R5
+   \   00000D   89..         MOV     ?V0 + 2,R1
+    694            if ( zll_IsValidTransID( pReq->transID ) == FALSE )
+   \   00000F                ; Setup parameters for call to function zll_IsValidTransID
+   \   00000F   8C82         MOV     DPL,R4
+   \   000011   8D83         MOV     DPH,R5
+   \   000013   12....       LCALL   ?XLOAD_R2345
+   \   000016   12....       LCALL   ??zll_IsValidTransID?relay
+   \   000019   E9           MOV     A,R1
+   \   00001A   7004         JNZ     ??targetDeviceInfoReqCB_0
+    695            {
+    696              return ( ZFailure );
+   \   00001C   7901         MOV     R1,#0x1
+   \   00001E   8025         SJMP    ??targetDeviceInfoReqCB_1
+    697            }
+    698            return ( zll_SendDeviceInfoRsp( ZLL_INTERNAL_ENDPOINT, srcAddr,
+    699                                            pReq->startIndex, pReq->transID, seqNum ) );
+   \                     ??targetDeviceInfoReqCB_0:
+   \   000020                ; Setup parameters for call to function zll_SendDeviceInfoRsp
+   \   000020   85..82       MOV     DPL,?V0 + 0
+   \   000023   85..83       MOV     DPH,?V0 + 1
+   \   000026   12....       LCALL   ?PUSH_XSTACK8_X_FOUR
+   \   000029   AD..         MOV     R5,?V0 + 2
+   \   00002B   85..82       MOV     DPL,?V0 + 0
+   \   00002E   85..83       MOV     DPH,?V0 + 1
+   \   000031   A3           INC     DPTR
+   \   000032   A3           INC     DPTR
+   \   000033   A3           INC     DPTR
+   \   000034   A3           INC     DPTR
+   \   000035   E0           MOVX    A,@DPTR
+   \   000036   FC           MOV     R4,A
+   \   000037   EE           MOV     A,R6
+   \   000038   FA           MOV     R2,A
+   \   000039   EF           MOV     A,R7
+   \   00003A   FB           MOV     R3,A
+   \   00003B   790D         MOV     R1,#0xd
+   \   00003D   12....       LCALL   ??zll_SendDeviceInfoRsp?relay
+   \   000040   7404         MOV     A,#0x4
+   \   000042   12....       LCALL   ?DEALLOC_XSTACK8
+   \                     ??targetDeviceInfoReqCB_1:
+   \   000045                REQUIRE ?Subroutine4
+   \   000045                ; // Fall through to label ?Subroutine4
+    700          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine4:
+   \   000000   7F03         MOV     R7,#0x3
+   \   000002   02....       LJMP    ?BANKED_LEAVE_XDATA
+    701          
+    702          /*********************************************************************
+    703           * @fn      targetIdentifyReqCB
+    704           *
+    705           * @brief   This callback is called to process an Identify Request command.
+    706           *
+    707           * @param   srcAddr - sender's address
+    708           * @param   pReq - parsed command
+    709           *
+    710           * @return  ZStatus_t
+    711           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    712          static ZStatus_t targetIdentifyReqCB( afAddrType_t *srcAddr, zclLLIdentifyReq_t *pReq )
+   \                     targetIdentifyReqCB:
+    713          {
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 4
+   \   000005   74FC         MOV     A,#-0x4
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+   \   00000A   EA           MOV     A,R2
+   \   00000B   FE           MOV     R6,A
+   \   00000C   EB           MOV     A,R3
+   \   00000D   FF           MOV     R7,A
+   \   00000E   8C..         MOV     ?V0 + 0,R4
+   \   000010   8D..         MOV     ?V0 + 1,R5
+    714            if ( zll_IsValidTransID( pReq->transID ) == FALSE )
+   \   000012                ; Setup parameters for call to function zll_IsValidTransID
+   \   000012   8C82         MOV     DPL,R4
+   \   000014   8D83         MOV     DPH,R5
+   \   000016   12....       LCALL   ?XLOAD_R2345
+   \   000019   12....       LCALL   ??zll_IsValidTransID?relay
+   \   00001C   E9           MOV     A,R1
+   \   00001D   7004         JNZ     ??targetIdentifyReqCB_0
+    715            {
+    716              return ( ZFailure );
+   \   00001F   7901         MOV     R1,#0x1
+   \   000021   8055         SJMP    ??targetIdentifyReqCB_1
+    717            }
+    718            // The target should identify itself
+    719            if ( pfnIdentifyCB != NULL )
+   \                     ??targetIdentifyReqCB_0:
+   \   000023   90....       MOV     DPTR,#pfnIdentifyCB
+   \   000026   12....       LCALL   ?Subroutine7 & 0xFFFF
+   \                     ??CrossCallReturnLabel_5:
+   \   000029   604B         JZ      ??targetIdentifyReqCB_2
+    720            {
+    721              zclIdentify_t cmd;
+    722          
+    723              cmd.srcAddr = srcAddr;
+   \   00002B   85..82       MOV     DPL,?XSP + 0
+   \   00002E   85..83       MOV     DPH,?XSP + 1
+   \   000031   EE           MOV     A,R6
+   \   000032   F0           MOVX    @DPTR,A
+   \   000033   A3           INC     DPTR
+   \   000034   EF           MOV     A,R7
+   \   000035   F0           MOVX    @DPTR,A
+    724          
+    725              // Values of the Identify Duration field:
+    726              // - Exit identify mode: 0x0000
+    727              // - Length of time to remain in identify mode: 0x0001-0xfffe
+    728              // - Remain in identify mode for a default time known by the receiver: 0xffff
+    729              if ( pReq->IdDuration == 0xffff )
+   \   000036   85..82       MOV     DPL,?V0 + 0
+   \   000039   85..83       MOV     DPH,?V0 + 1
+   \   00003C   A3           INC     DPTR
+   \   00003D   A3           INC     DPTR
+   \   00003E   A3           INC     DPTR
+   \   00003F   A3           INC     DPTR
+   \   000040   12....       LCALL   ?Subroutine9 & 0xFFFF
+   \                     ??CrossCallReturnLabel_6:
+   \   000043   74FF         MOV     A,#-0x1
+   \   000045   68           XRL     A,R0
+   \   000046   7003         JNZ     ??targetIdentifyReqCB_3
+   \   000048   74FF         MOV     A,#-0x1
+   \   00004A   69           XRL     A,R1
+   \                     ??targetIdentifyReqCB_3:
+   \   00004B   700C         JNZ     ??targetIdentifyReqCB_4
+    730              {
+    731                cmd.identifyTime = ZLL_DEFAULT_IDENTIFY_TIME;
+   \   00004D   7402         MOV     A,#0x2
+   \   00004F   12....       LCALL   ?XSTACK_DISP0_8
+   \   000052   7403         MOV     A,#0x3
+   \   000054   F0           MOVX    @DPTR,A
+   \   000055   A3           INC     DPTR
+   \   000056   E4           CLR     A
+   \   000057   8009         SJMP    ??targetIdentifyReqCB_5
+    732              }
+    733              else
+    734              {
+    735                cmd.identifyTime = pReq->IdDuration;
+   \                     ??targetIdentifyReqCB_4:
+   \   000059   7402         MOV     A,#0x2
+   \   00005B   12....       LCALL   ?XSTACK_DISP0_8
+   \   00005E   E8           MOV     A,R0
+   \   00005F   F0           MOVX    @DPTR,A
+   \   000060   A3           INC     DPTR
+   \   000061   E9           MOV     A,R1
+   \                     ??targetIdentifyReqCB_5:
+   \   000062   F0           MOVX    @DPTR,A
+    736              }
+    737          
+    738              (*pfnIdentifyCB)( &cmd );
+   \   000063                ; Setup parameters for indirect call
+   \   000063   85..82       MOV     DPL,?XSP + 0
+   \   000066   85..83       MOV     DPH,?XSP + 1
+   \   000069   AA82         MOV     R2,DPL
+   \   00006B   AB83         MOV     R3,DPH
+   \   00006D   90....       MOV     DPTR,#pfnIdentifyCB
+   \   000070   12....       LCALL   ?Subroutine10 & 0xFFFF
+    739            }
+   \                     ??CrossCallReturnLabel_21:
+   \   000073   12....       LCALL   ?CALL_IND
+    740          
+    741            return ( ZSuccess );
+   \                     ??targetIdentifyReqCB_2:
+   \   000076   7900         MOV     R1,#0x0
+   \                     ??targetIdentifyReqCB_1:
+   \   000078   7404         MOV     A,#0x4
+   \   00007A   12....       LCALL   ?DEALLOC_XSTACK8
+   \   00007D   02....       LJMP    ?Subroutine2 & 0xFFFF
+    742          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine10:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   F8           MOV     R0,A
+   \   000002   A3           INC     DPTR
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   F583         MOV     DPH,A
+   \   000006   8882         MOV     DPL,R0
+   \   000008   22           RET
+    743          
+    744          /*********************************************************************
+    745           * @fn      targetResetToFNReqCB
+    746           *
+    747           * @brief   This callback is called to process a Reset to Factory New
+    748           *          Request command.
+    749           *
+    750           * @param   srcAddr - sender's address
+    751           * @param   pReq - parsed command
+    752           *
+    753           * @return  ZStatus_t
+    754           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    755          static ZStatus_t targetResetToFNReqCB( afAddrType_t *srcAddr, zclLLResetToFNReq_t *pReq )
+   \                     targetResetToFNReqCB:
+    756          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    757            // If factory new, discard the request
+    758            if ( ( zll_IsValidTransID( pReq->transID ) == FALSE ) || ( zll_IsFactoryNew() ) )
+   \   000004                ; Setup parameters for call to function zll_IsValidTransID
+   \   000004   8C82         MOV     DPL,R4
+   \   000006   8D83         MOV     DPH,R5
+   \   000008   12....       LCALL   ?XLOAD_R2345
+   \   00000B   12....       LCALL   ??zll_IsValidTransID?relay
+   \   00000E   E9           MOV     A,R1
+   \   00000F   6006         JZ      ??targetResetToFNReqCB_0
+   \   000011                ; Setup parameters for call to function zll_IsFactoryNew
+   \   000011   12....       LCALL   ??zll_IsFactoryNew?relay
+   \   000014   E9           MOV     A,R1
+   \   000015   6004         JZ      ??targetResetToFNReqCB_1
+    759            {
+    760              return ( ZFailure );
+   \                     ??targetResetToFNReqCB_0:
+   \   000017   7901         MOV     R1,#0x1
+   \   000019   800E         SJMP    ??targetResetToFNReqCB_2
+    761            }
+    762          
+    763            osal_set_event( zllTarget_TaskID, ZLL_RESET_TO_FN_EVT );
+   \                     ??targetResetToFNReqCB_1:
+   \   00001B                ; Setup parameters for call to function osal_set_event
+   \   00001B   7A04         MOV     R2,#0x4
+   \   00001D   7B00         MOV     R3,#0x0
+   \   00001F   90....       MOV     DPTR,#zllTarget_TaskID
+   \   000022   E0           MOVX    A,@DPTR
+   \   000023   F9           MOV     R1,A
+   \   000024   12....       LCALL   ??osal_set_event?relay
+    764          
+    765            return ( ZSuccess );
+   \   000027   7900         MOV     R1,#0x0
+   \                     ??targetResetToFNReqCB_2:
+   \   000029                REQUIRE ?Subroutine0
+   \   000029                ; // Fall through to label ?Subroutine0
+    766          }
+    767          
+    768          /*********************************************************************
+    769           * @fn      targetNwkStartReqCB
+    770           *
+    771           * @brief   This callback is called to process a Network Start Request command.
+    772           *
+    773           * @param   srcAddr - sender's address
+    774           * @param   pReq - parsed command
+    775           * @param   seqNum - command sequence number
+    776           *
+    777           * @return  ZStatus_t
+    778           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    779          static ZStatus_t targetNwkStartReqCB( afAddrType_t *srcAddr, zclLLNwkStartReq_t *pReq, uint8 seqNum )
+   \                     targetNwkStartReqCB:
+    780          {
+   \   000000   74F5         MOV     A,#-0xb
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 11
+   \   000005                ; Auto size: 0
+   \   000005   8A..         MOV     ?V0 + 0,R2
+   \   000007   8B..         MOV     ?V0 + 1,R3
+   \   000009   EC           MOV     A,R4
+   \   00000A   FE           MOV     R6,A
+   \   00000B   ED           MOV     A,R5
+   \   00000C   FF           MOV     R7,A
+   \   00000D   89..         MOV     ?V0 + 2,R1
+    781            if ( zll_IsValidTransID( pReq->transID ) == FALSE )
+   \   00000F                ; Setup parameters for call to function zll_IsValidTransID
+   \   00000F   8E82         MOV     DPL,R6
+   \   000011   8F83         MOV     DPH,R7
+   \   000013   12....       LCALL   ?XLOAD_R2345
+   \   000016   12....       LCALL   ??zll_IsValidTransID?relay
+   \   000019   E9           MOV     A,R1
+   \   00001A   7004         JNZ     ??targetNwkStartReqCB_0
+    782            {
+    783              return ( ZFailure );
+   \   00001C   7901         MOV     R1,#0x1
+   \   00001E   8061         SJMP    ??targetNwkStartReqCB_1
+    784            }
+    785            dstAddr = *srcAddr;
+   \                     ??targetNwkStartReqCB_0:
+   \   000020   85..82       MOV     DPL,?V0 + 0
+   \   000023   85..83       MOV     DPH,?V0 + 1
+   \   000026   7C..         MOV     R4,#dstAddr & 0xff
+   \   000028   7D..         MOV     R5,#(dstAddr >> 8) & 0xff
+   \   00002A   740C         MOV     A,#0xc
+   \   00002C   12....       LCALL   ?MOVE_LONG8_XDATA_XDATA
+    786            dstAddr.panId = 0xFFFF;
+   \   00002F   12....       LCALL   ?Subroutine5 & 0xFFFF
+    787          
+    788            if ( pDiscoveredNwkParamList == NULL )
+   \                     ??CrossCallReturnLabel_0:
+   \   000032   7021         JNZ     ??targetNwkStartReqCB_2
+    789            {
+    790              // Save the request for later
+    791              rxReq.nwkStartReq = *pReq;
+   \   000034   8E82         MOV     DPL,R6
+   \   000036   8F83         MOV     DPH,R7
+   \   000038   7C..         MOV     R4,#rxReq & 0xff
+   \   00003A   7D..         MOV     R5,#(rxReq >> 8) & 0xff
+   \   00003C   7438         MOV     A,#0x38
+   \   00003E   12....       LCALL   ?MOVE_LONG8_XDATA_XDATA
+    792              rxSeqNum = seqNum;
+   \   000041   E5..         MOV     A,?V0 + 2
+   \   000043   90....       MOV     DPTR,#rxSeqNum
+   \   000046   F0           MOVX    @DPTR,A
+    793          
+    794              osal_set_event( zllTarget_TaskID, ZLL_NWK_START_EVT );
+   \   000047                ; Setup parameters for call to function osal_set_event
+   \   000047   7A40         MOV     R2,#0x40
+   \   000049   7B00         MOV     R3,#0x0
+   \   00004B   90....       MOV     DPTR,#zllTarget_TaskID
+   \   00004E   E0           MOVX    A,@DPTR
+   \   00004F   F9           MOV     R1,A
+   \   000050   12....       LCALL   ??osal_set_event?relay
+   \   000053   802A         SJMP    ??targetNwkStartReqCB_3
+    795            }
+    796            else
+    797            {
+    798              targetSendNwkStartRsp( &dstAddr, pReq->transID, ZLL_NETWORK_START_RSP_STATUS_FAILURE,
+    799                                     NULL, 0, seqNum );
+   \                     ??targetNwkStartReqCB_2:
+   \   000055                ; Setup parameters for call to function targetSendNwkStartRsp
+   \   000055   E5..         MOV     A,?V0 + 2
+   \   000057   F5..         MOV     ?V0 + 0,A
+   \   000059   78..         MOV     R0,#?V0 + 0
+   \   00005B   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   00005E   75..00       MOV     ?V0 + 0,#0x0
+   \   000061   78..         MOV     R0,#?V0 + 0
+   \   000063   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   000066   8E82         MOV     DPL,R6
+   \   000068   8F83         MOV     DPH,R7
+   \   00006A   12....       LCALL   ?PUSH_XSTACK8_X_FOUR
+   \   00006D   7C00         MOV     R4,#0x0
+   \   00006F   7D00         MOV     R5,#0x0
+   \   000071   7901         MOV     R1,#0x1
+   \   000073   7A..         MOV     R2,#dstAddr & 0xff
+   \   000075   7B..         MOV     R3,#(dstAddr >> 8) & 0xff
+   \   000077   12....       LCALL   ??targetSendNwkStartRsp?relay
+   \   00007A   7406         MOV     A,#0x6
+   \   00007C   12....       LCALL   ?DEALLOC_XSTACK8
+    800            }
+    801          
+    802            return ( ZSuccess );
+   \                     ??targetNwkStartReqCB_3:
+   \   00007F   7900         MOV     R1,#0x0
+   \                     ??targetNwkStartReqCB_1:
+   \   000081   02....       LJMP    ?Subroutine4 & 0xFFFF
+    803          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine5:
+   \   000000   90....       MOV     DPTR,#dstAddr + 10
+   \   000003   74FF         MOV     A,#-0x1
+   \   000005   F0           MOVX    @DPTR,A
+   \   000006   A3           INC     DPTR
+   \   000007   F0           MOVX    @DPTR,A
+   \   000008   90....       MOV     DPTR,#pDiscoveredNwkParamList
+   \   00000B   12....       LCALL   ?Subroutine9 & 0xFFFF
+   \                     ??CrossCallReturnLabel_8:
+   \   00000E   E8           MOV     A,R0
+   \   00000F   49           ORL     A,R1
+   \   000010   22           RET
+    804          
+    805          /*********************************************************************
+    806           * @fn      targetNwkJoinRtrReqCB
+    807           *
+    808           * @brief   This callback is called to process a Network Join Router
+    809           *          Request command.
+    810           *
+    811           * @param   srcAddr - sender's address
+    812           * @param   pReq - parsed command
+    813           * @param   seqNum - command sequence number
+    814           *
+    815           * @return  ZStatus_t
+    816           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    817          static ZStatus_t targetNwkJoinRtrReqCB( afAddrType_t *srcAddr, zclLLNwkJoinReq_t *pReq, uint8 seqNum )
+   \                     targetNwkJoinRtrReqCB:
+    818          {
+   \   000000   74F5         MOV     A,#-0xb
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 11
+   \   000005                ; Auto size: 5
+   \   000005   74FB         MOV     A,#-0x5
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+   \   00000A   8A..         MOV     ?V0 + 0,R2
+   \   00000C   8B..         MOV     ?V0 + 1,R3
+   \   00000E   EC           MOV     A,R4
+   \   00000F   FE           MOV     R6,A
+   \   000010   ED           MOV     A,R5
+   \   000011   FF           MOV     R7,A
+   \   000012   89..         MOV     ?V0 + 2,R1
+    819            zclLLNwkJoinRsp_t rsp;
+    820            if ( zll_IsValidTransID( pReq->transID ) == FALSE )
+   \   000014                ; Setup parameters for call to function zll_IsValidTransID
+   \   000014   8E82         MOV     DPL,R6
+   \   000016   8F83         MOV     DPH,R7
+   \   000018   12....       LCALL   ?XLOAD_R2345
+   \   00001B   12....       LCALL   ??zll_IsValidTransID?relay
+   \   00001E   E9           MOV     A,R1
+   \   00001F   7004         JNZ     ??targetNwkJoinRtrReqCB_0
+    821            {
+    822              return ( ZFailure );
+   \   000021   7901         MOV     R1,#0x1
+   \   000023   8076         SJMP    ??targetNwkJoinRtrReqCB_1
+    823            }
+    824          
+    825            dstAddr = *srcAddr;
+   \                     ??targetNwkJoinRtrReqCB_0:
+   \   000025   85..82       MOV     DPL,?V0 + 0
+   \   000028   85..83       MOV     DPH,?V0 + 1
+   \   00002B   7C..         MOV     R4,#dstAddr & 0xff
+   \   00002D   7D..         MOV     R5,#(dstAddr >> 8) & 0xff
+   \   00002F   740C         MOV     A,#0xc
+   \   000031   12....       LCALL   ?MOVE_LONG8_XDATA_XDATA
+    826            dstAddr.panId = 0xFFFF;
+   \   000034   12....       LCALL   ?Subroutine5 & 0xFFFF
+    827          
+    828            if ( pDiscoveredNwkParamList == NULL )
+   \                     ??CrossCallReturnLabel_1:
+   \   000037   7020         JNZ     ??targetNwkJoinRtrReqCB_2
+    829            {
+    830              // Save the request for later
+    831              rxReq.nwkJoinReq = *pReq;
+   \   000039   8E82         MOV     DPL,R6
+   \   00003B   8F83         MOV     DPH,R7
+   \   00003D   7C..         MOV     R4,#rxReq & 0xff
+   \   00003F   7D..         MOV     R5,#(rxReq >> 8) & 0xff
+   \   000041   742F         MOV     A,#0x2f
+   \   000043   12....       LCALL   ?MOVE_LONG8_XDATA_XDATA
+    832          
+    833              osal_set_event( zllTarget_TaskID, ZLL_ROUTER_JOIN_EVT );
+   \   000046                ; Setup parameters for call to function osal_set_event
+   \   000046   7A02         MOV     R2,#0x2
+   \   000048   FB           MOV     R3,A
+   \   000049   90....       MOV     DPTR,#zllTarget_TaskID
+   \   00004C   E0           MOVX    A,@DPTR
+   \   00004D   F9           MOV     R1,A
+   \   00004E   12....       LCALL   ??osal_set_event?relay
+    834          
+    835              rsp.status = ZLL_NETWORK_JOIN_RSP_STATUS_SUCCESS;
+   \   000051   7404         MOV     A,#0x4
+   \   000053   12....       LCALL   ?XSTACK_DISP0_8
+   \   000056   E4           CLR     A
+   \   000057   8007         SJMP    ??targetNwkJoinRtrReqCB_3
+    836            }
+    837            else
+    838            {
+    839              rsp.status = ZLL_NETWORK_JOIN_RSP_STATUS_FAILURE;
+   \                     ??targetNwkJoinRtrReqCB_2:
+   \   000059   7404         MOV     A,#0x4
+   \   00005B   12....       LCALL   ?XSTACK_DISP0_8
+   \   00005E   7401         MOV     A,#0x1
+   \                     ??targetNwkJoinRtrReqCB_3:
+   \   000060   F0           MOVX    @DPTR,A
+    840            }
+    841          
+    842            rsp.transID = pReq->transID;
+   \   000061   8E82         MOV     DPL,R6
+   \   000063   8F83         MOV     DPH,R7
+   \   000065   12....       LCALL   ?XLOAD_R2345
+   \   000068   85..82       MOV     DPL,?XSP + 0
+   \   00006B   85..83       MOV     DPH,?XSP + 1
+   \   00006E   12....       LCALL   ?XSTORE_R2345
+    843          
+    844            // Send a response back
+    845            zclLL_Send_NwkJoinRtrRsp( ZLL_INTERNAL_ENDPOINT, &dstAddr, &rsp, seqNum );
+   \   000071                ; Setup parameters for call to function zclLL_Send_NwkJoinRsp
+   \   000071   E5..         MOV     A,?V0 + 2
+   \   000073   F5..         MOV     ?V0 + 0,A
+   \   000075   78..         MOV     R0,#?V0 + 0
+   \   000077   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   00007A   75..13       MOV     ?V0 + 0,#0x13
+   \   00007D   78..         MOV     R0,#?V0 + 0
+   \   00007F   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   000082   7402         MOV     A,#0x2
+   \   000084   12....       LCALL   ?XSTACK_DISP0_8
+   \   000087   AC82         MOV     R4,DPL
+   \   000089   AD83         MOV     R5,DPH
+   \   00008B   7A..         MOV     R2,#dstAddr & 0xff
+   \   00008D   7B..         MOV     R3,#(dstAddr >> 8) & 0xff
+   \   00008F   790D         MOV     R1,#0xd
+   \   000091   12....       LCALL   ??zclLL_Send_NwkJoinRsp?relay
+   \   000094   7402         MOV     A,#0x2
+   \   000096   12....       LCALL   ?DEALLOC_XSTACK8
+    846          
+    847            return ( ZSuccess );
+   \   000099   7900         MOV     R1,#0x0
+   \                     ??targetNwkJoinRtrReqCB_1:
+   \   00009B   7405         MOV     A,#0x5
+   \   00009D   12....       LCALL   ?DEALLOC_XSTACK8
+   \   0000A0   02....       LJMP    ?Subroutine4 & 0xFFFF
+    848          }
+    849          
+    850          /*********************************************************************
+    851           * @fn      targetNwkUpdateReqCB
+    852           *
+    853           * @brief   This callback is called to process a Network Update Request
+    854           *          command.
+    855           *
+    856           * @param   srcAddr - sender's address
+    857           * @param   pReq - parsed command
+    858           *
+    859           * @return  ZStatus_t
+    860           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    861          static ZStatus_t targetNwkUpdateReqCB( afAddrType_t *srcAddr, zclLLNwkUpdateReq_t *pReq )
+   \                     targetNwkUpdateReqCB:
+    862          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   EC           MOV     A,R4
+   \   000006   FE           MOV     R6,A
+   \   000007   ED           MOV     A,R5
+   \   000008   FF           MOV     R7,A
+    863            if ( zll_IsValidTransID( pReq->transID ) == FALSE )
+   \   000009                ; Setup parameters for call to function zll_IsValidTransID
+   \   000009   8E82         MOV     DPL,R6
+   \   00000B   8F83         MOV     DPH,R7
+   \   00000D   12....       LCALL   ?XLOAD_R2345
+   \   000010   12....       LCALL   ??zll_IsValidTransID?relay
+   \   000013   E9           MOV     A,R1
+   \   000014   7004         JNZ     ??targetNwkUpdateReqCB_0
+    864            {
+    865              return ( ZFailure );
+   \   000016   7901         MOV     R1,#0x1
+   \   000018   8048         SJMP    ??targetNwkUpdateReqCB_1
+    866            }
+    867            // Discard the request if the Extended PAN ID and PAN ID are not
+    868            // identical with our corresponding stored values
+    869            if ( ZLL_SAME_NWK( pReq->PANID, pReq->extendedPANID ) )
+   \                     ??targetNwkUpdateReqCB_0:
+   \   00001A   90....       MOV     DPTR,#_NIB + 33
+   \   00001D   12....       LCALL   ?Subroutine9 & 0xFFFF
+   \                     ??CrossCallReturnLabel_7:
+   \   000020   EE           MOV     A,R6
+   \   000021   240E         ADD     A,#0xe
+   \   000023   12....       LCALL   ?Subroutine8 & 0xFFFF
+   \                     ??CrossCallReturnLabel_15:
+   \   000026   68           XRL     A,R0
+   \   000027   7003         JNZ     ??targetNwkUpdateReqCB_2
+   \   000029   A3           INC     DPTR
+   \   00002A   E0           MOVX    A,@DPTR
+   \   00002B   69           XRL     A,R1
+   \                     ??targetNwkUpdateReqCB_2:
+   \   00002C   7032         JNZ     ??targetNwkUpdateReqCB_3
+   \   00002E                ; Setup parameters for call to function sAddrExtCmp
+   \   00002E   EE           MOV     A,R6
+   \   00002F   2404         ADD     A,#0x4
+   \   000031   FC           MOV     R4,A
+   \   000032   EF           MOV     A,R7
+   \   000033   3400         ADDC    A,#0x0
+   \   000035   FD           MOV     R5,A
+   \   000036   7A..         MOV     R2,#(_NIB + 53) & 0xff
+   \   000038   7B..         MOV     R3,#((_NIB + 53) >> 8) & 0xff
+   \   00003A   12....       LCALL   ??sAddrExtCmp?relay
+   \   00003D   E9           MOV     A,R1
+   \   00003E   6020         JZ      ??targetNwkUpdateReqCB_3
+    870            {
+    871              uint8 newUpdateId = zll_NewNwkUpdateId( pReq->nwkUpdateId, _NIB.nwkUpdateId);
+   \   000040                ; Setup parameters for call to function zll_NewNwkUpdateId
+   \   000040   90....       MOV     DPTR,#_NIB + 109
+   \   000043   E0           MOVX    A,@DPTR
+   \   000044   FA           MOV     R2,A
+   \   000045   EE           MOV     A,R6
+   \   000046   240C         ADD     A,#0xc
+   \   000048   12....       LCALL   ?Subroutine8 & 0xFFFF
+   \                     ??CrossCallReturnLabel_16:
+   \   00004B   F9           MOV     R1,A
+   \   00004C   12....       LCALL   ??zll_NewNwkUpdateId?relay
+    872              if ( _NIB.nwkUpdateId != newUpdateId )
+   \   00004F   90....       MOV     DPTR,#_NIB + 109
+   \   000052   E0           MOVX    A,@DPTR
+   \   000053   69           XRL     A,R1
+   \   000054   600A         JZ      ??targetNwkUpdateReqCB_3
+    873              {
+    874                // Update the network update id and logical channel
+    875                zll_ProcessNwkUpdate( newUpdateId, pReq->logicalChannel );
+   \   000056                ; Setup parameters for call to function zll_ProcessNwkUpdate
+   \   000056   EE           MOV     A,R6
+   \   000057   240D         ADD     A,#0xd
+   \   000059   12....       LCALL   ?Subroutine8 & 0xFFFF
+    876              }
+    877            }
+   \                     ??CrossCallReturnLabel_17:
+   \   00005C   FA           MOV     R2,A
+   \   00005D   12....       LCALL   ??zll_ProcessNwkUpdate?relay
+    878          
+    879            return ( ZSuccess );
+   \                     ??targetNwkUpdateReqCB_3:
+   \   000060   7900         MOV     R1,#0x0
+   \                     ??targetNwkUpdateReqCB_1:
+   \   000062   02....       LJMP    ?Subroutine1 & 0xFFFF
+    880          }
+    881          
+    882          /*********************************************************************
+    883           * @fn      targetSendNwkStartRsp
+    884           *
+    885           * @brief   Send out a Network Start Response command.
+    886           *
+    887           * @param   dstAddr - destination's address
+    888           * @param   transID - touch link transaction identifier
+    889           * @param   status - Network Start Response command status field
+    890           * @param   pNwkParams - network parameters
+    891           * @param   nwkUpdateId - network update identifier
+    892           * @param   seqNum
+    893           *
+    894           * @return  none
+    895           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    896          static void targetSendNwkStartRsp( afAddrType_t *dstAddr, uint32 transID, uint8 status,
+   \                     targetSendNwkStartRsp:
+    897                                             zclLLNwkParams_t *pNwkParams, uint8 nwkUpdateId, uint8 seqNum )
+    898          {
+   \   000000   74EA         MOV     A,#-0x16
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 22
+   \   000005                ; Auto size: 0
+   \   000005   8A..         MOV     ?V0 + 12,R2
+   \   000007   8B..         MOV     ?V0 + 13,R3
+   \   000009   89..         MOV     ?V0 + 3,R1
+   \   00000B   8C..         MOV     ?V0 + 0,R4
+   \   00000D   8D..         MOV     ?V0 + 1,R5
+   \   00000F   7416         MOV     A,#0x16
+   \   000011   12....       LCALL   ?XSTACK_DISP0_8
+   \   000014   78..         MOV     R0,#?V0 + 4
+   \   000016   12....       LCALL   ?L_MOV_X
+   \   000019   741A         MOV     A,#0x1a
+   \   00001B   12....       LCALL   ?XSTACK_DISP0_8
+   \   00001E   E0           MOVX    A,@DPTR
+   \   00001F   F5..         MOV     ?V0 + 2,A
+   \   000021   741B         MOV     A,#0x1b
+   \   000023   12....       LCALL   ?XSTACK_DISP0_8
+   \   000026   E0           MOVX    A,@DPTR
+   \   000027   F5..         MOV     ?V0 + 8,A
+    899            zclLLNwkStartRsp_t *pRsp;
+    900          
+    901            // Send out a response
+    902            pRsp = (zclLLNwkStartRsp_t *)osal_mem_alloc( sizeof( zclLLNwkStartRsp_t ) );
+   \   000029                ; Setup parameters for call to function osal_mem_alloc
+   \   000029   7A11         MOV     R2,#0x11
+   \   00002B   7B00         MOV     R3,#0x0
+   \   00002D   12....       LCALL   ??osal_mem_alloc?relay
+   \   000030   8A..         MOV     ?V0 + 10,R2
+   \   000032   8B..         MOV     ?V0 + 11,R3
+   \   000034   AE..         MOV     R6,?V0 + 10
+   \   000036   AF..         MOV     R7,?V0 + 11
+    903            if ( pRsp )
+   \   000038   EE           MOV     A,R6
+   \   000039   4F           ORL     A,R7
+   \   00003A   7003         JNZ     $+5
+   \   00003C   02....       LJMP    ??targetSendNwkStartRsp_0 & 0xFFFF
+    904            {
+    905              pRsp->transID = transID;
+   \   00003F   8E82         MOV     DPL,R6
+   \   000041   8F83         MOV     DPH,R7
+   \   000043   78..         MOV     R0,#?V0 + 4
+   \   000045   12....       LCALL   ?L_MOV_TO_X
+    906              pRsp->status = status;
+   \   000048   8E82         MOV     DPL,R6
+   \   00004A   8F83         MOV     DPH,R7
+   \   00004C   A3           INC     DPTR
+   \   00004D   A3           INC     DPTR
+   \   00004E   A3           INC     DPTR
+   \   00004F   A3           INC     DPTR
+   \   000050   E5..         MOV     A,?V0 + 3
+   \   000052   F0           MOVX    @DPTR,A
+    907          
+    908              if ( pNwkParams != NULL )
+   \   000053   EE           MOV     A,R6
+   \   000054   240F         ADD     A,#0xf
+   \   000056   F5..         MOV     ?V0 + 6,A
+   \   000058   EF           MOV     A,R7
+   \   000059   3400         ADDC    A,#0x0
+   \   00005B   F5..         MOV     ?V0 + 7,A
+   \   00005D   EE           MOV     A,R6
+   \   00005E   240E         ADD     A,#0xe
+   \   000060   F5..         MOV     ?V0 + 4,A
+   \   000062   EF           MOV     A,R7
+   \   000063   3400         ADDC    A,#0x0
+   \   000065   F5..         MOV     ?V0 + 5,A
+   \   000067   EE           MOV     A,R6
+   \   000068   2405         ADD     A,#0x5
+   \   00006A   FA           MOV     R2,A
+   \   00006B   EF           MOV     A,R7
+   \   00006C   3400         ADDC    A,#0x0
+   \   00006E   FB           MOV     R3,A
+   \   00006F   E5..         MOV     A,?V0 + 0
+   \   000071   45..         ORL     A,?V0 + 1
+   \   000073   6034         JZ      ??targetSendNwkStartRsp_1
+    909              {
+    910                osal_cpyExtAddr( pRsp->extendedPANID, pNwkParams->extendedPANID );
+   \   000075                ; Setup parameters for call to function sAddrExtCpy
+   \   000075   AC..         MOV     R4,?V0 + 0
+   \   000077   AD..         MOV     R5,?V0 + 1
+   \   000079   12....       LCALL   ??sAddrExtCpy?relay
+    911                pRsp->logicalChannel = pNwkParams->logicalChannel;
+   \   00007C   E5..         MOV     A,?V0 + 0
+   \   00007E   2419         ADD     A,#0x19
+   \   000080   F582         MOV     DPL,A
+   \   000082   E5..         MOV     A,?V0 + 1
+   \   000084   12....       LCALL   ??Subroutine11_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_10:
+   \   000087   85..82       MOV     DPL,?V0 + 4
+   \   00008A   85..83       MOV     DPH,?V0 + 5
+   \   00008D   F0           MOVX    @DPTR,A
+    912                pRsp->panId = pNwkParams->panId;
+   \   00008E   E5..         MOV     A,?V0 + 0
+   \   000090   241A         ADD     A,#0x1a
+   \   000092   F582         MOV     DPL,A
+   \   000094   E5..         MOV     A,?V0 + 1
+   \   000096   12....       LCALL   ??Subroutine11_0 & 0xFFFF
+    913              }
+   \                     ??CrossCallReturnLabel_11:
+   \   000099   F8           MOV     R0,A
+   \   00009A   A3           INC     DPTR
+   \   00009B   E0           MOVX    A,@DPTR
+   \   00009C   F9           MOV     R1,A
+   \   00009D   85..82       MOV     DPL,?V0 + 6
+   \   0000A0   85..83       MOV     DPH,?V0 + 7
+   \   0000A3   E8           MOV     A,R0
+   \   0000A4   F0           MOVX    @DPTR,A
+   \   0000A5   A3           INC     DPTR
+   \   0000A6   E9           MOV     A,R1
+   \   0000A7   8019         SJMP    ??targetSendNwkStartRsp_2
+    914              else
+    915              {
+    916                osal_memset( pRsp->extendedPANID, 0, Z_EXTADDR_LEN );
+   \                     ??targetSendNwkStartRsp_1:
+   \   0000A9                ; Setup parameters for call to function osal_memset
+   \   0000A9   7C08         MOV     R4,#0x8
+   \   0000AB   7D00         MOV     R5,#0x0
+   \   0000AD   7900         MOV     R1,#0x0
+   \   0000AF   12....       LCALL   ??osal_memset?relay
+    917                pRsp->logicalChannel = 0;
+   \   0000B2   85..82       MOV     DPL,?V0 + 4
+   \   0000B5   85..83       MOV     DPH,?V0 + 5
+   \   0000B8   E4           CLR     A
+   \   0000B9   F0           MOVX    @DPTR,A
+    918                pRsp->panId = 0;
+   \   0000BA   85..82       MOV     DPL,?V0 + 6
+   \   0000BD   85..83       MOV     DPH,?V0 + 7
+   \   0000C0   F0           MOVX    @DPTR,A
+   \   0000C1   A3           INC     DPTR
+   \                     ??targetSendNwkStartRsp_2:
+   \   0000C2   F0           MOVX    @DPTR,A
+    919              }
+    920          
+    921              pRsp->nwkUpdateId = nwkUpdateId;
+   \   0000C3   EE           MOV     A,R6
+   \   0000C4   240D         ADD     A,#0xd
+   \   0000C6   F582         MOV     DPL,A
+   \   0000C8   EF           MOV     A,R7
+   \   0000C9   3400         ADDC    A,#0x0
+   \   0000CB   F583         MOV     DPH,A
+   \   0000CD   E5..         MOV     A,?V0 + 2
+   \   0000CF   F0           MOVX    @DPTR,A
+    922          
+    923              zclLL_Send_NwkStartRsp( ZLL_INTERNAL_ENDPOINT, dstAddr, pRsp, seqNum );
+   \   0000D0                ; Setup parameters for call to function zclLL_Send_NwkStartRsp
+   \   0000D0   E5..         MOV     A,?V0 + 8
+   \   0000D2   F5..         MOV     ?V0 + 0,A
+   \   0000D4   78..         MOV     R0,#?V0 + 0
+   \   0000D6   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   0000D9   EE           MOV     A,R6
+   \   0000DA   FC           MOV     R4,A
+   \   0000DB   EF           MOV     A,R7
+   \   0000DC   FD           MOV     R5,A
+   \   0000DD   AA..         MOV     R2,?V0 + 12
+   \   0000DF   AB..         MOV     R3,?V0 + 13
+   \   0000E1   790D         MOV     R1,#0xd
+   \   0000E3   12....       LCALL   ??zclLL_Send_NwkStartRsp?relay
+   \   0000E6   7401         MOV     A,#0x1
+   \   0000E8   12....       LCALL   ?DEALLOC_XSTACK8
+    924          
+    925              osal_mem_free( pRsp );
+   \   0000EB                ; Setup parameters for call to function osal_mem_free
+   \   0000EB   EE           MOV     A,R6
+   \   0000EC   FA           MOV     R2,A
+   \   0000ED   EF           MOV     A,R7
+   \   0000EE   FB           MOV     R3,A
+   \   0000EF   12....       LCALL   ??osal_mem_free?relay
+    926            }
+    927          }
+   \                     ??targetSendNwkStartRsp_0:
+   \   0000F2   7F0E         MOV     R7,#0xe
+   \   0000F4   02....       LJMP    ?BANKED_LEAVE_XDATA
+    928          
+    929          /******************************************************************************
+    930           * @fn      targetZdoLeaveCnfCB
+    931           *
+    932           * @brief   This callback is called to process a Leave Confirmation message.
+    933           *
+    934           *          Note: this callback function returns a pointer if it has handled
+    935           *                the confirmation message and no further action should be
+    936           *                taken with it. It returns NULL if it has not handled the
+    937           *                confirmation message and normal processing should take place.
+    938           *
+    939           * @param       pParam - received message
+    940           *
+    941           * @return      Pointer if message processed. NULL, otherwise.
+    942           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    943          static void *targetZdoLeaveCnfCB( void *pParam )
+   \                     targetZdoLeaveCnfCB:
+    944          {
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 32
+   \   000005   74E0         MOV     A,#-0x20
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+    945            // Clear all groups and scenes for all endpoints.
+    946            if ( ((NLME_LeaveCnf_t*)pParam)->rejoin == FALSE )
+   \   00000A   EA           MOV     A,R2
+   \   00000B   240B         ADD     A,#0xb
+   \   00000D   F582         MOV     DPL,A
+   \   00000F   EB           MOV     A,R3
+   \   000010   12....       LCALL   ??Subroutine11_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_12:
+   \   000013   706C         JNZ     ??targetZdoLeaveCnfCB_0
+    947            {
+    948              uint8 i,n_groups;
+    949              uint16 groupList[APS_MAX_GROUPS];
+    950              epList_t *epItem;
+    951          
+    952              for ( epItem = epList; epItem != NULL; epItem = epItem->nextDesc )
+   \   000015   90....       MOV     DPTR,#epList
+   \   000018   805E         SJMP    ??targetZdoLeaveCnfCB_1
+    953              {
+    954                if ( n_groups = aps_FindAllGroupsForEndpoint( epItem->epDesc->endPoint, groupList ) )
+   \                     ??targetZdoLeaveCnfCB_2:
+   \   00001A   EE           MOV     A,R6
+   \   00001B   2402         ADD     A,#0x2
+   \   00001D   F8           MOV     R0,A
+   \   00001E   EF           MOV     A,R7
+   \   00001F   3400         ADDC    A,#0x0
+   \   000021   F9           MOV     R1,A
+   \   000022   88..         MOV     ?V0 + 0,R0
+   \   000024   89..         MOV     ?V0 + 1,R1
+   \   000026                ; Setup parameters for call to function aps_FindAllGroupsForEndpoint
+   \   000026   85..82       MOV     DPL,?XSP + 0
+   \   000029   85..83       MOV     DPH,?XSP + 1
+   \   00002C   AA82         MOV     R2,DPL
+   \   00002E   AB83         MOV     R3,DPH
+   \   000030   8882         MOV     DPL,R0
+   \   000032   F583         MOV     DPH,A
+   \   000034   12....       LCALL   ??Subroutine12_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_18:
+   \   000037   12....       LCALL   ??aps_FindAllGroupsForEndpoint?relay
+   \   00003A   E9           MOV     A,R1
+   \   00003B   F5..         MOV     ?V0 + 3,A
+   \   00003D   6035         JZ      ??targetZdoLeaveCnfCB_3
+    955                {
+    956                  for ( i = 0; i < n_groups; i++ )
+   \   00003F   75..00       MOV     ?V0 + 2,#0x0
+    957                  {
+    958                    zclGeneral_RemoveAllScenes( epItem->epDesc->endPoint, groupList[i] );
+   \                     ??targetZdoLeaveCnfCB_4:
+   \   000042                ; Setup parameters for call to function zclGeneral_RemoveAllScenes
+   \   000042   E5..         MOV     A,?V0 + 2
+   \   000044   C3           CLR     C
+   \   000045   33           RLC     A
+   \   000046   F8           MOV     R0,A
+   \   000047   E4           CLR     A
+   \   000048   33           RLC     A
+   \   000049   F9           MOV     R1,A
+   \   00004A   85..82       MOV     DPL,?XSP + 0
+   \   00004D   85..83       MOV     DPH,?XSP + 1
+   \   000050   E582         MOV     A,DPL
+   \   000052   28           ADD     A,R0
+   \   000053   F582         MOV     DPL,A
+   \   000055   E583         MOV     A,DPH
+   \   000057   39           ADDC    A,R1
+   \   000058   F583         MOV     DPH,A
+   \   00005A   E0           MOVX    A,@DPTR
+   \   00005B   FA           MOV     R2,A
+   \   00005C   A3           INC     DPTR
+   \   00005D   E0           MOVX    A,@DPTR
+   \   00005E   FB           MOV     R3,A
+   \   00005F   12....       LCALL   ?Subroutine6 & 0xFFFF
+    959                  }
+   \                     ??CrossCallReturnLabel_19:
+   \   000062   12....       LCALL   ??zclGeneral_RemoveAllScenes?relay
+   \   000065   05..         INC     ?V0 + 2
+   \   000067   E5..         MOV     A,?V0 + 2
+   \   000069   C3           CLR     C
+   \   00006A   95..         SUBB    A,?V0 + 3
+   \   00006C   40D4         JC      ??targetZdoLeaveCnfCB_4
+    960                  aps_RemoveAllGroup( epItem->epDesc->endPoint );
+   \   00006E                ; Setup parameters for call to function aps_RemoveAllGroup
+   \   00006E   12....       LCALL   ?Subroutine6 & 0xFFFF
+    961                }
+    962              }
+   \                     ??CrossCallReturnLabel_20:
+   \   000071   12....       LCALL   ??aps_RemoveAllGroup?relay
+   \                     ??targetZdoLeaveCnfCB_3:
+   \   000074   8E82         MOV     DPL,R6
+   \   000076   8F83         MOV     DPH,R7
+   \                     ??targetZdoLeaveCnfCB_1:
+   \   000078   E0           MOVX    A,@DPTR
+   \   000079   FE           MOV     R6,A
+   \   00007A   A3           INC     DPTR
+   \   00007B   E0           MOVX    A,@DPTR
+   \   00007C   FF           MOV     R7,A
+   \   00007D   EE           MOV     A,R6
+   \   00007E   4F           ORL     A,R7
+   \   00007F   7099         JNZ     ??targetZdoLeaveCnfCB_2
+    963            }
+    964          
+    965            // Did we initiate the leave?
+    966            if ( zllLeaveInitiated == FALSE )
+   \                     ??targetZdoLeaveCnfCB_0:
+   \   000081   90....       MOV     DPTR,#zllLeaveInitiated
+   \   000084   E0           MOVX    A,@DPTR
+   \   000085   7006         JNZ     ??targetZdoLeaveCnfCB_5
+    967            {
+    968              return ( NULL );
+   \   000087   7A00         MOV     R2,#0x0
+   \   000089   7B00         MOV     R3,#0x0
+   \   00008B   8042         SJMP    ??targetZdoLeaveCnfCB_6
+    969            }
+    970          
+    971            if ( zllLeaveInitiated == ZLL_LEAVE_TO_START_NWK )
+   \                     ??targetZdoLeaveCnfCB_5:
+   \   00008D   6402         XRL     A,#0x2
+   \   00008F   700E         JNZ     ??targetZdoLeaveCnfCB_7
+    972            {
+    973              // Notify our task to start the network
+    974              osal_set_event( zllTarget_TaskID, ZLL_START_NWK_EVT );
+   \   000091                ; Setup parameters for call to function osal_set_event
+   \   000091   7A08         MOV     R2,#0x8
+   \   000093   7B00         MOV     R3,#0x0
+   \   000095   90....       MOV     DPTR,#zllTarget_TaskID
+   \   000098   E0           MOVX    A,@DPTR
+   \   000099   F9           MOV     R1,A
+   \   00009A   12....       LCALL   ??osal_set_event?relay
+   \   00009D   802C         SJMP    ??targetZdoLeaveCnfCB_8
+    975            }
+    976            else // ZLL_LEAVE_TO_JOIN_NWK
+    977            {
+    978              AssocReset();
+   \                     ??targetZdoLeaveCnfCB_7:
+   \   00009F                ; Setup parameters for call to function AssocReset
+   \   00009F   12....       LCALL   ??AssocReset?relay
+    979              nwkNeighborInitTable();
+   \   0000A2                ; Setup parameters for call to function nwkNeighborInitTable
+   \   0000A2   12....       LCALL   ??nwkNeighborInitTable?relay
+    980              AddrMgrSetDefaultNV();
+   \   0000A5                ; Setup parameters for call to function AddrMgrSetDefaultNV
+   \   0000A5   12....       LCALL   ??AddrMgrSetDefaultNV?relay
+    981              // Immediately store empty tables in NV
+    982              osal_set_event( ZDAppTaskID, ZDO_NWK_UPDATE_NV );
+   \   0000A8                ; Setup parameters for call to function osal_set_event
+   \   0000A8   7A00         MOV     R2,#0x0
+   \   0000AA   7B01         MOV     R3,#0x1
+   \   0000AC   90....       MOV     DPTR,#ZDAppTaskID
+   \   0000AF   E0           MOVX    A,@DPTR
+   \   0000B0   F9           MOV     R1,A
+   \   0000B1   12....       LCALL   ??osal_set_event?relay
+    983              // Notify our task to join the new network
+    984              osal_start_timerEx( zllTarget_TaskID, ZLL_JOIN_NWK_EVT, 100 );
+   \   0000B4                ; Setup parameters for call to function osal_start_timerEx
+   \   0000B4   90....       MOV     DPTR,#__Constant_64
+   \   0000B7   12....       LCALL   ?PUSH_XSTACK8_X_FOUR
+   \   0000BA   7A10         MOV     R2,#0x10
+   \   0000BC   7B00         MOV     R3,#0x0
+   \   0000BE   90....       MOV     DPTR,#zllTarget_TaskID
+   \   0000C1   E0           MOVX    A,@DPTR
+   \   0000C2   F9           MOV     R1,A
+   \   0000C3   12....       LCALL   ??osal_start_timerEx?relay
+   \   0000C6   7404         MOV     A,#0x4
+   \   0000C8   12....       LCALL   ?DEALLOC_XSTACK8
+    985            }
+    986          
+    987            return ( (void *)&zllLeaveInitiated );
+   \                     ??targetZdoLeaveCnfCB_8:
+   \   0000CB   7A..         MOV     R2,#zllLeaveInitiated & 0xff
+   \   0000CD   7B..         MOV     R3,#(zllLeaveInitiated >> 8) & 0xff
+   \                     ??targetZdoLeaveCnfCB_6:
+   \   0000CF   7420         MOV     A,#0x20
+   \   0000D1   12....       LCALL   ?DEALLOC_XSTACK8
+   \   0000D4   02....       LJMP    ?Subroutine3 & 0xFFFF
+    988          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine6:
+   \   000000   85..82       MOV     DPL,?V0 + 0
+   \   000003   85..83       MOV     DPH,?V0 + 1
+   \   000006                REQUIRE ??Subroutine12_0
+   \   000006                ; // Fall through to label ??Subroutine12_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine12_0:
+   \   000000   12....       LCALL   ?Subroutine10 & 0xFFFF
+   \                     ??CrossCallReturnLabel_22:
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   F9           MOV     R1,A
+   \   000005   22           RET
+    989          
+    990          
+    991          /*********************************************************************
+    992           * @fn      zllTarget_ResetToFactoryNew
+    993           *
+    994           * @brief   Call to Reset the Target to factory new
+    995           *
+    996           * @param   none
+    997           *
+    998           * @return  none
+    999           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   1000          void zllTarget_ResetToFactoryNew()
+   \                     zllTarget_ResetToFactoryNew:
+   1001          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+   1002            zll_ResetToFactoryNew( FALSE );
+   \   000004                ; Setup parameters for call to function zll_ResetToFactoryNew
+   \   000004   7900         MOV     R1,#0x0
+   \   000006   12....       LCALL   ??zll_ResetToFactoryNew?relay
+   1003          }
+   \   000009   02....       LJMP    ?Subroutine0 & 0xFFFF
+   1004          
+   1005          /*********************************************************************
+   1006           * @fn      zllTarget_ClassicalCommissioningStart
+   1007           *
+   1008           * @brief   Start Classical Commissioning.
+   1009           *
+   1010           * @param   none
+   1011           *
+   1012           * @return  status
+   1013           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   1014          ZStatus_t zllTarget_ClassicalCommissioningStart()
+   \                     zllTarget_ClassicalCommissioningStart:
+   1015          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+   1016            return ( zll_ClassicalCommissioningInit() );
+   \   000004                ; Setup parameters for call to function zll_ClassicalCommissioningInit
+   \   000004   12....       LCALL   ??zll_ClassicalCommissioningInit?relay
+   \   000007   02....       LJMP    ?Subroutine0 & 0xFFFF
+   1017          }
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for zllTarget_CmdCBs>`:
+   \   000000   ....         DW ??targetScanReqCB?relay
+   \   000002   ....         DW ??targetDeviceInfoReqCB?relay
+   \   000004   ....         DW ??targetIdentifyReqCB?relay
+   \   000006   ....         DW ??targetResetToFNReqCB?relay
+   \   000008   ....         DW ??targetNwkStartReqCB?relay
+   \   00000A   ....         DW ??targetNwkJoinRtrReqCB?relay
+   \   00000C   0000         DW 0H
+   \   00000E   ....         DW ??targetNwkUpdateReqCB?relay
+   \   000010   0000         DW 0H
+   \   000012   0000         DW 0H
+   \   000014   0000         DW 0H
+   \   000016   0000         DW 0H
+   \   000018   0000         DW 0H
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_64:
+   \   000000   64000000     DD 100
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllTarget_InitDevice?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllTarget_InitDevice
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllTarget_RegisterIdentifyCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllTarget_RegisterIdentifyCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllTarget_Init?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllTarget_Init
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllTarget_RegisterApp?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllTarget_RegisterApp
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllTarget_PermitJoin?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllTarget_PermitJoin
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllTarget_event_loop?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllTarget_event_loop
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??targetStartRtr?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    targetStartRtr
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??targetSelectNwkParams?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    targetSelectNwkParams
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??targetVerifyNwkParams?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    targetVerifyNwkParams
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??targetScanReqCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    targetScanReqCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??targetDeviceInfoReqCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    targetDeviceInfoReqCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??targetIdentifyReqCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    targetIdentifyReqCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??targetResetToFNReqCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    targetResetToFNReqCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??targetNwkStartReqCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    targetNwkStartReqCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??targetNwkJoinRtrReqCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    targetNwkJoinRtrReqCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??targetNwkUpdateReqCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    targetNwkUpdateReqCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??targetSendNwkStartRsp?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    targetSendNwkStartRsp
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??targetZdoLeaveCnfCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    targetZdoLeaveCnfCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllTarget_ResetToFactoryNew?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllTarget_ResetToFactoryNew
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllTarget_ClassicalCommissioningStart?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllTarget_ClassicalCommissioningStart
+   1018          
+   1019          #if defined (MT_APP_FUNC)
+   1020          /*********************************************************************
+   1021           * @fn      targetProcessRpcMsg
+   1022           *
+   1023           * @brief   Process Test messages - currently just test app messages
+   1024           *
+   1025           * @param   srcEP - Sending Apps endpoint
+   1026           * @param   len - number of bytes
+   1027           * @param   msg - pointer to message
+   1028           *          0 - lo byte destination address
+   1029           *          1 - hi byte destination address
+   1030           *          2 - destination endpoint
+   1031           *          3 - lo byte cluster ID
+   1032           *          4 - hi byte cluster ID
+   1033           *          5 - message length
+   1034           *          6 - destination address mode (first byte of data)
+   1035           *          7 - zcl command frame
+   1036           *
+   1037           * @return  none
+   1038           */
+   1039          static void targetProcessRpcMsg( uint8 srcEP, uint8 len, uint8 *msg )
+   1040          {
+   1041            uint16 clusterID;
+   1042            uint8 zllRpcCmdID;
+   1043            clusterID = BUILD_UINT16( msg[ZLL_MT_APP_RPC_OFFSET_CLUSTER_ID],
+   1044                                      msg[ZLL_MT_APP_RPC_OFFSET_CLUSTER_ID + 1] );
+   1045            zllRpcCmdID = msg[ZLL_MT_APP_RPC_OFFSET_CMD_ID];
+   1046          
+   1047            if ( clusterID == ZLL_MT_APP_RPC_CLUSTER_ID )
+   1048            {
+   1049              switch ( zllRpcCmdID )
+   1050              {
+   1051                case ZLL_MT_APP_RPC_CMD_RESET_TO_FN:
+   1052                  zllTarget_ResetToFactoryNew();
+   1053                  break;
+   1054                case ZLL_MT_APP_RPC_CMD_JOIN_HA:
+   1055                  zllTarget_ClassicalCommissioningStart();
+   1056                  break;
+   1057                case ZLL_MT_APP_RPC_CMD_PERMIT_JOIN:
+   1058                  zllTarget_PermitJoin( ( len > ( ZLL_MT_APP_RPC_OFFSET_CMD_ID - 1 ) ) ?
+   1059                                         msg[ZLL_MT_APP_RPC_OFFSET_CMD_ID + 1] : 0 );
+   1060                  break;
+   1061              }
+   1062            }
+   1063          }
+   1064          #endif
+   1065          
+   1066          
+   1067          /*********************************************************************
+   1068          *********************************************************************/
+
+   Maximum stack usage in bytes:
+
+   ISTACK PSTACK XSTACK Function
+   ------ ------ ------ --------
+       0      0     15  targetDeviceInfoReqCB
+                          0 0 11 -> zll_IsValidTransID
+                          0 0 15 -> zll_SendDeviceInfoRsp
+       0      0     14  targetIdentifyReqCB
+                          0 0 14 -> zll_IsValidTransID
+       0      0     18  targetNwkJoinRtrReqCB
+                          0 0 16 -> osal_set_event
+                          0 0 18 -> zclLL_Send_NwkJoinRsp
+                          0 0 16 -> zll_IsValidTransID
+       0      0     17  targetNwkStartReqCB
+                          0 0 11 -> osal_set_event
+                          0 0 17 -> targetSendNwkStartRsp
+                          0 0 11 -> zll_IsValidTransID
+       0      0      9  targetNwkUpdateReqCB
+                          0 0  9 -> sAddrExtCmp
+                          0 0  9 -> zll_IsValidTransID
+                          0 0  9 -> zll_NewNwkUpdateId
+                          0 0  9 -> zll_ProcessNwkUpdate
+       2      0      0  targetResetToFNReqCB
+                          2 0  0 -> osal_set_event
+                          2 0  0 -> zll_IsFactoryNew
+                          2 0  0 -> zll_IsValidTransID
+       0      0     16  targetScanReqCB
+                          0 0 12 -> zll_GetMsgRssi
+                          0 0 16 -> zll_SendScanRsp
+       0      0     26  targetSelectNwkParams
+                          0 0 10 -> osal_rand
+                          0 0 10 -> targetVerifyNwkParams
+                          0 0 10 -> zll_GenerateRandNum
+                          0 0 10 -> zll_GetRandPrimaryChannel
+                          0 0 10 -> zll_SetMacNwkParams
+       1      0     45  targetSendNwkStartRsp
+                          0 0 22 -> osal_mem_alloc
+                          0 0 22 -> osal_mem_free
+                          0 0 22 -> osal_memset
+                          0 0 22 -> sAddrExtCpy
+                          0 0 23 -> zclLL_Send_NwkStartRsp
+       0      0     41  targetStartRtr
+                          0 0 13 -> ZDApp_LeaveCtrlReset
+                          0 0 13 -> ZDOInitDevice
+                          0 0 13 -> ZDSecMgrUpdateTCAddress
+                          0 0 21 -> zll_DecryptNwkKey
+                          0 0 13 -> zll_PermitJoin
+                          0 0 17 -> zll_SetNIB
+                          0 0 13 -> zll_UpdateFreeRanges
+                          0 0 13 -> zll_UpdateNV
+       0      0     28  targetVerifyNwkParams
+                          0 0 12 -> sAddrExtCmp
+       0      0     48  targetZdoLeaveCnfCB
+                          0 0 44 -> AddrMgrSetDefaultNV
+                          0 0 44 -> AssocReset
+                          0 0 44 -> aps_FindAllGroupsForEndpoint
+                          0 0 44 -> aps_RemoveAllGroup
+                          0 0 44 -> nwkNeighborInitTable
+                          0 0 44 -> osal_set_event
+                          0 0 48 -> osal_start_timerEx
+                          0 0 44 -> zclGeneral_RemoveAllScenes
+       2      0      0  zllTarget_ClassicalCommissioningStart
+                          2 0  0 -> zll_ClassicalCommissioningInit
+       0      0      9  zllTarget_Init
+                          0 0  9 -> ZDO_RegisterForZDOMsg
+                          0 0  9 -> ZDO_RegisterForZdoCB
+                          0 0  9 -> zclLL_RegisterInterPANCmdCallbacks
+                          0 0  9 -> zcl_registerForMsg
+                          0 0  9 -> zll_InitVariables
+                          0 0  9 -> zll_SetZllTaskId
+       2      0      1  zllTarget_InitDevice
+                          2 0  1 -> ZDOInitDevice
+                          2 0  1 -> ZMacSetReq
+                          2 0  1 -> targetSelectNwkParams
+                          2 0  1 -> zll_IsFactoryNew
+                          2 0  1 -> zll_PermitJoin
+       0      0      9  zllTarget_PermitJoin
+                          0 0  9 -> zll_PermitJoin
+       2      0      0  zllTarget_RegisterApp
+                          2 0  0 -> zll_RegisterApp
+       2      0      0  zllTarget_RegisterIdentifyCB
+       2      0      0  zllTarget_ResetToFactoryNew
+                          2 0  0 -> zll_ResetToFactoryNew
+       0      0     22  zllTarget_event_loop
+                          0 0 16 -> NLME_DirectJoinRequestWithAddr
+                          0 0 16 -> NLME_GetExtAddr
+                          0 0 16 -> NLME_GetShortAddr
+                          0 0 17 -> ZDP_DeviceAnnce
+                          0 0 16 -> nwk_ExtPANIDValid
+                          0 0 16 -> osal_msg_deallocate
+                          0 0 16 -> osal_msg_receive
+                          0 0 16 -> osal_rand
+                          0 0 16 -> osal_set_event
+                          0 0 16 -> targetSelectNwkParams
+                          0 0 22 -> targetSendNwkStartRsp
+                          0 0 20 -> targetStartRtr
+                          0 0 16 -> targetVerifyNwkParams
+                          0 0 16 -> zll_ClassicalCommissioningJoinDiscoveredNwk
+                          0 0 16 -> zll_FreeNwkParamList
+                          0 0 16 -> zll_GenerateRandNum
+                          0 0 16 -> zll_GetRandPrimaryChannel
+                          0 0 16 -> zll_IsFactoryNew
+                          0 0 16 -> zll_PerformNetworkDisc
+                          0 0 16 -> zll_ResetToFactoryNew
+                          0 0 16 -> zll_RouterProcessZDOMsg
+                          0 0 16 -> zll_SendLeaveReq
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      26  ?<Initializer for zllTarget_CmdCBs>
+       6  ??Subroutine11_0
+       6  ??Subroutine12_0
+       6  ??targetDeviceInfoReqCB?relay
+       6  ??targetIdentifyReqCB?relay
+       6  ??targetNwkJoinRtrReqCB?relay
+       6  ??targetNwkStartReqCB?relay
+       6  ??targetNwkUpdateReqCB?relay
+       6  ??targetResetToFNReqCB?relay
+       6  ??targetScanReqCB?relay
+       6  ??targetSelectNwkParams?relay
+       6  ??targetSendNwkStartRsp?relay
+       6  ??targetStartRtr?relay
+       6  ??targetVerifyNwkParams?relay
+       6  ??targetZdoLeaveCnfCB?relay
+       6  ??zllTarget_ClassicalCommissioningStart?relay
+       6  ??zllTarget_Init?relay
+       6  ??zllTarget_InitDevice?relay
+       6  ??zllTarget_PermitJoin?relay
+       6  ??zllTarget_RegisterApp?relay
+       6  ??zllTarget_RegisterIdentifyCB?relay
+       6  ??zllTarget_ResetToFactoryNew?relay
+       6  ??zllTarget_event_loop?relay
+       7  ?Subroutine0
+       5  ?Subroutine1
+       9  ?Subroutine10
+       5  ?Subroutine2
+       5  ?Subroutine3
+       5  ?Subroutine4
+      17  ?Subroutine5
+       6  ?Subroutine6
+       6  ?Subroutine7
+       3  ?Subroutine8
+       6  ?Subroutine9
+       4  __Constant_64
+      12  dstAddr
+       2  pfnIdentifyCB
+      56  rxReq
+       1  rxSeqNum
+      69  targetDeviceInfoReqCB
+     128  targetIdentifyReqCB
+     163  targetNwkJoinRtrReqCB
+     132  targetNwkStartReqCB
+     101  targetNwkUpdateReqCB
+      41  targetResetToFNReqCB
+     108  targetScanReqCB
+      70  targetSelectNwkParams
+     247  targetSendNwkStartRsp
+     165  targetStartRtr
+      82  targetVerifyNwkParams
+     215  targetZdoLeaveCnfCB
+      10  zllTarget_ClassicalCommissioningStart
+      26  zllTarget_CmdCBs
+      66  zllTarget_Init
+      60  zllTarget_InitDevice
+      10  zllTarget_PermitJoin
+      10  zllTarget_RegisterApp
+      15  zllTarget_RegisterIdentifyCB
+      12  zllTarget_ResetToFactoryNew
+       1  zllTarget_TaskID
+     533  zllTarget_event_loop
+
+ 
+ 2 323 bytes in segment BANKED_CODE
+   120 bytes in segment BANK_RELAYS
+    26 bytes in segment XDATA_I
+    26 bytes in segment XDATA_ID
+     4 bytes in segment XDATA_ROM_C
+    72 bytes in segment XDATA_Z
+ 
+ 2 469 bytes of CODE  memory
+     0 bytes of CONST memory (+ 4 bytes shared)
+    98 bytes of XDATA memory
+
+Errors: none
+Warnings: none

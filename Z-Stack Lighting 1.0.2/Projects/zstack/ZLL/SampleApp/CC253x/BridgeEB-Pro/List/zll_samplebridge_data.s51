@@ -1,0 +1,686 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V8.20.2.41139 for 8051            07/May/2014  17:02:27 /
+// Copyright 2004-2013 IAR Systems AB.                                        /
+//                                                                            /
+//    Core               =  plain                                             /
+//    Code model         =  banked                                            /
+//    Data model         =  large                                             /
+//    Calling convention =  xdata reentrant                                   /
+//    Constant location  =  data_rom                                          /
+//    Dptr setup         =  1,16                                              /
+//                                                                            /
+//    Source file        =  D:\Texas Instruments\Z-Stack Lighting             /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\Source\Bridge /
+//                          \zll_samplebridge_data.c                          /
+//    Command line       =  -f "D:\Texas Instruments\Z-Stack Lighting         /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\Tools\CC2530DB\f8wRouter.cfg" (-DCPU32MHZ      /
+//                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TR /
+//                          UE -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8     /
+//                          -DMAC_CFG_RX_MAX=5 -DRTR_NWK) -f "D:\Texas        /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\Tools\CC2530DB\f8wConfig.cfg" (-DZIGBEEPRO     /
+//                          -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR      /
+//                          -DDEFAULT_CHANLIST=0x00000800                     /
+//                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                      /
+//                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_M /
+//                          ASK=0x007F -DBEACON_REQUEST_DELAY=100             /
+//                          -DBEACON_REQ_DELAY_MASK=0x00FF                    /
+//                          -DLINK_STATUS_JITTER_MASK=0x007F                  /
+//                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_P /
+//                          OLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7           /
+//                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3   /
+//                          -DNWK_MAX_DATA_RETRIES=2                          /
+//                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9        /
+//                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40          /
+//                          -DNWK_MAX_BINDING_ENTRIES=4                       /
+//                          -DMAX_BINDING_CLUSTER_IDS=4                       /
+//                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,     /
+//                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,   /
+//                          0x0A, 0x0C, 0x0D}" -DMAC_MAX_FRAME_SIZE=116       /
+//                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const    /
+//                          __code" -DGENERIC=__generic                       /
+//                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000       /
+//                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100   /
+//                          -DREJOIN_POLL_RATE=440) -f "D:\Texas              /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\Tools\CC2530DB\f8wZCL.cfg" "D:\Texas           /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\Source\Bridge /
+//                          \zll_samplebridge_data.c" -D FEATURE_GREEN_POWER  /
+//                          -D SECURE=1 -D TC_LINKKEY_JOIN -D                 /
+//                          ZDSECMGR_TC_DEVICE_MAX=2 -D NV_RESTORE -D         /
+//                          HOLD_AUTO_START -D INTER_PAN -D ZTOOL_P1 -D       /
+//                          MT_TASK -D MT_APP_FUNC -D MT_SYS_FUNC -D          /
+//                          MT_ZDO_FUNC -D MT_ZDO_CB_FUNC -D MT_UTIL_FUNC -D  /
+//                          MT_ZDO_MGMT -D LCD_SUPPORTED -D HAL_LCD=FALSE -D  /
+//                          HAL_KEY=FALSE -D ZCL_BASIC -D ZCL_READ -D         /
+//                          ZCL_WRITE -D ZCL_IDENTIFY -D ZCL_ON_OFF -D        /
+//                          ZCL_SCENES -D ZCL_GROUPS -D                       /
+//                          ZCL_LIGHT_LINK_ENHANCE -D ZCL_LEVEL_CTRL -D       /
+//                          ZCL_COLOR_CTRL -D xMAX_CHANNELS_24GHZ=0x02108800  /
+//                          -lC "D:\Texas Instruments\Z-Stack Lighting        /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Bridge /
+//                          EB-Pro\List\" -lA "D:\Texas Instruments\Z-Stack   /
+//                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC25 /
+//                          3x\BridgeEB-Pro\List\" --diag_suppress            /
+//                          Pe001,Pa010 -o "D:\Texas Instruments\Z-Stack      /
+//                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC25 /
+//                          3x\BridgeEB-Pro\Obj\" -e --debug --core=plain     /
+//                          --dptr=16,1 --data_model=large                    /
+//                          --code_model=banked --calling_convention=xdata_re /
+//                          entrant --place_constants=data_rom                /
+//                          --nr_virtual_regs 16 -I "D:\Texas                 /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\" -I   /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\Sou /
+//                          rce\" -I "D:\Texas Instruments\Z-Stack Lighting   /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          Source\" -I "D:\Texas Instruments\Z-Stack         /
+//                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC25 /
+//                          3x\..\..\..\HomeAutomation\Source\" -I "D:\Texas  /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\HomeAutomation\SampleLight\Source\" -I         /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\ZMain\TI2530DB\" -I "D:\Texas                  /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\hal\include\" -I "D:\Texas    /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\hal\target\CC2530EB\" -I      /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\mac\include\" -I "D:\Texas    /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\mac\high_level\" -I           /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\mac\low_level\srf04\" -I      /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\mac\low_level\srf04\single_ch /
+//                          ip\" -I "D:\Texas Instruments\Z-Stack Lighting    /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\mt\" -I "D:\Texas             /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\osal\include\" -I "D:\Texas   /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\services\saddr\" -I           /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\services\sdata\" -I           /
+//                          "D:\Texas Instruments\Z-Stack Lighting            /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\af\" -I "D:\Texas       /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\nwk\" -I "D:\Texas      /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\sapi\" -I "D:\Texas     /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\sec\" -I "D:\Texas      /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\sys\" -I "D:\Texas      /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\zcl\" -I "D:\Texas      /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\stack\zdo\" -I "D:\Texas      /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\zmac\" -I "D:\Texas           /
+//                          Instruments\Z-Stack Lighting                      /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\ /
+//                          ..\..\..\Components\zmac\f8w\" -Ohz               /
+//                          --require_prototypes                              /
+//    List file          =  D:\Texas Instruments\Z-Stack Lighting             /
+//                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Bridge /
+//                          EB-Pro\List\zll_samplebridge_data.s51             /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME zll_samplebridge_data
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN __INIT_XDATA_I
+        EXTERN __INIT_XDATA_Z
+
+        PUBLIC zllSampleBridge_AppVersion
+        PUBLIC zllSampleBridge_Attrs
+        PUBLIC zllSampleBridge_DateCode
+        PUBLIC zllSampleBridge_DeviceInfo
+        PUBLIC zllSampleBridge_HWVersion
+        PUBLIC zllSampleBridge_IdentifyTime
+        PUBLIC zllSampleBridge_InClusterList
+        PUBLIC zllSampleBridge_ManufacturerName
+        PUBLIC zllSampleBridge_ModelId
+        PUBLIC zllSampleBridge_OutClusterList
+        PUBLIC zllSampleBridge_PowerSource
+        PUBLIC zllSampleBridge_SWBuildID
+        PUBLIC zllSampleBridge_SimpleDesc
+        PUBLIC zllSampleBridge_StackVersion
+        PUBLIC zllSampleBridge_ZCLVersion
+// D:\Texas Instruments\Z-Stack Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\Source\Bridge\zll_samplebridge_data.c
+//    1 /**************************************************************************************************
+//    2   Filename:       zll_samplebridge_data.c
+//    3   Revised:        $Date: 2013-04-05 17:29:26 -0700 (Fri, 05 Apr 2013) $
+//    4   Revision:       $Revision: 33800 $
+//    5 
+//    6 
+//    7   Description:    Zigbee Cluster Library - Light Link (ZLL) Bridge Sample
+//    8                   Application.
+//    9 
+//   10 
+//   11   Copyright 2013 Texas Instruments Incorporated. All rights reserved.
+//   12 
+//   13   IMPORTANT: Your use of this Software is limited to those specific rights
+//   14   granted under the terms of a software license agreement between the user
+//   15   who downloaded the software, his/her employer (which must be your employer)
+//   16   and Texas Instruments Incorporated (the "License").  You may not use this
+//   17   Software unless you agree to abide by the terms of the License. The License
+//   18   limits your use, and you acknowledge, that the Software may not be modified,
+//   19   copied or distributed unless embedded on a Texas Instruments microcontroller
+//   20   or used solely and exclusively in conjunction with a Texas Instruments radio
+//   21   frequency transceiver, which is integrated into your product.  Other than for
+//   22   the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+//   23   works of, modify, distribute, perform, display or sell this Software and/or
+//   24   its documentation for any purpose.
+//   25 
+//   26   YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+//   27   PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+//   28   INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+//   29   NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+//   30   TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+//   31   NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+//   32   LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+//   33   INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+//   34   OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+//   35   OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+//   36   (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+//   37 
+//   38   Should you have any questions regarding your right to use this Software,
+//   39   contact Texas Instruments Incorporated at www.TI.com.
+//   40 **************************************************************************************************/
+//   41 
+//   42 /*********************************************************************
+//   43  * INCLUDES
+//   44  */
+//   45 #include "zcl_general.h"
+//   46 #include "zcl_ha.h"
+//   47 #include "zcl_LL.h"
+//   48 
+//   49 #include "zll_samplebridge.h"
+//   50 
+//   51 /*********************************************************************
+//   52  * CONSTANTS
+//   53  */
+//   54 
+//   55 #define SAMPLEBRIDGE_DEVICE_VERSION    1
+//   56 #define SAMPLEBRIDGE_FLAGS             0
+//   57 
+//   58 #define SAMPLEBRIDGE_HWVERSION         1
+//   59 #define SAMPLEBRIDGE_ZCLVERSION        1
+//   60 
+//   61 /*********************************************************************
+//   62  * TYPEDEFS
+//   63  */
+//   64 
+//   65 /*********************************************************************
+//   66  * MACROS
+//   67  */
+//   68 
+//   69 /*********************************************************************
+//   70  * GLOBAL VARIABLES
+//   71  */
+//   72 
+//   73 // Basic Cluster
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA8
+//   74 const uint8 zllSampleBridge_HWVersion = SAMPLEBRIDGE_HWVERSION;
+zllSampleBridge_HWVersion:
+        DB 1
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA8
+//   75 const uint8 zllSampleBridge_ZCLVersion = SAMPLEBRIDGE_ZCLVERSION;
+zllSampleBridge_ZCLVersion:
+        DB 1
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA8
+//   76 const uint8 zllSampleBridge_ManufacturerName[] = { 16, 'T','e','x','a','s','I','n','s','t','r','u','m','e','n','t','s' };
+zllSampleBridge_ManufacturerName:
+        DB 16
+        DB 84
+        DB 101
+        DB 120
+        DB 97
+        DB 115
+        DB 73
+        DB 110
+        DB 115
+        DB 116
+        DB 114
+        DB 117
+        DB 109
+        DB 101
+        DB 110
+        DB 116
+        DB 115
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA8
+//   77 const uint8 zllSampleBridge_ModelId[] = { 15, 'T','I',' ','S','a','m','p','l','e','B','r','i','d','g','e' };
+zllSampleBridge_ModelId:
+        DB 15
+        DB 84
+        DB 73
+        DB 32
+        DB 83
+        DB 97
+        DB 109
+        DB 112
+        DB 108
+        DB 101
+        DB 66
+        DB 114
+        DB 105
+        DB 100
+        DB 103
+        DB 101
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA8
+//   78 const uint8 zllSampleBridge_DateCode[] = { 8, '2','0','1','3','1','2','0','6' };
+zllSampleBridge_DateCode:
+        DB 8
+        DB 50
+        DB 48
+        DB 49
+        DB 51
+        DB 49
+        DB 50
+        DB 48
+        DB 54
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA8
+//   79 const uint8 zllSampleBridge_PowerSource = POWER_SOURCE_DC;
+zllSampleBridge_PowerSource:
+        DB 4
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA8
+//   80 const uint8 zllSampleBridge_SWBuildID[] = { 5, '1','.','0','.','2' };
+zllSampleBridge_SWBuildID:
+        DB 5
+        DB 49
+        DB 46
+        DB 48
+        DB 46
+        DB 50
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA8
+//   81 const uint8 zllSampleBridge_AppVersion = 1;
+zllSampleBridge_AppVersion:
+        DB 1
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA8
+//   82 const uint8 zllSampleBridge_StackVersion = 2;
+zllSampleBridge_StackVersion:
+        DB 2
+//   83 
+//   84 // Identify Cluster
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA16
+//   85 uint16 zllSampleBridge_IdentifyTime = 0;
+zllSampleBridge_IdentifyTime:
+        DS 2
+        REQUIRE __INIT_XDATA_Z
+//   86 
+//   87 /*********************************************************************
+//   88  * ATTRIBUTE DEFINITIONS - Uses REAL cluster IDs
+//   89  */
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+        DATA8
+//   90 CONST zclAttrRec_t zllSampleBridge_Attrs[SAMPLEBRIDGE_MAX_ATTRIBUTES] =
+zllSampleBridge_Attrs:
+        DATA16
+        DW 0
+        DW 3
+        DATA8
+        DB 32
+        DB 1
+        DATA16
+        DW zllSampleBridge_HWVersion
+        DW 0
+        DW 0
+        DATA8
+        DB 32
+        DB 1
+        DATA16
+        DW zllSampleBridge_ZCLVersion
+        DW 0
+        DW 1
+        DATA8
+        DB 32
+        DB 1
+        DATA16
+        DW zllSampleBridge_AppVersion
+        DW 0
+        DW 2
+        DATA8
+        DB 32
+        DB 1
+        DATA16
+        DW zllSampleBridge_StackVersion
+        DW 0
+        DW 16384
+        DATA8
+        DB 66
+        DB 1
+        DATA16
+        DW zllSampleBridge_SWBuildID
+        DW 0
+        DW 4
+        DATA8
+        DB 66
+        DB 1
+        DATA16
+        DW zllSampleBridge_ManufacturerName
+        DW 0
+        DW 5
+        DATA8
+        DB 66
+        DB 1
+        DATA16
+        DW zllSampleBridge_ModelId
+        DW 0
+        DW 6
+        DATA8
+        DB 66
+        DB 1
+        DATA16
+        DW zllSampleBridge_DateCode
+        DW 0
+        DW 7
+        DATA8
+        DB 48
+        DB 1
+        DATA16
+        DW zllSampleBridge_PowerSource
+        DW 3
+        DW 0
+        DATA8
+        DB 33
+        DB 3
+        DATA16
+        DW zllSampleBridge_IdentifyTime
+//   91 {
+//   92   // *** General Basic Cluster Attributes ***
+//   93   {
+//   94     ZCL_CLUSTER_ID_GEN_BASIC,             // Cluster IDs - defined in the foundation (ie. zcl.h)
+//   95     {  // Attribute record
+//   96       ATTRID_BASIC_HW_VERSION,            // Attribute ID - Found in Cluster Library header (ie. zcl_general.h)
+//   97       ZCL_DATATYPE_UINT8,                 // Data Type - found in zcl.h
+//   98       ACCESS_CONTROL_READ,                // Variable access control - found in zcl.h
+//   99       (void *)&zllSampleBridge_HWVersion  // Pointer to attribute variable
+//  100     }
+//  101   },
+//  102   {
+//  103     ZCL_CLUSTER_ID_GEN_BASIC,
+//  104     { // Attribute record
+//  105       ATTRID_BASIC_ZCL_VERSION,
+//  106       ZCL_DATATYPE_UINT8,
+//  107       ACCESS_CONTROL_READ,
+//  108       (void *)&zllSampleBridge_ZCLVersion
+//  109     }
+//  110   },
+//  111   {
+//  112     ZCL_CLUSTER_ID_GEN_BASIC,
+//  113     { // Attribute record
+//  114       ATTRID_BASIC_APPL_VERSION,
+//  115       ZCL_DATATYPE_UINT8,
+//  116       ACCESS_CONTROL_READ,
+//  117       (void *)&zllSampleBridge_AppVersion
+//  118     }
+//  119   },
+//  120   {
+//  121     ZCL_CLUSTER_ID_GEN_BASIC,
+//  122     { // Attribute record
+//  123       ATTRID_BASIC_STACK_VERSION,
+//  124       ZCL_DATATYPE_UINT8,
+//  125       ACCESS_CONTROL_READ,
+//  126       (void *)&zllSampleBridge_StackVersion
+//  127     }
+//  128   },
+//  129   {
+//  130     ZCL_CLUSTER_ID_GEN_BASIC,
+//  131     { // Attribute record
+//  132       ATTRID_BASIC_SW_BUILD_ID,
+//  133       ZCL_DATATYPE_CHAR_STR,
+//  134       ACCESS_CONTROL_READ,
+//  135       (void *)zllSampleBridge_SWBuildID
+//  136     }
+//  137   },
+//  138   {
+//  139     ZCL_CLUSTER_ID_GEN_BASIC,
+//  140     { // Attribute record
+//  141       ATTRID_BASIC_MANUFACTURER_NAME,
+//  142       ZCL_DATATYPE_CHAR_STR,
+//  143       ACCESS_CONTROL_READ,
+//  144       (void *)zllSampleBridge_ManufacturerName
+//  145     }
+//  146   },
+//  147   {
+//  148     ZCL_CLUSTER_ID_GEN_BASIC,
+//  149     { // Attribute record
+//  150       ATTRID_BASIC_MODEL_ID,
+//  151       ZCL_DATATYPE_CHAR_STR,
+//  152       ACCESS_CONTROL_READ,
+//  153       (void *)zllSampleBridge_ModelId
+//  154     }
+//  155   },
+//  156   {
+//  157     ZCL_CLUSTER_ID_GEN_BASIC,
+//  158     { // Attribute record
+//  159       ATTRID_BASIC_DATE_CODE,
+//  160       ZCL_DATATYPE_CHAR_STR,
+//  161       ACCESS_CONTROL_READ,
+//  162       (void *)zllSampleBridge_DateCode
+//  163     }
+//  164   },
+//  165   {
+//  166     ZCL_CLUSTER_ID_GEN_BASIC,
+//  167     { // Attribute record
+//  168       ATTRID_BASIC_POWER_SOURCE,
+//  169       ZCL_DATATYPE_ENUM8,
+//  170       ACCESS_CONTROL_READ,
+//  171       (void *)&zllSampleBridge_PowerSource
+//  172     }
+//  173   },
+//  174 
+//  175   // *** Identify Cluster Attribute ***
+//  176   {
+//  177     ZCL_CLUSTER_ID_GEN_IDENTIFY,
+//  178     { // Attribute record
+//  179       ATTRID_IDENTIFY_TIME,
+//  180       ZCL_DATATYPE_UINT16,
+//  181       (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),
+//  182       (void *)&zllSampleBridge_IdentifyTime
+//  183     }
+//  184   },
+//  185 };
+//  186 
+//  187 /*********************************************************************
+//  188  * SIMPLE DESCRIPTOR
+//  189  */
+//  190 // This is the Cluster ID List and should be filled with Application
+//  191 // specific cluster IDs.
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA32
+//  192 const cId_t zllSampleBridge_InClusterList[] =
+zllSampleBridge_InClusterList:
+        DATA16
+        DW 0
+        DW 4096
+//  193 {
+//  194   ZCL_CLUSTER_ID_GEN_BASIC,
+//  195   ZCL_CLUSTER_ID_LIGHT_LINK
+//  196 };
+//  197 
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA8
+//  198 const cId_t zllSampleBridge_OutClusterList[] =
+zllSampleBridge_OutClusterList:
+        DATA16
+        DW 3
+        DW 4
+        DW 5
+        DW 6
+        DW 8
+        DW 768
+        DW 4096
+//  199 {
+//  200   ZCL_CLUSTER_ID_GEN_IDENTIFY,
+//  201   ZCL_CLUSTER_ID_GEN_GROUPS,
+//  202   ZCL_CLUSTER_ID_GEN_SCENES,
+//  203   ZCL_CLUSTER_ID_GEN_ON_OFF,
+//  204 #ifdef ZCL_LEVEL_CTRL
+//  205   ZCL_CLUSTER_ID_GEN_LEVEL_CONTROL,
+//  206 #endif
+//  207 #ifdef ZCL_COLOR_CTRL
+//  208   ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL,
+//  209 #endif
+//  210   ZCL_CLUSTER_ID_LIGHT_LINK
+//  211 };
+//  212 
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//  213 SimpleDescriptionFormat_t zllSampleBridge_SimpleDesc =
+zllSampleBridge_SimpleDesc:
+        DATA8
+        DS 12
+        REQUIRE `?<Initializer for zllSampleBridge_SimpleDesc>`
+        REQUIRE __INIT_XDATA_I
+//  214 {
+//  215   SAMPLEBRIDGE_ENDPOINT,               //  int Endpoint;
+//  216   ZCL_HA_PROFILE_ID,                   //  uint16 AppProfId[2];
+//  217   HA_DEVICEID,                         //  uint16 AppDeviceId[2];
+//  218   ZLL_DEVICE_VERSION,                  //  int   AppDevVer:4;
+//  219   SAMPLEBRIDGE_FLAGS,                  //  int   AppFlags:4;
+//  220   ( sizeof(zllSampleBridge_InClusterList) / sizeof(cId_t) ),  //  byte  AppNumInClusters;
+//  221   (cId_t *)zllSampleBridge_InClusterList,                     //  byte *pAppInClusterList;
+//  222   ( sizeof(zllSampleBridge_OutClusterList) / sizeof(cId_t) ), //  byte  AppNumInClusters;
+//  223   (cId_t *)zllSampleBridge_OutClusterList                     //  byte *pAppInClusterList;
+//  224 };
+//  225 
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//  226 zclLLDeviceInfo_t zllSampleBridge_DeviceInfo =
+zllSampleBridge_DeviceInfo:
+        DATA8
+        DS 7
+        REQUIRE `?<Initializer for zllSampleBridge_DeviceInfo>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for zllSampleBridge_SimpleDesc>`:
+        DATA8
+        DB 11
+        DATA16
+        DW 260
+        DW 5
+        DATA8
+        DB 2
+        DB 2
+        DATA16
+        DW zllSampleBridge_InClusterList
+        DATA8
+        DB 7
+        DATA16
+        DW zllSampleBridge_OutClusterList
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for zllSampleBridge_DeviceInfo>`:
+        DATA8
+        DB 11
+        DATA16
+        DW 49246
+        DW 2112
+        DATA8
+        DB 2
+        DB 0
+
+        END
+//  227 {
+//  228   SAMPLEBRIDGE_ENDPOINT,  //uint8 endpoint;
+//  229   ZLL_PROFILE_ID,         //uint16 profileID;
+//  230   ZLL_DEVICEID,           //uint16 deviceID;
+//  231   ZLL_DEVICE_VERSION,     //uint8 version;
+//  232   SAMPLEBRIDGE_NUM_GRPS   //uint8 grpIdCnt;
+//  233 };
+//  234 
+//  235 /*********************************************************************
+//  236  * GLOBAL FUNCTIONS
+//  237  */
+//  238 
+//  239 /*********************************************************************
+//  240  * LOCAL FUNCTIONS
+//  241  */
+//  242 
+//  243 /****************************************************************************
+//  244 ****************************************************************************/
+//  245 
+//  246 
+// 
+// 80 bytes in segment CODE_C
+// 19 bytes in segment XDATA_I
+// 19 bytes in segment XDATA_ID
+// 71 bytes in segment XDATA_ROM_C
+//  2 bytes in segment XDATA_Z
+// 
+// 99 bytes of CODE  memory
+// 71 bytes of CONST memory
+// 21 bytes of XDATA memory
+//
+//Errors: none
+//Warnings: none

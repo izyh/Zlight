@@ -1,0 +1,618 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.20.2.41139 for 8051             27/May/2014  19:14:06 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Components\hal\target\CC2530PMP4712\hal_key. #
+#                          c                                                  #
+#    Command line       =  -f "D:\Texas Instruments\Z-Stack Lighting          #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wRouter.cfg" (-DCPU32MHZ        #
+#                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TRU #
+#                          E -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8       #
+#                          -DMAC_CFG_RX_MAX=5 -DRTR_NWK) -f "D:\Texas         #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wConfig.cfg" (-DZIGBEEPRO       #
+#                          -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR       #
+#                          -DDEFAULT_CHANLIST=0x00000800                      #
+#                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                       #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MA #
+#                          SK=0x007F -DBEACON_REQUEST_DELAY=100               #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                     #
+#                          -DLINK_STATUS_JITTER_MASK=0x007F                   #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_PO #
+#                          LLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7             #
+#                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3    #
+#                          -DNWK_MAX_DATA_RETRIES=2                           #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9         #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40           #
+#                          -DNWK_MAX_BINDING_ENTRIES=4                        #
+#                          -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01,  #
+#                          0x03, 0x05, 0x07, 0x09, 0x0B, 0x0D, 0x0F, 0x00,    #
+#                          0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0D}"         #
+#                          -DMAC_MAX_FRAME_SIZE=116                           #
+#                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const     #
+#                          __code" -DGENERIC=__generic                        #
+#                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000        #
+#                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100    #
+#                          -DREJOIN_POLL_RATE=440) -f "D:\Texas               #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wZCL.cfg" "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Components\hal\target\CC2530PMP4712\hal_key. #
+#                          c" -D FEATURE_GREEN_POWER -D SECURE=1 -D           #
+#                          TC_LINKKEY_JOIN -D ZDSECMGR_TC_DEVICE_MAX=2 -D     #
+#                          NV_RESTORE -D HOLD_AUTO_START -D INTER_PAN -D      #
+#                          LCD_SUPPORTED=DEBUG -D ZCL_BASIC -D ZCL_READ -D    #
+#                          ZCL_WRITE -D ZCL_IDENTIFY -D ZCL_ON_OFF -D         #
+#                          ZCL_SCENES -D ZCL_GROUPS -D                        #
+#                          ZCL_LIGHT_LINK_ENHANCE -D ZCL_LEVEL_CTRL -D        #
+#                          ZCL_COLOR_CTRL -D MAX_CHANNELS_24GHZ=0x02108800    #
+#                          -D xPWM_ALT2 -D xTHERMAL_SHUTDOWN -D               #
+#                          ZLL_1_0_HUB_COMPATIBILITY -D DALI_LIGHT -lC        #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\List\" -lA "D:\Texas Instruments\Z-Stack  #
+#                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC253 #
+#                          x\Zlight - Router\List\" --diag_suppress           #
+#                          Pe001,Pa010 -o "D:\Texas Instruments\Z-Stack       #
+#                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC253 #
+#                          x\Zlight - Router\Obj\" -e --debug --core=plain    #
+#                          --dptr=16,1 --data_model=large                     #
+#                          --code_model=banked --calling_convention=xdata_ree #
+#                          ntrant --place_constants=data_rom                  #
+#                          --nr_virtual_regs 16 -I "D:\Texas                  #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\" -I    #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\Sour #
+#                          ce\" -I "D:\Texas Instruments\Z-Stack Lighting     #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\S #
+#                          ource\" -I "D:\Texas Instruments\Z-Stack Lighting  #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\HomeAutomation\Source\" -I "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\HomeAutomation\SampleLight\Source\" -I           #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\ZMain\TI2530DB\" -I "D:\Texas                    #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\hal\include\" -I "D:\Texas      #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\hal\target\CC2530PMP4712\" -I   #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\include\" -I "D:\Texas      #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\high_level\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\low_level\srf04\" -I        #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\low_level\srf04\single_chip #
+#                          \" -I "D:\Texas Instruments\Z-Stack Lighting       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mt\" -I "D:\Texas               #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\osal\include\" -I "D:\Texas     #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\services\saddr\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\services\sdata\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\af\" -I "D:\Texas         #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\nwk\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sapi\" -I "D:\Texas       #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sec\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sys\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\zcl\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\zdo\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\zmac\" -I "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\zmac\f8w\" -Ohz                 #
+#                          --require_prototypes                               #
+#    List file          =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\List\hal_key.lst                          #
+#    Object file        =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\Obj\hal_key.r51                           #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\Texas Instruments\Z-Stack Lighting 1.0.2\Components\hal\target\CC2530PMP4712\hal_key.c
+      1          /**************************************************************************************************
+      2            Filename:       hal_key.c
+      3            Revised:        $Date: 2012-12-19 09:23:16 -0800 (Wed, 19 Dec 2012) $
+      4            Revision:       $Revision: 32643 $
+      5          
+      6            Description:    This file contains the interface to the HAL KEY Service.
+      7          
+      8          
+      9            Copyright 2006-2010 Texas Instruments Incorporated. All rights reserved.
+     10          
+     11            IMPORTANT: Your use of this Software is limited to those specific rights
+     12            granted under the terms of a software license agreement between the user
+     13            who downloaded the software, his/her employer (which must be your employer)
+     14            and Texas Instruments Incorporated (the "License").  You may not use this
+     15            Software unless you agree to abide by the terms of the License. The License
+     16            limits your use, and you acknowledge, that the Software may not be modified,
+     17            copied or distributed unless embedded on a Texas Instruments microcontroller
+     18            or used solely and exclusively in conjunction with a Texas Instruments radio
+     19            frequency transceiver, which is integrated into your product.  Other than for
+     20            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     21            works of, modify, distribute, perform, display or sell this Software and/or
+     22            its documentation for any purpose.
+     23          
+     24            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     25            PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     26            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     27            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     28            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     29            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     30            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     31            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     32            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     33            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     34            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     35          
+     36            Should you have any questions regarding your right to use this Software,
+     37            contact Texas Instruments Incorporated at www.TI.com.
+     38          **************************************************************************************************/
+     39          /*********************************************************************
+     40           NOTE: If polling is used, the hal_driver task schedules the KeyRead()
+     41                 to occur every 100ms.  This should be long enough to naturally
+     42                 debounce the keys.  The KeyRead() function remembers the key
+     43                 state of the previous poll and will only return a non-zero
+     44                 value if the key state changes.
+     45          
+     46          
+     47           NOTE: When a switch like S1 is pushed, the S1 signal goes from a normally
+     48                 high state to a low state.  This transition is typically clean.  The
+     49                 duration of the low state is around 200ms.  When the signal returns
+     50                 to the high state, there is a high likelihood of signal bounce, which
+     51                 causes a unwanted interrupts.  Normally, we would set the interrupt
+     52                 edge to falling edge to generate an interrupt when S1 is pushed, but
+     53                 because of the signal bounce, it is better to set the edge to rising
+     54                 edge to generate an interrupt when S1 is released.  The debounce logic
+     55                 can then filter out the signal bounce.  The result is that we typically
+     56                 get only 1 interrupt per button push.  This mechanism is not totally
+     57                 foolproof because occasionally, signal bound occurs during the falling
+     58                 edge as well.  A similar mechanism is used to handle the joystick
+     59                 pushbutton on the DB.  For the EB, we do not have independent control
+     60                 of the interrupt edge for the S1 and center joystick pushbutton.  As
+     61                 a result, only one or the other pushbuttons work reasonably well with
+     62                 interrupts.  The default is the make the S1 switch on the EB work more
+     63                 reliably.
+     64          
+     65          *********************************************************************/
+     66          
+     67          /**************************************************************************************************
+     68           *                                            INCLUDES
+     69           **************************************************************************************************/
+     70          #include "hal_mcu.h"
+
+   \                                 In  segment SFR_AN, at 0xa0
+   \   union <unnamed> volatile __sfr _A_P2
+   \                     _A_P2:
+   \   000000                DS 1
+     71          #include "hal_defs.h"
+     72          #include "hal_types.h"
+     73          #include "hal_board.h"
+     74          #include "hal_drivers.h"
+     75          #include "hal_adc.h"
+     76          #include "hal_key.h"
+     77          #include "osal.h"
+     78          
+     79          #if (defined HAL_KEY) && (HAL_KEY == TRUE)
+     80          
+     81          /**************************************************************************************************
+     82           *                                              MACROS
+     83           **************************************************************************************************/
+     84          
+     85          /**************************************************************************************************
+     86           *                                            CONSTANTS
+     87           **************************************************************************************************/
+     88          
+     89          /**************************************************************************************************
+     90           *                                            TYPEDEFS
+     91           **************************************************************************************************/
+     92          
+     93          
+     94          /**************************************************************************************************
+     95           *                                        GLOBAL VARIABLES
+     96           **************************************************************************************************/
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+     97          static uint8 halKeySavedKeys;     /* used to store previous key state in polling mode */
+   \                     halKeySavedKeys:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+     98          static halKeyCBack_t pHalKeyProcessFunction;
+   \                     pHalKeyProcessFunction:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+     99          bool Hal_KeyIntEnable = false;            /* key interrupts not supported */
+   \                     Hal_KeyIntEnable:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+    100          
+    101          
+    102          /**************************************************************************************************
+    103           *                                        FUNCTIONS - Local
+    104           **************************************************************************************************/
+    105          
+    106          /**************************************************************************************************
+    107           *                                        FUNCTIONS - API
+    108           **************************************************************************************************/
+    109          
+    110          
+    111          /**************************************************************************************************
+    112           * @fn      HalKeyInit
+    113           *
+    114           * @brief   Initilize Key Service
+    115           *
+    116           * @param   none
+    117           *
+    118           * @return  None
+    119           **************************************************************************************************/
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    120          void HalKeyInit( void )
+   \                     HalKeyInit:
+    121          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    122          
+    123            /* Initialize previous key to 0 */
+    124            halKeySavedKeys = 0;
+   \   000004   90....       MOV     DPTR,#halKeySavedKeys
+   \   000007   E4           CLR     A
+   \   000008   F0           MOVX    @DPTR,A
+    125          
+    126            /* Initialize callback function */
+    127            pHalKeyProcessFunction  = NULL;
+   \   000009   90....       MOV     DPTR,#pHalKeyProcessFunction
+   \   00000C   F0           MOVX    @DPTR,A
+   \   00000D   A3           INC     DPTR
+   \   00000E   F0           MOVX    @DPTR,A
+    128          }
+   \   00000F   80..         SJMP    ?Subroutine0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   D083         POP     DPH
+   \   000002   D082         POP     DPL
+   \   000004   02....       LJMP    ?BRET
+    129          
+    130          
+    131          /**************************************************************************************************
+    132           * @fn      HalKeyConfig
+    133           *
+    134           * @brief   Configure the Key serivce
+    135           *
+    136           * @param   interruptEnable - TRUE/FALSE, enable/disable interrupt
+    137           *          cback - pointer to the CallBack function
+    138           *
+    139           * @return  None
+    140           **************************************************************************************************/
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    141          void HalKeyConfig (bool interruptEnable, halKeyCBack_t cback)
+   \                     HalKeyConfig:
+    142          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    143            /* Register the callback fucntion */
+    144            pHalKeyProcessFunction = cback;
+   \   000004   90....       MOV     DPTR,#pHalKeyProcessFunction
+   \   000007   EA           MOV     A,R2
+   \   000008   F0           MOVX    @DPTR,A
+   \   000009   A3           INC     DPTR
+   \   00000A   EB           MOV     A,R3
+   \   00000B   F0           MOVX    @DPTR,A
+    145          
+    146            osal_set_event(Hal_TaskID, HAL_KEY_EVENT);
+   \   00000C                ; Setup parameters for call to function osal_set_event
+   \   00000C   7A10         MOV     R2,#0x10
+   \   00000E   7B00         MOV     R3,#0x0
+   \   000010   90....       MOV     DPTR,#Hal_TaskID
+   \   000013   E0           MOVX    A,@DPTR
+   \   000014   F9           MOV     R1,A
+   \   000015   12....       LCALL   ??osal_set_event?relay
+    147          }
+   \   000018   80..         SJMP    ?Subroutine0
+    148          
+    149          
+    150          /**************************************************************************************************
+    151           * @fn      HalKeyRead
+    152           *
+    153           * @brief   Read the current value of a key
+    154           *
+    155           * @param   None
+    156           *
+    157           * @return  keys - current keys status
+    158           **************************************************************************************************/
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    159          uint8 HalKeyRead ( void )
+   \                     HalKeyRead:
+    160          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    161            uint8 keys = 0;
+   \   000000   7900         MOV     R1,#0x0
+    162          
+    163            if (HAL_PUSH_BUTTON1())
+   \   000002   A2A0         MOV     C,0xa0.0
+   \   000004   4002         JC      ??HalKeyRead_0
+    164            {
+    165              //Map S1 to HAL_KEY_2
+    166              keys |= HAL_KEY_SW_2;
+   \   000006   09           INC     R1
+   \   000007   09           INC     R1
+    167            }
+    168          
+    169            return keys;
+   \                     ??HalKeyRead_0:
+   \   000008   02....       LJMP    ?BRET
+   \   00000B                REQUIRE _A_P2
+    170          }
+    171          
+    172          
+    173          /**************************************************************************************************
+    174           * @fn      HalKeyPoll
+    175           *
+    176           * @brief   Called by hal_driver to poll the keys
+    177           *
+    178           * @param   None
+    179           *
+    180           * @return  None
+    181           **************************************************************************************************/
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    182          void HalKeyPoll (void)
+   \                     HalKeyPoll:
+    183          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    184            uint8 keys = 0;
+   \   000004   7900         MOV     R1,#0x0
+    185          
+    186            if (HAL_PUSH_BUTTON1())
+   \   000006   A2A0         MOV     C,0xa0.0
+   \   000008   4002         JC      ??HalKeyPoll_0
+    187            {
+    188              keys |= HAL_KEY_SW_2;
+   \   00000A   09           INC     R1
+   \   00000B   09           INC     R1
+    189            }
+    190          
+    191            if (keys == halKeySavedKeys)
+   \                     ??HalKeyPoll_0:
+   \   00000C   90....       MOV     DPTR,#halKeySavedKeys
+   \   00000F   E0           MOVX    A,@DPTR
+   \   000010   69           XRL     A,R1
+   \   000011   601E         JZ      ??HalKeyPoll_1
+    192            {
+    193              /* Exit - since no keys have changed */
+    194              return;
+    195            }
+    196            /* Store the current keys for comparation next time */
+    197            halKeySavedKeys = keys;
+   \   000013   E9           MOV     A,R1
+   \   000014   F0           MOVX    @DPTR,A
+    198          
+    199            /* Invoke Callback if new keys were depressed */
+    200            if ( pHalKeyProcessFunction )
+   \   000015   90....       MOV     DPTR,#pHalKeyProcessFunction
+   \   000018   E0           MOVX    A,@DPTR
+   \   000019   FA           MOV     R2,A
+   \   00001A   A3           INC     DPTR
+   \   00001B   E0           MOVX    A,@DPTR
+   \   00001C   FB           MOV     R3,A
+   \   00001D   EA           MOV     A,R2
+   \   00001E   4B           ORL     A,R3
+   \   00001F   6010         JZ      ??HalKeyPoll_1
+    201            {
+    202              (pHalKeyProcessFunction) (keys, HAL_KEY_STATE_NORMAL);
+   \   000021                ; Setup parameters for indirect call
+   \   000021   7A00         MOV     R2,#0x0
+   \   000023   90....       MOV     DPTR,#pHalKeyProcessFunction
+   \   000026   E0           MOVX    A,@DPTR
+   \   000027   F8           MOV     R0,A
+   \   000028   A3           INC     DPTR
+   \   000029   E0           MOVX    A,@DPTR
+   \   00002A   F583         MOV     DPH,A
+   \   00002C   8882         MOV     DPL,R0
+   \   00002E   12....       LCALL   ?CALL_IND
+    203            }
+   \                     ??HalKeyPoll_1:
+   \   000031                REQUIRE ?Subroutine0
+   \   000031                REQUIRE _A_P2
+   \   000031                ; // Fall through to label ?Subroutine0
+    204          }
+    205          
+    206          /**************************************************************************************************
+    207           * @fn      HalKeyEnterSleep
+    208           *
+    209           * @brief  - Get called to enter sleep mode
+    210           *
+    211           * @param
+    212           *
+    213           * @return
+    214           **************************************************************************************************/
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    215          void HalKeyEnterSleep ( void )
+   \                     HalKeyEnterSleep:
+    216          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    217          }
+   \   000000   02....       LJMP    ?BRET
+    218          
+    219          /**************************************************************************************************
+    220           * @fn      HalKeyExitSleep
+    221           *
+    222           * @brief   - Get called when sleep is over
+    223           *
+    224           * @param
+    225           *
+    226           * @return  - return saved keys
+    227           **************************************************************************************************/
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    228          uint8 HalKeyExitSleep ( void )
+   \                     HalKeyExitSleep:
+    229          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    230            /* Wake up and read keys */
+    231            return ( HalKeyRead () );
+   \   000004                ; Setup parameters for call to function HalKeyRead
+   \   000004   12....       LCALL   ??HalKeyRead?relay
+   \   000007   80..         SJMP    ?Subroutine0
+    232          }
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??HalKeyInit?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    HalKeyInit
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??HalKeyConfig?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    HalKeyConfig
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??HalKeyRead?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    HalKeyRead
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??HalKeyPoll?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    HalKeyPoll
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??HalKeyEnterSleep?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    HalKeyEnterSleep
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??HalKeyExitSleep?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    HalKeyExitSleep
+    233          
+    234          #else
+    235          
+    236          
+    237          void HalKeyInit(void){}
+    238          void HalKeyConfig(bool interruptEnable, halKeyCBack_t cback){}
+    239          uint8 HalKeyRead(void){ return 0;}
+    240          void HalKeyPoll(void){}
+    241          
+    242          #endif /* HAL_KEY */
+    243          
+    244          /**************************************************************************************************
+    245          **************************************************************************************************/
+    246          
+    247          
+    248          
+
+   Maximum stack usage in bytes:
+
+   ISTACK PSTACK XSTACK Function
+   ------ ------ ------ --------
+       2      0      0  HalKeyConfig
+                          2 0 0 -> osal_set_event
+       0      0      0  HalKeyEnterSleep
+       2      0      0  HalKeyExitSleep
+                          2 0 0 -> HalKeyRead
+       2      0      0  HalKeyInit
+       2      0      0  HalKeyPoll
+       0      0      0  HalKeyRead
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       6  ??HalKeyConfig?relay
+       6  ??HalKeyEnterSleep?relay
+       6  ??HalKeyExitSleep?relay
+       6  ??HalKeyInit?relay
+       6  ??HalKeyPoll?relay
+       6  ??HalKeyRead?relay
+       7  ?Subroutine0
+      26  HalKeyConfig
+       3  HalKeyEnterSleep
+       9  HalKeyExitSleep
+      17  HalKeyInit
+      49  HalKeyPoll
+      11  HalKeyRead
+       1  Hal_KeyIntEnable
+       1  _A_P2
+       1  halKeySavedKeys
+       2  pHalKeyProcessFunction
+
+ 
+ 122 bytes in segment BANKED_CODE
+  36 bytes in segment BANK_RELAYS
+   1 byte  in segment SFR_AN
+   4 bytes in segment XDATA_Z
+ 
+ 158 bytes of CODE  memory
+   0 bytes of DATA  memory (+ 1 byte shared)
+   4 bytes of XDATA memory
+
+Errors: none
+Warnings: none

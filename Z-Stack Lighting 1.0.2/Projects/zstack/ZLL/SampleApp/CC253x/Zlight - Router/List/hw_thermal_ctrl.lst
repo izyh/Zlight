@@ -1,0 +1,538 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.20.2.41139 for 8051             27/May/2014  19:14:10 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\Source\Light\h #
+#                          w_thermal_ctrl.c                                   #
+#    Command line       =  -f "D:\Texas Instruments\Z-Stack Lighting          #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wRouter.cfg" (-DCPU32MHZ        #
+#                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TRU #
+#                          E -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8       #
+#                          -DMAC_CFG_RX_MAX=5 -DRTR_NWK) -f "D:\Texas         #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wConfig.cfg" (-DZIGBEEPRO       #
+#                          -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR       #
+#                          -DDEFAULT_CHANLIST=0x00000800                      #
+#                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                       #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MA #
+#                          SK=0x007F -DBEACON_REQUEST_DELAY=100               #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                     #
+#                          -DLINK_STATUS_JITTER_MASK=0x007F                   #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_PO #
+#                          LLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7             #
+#                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3    #
+#                          -DNWK_MAX_DATA_RETRIES=2                           #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9         #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40           #
+#                          -DNWK_MAX_BINDING_ENTRIES=4                        #
+#                          -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01,  #
+#                          0x03, 0x05, 0x07, 0x09, 0x0B, 0x0D, 0x0F, 0x00,    #
+#                          0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0D}"         #
+#                          -DMAC_MAX_FRAME_SIZE=116                           #
+#                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const     #
+#                          __code" -DGENERIC=__generic                        #
+#                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000        #
+#                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100    #
+#                          -DREJOIN_POLL_RATE=440) -f "D:\Texas               #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wZCL.cfg" "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\Source\Light\h #
+#                          w_thermal_ctrl.c" -D FEATURE_GREEN_POWER -D        #
+#                          SECURE=1 -D TC_LINKKEY_JOIN -D                     #
+#                          ZDSECMGR_TC_DEVICE_MAX=2 -D NV_RESTORE -D          #
+#                          HOLD_AUTO_START -D INTER_PAN -D                    #
+#                          LCD_SUPPORTED=DEBUG -D ZCL_BASIC -D ZCL_READ -D    #
+#                          ZCL_WRITE -D ZCL_IDENTIFY -D ZCL_ON_OFF -D         #
+#                          ZCL_SCENES -D ZCL_GROUPS -D                        #
+#                          ZCL_LIGHT_LINK_ENHANCE -D ZCL_LEVEL_CTRL -D        #
+#                          ZCL_COLOR_CTRL -D MAX_CHANNELS_24GHZ=0x02108800    #
+#                          -D xPWM_ALT2 -D xTHERMAL_SHUTDOWN -D               #
+#                          ZLL_1_0_HUB_COMPATIBILITY -D DALI_LIGHT -lC        #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\List\" -lA "D:\Texas Instruments\Z-Stack  #
+#                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC253 #
+#                          x\Zlight - Router\List\" --diag_suppress           #
+#                          Pe001,Pa010 -o "D:\Texas Instruments\Z-Stack       #
+#                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC253 #
+#                          x\Zlight - Router\Obj\" -e --debug --core=plain    #
+#                          --dptr=16,1 --data_model=large                     #
+#                          --code_model=banked --calling_convention=xdata_ree #
+#                          ntrant --place_constants=data_rom                  #
+#                          --nr_virtual_regs 16 -I "D:\Texas                  #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\" -I    #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\Sour #
+#                          ce\" -I "D:\Texas Instruments\Z-Stack Lighting     #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\S #
+#                          ource\" -I "D:\Texas Instruments\Z-Stack Lighting  #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\HomeAutomation\Source\" -I "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\HomeAutomation\SampleLight\Source\" -I           #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\ZMain\TI2530DB\" -I "D:\Texas                    #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\hal\include\" -I "D:\Texas      #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\hal\target\CC2530PMP4712\" -I   #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\include\" -I "D:\Texas      #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\high_level\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\low_level\srf04\" -I        #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\low_level\srf04\single_chip #
+#                          \" -I "D:\Texas Instruments\Z-Stack Lighting       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mt\" -I "D:\Texas               #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\osal\include\" -I "D:\Texas     #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\services\saddr\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\services\sdata\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\af\" -I "D:\Texas         #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\nwk\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sapi\" -I "D:\Texas       #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sec\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sys\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\zcl\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\zdo\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\zmac\" -I "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\zmac\f8w\" -Ohz                 #
+#                          --require_prototypes                               #
+#    List file          =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\List\hw_thermal_ctrl.lst                  #
+#    Object file        =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\Obj\hw_thermal_ctrl.r51                   #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\Texas Instruments\Z-Stack Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\Source\Light\hw_thermal_ctrl.c
+      1          /**************************************************************************************************
+      2            Filename:       hw_thermal_ctrl.c
+      3            Revised:        $Date: 2012-10-18 14:18:50 -0700 (Thu, 18 Oct 2012) $
+      4            Revision:       $Revision: 31861 $
+      5          
+      6          
+      7            Description:    This file contains the hardware specific thermal shutdown
+      8                            control code.
+      9          
+     10            Copyright 2013 Texas Instruments Incorporated. All rights reserved.
+     11          
+     12            IMPORTANT: Your use of this Software is limited to those specific rights
+     13            granted under the terms of a software license agreement between the user
+     14            who downloaded the software, his/her employer (which must be your employer)
+     15            and Texas Instruments Incorporated (the "License").  You may not use this
+     16            Software unless you agree to abide by the terms of the License. The License
+     17            limits your use, and you acknowledge, that the Software may not be modified,
+     18            copied or distributed unless embedded on a Texas Instruments microcontroller
+     19            or used solely and exclusively in conjunction with a Texas Instruments radio
+     20            frequency transceiver, which is integrated into your product.  Other than for
+     21            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     22            works of, modify, distribute, perform, display or sell this Software and/or
+     23            its documentation for any purpose.
+     24          
+     25            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     26            PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     27            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     28            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     29            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     30            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     31            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     32            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     33            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     34            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     35            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     36          
+     37            Should you have any questions regarding your right to use this Software,
+     38            contact Texas Instruments Incorporated at www.TI.com.
+     39          **************************************************************************************************/
+     40          
+     41          /*********************************************************************
+     42            This device will be like a Light device.  This application is not
+     43            intended to be a Light device, but will use the device description
+     44            to implement this sample code.
+     45          *********************************************************************/
+     46          
+     47          /*********************************************************************
+     48           * INCLUDES
+     49           */
+     50          //#include "hal_lcd.h"
+     51          #include "hal_oled.h"
+     52          #include "hal_led.h"
+     53          #include "hal_adc.h"
+     54          #include "OSAL_Timers.h"
+     55          #include "zll_samplelight.h"
+     56          #include "hw_thermal_ctrl.h"
+     57          
+     58          /*********************************************************************
+     59           * MACROS
+     60           */
+     61          
+     62          /*********************************************************************
+     63           * CONSTANTS
+     64           */
+     65          #if defined (HAL_BOARD_CC2530EB_REV17) || defined (HAL_BOARD_ZLIGHT)
+     66          #define SAMPLELIGHT_THERMAL_2530_COEFFICIET  2
+     67          #define SAMPLELIGHT_THERMAL_2530_OFFSET      475
+     68          #endif
+     69          
+     70          /*********************************************************************
+     71           * TYPEDEFS
+     72           */
+     73          
+     74          /*********************************************************************
+     75           * GLOBAL VARIABLES
+     76           */
+     77          
+     78          /*********************************************************************
+     79           * GLOBAL FUNCTIONS
+     80           */
+     81          
+     82          /*********************************************************************
+     83           * LOCAL VARIABLES
+     84           */
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+     85          static byte lampAppTaskID;
+   \                     lampAppTaskID:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+     86          
+     87          /*********************************************************************
+     88           * LOCAL FUNCTIONS
+     89           */
+     90          static uint16 hwThermal_tempMeasure( void );
+     91          
+     92          /*********************************************************************
+     93           * LOCAL FUNCTIONS
+     94           */
+     95          
+     96          /*********************************************************************
+     97           * @fn      hwThermal_Init
+     98           *
+     99           * @brief   Monitor temperature, shutdown light if reaches threshold
+    100           *
+    101           * @param   taskID -     sample application task ID
+    102           * @param   start -      launch monitoring
+    103           *
+    104           * @return  none
+    105           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    106          void hwThermal_Init( byte taskID, bool start )
+   \                     hwThermal_Init:
+    107          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+   \   000006   FE           MOV     R6,A
+   \   000007   EA           MOV     A,R2
+   \   000008   FF           MOV     R7,A
+    108            lampAppTaskID = taskID;
+   \   000009   EE           MOV     A,R6
+   \   00000A   90....       MOV     DPTR,#lampAppTaskID
+   \   00000D   F0           MOVX    @DPTR,A
+    109            if ( start )
+   \   00000E   EF           MOV     A,R7
+   \   00000F   6005         JZ      ??hwThermal_Init_0
+    110            {
+    111              hwThermal_Monitor( TRUE );
+   \   000011                ; Setup parameters for call to function hwThermal_Monitor
+   \   000011   7901         MOV     R1,#0x1
+   \   000013   12....       LCALL   ??hwThermal_Monitor?relay
+    112            }
+    113          }
+   \                     ??hwThermal_Init_0:
+   \   000016   7F01         MOV     R7,#0x1
+   \   000018   02....       LJMP    ?BANKED_LEAVE_XDATA
+    114          
+    115          
+    116          /*********************************************************************
+    117           * @fn      hwThermal_Monitor
+    118           *
+    119           * @brief   Monitor temperature, shutdown light if reaches threshold
+    120           *
+    121           * @param   enable -     True to start monitoring, False to stop
+    122           *
+    123           * @return  none
+    124           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    125          void hwThermal_Monitor( bool enable )
+   \                     hwThermal_Monitor:
+    126          {
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+   \   000006   FE           MOV     R6,A
+    127            uint16 currTemp = hwThermal_tempMeasure();
+   \   000007   90624B       MOV     DPTR,#0x624b
+   \   00000A   E0           MOVX    A,@DPTR
+   \   00000B   D2E0         SETB    0xE0 /* A   */.0
+   \   00000D   F0           MOVX    @DPTR,A
+   \   00000E   9061BD       MOV     DPTR,#0x61bd
+   \   000011   E0           MOVX    A,@DPTR
+   \   000012   D2E0         SETB    0xE0 /* A   */.0
+   \   000014   F0           MOVX    @DPTR,A
+   \   000015                ; Setup parameters for call to function HalAdcRead
+   \   000015   7A03         MOV     R2,#0x3
+   \   000017   790E         MOV     R1,#0xe
+   \   000019   12....       LCALL   ??HalAdcRead?relay
+   \   00001C   90624B       MOV     DPTR,#0x624b
+   \   00001F   E0           MOVX    A,@DPTR
+   \   000020   C2E0         CLR     0xE0 /* A   */.0
+   \   000022   F0           MOVX    @DPTR,A
+   \   000023   9061BD       MOV     DPTR,#0x61bd
+   \   000026   E0           MOVX    A,@DPTR
+   \   000027   C2E0         CLR     0xE0 /* A   */.0
+   \   000029   F0           MOVX    @DPTR,A
+   \   00002A   EA           MOV     A,R2
+   \   00002B   2425         ADD     A,#0x25
+   \   00002D   F8           MOV     R0,A
+   \   00002E   EB           MOV     A,R3
+   \   00002F   34FE         ADDC    A,#-0x2
+   \   000031   C3           CLR     C
+   \   000032   13           RRC     A
+   \   000033   F9           MOV     R1,A
+   \   000034   E8           MOV     A,R0
+   \   000035   13           RRC     A
+   \   000036   F8           MOV     R0,A
+    128            static bool thermalShutdown = FALSE;
+    129            if ( enable == FALSE )
+   \   000037   EE           MOV     A,R6
+   \   000038   7020         JNZ     ??hwThermal_Monitor_0
+    130            {
+    131              thermalShutdown = FALSE;
+   \   00003A   90....       MOV     DPTR,#??thermalShutdown
+   \   00003D   E4           CLR     A
+   \   00003E   F0           MOVX    @DPTR,A
+    132              if ( zllSampleLight_OnOff == LIGHT_ON )
+   \   00003F   90....       MOV     DPTR,#zllSampleLight_OnOff
+   \   000042   E0           MOVX    A,@DPTR
+   \   000043   6401         XRL     A,#0x1
+   \   000045   7005         JNZ     ??hwThermal_Monitor_1
+    133              {
+    134                hwLight_UpdateOnOff( LIGHT_ON );
+   \   000047                ; Setup parameters for call to function hwLight_UpdateOnOff
+   \   000047   7901         MOV     R1,#0x1
+   \   000049   12....       LCALL   ??hwLight_UpdateOnOff?relay
+    135              }
+    136              osal_stop_timerEx( lampAppTaskID, SAMPLELIGHT_THERMAL_SAMPLE_EVT );
+   \                     ??hwThermal_Monitor_1:
+   \   00004C                ; Setup parameters for call to function osal_stop_timerEx
+   \   00004C   7A40         MOV     R2,#0x40
+   \   00004E   7B00         MOV     R3,#0x0
+   \   000050   90....       MOV     DPTR,#lampAppTaskID
+   \   000053   E0           MOVX    A,@DPTR
+   \   000054   F9           MOV     R1,A
+   \   000055   12....       LCALL   ??osal_stop_timerEx?relay
+    137              return;
+   \   000058   804B         SJMP    ??hwThermal_Monitor_2
+    138            }
+    139          
+    140            if ( currTemp > SAMPLELIGHT_THERMAL_THRESHOLD )
+   \                     ??hwThermal_Monitor_0:
+   \   00005A   C3           CLR     C
+   \   00005B   E8           MOV     A,R0
+   \   00005C   945B         SUBB    A,#0x5b
+   \   00005E   E9           MOV     A,R1
+   \   00005F   9400         SUBB    A,#0x0
+   \   000061   400D         JC      ??hwThermal_Monitor_3
+    141            {
+    142              hwLight_UpdateOnOff( LIGHT_OFF );
+   \   000063                ; Setup parameters for call to function hwLight_UpdateOnOff
+   \   000063   7900         MOV     R1,#0x0
+   \   000065   12....       LCALL   ??hwLight_UpdateOnOff?relay
+    143              thermalShutdown = TRUE;
+   \   000068   90....       MOV     DPTR,#??thermalShutdown
+   \   00006B   7401         MOV     A,#0x1
+   \   00006D   F0           MOVX    @DPTR,A
+   \   00006E   801E         SJMP    ??hwThermal_Monitor_4
+    144            }
+    145            else if ( thermalShutdown && ( currTemp < SAMPLELIGHT_THERMAL_THRESHOLD ) )
+   \                     ??hwThermal_Monitor_3:
+   \   000070   90....       MOV     DPTR,#??thermalShutdown
+   \   000073   E0           MOVX    A,@DPTR
+   \   000074   6018         JZ      ??hwThermal_Monitor_4
+   \   000076   C3           CLR     C
+   \   000077   E8           MOV     A,R0
+   \   000078   945A         SUBB    A,#0x5a
+   \   00007A   E9           MOV     A,R1
+   \   00007B   9400         SUBB    A,#0x0
+   \   00007D   500F         JNC     ??hwThermal_Monitor_4
+    146            {
+    147              thermalShutdown = FALSE;
+   \   00007F   E4           CLR     A
+   \   000080   F0           MOVX    @DPTR,A
+    148              if ( zllSampleLight_OnOff == LIGHT_ON )
+   \   000081   90....       MOV     DPTR,#zllSampleLight_OnOff
+   \   000084   E0           MOVX    A,@DPTR
+   \   000085   6401         XRL     A,#0x1
+   \   000087   7005         JNZ     ??hwThermal_Monitor_4
+    149              {
+    150                hwLight_UpdateOnOff( LIGHT_ON );
+   \   000089                ; Setup parameters for call to function hwLight_UpdateOnOff
+   \   000089   7901         MOV     R1,#0x1
+   \   00008B   12....       LCALL   ??hwLight_UpdateOnOff?relay
+    151              }
+    152            }
+    153            osal_start_timerEx( lampAppTaskID, SAMPLELIGHT_THERMAL_SAMPLE_EVT,
+    154                                SAMPLELIGHT_THERMAL_SAMPLE_INTERVAL );
+   \                     ??hwThermal_Monitor_4:
+   \   00008E                ; Setup parameters for call to function osal_start_timerEx
+   \   00008E   90....       MOV     DPTR,#__Constant_3e8
+   \   000091   12....       LCALL   ?PUSH_XSTACK8_X_FOUR
+   \   000094   7A40         MOV     R2,#0x40
+   \   000096   7B00         MOV     R3,#0x0
+   \   000098   90....       MOV     DPTR,#lampAppTaskID
+   \   00009B   E0           MOVX    A,@DPTR
+   \   00009C   F9           MOV     R1,A
+   \   00009D   12....       LCALL   ??osal_start_timerEx?relay
+   \   0000A0   7404         MOV     A,#0x4
+   \   0000A2   12....       LCALL   ?DEALLOC_XSTACK8
+    155          }
+   \                     ??hwThermal_Monitor_2:
+   \   0000A5   7F02         MOV     R7,#0x2
+   \   0000A7   02....       LJMP    ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+   \                     ??thermalShutdown:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_3e8:
+   \   000000   E8030000     DD 1000
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??hwThermal_Init?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    hwThermal_Init
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??hwThermal_Monitor?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    hwThermal_Monitor
+    156          
+    157          /*********************************************************************
+    158           * @fn      hwThermal_tempMeasure
+    159           *
+    160           * @brief   Measure the current temperature
+    161           *
+    162           * @param   none
+    163           *
+    164           * @return  temperature in celsius
+    165           */
+    166          static uint16 hwThermal_tempMeasure( void )
+    167          {
+    168            uint16 tempSample;
+    169            TR0 |= 0x01;      // TR0 must be modified prior to ATEST,
+    170            ATEST |= 0x01;    // otherwise P0_0 and P0_1 forced with 0
+    171            tempSample = HalAdcRead( HAL_ADC_CHN_TEMP, HAL_ADC_RESOLUTION_12 );
+    172            TR0 &= ~0x01;
+    173            ATEST &= ~0x01;
+    174            tempSample = (tempSample - SAMPLELIGHT_THERMAL_2530_OFFSET)/SAMPLELIGHT_THERMAL_2530_COEFFICIET;
+    175          #if 0 // Debug
+    176          #if (HAL_LCD == TRUE)
+    177            HalLcdWriteStringValue("temp(C):",tempSample, 10, HAL_LCD_LINE_3);
+    178          #endif
+    179          #endif
+    180            return tempSample;
+    181          }
+    182          
+    183          /****************************************************************************
+    184          ****************************************************************************/
+    185          
+    186          
+
+   Maximum stack usage in bytes:
+
+   ISTACK PSTACK XSTACK Function
+   ------ ------ ------ --------
+       0      0      9  hwThermal_Init
+                          0 0  9 -> hwThermal_Monitor
+       0      0     23  hwThermal_Monitor
+                          0 0 10 -> HalAdcRead
+                          0 0 10 -> hwLight_UpdateOnOff
+                          0 0 14 -> osal_start_timerEx
+                          0 0 10 -> osal_stop_timerEx
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       6  ??hwThermal_Init?relay
+       6  ??hwThermal_Monitor?relay
+       4  __Constant_3e8
+      27  hwThermal_Init
+     170  hwThermal_Monitor
+       1  lampAppTaskID
+       1  thermalShutdown
+
+ 
+ 197 bytes in segment BANKED_CODE
+  12 bytes in segment BANK_RELAYS
+   4 bytes in segment XDATA_ROM_C
+   2 bytes in segment XDATA_Z
+ 
+ 209 bytes of CODE  memory
+   0 bytes of CONST memory (+ 4 bytes shared)
+   2 bytes of XDATA memory
+
+Errors: none
+Warnings: none

@@ -1,0 +1,3830 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.20.2.41139 for 8051             27/Mar/2014  17:05:22 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Components\stack\nwk\BindingTable.c          #
+#    Command line       =  -f "D:\Texas Instruments\Z-Stack Lighting          #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wRouter.cfg" (-DCPU32MHZ        #
+#                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TRU #
+#                          E -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8       #
+#                          -DMAC_CFG_RX_MAX=5 -DRTR_NWK) -f "D:\Texas         #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wConfig.cfg" (-DZIGBEEPRO       #
+#                          -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR       #
+#                          -DDEFAULT_CHANLIST=0x00000800                      #
+#                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                       #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MA #
+#                          SK=0x007F -DBEACON_REQUEST_DELAY=100               #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                     #
+#                          -DLINK_STATUS_JITTER_MASK=0x007F                   #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_PO #
+#                          LLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7             #
+#                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3    #
+#                          -DNWK_MAX_DATA_RETRIES=2                           #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9         #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40           #
+#                          -DNWK_MAX_BINDING_ENTRIES=4                        #
+#                          -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01,  #
+#                          0x03, 0x05, 0x07, 0x09, 0x0B, 0x0D, 0x0F, 0x00,    #
+#                          0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0D}"         #
+#                          -DMAC_MAX_FRAME_SIZE=116                           #
+#                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const     #
+#                          __code" -DGENERIC=__generic                        #
+#                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000        #
+#                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100    #
+#                          -DREJOIN_POLL_RATE=440) -f "D:\Texas               #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wZCL.cfg" "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Components\stack\nwk\BindingTable.c" -D      #
+#                          FEATURE_GREEN_POWER -D SECURE=1 -D                 #
+#                          TC_LINKKEY_JOIN -D ZDSECMGR_TC_DEVICE_MAX=2 -D     #
+#                          NV_RESTORE -D HOLD_AUTO_START -D INTER_PAN -D      #
+#                          ZTOOL_P1 -D MT_TASK -D MT_APP_FUNC -D MT_SYS_FUNC  #
+#                          -D MT_ZDO_FUNC -D MT_ZDO_CB_FUNC -D MT_UTIL_FUNC   #
+#                          -D MT_ZDO_MGMT -D LCD_SUPPORTED -D HAL_LCD=FALSE   #
+#                          -D HAL_KEY=FALSE -D ZCL_BASIC -D ZCL_READ -D       #
+#                          ZCL_WRITE -D ZCL_IDENTIFY -D ZCL_ON_OFF -D         #
+#                          ZCL_SCENES -D ZCL_GROUPS -D                        #
+#                          ZCL_LIGHT_LINK_ENHANCE -D ZCL_LEVEL_CTRL -D        #
+#                          ZCL_COLOR_CTRL -D xMAX_CHANNELS_24GHZ=0x02108800   #
+#                          -lC "D:\Texas Instruments\Z-Stack Lighting         #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\BridgeE #
+#                          B-Pro\List\" -lA "D:\Texas Instruments\Z-Stack     #
+#                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC253 #
+#                          x\BridgeEB-Pro\List\" --diag_suppress Pe001,Pa010  #
+#                          -o "D:\Texas Instruments\Z-Stack Lighting          #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\BridgeE #
+#                          B-Pro\Obj\" -e --debug --core=plain --dptr=16,1    #
+#                          --data_model=large --code_model=banked             #
+#                          --calling_convention=xdata_reentrant               #
+#                          --place_constants=data_rom --nr_virtual_regs 16    #
+#                          -I "D:\Texas Instruments\Z-Stack Lighting          #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\" -I    #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\Sour #
+#                          ce\" -I "D:\Texas Instruments\Z-Stack Lighting     #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\S #
+#                          ource\" -I "D:\Texas Instruments\Z-Stack Lighting  #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\HomeAutomation\Source\" -I "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\HomeAutomation\SampleLight\Source\" -I           #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\ZMain\TI2530DB\" -I "D:\Texas                    #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\hal\include\" -I "D:\Texas      #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\hal\target\CC2530EB\" -I        #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\include\" -I "D:\Texas      #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\high_level\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\low_level\srf04\" -I        #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\low_level\srf04\single_chip #
+#                          \" -I "D:\Texas Instruments\Z-Stack Lighting       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mt\" -I "D:\Texas               #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\osal\include\" -I "D:\Texas     #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\services\saddr\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\services\sdata\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\af\" -I "D:\Texas         #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\nwk\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sapi\" -I "D:\Texas       #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sec\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sys\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\zcl\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\zdo\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\zmac\" -I "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\zmac\f8w\" -Ohz                 #
+#                          --require_prototypes                               #
+#    List file          =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\BridgeE #
+#                          B-Pro\List\BindingTable.lst                        #
+#    Object file        =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\BridgeE #
+#                          B-Pro\Obj\BindingTable.r51                         #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\Texas Instruments\Z-Stack Lighting 1.0.2\Components\stack\nwk\BindingTable.c
+      1          /**************************************************************************************************
+      2            Filename:       BindingTable.c
+      3            Revised:        $Date: 2013-11-13 13:09:12 -0800 (Wed, 13 Nov 2013) $
+      4            Revision:       $Revision: 36079 $
+      5          
+      6            Description:    Device binding table functions.
+      7          
+      8          
+      9            Copyright 2004-2013 Texas Instruments Incorporated. All rights reserved.
+     10          
+     11            IMPORTANT: Your use of this Software is limited to those specific rights
+     12            granted under the terms of a software license agreement between the user
+     13            who downloaded the software, his/her employer (which must be your employer)
+     14            and Texas Instruments Incorporated (the "License"). You may not use this
+     15            Software unless you agree to abide by the terms of the License. The License
+     16            limits your use, and you acknowledge, that the Software may not be modified,
+     17            copied or distributed unless embedded on a Texas Instruments microcontroller
+     18            or used solely and exclusively in conjunction with a Texas Instruments radio
+     19            frequency transceiver, which is integrated into your product. Other than for
+     20            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     21            works of, modify, distribute, perform, display or sell this Software and/or
+     22            its documentation for any purpose.
+     23          
+     24            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     25            PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     26            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     27            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     28            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     29            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     30            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     31            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     32            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     33            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     34            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     35          
+     36            Should you have any questions regarding your right to use this Software,
+     37            contact Texas Instruments Incorporated at www.TI.com.
+     38          **************************************************************************************************/
+     39          
+     40          /*********************************************************************
+     41           * INCLUDES
+     42           */
+     43          #include "ZComDef.h"
+     44          #include "OSAL.h"
+     45          #include "OSAL_Nv.h"
+     46          #include "nwk_globals.h"
+     47          #include "AddrMgr.h"
+     48          #include "BindingTable.h"
+     49          
+     50          /*********************************************************************
+     51           * MACROS
+     52           */
+     53          
+     54          /*********************************************************************
+     55           * CONSTANTS
+     56           */
+     57          #define NV_BIND_EMPTY   0xFF
+     58          #define NV_BIND_REC_SIZE (gBIND_REC_SIZE)
+     59          #define NV_BIND_ITEM_SIZE  (gBIND_REC_SIZE * gNWK_MAX_BINDING_ENTRIES)
+     60          
+     61          /*********************************************************************
+     62           * TYPEDEFS
+     63           */
+     64          typedef struct
+     65          {
+     66            uint8        srcEP;
+     67            uint16       srcIndex;
+     68            uint16       dstIndex;
+     69            uint8        dstEP;
+     70            uint8        dstAddrMode;
+     71            uint8        clusterIDs;
+     72            uint16*      clusterIDList;
+     73          } bindFields_t;
+     74          
+     75          /*********************************************************************
+     76           * GLOBAL VARIABLES
+     77           */
+     78          
+     79          /*********************************************************************
+     80           * LOCAL FUNCTIONS
+     81           */
+     82          void BindAddrMgrCB( uint8 update, AddrMgrEntry_t *entryOld,
+     83                              AddrMgrEntry_t *entryNew );
+     84          BindingEntry_t *bindFindEmpty( void );
+     85          uint16 bindingAddrMgsHelperFind( zAddrType_t *addr );
+     86          uint8 bindingAddrMgsHelperConvert( uint16 idx, zAddrType_t *addr );
+     87          void bindAddrMgrLocalLoad( void );
+     88          
+     89          /*********************************************************************
+     90           * LOCAL VARIABLES
+     91           */
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+     92          static uint8 bindAddrMgrLocalLoaded = FALSE;
+   \                     bindAddrMgrLocalLoaded:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+     93          
+     94          /*********************************************************************
+     95           * Function Pointers
+     96           */
+     97          
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+     98          BindingEntry_t *(*pbindAddEntry)( byte srcEpInt,
+   \                     pbindAddEntry:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+     99                                            zAddrType_t *dstAddr, byte dstEpInt,
+    100                                            byte numClusterIds, uint16 *clusterIds ) = (void*)NULL;
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    101          uint16 (*pbindNumOfEntries)( void ) = (void*)NULL;
+   \                     pbindNumOfEntries:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    102          void (*pbindRemoveDev)( zAddrType_t *Addr ) = (void*)NULL;
+   \                     pbindRemoveDev:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    103          byte (*pBindInitNV)( void ) = (void*)NULL;
+   \                     pBindInitNV:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    104          void (*pBindSetDefaultNV)( void ) = (void*)NULL;
+   \                     pBindSetDefaultNV:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    105          uint16 (*pBindRestoreFromNV)( void ) = (void*)NULL;
+   \                     pBindRestoreFromNV:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    106          void (*pBindWriteNV)( void ) = (void*)NULL;
+   \                     pBindWriteNV:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+    107          
+    108          #if ( ADDRMGR_CALLBACK_ENABLED == 1 )
+    109          /*********************************************************************
+    110           * @fn      BindAddrMgrCB()
+    111           *
+    112           * @brief   Address Manager Callback function
+    113           *
+    114           * @param   update -
+    115           * @param   entry -
+    116           *
+    117           * @return  pointer to
+    118           */
+    119          void BindAddrMgrCB( uint8 update, AddrMgrEntry_t *entryNew,
+    120                              AddrMgrEntry_t *entryOld )
+    121          {
+    122            // Check for either deleted items or changed Extended (Duplicate) addresses
+    123          }
+    124          #endif // ( ADDRMGR_CALLBACK_ENABLED == 1 )
+    125          
+    126          /*********************************************************************
+    127           * @fn      InitBindingTable()
+    128           *
+    129           * @brief
+    130           *
+    131           *   This function is used to initialise the binding table
+    132           *
+    133           * @param   none
+    134           *
+    135           * @return  none
+    136           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    137          void InitBindingTable( void )
+   \                     InitBindingTable:
+    138          {
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+    139            osal_memset( BindingTable, 0xFF, gBIND_REC_SIZE * gNWK_MAX_BINDING_ENTRIES );
+   \   000005                ; Setup parameters for call to function osal_memset
+   \   000005   12....       LCALL   ?Subroutine9 & 0xFFFF
+   \                     ??CrossCallReturnLabel_7:
+   \   000008   90....       MOV     DPTR,#gNWK_MAX_BINDING_ENTRIES
+   \   00000B   E4           CLR     A
+   \   00000C   93           MOVC    A,@A+DPTR
+   \   00000D   F5..         MOV     ?V0 + 0,A
+   \   00000F   EC           MOV     A,R4
+   \   000010   85..F0       MOV     B,?V0 + 0
+   \   000013   A4           MUL     AB
+   \   000014   FC           MOV     R4,A
+   \   000015   A8F0         MOV     R0,B
+   \   000017   85..F0       MOV     B,?V0 + 0
+   \   00001A   ED           MOV     A,R5
+   \   00001B   A4           MUL     AB
+   \   00001C   28           ADD     A,R0
+   \   00001D   FD           MOV     R5,A
+   \   00001E   79FF         MOV     R1,#-0x1
+   \   000020   7A..         MOV     R2,#BindingTable & 0xff
+   \   000022   7B..         MOV     R3,#(BindingTable >> 8) & 0xff
+   \   000024   12....       LCALL   ??osal_memset?relay
+    140          
+    141            pbindAddEntry = bindAddEntry;
+   \   000027   90....       MOV     DPTR,#pbindAddEntry
+   \   00002A   74..         MOV     A,#??bindAddEntry?relay & 0xff
+   \   00002C   F0           MOVX    @DPTR,A
+   \   00002D   A3           INC     DPTR
+   \   00002E   74..         MOV     A,#(??bindAddEntry?relay >> 8) & 0xff
+   \   000030   F0           MOVX    @DPTR,A
+    142            pbindNumOfEntries = bindNumOfEntries;
+   \   000031   90....       MOV     DPTR,#pbindNumOfEntries
+   \   000034   74..         MOV     A,#??bindNumOfEntries?relay & 0xff
+   \   000036   F0           MOVX    @DPTR,A
+   \   000037   A3           INC     DPTR
+   \   000038   74..         MOV     A,#(??bindNumOfEntries?relay >> 8) & 0xff
+   \   00003A   F0           MOVX    @DPTR,A
+    143            pbindRemoveDev = bindRemoveDev;
+   \   00003B   90....       MOV     DPTR,#pbindRemoveDev
+   \   00003E   74..         MOV     A,#??bindRemoveDev?relay & 0xff
+   \   000040   F0           MOVX    @DPTR,A
+   \   000041   A3           INC     DPTR
+   \   000042   74..         MOV     A,#(??bindRemoveDev?relay >> 8) & 0xff
+   \   000044   F0           MOVX    @DPTR,A
+    144            pBindInitNV = BindInitNV;
+   \   000045   90....       MOV     DPTR,#pBindInitNV
+   \   000048   74..         MOV     A,#??BindInitNV?relay & 0xff
+   \   00004A   F0           MOVX    @DPTR,A
+   \   00004B   A3           INC     DPTR
+   \   00004C   74..         MOV     A,#(??BindInitNV?relay >> 8) & 0xff
+   \   00004E   F0           MOVX    @DPTR,A
+    145            pBindSetDefaultNV = BindSetDefaultNV;
+   \   00004F   90....       MOV     DPTR,#pBindSetDefaultNV
+   \   000052   74..         MOV     A,#??BindSetDefaultNV?relay & 0xff
+   \   000054   F0           MOVX    @DPTR,A
+   \   000055   A3           INC     DPTR
+   \   000056   74..         MOV     A,#(??BindSetDefaultNV?relay >> 8) & 0xff
+   \   000058   F0           MOVX    @DPTR,A
+    146            pBindRestoreFromNV = BindRestoreFromNV;
+   \   000059   90....       MOV     DPTR,#pBindRestoreFromNV
+   \   00005C   74..         MOV     A,#??BindRestoreFromNV?relay & 0xff
+   \   00005E   F0           MOVX    @DPTR,A
+   \   00005F   A3           INC     DPTR
+   \   000060   74..         MOV     A,#(??BindRestoreFromNV?relay >> 8) & 0xff
+   \   000062   F0           MOVX    @DPTR,A
+    147            pBindWriteNV = BindWriteNV;
+   \   000063   90....       MOV     DPTR,#pBindWriteNV
+   \   000066   74..         MOV     A,#??BindWriteNV?relay & 0xff
+   \   000068   F0           MOVX    @DPTR,A
+   \   000069   A3           INC     DPTR
+   \   00006A   74..         MOV     A,#(??BindWriteNV?relay >> 8) & 0xff
+   \   00006C   F0           MOVX    @DPTR,A
+    148          
+    149            bindAddrMgrLocalLoaded = FALSE;
+   \   00006D   90....       MOV     DPTR,#bindAddrMgrLocalLoaded
+   \   000070   E4           CLR     A
+   \   000071   F0           MOVX    @DPTR,A
+    150          
+    151          #if ( ADDRMGR_CALLBACK_ENABLED == 1 )
+    152            // Register with the address manager
+    153            AddrMgrRegister( ADDRMGR_REG_BINDING, BindAddrMgrCB );
+    154          #endif
+    155          }
+   \   000072   80..         SJMP    ??Subroutine21_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine21_0:
+   \   000000   7F02         MOV     R7,#0x2
+   \   000002   02....       LJMP    ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine9:
+   \   000000   90....       MOV     DPTR,#gBIND_REC_SIZE
+   \   000003   E4           CLR     A
+   \   000004   93           MOVC    A,@A+DPTR
+   \   000005   FC           MOV     R4,A
+   \   000006   7401         MOV     A,#0x1
+   \   000008   93           MOVC    A,@A+DPTR
+   \   000009   FD           MOV     R5,A
+   \   00000A   22           RET
+    156          
+    157          /*********************************************************************
+    158           * @fn      bindFindEmpty()
+    159           *
+    160           * @brief   This function returns a pointer to an empty binding slot
+    161           *
+    162           * @param   none
+    163           *
+    164           * @return  pointer to binding table entry, NULL if not added
+    165           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    166          BindingEntry_t *bindFindEmpty( void )
+   \                     bindFindEmpty:
+    167          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    168            bindTableIndex_t x;
+    169          
+    170            for ( x = 0; x < gNWK_MAX_BINDING_ENTRIES; x++ )
+   \   000004   7B00         MOV     R3,#0x0
+   \   000006   8001         SJMP    ??bindFindEmpty_0
+   \                     ??bindFindEmpty_1:
+   \   000008   0B           INC     R3
+   \                     ??bindFindEmpty_0:
+   \   000009   90....       MOV     DPTR,#gNWK_MAX_BINDING_ENTRIES
+   \   00000C   E4           CLR     A
+   \   00000D   93           MOVC    A,@A+DPTR
+   \   00000E   F8           MOV     R0,A
+   \   00000F   EB           MOV     A,R3
+   \   000010   C3           CLR     C
+   \   000011   98           SUBB    A,R0
+   \   000012   500C         JNC     ??bindFindEmpty_2
+    171            {
+    172              // It's empty if the index is "Not Found"
+    173              if ( BindingTable[x].srcEP == NV_BIND_EMPTY )
+   \   000014   EB           MOV     A,R3
+   \   000015   12....       LCALL   ?Subroutine6 & 0xFFFF
+   \                     ??CrossCallReturnLabel_0:
+   \   000018   70EE         JNZ     ??bindFindEmpty_1
+    174              {
+    175                return ( &BindingTable[x] );
+   \   00001A   AA82         MOV     R2,DPL
+   \   00001C   AB83         MOV     R3,DPH
+   \   00001E   8004         SJMP    ??bindFindEmpty_3
+    176              }
+    177            }
+    178          
+    179            return ( (BindingEntry_t *)NULL );
+   \                     ??bindFindEmpty_2:
+   \   000020   7A00         MOV     R2,#0x0
+   \   000022   7B00         MOV     R3,#0x0
+   \                     ??bindFindEmpty_3:
+   \   000024   02....       LJMP    ??Subroutine27_0 & 0xFFFF
+    180          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine6:
+   \   000000   12....       LCALL   ?Subroutine18 & 0xFFFF
+   \                     ??CrossCallReturnLabel_22:
+   \   000003   F4           CPL     A
+   \   000004   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine18:
+   \   000000   75F00E       MOV     B,#0xe
+   \   000003   A4           MUL     AB
+   \   000004   F8           MOV     R0,A
+   \   000005   A9F0         MOV     R1,B
+   \   000007   74..         MOV     A,#BindingTable & 0xff
+   \   000009   28           ADD     A,R0
+   \   00000A   F582         MOV     DPL,A
+   \   00000C   74..         MOV     A,#(BindingTable >> 8) & 0xff
+   \   00000E   39           ADDC    A,R1
+   \   00000F   F583         MOV     DPH,A
+   \   000011   E0           MOVX    A,@DPTR
+   \   000012   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine27_0:
+   \   000000   D083         POP     DPH
+   \   000002   D082         POP     DPL
+   \   000004   02....       LJMP    ?BRET
+    181          
+    182          /*********************************************************************
+    183           * @fn      bindNumOfEntries()
+    184           *
+    185           * @brief   This function returns the number of binding table entries.
+    186           *          The return for this is the number of clusters in the
+    187           *          table NOT the number of entries.
+    188           *
+    189           * @param   none
+    190           *
+    191           * @return  number of entries
+    192           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    193          uint16 bindNumOfEntries( void )
+   \                     bindNumOfEntries:
+    194          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    195            bindTableIndex_t x;
+    196            uint16 found;
+    197          
+    198            for ( found = 0, x = 0; x < gNWK_MAX_BINDING_ENTRIES; x++ )
+   \   000004   7A00         MOV     R2,#0x0
+   \   000006   7B00         MOV     R3,#0x0
+   \   000008   7D00         MOV     R5,#0x0
+   \   00000A   8015         SJMP    ??bindNumOfEntries_0
+    199            {
+    200              // It's empty if the index is "Not Found"
+    201              if ( BindingTable[x].srcEP != NV_BIND_EMPTY )
+   \                     ??bindNumOfEntries_1:
+   \   00000C   ED           MOV     A,R5
+   \   00000D   12....       LCALL   ?Subroutine6 & 0xFFFF
+   \                     ??CrossCallReturnLabel_1:
+   \   000010   600E         JZ      ??bindNumOfEntries_2
+    202              {
+    203                found += BindingTable[x].numClusterIds;
+   \   000012   A3           INC     DPTR
+   \   000013   A3           INC     DPTR
+   \   000014   A3           INC     DPTR
+   \   000015   A3           INC     DPTR
+   \   000016   A3           INC     DPTR
+   \   000017   E0           MOVX    A,@DPTR
+   \   000018   F8           MOV     R0,A
+   \   000019   EA           MOV     A,R2
+   \   00001A   28           ADD     A,R0
+   \   00001B   FA           MOV     R2,A
+   \   00001C   EB           MOV     A,R3
+   \   00001D   3400         ADDC    A,#0x0
+   \   00001F   FB           MOV     R3,A
+    204              }
+    205            }
+   \                     ??bindNumOfEntries_2:
+   \   000020   0D           INC     R5
+   \                     ??bindNumOfEntries_0:
+   \   000021   90....       MOV     DPTR,#gNWK_MAX_BINDING_ENTRIES
+   \   000024   E4           CLR     A
+   \   000025   93           MOVC    A,@A+DPTR
+   \   000026   F8           MOV     R0,A
+   \   000027   ED           MOV     A,R5
+   \   000028   C3           CLR     C
+   \   000029   98           SUBB    A,R0
+   \   00002A   40E0         JC      ??bindNumOfEntries_1
+    206          
+    207            return ( found );
+   \   00002C   02....       LJMP    ??Subroutine27_0 & 0xFFFF
+    208          }
+    209          
+    210          /*********************************************************************
+    211           * @fn      bindCapacity()
+    212           *
+    213           * @brief   This function returns the number of binding entries
+    214           *          possible and used.
+    215           *
+    216           * @param   maxEntries - pointer to a place to put the max entries
+    217           * @param   usedEntries - pointer to a place to put the number
+    218           *               of used entries
+    219           *
+    220           * @return  none
+    221           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    222          void bindCapacity( uint16 *maxEntries, uint16 *usedEntries  )
+   \                     bindCapacity:
+    223          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+    224            bindTableIndex_t x;
+    225            bindTableIndex_t used;
+    226          
+    227            for ( used = 0, x = 0; x < gNWK_MAX_BINDING_ENTRIES; x++ )
+   \   000005   75..00       MOV     ?V0 + 0,#0x0
+   \   000008   7F00         MOV     R7,#0x0
+   \   00000A   8009         SJMP    ??bindCapacity_0
+    228            {
+    229              // It's empty if the index is "Not Found"
+    230              if ( BindingTable[x].srcEP != NV_BIND_EMPTY )
+   \                     ??bindCapacity_1:
+   \   00000C   EF           MOV     A,R7
+   \   00000D   12....       LCALL   ?Subroutine6 & 0xFFFF
+   \                     ??CrossCallReturnLabel_2:
+   \   000010   6002         JZ      ??bindCapacity_2
+    231              {
+    232                used++;
+   \   000012   05..         INC     ?V0 + 0
+    233              }
+    234            }
+   \                     ??bindCapacity_2:
+   \   000014   0F           INC     R7
+   \                     ??bindCapacity_0:
+   \   000015   90....       MOV     DPTR,#gNWK_MAX_BINDING_ENTRIES
+   \   000018   E4           CLR     A
+   \   000019   93           MOVC    A,@A+DPTR
+   \   00001A   F8           MOV     R0,A
+   \   00001B   EF           MOV     A,R7
+   \   00001C   C3           CLR     C
+   \   00001D   98           SUBB    A,R0
+   \   00001E   40EC         JC      ??bindCapacity_1
+    235          
+    236            *maxEntries = gNWK_MAX_BINDING_ENTRIES;
+   \   000020   E4           CLR     A
+   \   000021   93           MOVC    A,@A+DPTR
+   \   000022   8A82         MOV     DPL,R2
+   \   000024   8B83         MOV     DPH,R3
+   \   000026   F0           MOVX    @DPTR,A
+   \   000027   A3           INC     DPTR
+   \   000028   E4           CLR     A
+   \   000029   F0           MOVX    @DPTR,A
+    237            *usedEntries = used;
+   \   00002A   8C82         MOV     DPL,R4
+   \   00002C   8D83         MOV     DPH,R5
+   \   00002E   E5..         MOV     A,?V0 + 0
+   \   000030   F0           MOVX    @DPTR,A
+   \   000031   A3           INC     DPTR
+   \   000032   E4           CLR     A
+   \   000033   F0           MOVX    @DPTR,A
+    238          }
+   \   000034   02....       LJMP    ?Subroutine2 & 0xFFFF
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine2:
+   \   000000   7F01         MOV     R7,#0x1
+   \   000002   02....       LJMP    ?BANKED_LEAVE_XDATA
+    239          
+    240          /*********************************************************************
+    241           * @fn      bindAddEntry()
+    242           *
+    243           * @brief   This function is used to Add an entry to the binding table
+    244           *
+    245           * @param       srcEpInt - source endpoint
+    246           * @param       dstAddr - destination Address
+    247           * @param       dstEpInt - destination endpoint
+    248           * @param       numClusterIds - number of cluster Ids in the list
+    249           * @param       clusterIds - pointer to the Object ID list
+    250           *
+    251           * @return  pointer to binding table entry, NULL if not added
+    252           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    253          BindingEntry_t *bindAddEntry( byte srcEpInt,
+   \                     bindAddEntry:
+    254                                        zAddrType_t *dstAddr, byte dstEpInt,
+    255                                        byte numClusterIds, uint16 *clusterIds )
+    256          {
+   \   000000   74EC         MOV     A,#-0x14
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 20
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV     ?V0 + 2,R1
+   \   000007   8A..         MOV     ?V0 + 6,R2
+   \   000009   8B..         MOV     ?V0 + 7,R3
+   \   00000B   8C..         MOV     ?V0 + 8,R4
+   \   00000D   8D..         MOV     ?V0 + 0,R5
+    257            uint8            index;
+    258            bindTableIndex_t bindIdx;
+    259            BindingEntry_t*  entry;
+    260            bindFields_t     fields;
+    261          
+    262            // initialize results
+    263            entry = NULL;
+   \   00000F   7E00         MOV     R6,#0x0
+   \   000011   7F00         MOV     R7,#0x0
+    264          
+    265            // make sure local addresses have been loaded
+    266            bindAddrMgrLocalLoad();
+   \   000013                ; Setup parameters for call to function bindAddrMgrLocalLoad
+   \   000013   12....       LCALL   ??bindAddrMgrLocalLoad?relay
+    267          
+    268            // setup fields
+    269            fields.dstIndex = bindAddrIndexGet( dstAddr );
+   \   000016                ; Setup parameters for call to function bindAddrIndexGet
+   \   000016   AA..         MOV     R2,?V0 + 6
+   \   000018   AB..         MOV     R3,?V0 + 7
+   \   00001A   12....       LCALL   ??bindAddrIndexGet?relay
+   \   00001D   8A..         MOV     ?V0 + 4,R2
+   \   00001F   8B..         MOV     ?V0 + 5,R3
+    270            fields.srcEP    = srcEpInt;
+    271          
+    272            if ( dstAddr->addrMode == AddrGroup )
+   \   000021   85..82       MOV     DPL,?V0 + 6
+   \   000024   85..83       MOV     DPH,?V0 + 7
+   \   000027   A3           INC     DPTR
+   \   000028   A3           INC     DPTR
+   \   000029   A3           INC     DPTR
+   \   00002A   A3           INC     DPTR
+   \   00002B   A3           INC     DPTR
+   \   00002C   A3           INC     DPTR
+   \   00002D   A3           INC     DPTR
+   \   00002E   A3           INC     DPTR
+   \   00002F   E0           MOVX    A,@DPTR
+   \   000030   6401         XRL     A,#0x1
+   \   000032   7007         JNZ     ??bindAddEntry_0
+    273            {
+    274              fields.dstAddrMode = DSTGROUPMODE_GROUP;
+   \   000034   75..01       MOV     ?V0 + 3,#0x1
+    275              fields.dstEP       = 0;
+   \   000037   8E..         MOV     ?V0 + 1,R6
+   \   000039   8005         SJMP    ??bindAddEntry_1
+    276            }
+    277            else
+    278            {
+    279              fields.dstAddrMode = DSTGROUPMODE_ADDR;
+   \                     ??bindAddEntry_0:
+   \   00003B   8E..         MOV     ?V0 + 3,R6
+    280              fields.dstEP       = dstEpInt;
+   \   00003D   85....       MOV     ?V0 + 1,?V0 + 8
+    281            }
+    282          
+    283            if ( fields.dstIndex != INVALID_NODE_ADDR  )
+   \                     ??bindAddEntry_1:
+   \   000040   74FE         MOV     A,#-0x2
+   \   000042   65..         XRL     A,?V0 + 4
+   \   000044   7004         JNZ     ??bindAddEntry_2
+   \   000046   74FF         MOV     A,#-0x1
+   \   000048   65..         XRL     A,?V0 + 5
+   \                     ??bindAddEntry_2:
+   \   00004A   7003         JNZ     $+5
+   \   00004C   02....       LJMP    ??bindAddEntry_3 & 0xFFFF
+    284            {
+    285              for ( bindIdx = 0; bindIdx < gNWK_MAX_BINDING_ENTRIES; bindIdx++ )
+   \   00004F   7B00         MOV     R3,#0x0
+   \   000051   7414         MOV     A,#0x14
+   \   000053   12....       LCALL   ?XSTACK_DISP0_8
+   \   000056   E0           MOVX    A,@DPTR
+   \   000057   F5..         MOV     ?V0 + 6,A
+   \   000059   A3           INC     DPTR
+   \   00005A   E0           MOVX    A,@DPTR
+   \   00005B   F5..         MOV     ?V0 + 7,A
+   \   00005D   8001         SJMP    ??bindAddEntry_4
+   \                     ??bindAddEntry_5:
+   \   00005F   0B           INC     R3
+   \                     ??bindAddEntry_4:
+   \   000060   90....       MOV     DPTR,#gNWK_MAX_BINDING_ENTRIES
+   \   000063   E4           CLR     A
+   \   000064   93           MOVC    A,@A+DPTR
+   \   000065   F8           MOV     R0,A
+   \   000066   EB           MOV     A,R3
+   \   000067   C3           CLR     C
+   \   000068   98           SUBB    A,R0
+   \   000069   5070         JNC     ??bindAddEntry_6
+    286              {
+    287                if ( ( fields.srcEP       == BindingTable[bindIdx].srcEP        ) &&
+    288                     ( fields.dstAddrMode == BindingTable[bindIdx].dstGroupMode ) &&
+    289                     ( fields.dstIndex    == BindingTable[bindIdx].dstIdx       ) &&
+    290                     ( fields.dstEP       == BindingTable[bindIdx].dstEP        )    )
+   \   00006B   EB           MOV     A,R3
+   \   00006C   12....       LCALL   ?Subroutine7 & 0xFFFF
+   \                     ??CrossCallReturnLabel_4:
+   \   00006F   65..         XRL     A,?V0 + 2
+   \   000071   70EC         JNZ     ??bindAddEntry_5
+   \   000073   A3           INC     DPTR
+   \   000074   E0           MOVX    A,@DPTR
+   \   000075   65..         XRL     A,?V0 + 3
+   \   000077   70E6         JNZ     ??bindAddEntry_5
+   \   000079   8E82         MOV     DPL,R6
+   \   00007B   8F83         MOV     DPH,R7
+   \   00007D   A3           INC     DPTR
+   \   00007E   A3           INC     DPTR
+   \   00007F   E0           MOVX    A,@DPTR
+   \   000080   65..         XRL     A,?V0 + 4
+   \   000082   7004         JNZ     ??bindAddEntry_7
+   \   000084   A3           INC     DPTR
+   \   000085   E0           MOVX    A,@DPTR
+   \   000086   65..         XRL     A,?V0 + 5
+   \                     ??bindAddEntry_7:
+   \   000088   70D5         JNZ     ??bindAddEntry_5
+   \   00008A   8E82         MOV     DPL,R6
+   \   00008C   8F83         MOV     DPH,R7
+   \   00008E   A3           INC     DPTR
+   \   00008F   A3           INC     DPTR
+   \   000090   A3           INC     DPTR
+   \   000091   A3           INC     DPTR
+   \   000092   E0           MOVX    A,@DPTR
+   \   000093   65..         XRL     A,?V0 + 1
+   \   000095   70C8         JNZ     ??bindAddEntry_5
+    291                {
+    292                  entry = &BindingTable[bindIdx];
+    293          
+    294                  // break from loop
+    295                  break;
+    296                }
+    297              }
+    298          
+    299              if ( entry != NULL )
+    300              {
+    301                // Loop through the cluster IDs
+    302                for ( index = 0; index < numClusterIds; index++ )
+   \   000097   75..00       MOV     ?V0 + 3,#0x0
+   \                     ??bindAddEntry_8:
+   \   00009A   E5..         MOV     A,?V0 + 3
+   \   00009C   C3           CLR     C
+   \   00009D   95..         SUBB    A,?V0 + 0
+   \   00009F   4003         JC      $+5
+   \   0000A1   02....       LJMP    ??bindAddEntry_3 & 0xFFFF
+    303                {
+    304                  // Found - is the cluster already defined?
+    305                  if ( bindIsClusterIDinList( entry, clusterIds[index] ) == FALSE )
+   \   0000A4   E5..         MOV     A,?V0 + 3
+   \   0000A6   C3           CLR     C
+   \   0000A7   33           RLC     A
+   \   0000A8   F8           MOV     R0,A
+   \   0000A9   E4           CLR     A
+   \   0000AA   33           RLC     A
+   \   0000AB   F9           MOV     R1,A
+   \   0000AC   E5..         MOV     A,?V0 + 6
+   \   0000AE   28           ADD     A,R0
+   \   0000AF   F5..         MOV     ?V0 + 4,A
+   \   0000B1   E5..         MOV     A,?V0 + 7
+   \   0000B3   39           ADDC    A,R1
+   \   0000B4   F5..         MOV     ?V0 + 5,A
+   \   0000B6                ; Setup parameters for call to function bindIsClusterIDinList
+   \   0000B6   85..82       MOV     DPL,?V0 + 4
+   \   0000B9   F583         MOV     DPH,A
+   \   0000BB   12....       LCALL   ?Subroutine15 & 0xFFFF
+   \                     ??CrossCallReturnLabel_15:
+   \   0000BE   12....       LCALL   ??bindIsClusterIDinList?relay
+   \   0000C1   E9           MOV     A,R1
+   \   0000C2   7013         JNZ     ??bindAddEntry_9
+    306                  {
+    307                    // Nope, add this cluster
+    308                    if ( bindAddClusterIdToList( entry, clusterIds[index] ) == FALSE )
+   \   0000C4                ; Setup parameters for call to function bindAddClusterIdToList
+   \   0000C4   85..82       MOV     DPL,?V0 + 4
+   \   0000C7   85..83       MOV     DPH,?V0 + 5
+   \   0000CA   12....       LCALL   ?Subroutine15 & 0xFFFF
+   \                     ??CrossCallReturnLabel_16:
+   \   0000CD   12....       LCALL   ??bindAddClusterIdToList?relay
+   \   0000D0   E9           MOV     A,R1
+   \   0000D1   7004         JNZ     ??bindAddEntry_9
+    309                    {
+    310                      // Indicate error if cluster list was full
+    311                      entry = NULL;
+   \   0000D3   7E00         MOV     R6,#0x0
+   \   0000D5   7F00         MOV     R7,#0x0
+    312                    }
+    313                  }
+    314                }
+   \                     ??bindAddEntry_9:
+   \   0000D7   05..         INC     ?V0 + 3
+   \   0000D9   80BF         SJMP    ??bindAddEntry_8
+    315              }
+    316              else
+    317              {
+    318                // Find an empty slot
+    319                entry = bindFindEmpty();
+   \                     ??bindAddEntry_6:
+   \   0000DB                ; Setup parameters for call to function bindFindEmpty
+   \   0000DB   12....       LCALL   ??bindFindEmpty?relay
+   \   0000DE   8A..         MOV     ?V0 + 10,R2
+   \   0000E0   8B..         MOV     ?V0 + 11,R3
+   \   0000E2   AE..         MOV     R6,?V0 + 10
+   \   0000E4   AF..         MOV     R7,?V0 + 11
+    320          
+    321                // Check against the maximum number allowed
+    322                if ( entry != NULL )
+   \   0000E6   EE           MOV     A,R6
+   \   0000E7   4F           ORL     A,R7
+   \   0000E8   6063         JZ      ??bindAddEntry_3
+    323                {
+    324                  // Add new entry
+    325                  entry->srcEP         = fields.srcEP;
+   \   0000EA   8E82         MOV     DPL,R6
+   \   0000EC   8F83         MOV     DPH,R7
+   \   0000EE   E5..         MOV     A,?V0 + 2
+   \   0000F0   F0           MOVX    @DPTR,A
+    326                  entry->dstGroupMode  = fields.dstAddrMode;
+   \   0000F1   A3           INC     DPTR
+   \   0000F2   E5..         MOV     A,?V0 + 3
+   \   0000F4   F0           MOVX    @DPTR,A
+    327                  entry->dstIdx        = fields.dstIndex;
+   \   0000F5   8E82         MOV     DPL,R6
+   \   0000F7   8F83         MOV     DPH,R7
+   \   0000F9   A3           INC     DPTR
+   \   0000FA   A3           INC     DPTR
+   \   0000FB   E5..         MOV     A,?V0 + 4
+   \   0000FD   F0           MOVX    @DPTR,A
+   \   0000FE   A3           INC     DPTR
+   \   0000FF   E5..         MOV     A,?V0 + 5
+   \   000101   F0           MOVX    @DPTR,A
+    328                  entry->dstEP         = fields.dstEP;
+   \   000102   8E82         MOV     DPL,R6
+   \   000104   8F83         MOV     DPH,R7
+   \   000106   A3           INC     DPTR
+   \   000107   A3           INC     DPTR
+   \   000108   A3           INC     DPTR
+   \   000109   A3           INC     DPTR
+   \   00010A   E5..         MOV     A,?V0 + 1
+   \   00010C   F0           MOVX    @DPTR,A
+    329          
+    330                  if ( numClusterIds > gMAX_BINDING_CLUSTER_IDS )
+   \   00010D   90....       MOV     DPTR,#gMAX_BINDING_CLUSTER_IDS
+   \   000110   E4           CLR     A
+   \   000111   93           MOVC    A,@A+DPTR
+   \   000112   C3           CLR     C
+   \   000113   95..         SUBB    A,?V0 + 0
+   \   000115   5004         JNC     ??bindAddEntry_10
+    331                  {
+    332                    numClusterIds = gMAX_BINDING_CLUSTER_IDS;
+   \   000117   E4           CLR     A
+   \   000118   93           MOVC    A,@A+DPTR
+   \   000119   F5..         MOV     ?V0 + 0,A
+    333                  }
+    334          
+    335                  entry->numClusterIds = numClusterIds;
+   \                     ??bindAddEntry_10:
+   \   00011B   8E82         MOV     DPL,R6
+   \   00011D   8F83         MOV     DPH,R7
+   \   00011F   A3           INC     DPTR
+   \   000120   A3           INC     DPTR
+   \   000121   A3           INC     DPTR
+   \   000122   A3           INC     DPTR
+   \   000123   A3           INC     DPTR
+   \   000124   E5..         MOV     A,?V0 + 0
+   \   000126   F0           MOVX    @DPTR,A
+    336          
+    337                  osal_memcpy( entry->clusterIdList,
+    338                               clusterIds,
+    339                               numClusterIds * sizeof(uint16) );
+   \   000127                ; Setup parameters for call to function osal_memcpy
+   \   000127   85....       MOV     ?V0 + 4,?V0 + 6
+   \   00012A   85....       MOV     ?V0 + 5,?V0 + 7
+   \   00012D   75..00       MOV     ?V0 + 6,#0x0
+   \   000130   78..         MOV     R0,#?V0 + 4
+   \   000132   12....       LCALL   ?PUSH_XSTACK_I_THREE
+   \   000135   E5..         MOV     A,?V0 + 0
+   \   000137   C3           CLR     C
+   \   000138   33           RLC     A
+   \   000139   FC           MOV     R4,A
+   \   00013A   E4           CLR     A
+   \   00013B   33           RLC     A
+   \   00013C   FD           MOV     R5,A
+   \   00013D   EE           MOV     A,R6
+   \   00013E   2406         ADD     A,#0x6
+   \   000140   FA           MOV     R2,A
+   \   000141   EF           MOV     A,R7
+   \   000142   3400         ADDC    A,#0x0
+   \   000144   FB           MOV     R3,A
+   \   000145   12....       LCALL   ??osal_memcpy?relay
+   \   000148   7403         MOV     A,#0x3
+   \   00014A   12....       LCALL   ?DEALLOC_XSTACK8
+    340                }
+    341              }
+    342            }
+    343          
+    344            return entry;
+   \                     ??bindAddEntry_3:
+   \   00014D   EE           MOV     A,R6
+   \   00014E   FA           MOV     R2,A
+   \   00014F   EF           MOV     A,R7
+   \   000150   FB           MOV     R3,A
+   \   000151   7F0C         MOV     R7,#0xc
+   \   000153   02....       LJMP    ?BANKED_LEAVE_XDATA
+    345          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine15:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   FC           MOV     R4,A
+   \   000002   A3           INC     DPTR
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   FD           MOV     R5,A
+   \   000005   EE           MOV     A,R6
+   \   000006   FA           MOV     R2,A
+   \   000007   EF           MOV     A,R7
+   \   000008   FB           MOV     R3,A
+   \   000009   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine7:
+   \   000000   75F00E       MOV     B,#0xe
+   \   000003   A4           MUL     AB
+   \   000004   F8           MOV     R0,A
+   \   000005   A9F0         MOV     R1,B
+   \   000007   74..         MOV     A,#BindingTable & 0xff
+   \   000009   28           ADD     A,R0
+   \   00000A   FE           MOV     R6,A
+   \   00000B   74..         MOV     A,#(BindingTable >> 8) & 0xff
+   \   00000D   39           ADDC    A,R1
+   \   00000E   FF           MOV     R7,A
+   \   00000F   8E82         MOV     DPL,R6
+   \   000011   8F83         MOV     DPH,R7
+   \   000013   E0           MOVX    A,@DPTR
+   \   000014   22           RET
+    346          
+    347          /*********************************************************************
+    348           * @fn      bindRemoveEntry
+    349           *
+    350           * @brief   Removes a binding table entry.
+    351           *
+    352           * @param   pBind - pointer to binding table entry to delete
+    353           *
+    354           * @return  TRUE if Removed, FALSE if not
+    355           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    356          byte bindRemoveEntry( BindingEntry_t *pBind )
+   \                     bindRemoveEntry:
+    357          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    358            osal_memset( pBind, 0xFF, gBIND_REC_SIZE );
+   \   000004                ; Setup parameters for call to function osal_memset
+   \   000004   12....       LCALL   ?Subroutine9 & 0xFFFF
+   \                     ??CrossCallReturnLabel_8:
+   \   000007   79FF         MOV     R1,#-0x1
+   \   000009   12....       LCALL   ??osal_memset?relay
+    359            return ( TRUE );
+   \   00000C   7901         MOV     R1,#0x1
+   \   00000E   02....       LJMP    ??Subroutine27_0 & 0xFFFF
+    360          }
+    361          
+    362          /*********************************************************************
+    363           * @fn      bindIsClusterIDinList()
+    364           *
+    365           * @brief   Is the clusterID in the clusterID list?
+    366           *
+    367           * @param   enter - binding table entry
+    368           * @param   clusterId  - Cluster ID to look for
+    369           *
+    370           * @return  TRUE if found, FALSE if not found
+    371           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    372          byte bindIsClusterIDinList( BindingEntry_t *entry, uint16 clusterId )
+   \                     bindIsClusterIDinList:
+    373          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+    374            uint8 x;
+    375          
+    376            if ( entry != NULL )
+   \   000005   EA           MOV     A,R2
+   \   000006   4B           ORL     A,R3
+   \   000007   6037         JZ      ??bindIsClusterIDinList_0
+    377            {
+    378              for ( x = 0; x < entry->numClusterIds; x++ )
+   \   000009   7E00         MOV     R6,#0x0
+   \   00000B   8001         SJMP    ??bindIsClusterIDinList_1
+   \                     ??bindIsClusterIDinList_2:
+   \   00000D   0E           INC     R6
+   \                     ??bindIsClusterIDinList_1:
+   \   00000E   8A82         MOV     DPL,R2
+   \   000010   8B83         MOV     DPH,R3
+   \   000012   A3           INC     DPTR
+   \   000013   A3           INC     DPTR
+   \   000014   A3           INC     DPTR
+   \   000015   A3           INC     DPTR
+   \   000016   A3           INC     DPTR
+   \   000017   E0           MOVX    A,@DPTR
+   \   000018   F8           MOV     R0,A
+   \   000019   EE           MOV     A,R6
+   \   00001A   C3           CLR     C
+   \   00001B   98           SUBB    A,R0
+   \   00001C   5022         JNC     ??bindIsClusterIDinList_0
+    379              {
+    380                if ( entry->clusterIdList[x] == clusterId )
+   \   00001E   EE           MOV     A,R6
+   \   00001F   C3           CLR     C
+   \   000020   33           RLC     A
+   \   000021   F8           MOV     R0,A
+   \   000022   E4           CLR     A
+   \   000023   33           RLC     A
+   \   000024   F9           MOV     R1,A
+   \   000025   EA           MOV     A,R2
+   \   000026   28           ADD     A,R0
+   \   000027   F582         MOV     DPL,A
+   \   000029   EB           MOV     A,R3
+   \   00002A   39           ADDC    A,R1
+   \   00002B   F583         MOV     DPH,A
+   \   00002D   A3           INC     DPTR
+   \   00002E   A3           INC     DPTR
+   \   00002F   A3           INC     DPTR
+   \   000030   A3           INC     DPTR
+   \   000031   A3           INC     DPTR
+   \   000032   A3           INC     DPTR
+   \   000033   E0           MOVX    A,@DPTR
+   \   000034   6C           XRL     A,R4
+   \   000035   7003         JNZ     ??bindIsClusterIDinList_3
+   \   000037   A3           INC     DPTR
+   \   000038   E0           MOVX    A,@DPTR
+   \   000039   6D           XRL     A,R5
+   \                     ??bindIsClusterIDinList_3:
+   \   00003A   70D1         JNZ     ??bindIsClusterIDinList_2
+    381                {
+    382                  return ( TRUE );
+   \   00003C   7901         MOV     R1,#0x1
+   \   00003E   8002         SJMP    ??bindIsClusterIDinList_4
+    383                }
+    384              }
+    385            }
+    386          
+    387            return ( FALSE );
+   \                     ??bindIsClusterIDinList_0:
+   \   000040   7900         MOV     R1,#0x0
+   \                     ??bindIsClusterIDinList_4:
+   \   000042   02....       LJMP    ?Subroutine2 & 0xFFFF
+    388          }
+    389          
+    390          /*********************************************************************
+    391           * @fn      bindRemoveClusterIdFromList()
+    392           *
+    393           * @brief   Removes a ClusterID from a list of ClusterIDs.
+    394           *
+    395           * @param   enter - binding table entry
+    396           * @param   clusterId  - Cluster ID to look for
+    397           *
+    398           * @return  TRUE if there are at least 1 clusterID left, FALSE if none
+    399           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    400          byte bindRemoveClusterIdFromList( BindingEntry_t *entry, uint16 clusterId )
+   \                     bindRemoveClusterIdFromList:
+    401          {
+   \   000000   74F3         MOV     A,#-0xd
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 13
+   \   000005                ; Auto size: 0
+    402            byte x;
+    403            uint16 *listPtr;
+    404            byte numIds;
+    405          
+    406            if ( entry )
+   \   000005   EA           MOV     A,R2
+   \   000006   4B           ORL     A,R3
+   \   000007   6077         JZ      ??bindRemoveClusterIdFromList_0
+    407            {
+    408              if ( entry->numClusterIds > 0 )
+   \   000009   EA           MOV     A,R2
+   \   00000A   2405         ADD     A,#0x5
+   \   00000C   12....       LCALL   ?Subroutine20 & 0xFFFF
+   \                     ??CrossCallReturnLabel_23:
+   \   00000F   F5..         MOV     ?V0 + 0,A
+   \   000011   606D         JZ      ??bindRemoveClusterIdFromList_0
+    409              {
+    410                listPtr = entry->clusterIdList;
+   \   000013   EA           MOV     A,R2
+   \   000014   2406         ADD     A,#0x6
+   \   000016   08           INC     R0
+   \   000017   EB           MOV     A,R3
+   \   000018   3400         ADDC    A,#0x0
+   \   00001A   F9           MOV     R1,A
+    411                numIds = entry->numClusterIds;
+   \   00001B   85....       MOV     ?V0 + 3,?V0 + 0
+    412          
+    413                // Copy the new list over
+    414                for ( x = 0; x < numIds; x++ )
+   \   00001E   75..00       MOV     ?V0 + 2,#0x0
+   \   000021   800B         SJMP    ??bindRemoveClusterIdFromList_1
+    415                {
+    416                  if ( entry->clusterIdList[x] != clusterId )
+    417                  {
+    418                    *listPtr++ = entry->clusterIdList[x];
+    419                  }
+    420                  else
+    421                  {
+    422                    entry->numClusterIds--;
+   \                     ??bindRemoveClusterIdFromList_2:
+   \   000023   8E82         MOV     DPL,R6
+   \   000025   8F83         MOV     DPH,R7
+   \   000027   E0           MOVX    A,@DPTR
+   \   000028   14           DEC     A
+   \   000029   F0           MOVX    @DPTR,A
+    423                    if ( entry->numClusterIds == 0 )
+   \   00002A   6054         JZ      ??bindRemoveClusterIdFromList_0
+    424                    {
+    425                      break;
+    426                    }
+    427                  }
+   \                     ??bindRemoveClusterIdFromList_3:
+   \   00002C   05..         INC     ?V0 + 2
+   \                     ??bindRemoveClusterIdFromList_1:
+   \   00002E   E5..         MOV     A,?V0 + 2
+   \   000030   C3           CLR     C
+   \   000031   95..         SUBB    A,?V0 + 3
+   \   000033   5040         JNC     ??bindRemoveClusterIdFromList_4
+   \   000035   E5..         MOV     A,?V0 + 2
+   \   000037   C3           CLR     C
+   \   000038   33           RLC     A
+   \   000039   F5..         MOV     ?V0 + 0,A
+   \   00003B   E4           CLR     A
+   \   00003C   33           RLC     A
+   \   00003D   F5..         MOV     ?V0 + 1,A
+   \   00003F   EA           MOV     A,R2
+   \   000040   25..         ADD     A,?V0 + 0
+   \   000042   F582         MOV     DPL,A
+   \   000044   EB           MOV     A,R3
+   \   000045   35..         ADDC    A,?V0 + 1
+   \   000047   F583         MOV     DPH,A
+   \   000049   A3           INC     DPTR
+   \   00004A   A3           INC     DPTR
+   \   00004B   A3           INC     DPTR
+   \   00004C   A3           INC     DPTR
+   \   00004D   A3           INC     DPTR
+   \   00004E   A3           INC     DPTR
+   \   00004F   E0           MOVX    A,@DPTR
+   \   000050   F5..         MOV     ?V0 + 0,A
+   \   000052   A3           INC     DPTR
+   \   000053   E0           MOVX    A,@DPTR
+   \   000054   F5..         MOV     ?V0 + 1,A
+   \   000056   EC           MOV     A,R4
+   \   000057   65..         XRL     A,?V0 + 0
+   \   000059   7003         JNZ     ??bindRemoveClusterIdFromList_5
+   \   00005B   ED           MOV     A,R5
+   \   00005C   65..         XRL     A,?V0 + 1
+   \                     ??bindRemoveClusterIdFromList_5:
+   \   00005E   60C3         JZ      ??bindRemoveClusterIdFromList_2
+   \   000060   8882         MOV     DPL,R0
+   \   000062   8983         MOV     DPH,R1
+   \   000064   E5..         MOV     A,?V0 + 0
+   \   000066   F0           MOVX    @DPTR,A
+   \   000067   A3           INC     DPTR
+   \   000068   E5..         MOV     A,?V0 + 1
+   \   00006A   F0           MOVX    @DPTR,A
+   \   00006B   E8           MOV     A,R0
+   \   00006C   2402         ADD     A,#0x2
+   \   00006E   F8           MOV     R0,A
+   \   00006F   E9           MOV     A,R1
+   \   000070   3400         ADDC    A,#0x0
+   \   000072   F9           MOV     R1,A
+   \   000073   80B7         SJMP    ??bindRemoveClusterIdFromList_3
+    428                }
+    429              }
+    430            }
+   \                     ??bindRemoveClusterIdFromList_4:
+   \   000075   8E82         MOV     DPL,R6
+   \   000077   8F83         MOV     DPH,R7
+   \   000079   E0           MOVX    A,@DPTR
+   \   00007A   6004         JZ      ??bindRemoveClusterIdFromList_0
+    431          
+    432            if ( entry && (entry->numClusterIds > 0) )
+    433            {
+    434              return ( TRUE );
+   \   00007C   7901         MOV     R1,#0x1
+   \   00007E   8002         SJMP    ??bindRemoveClusterIdFromList_6
+    435            }
+    436            else
+    437            {
+    438              return ( FALSE );
+   \                     ??bindRemoveClusterIdFromList_0:
+   \   000080   7900         MOV     R1,#0x0
+    439            }
+   \                     ??bindRemoveClusterIdFromList_6:
+   \   000082                REQUIRE ?Subroutine3
+   \   000082                ; // Fall through to label ?Subroutine3
+    440          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine3:
+   \   000000   7F05         MOV     R7,#0x5
+   \   000002   02....       LJMP    ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine20:
+   \   000000   F8           MOV     R0,A
+   \   000001   EB           MOV     A,R3
+   \   000002   3400         ADDC    A,#0x0
+   \   000004   F9           MOV     R1,A
+   \   000005   E8           MOV     A,R0
+   \   000006   FE           MOV     R6,A
+   \   000007   E9           MOV     A,R1
+   \   000008   FF           MOV     R7,A
+   \   000009   8E82         MOV     DPL,R6
+   \   00000B   8F83         MOV     DPH,R7
+   \   00000D   E0           MOVX    A,@DPTR
+   \   00000E   22           RET
+    441          
+    442          /*********************************************************************
+    443           * @fn      bindAddClusterIdToList()
+    444           *
+    445           * @brief   Adds a ClusterID to a list of ClusterIDs.
+    446           *
+    447           * @param   enter - binding table entry
+    448           * @param   clusterId  - Cluster ID to Add
+    449           *
+    450           * @return  TRUE if Added, FALSE if not
+    451           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    452          byte bindAddClusterIdToList( BindingEntry_t *entry, uint16 clusterId )
+   \                     bindAddClusterIdToList:
+    453          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+    454            if ( entry && entry->numClusterIds < gMAX_BINDING_CLUSTER_IDS )
+   \   000005   EA           MOV     A,R2
+   \   000006   4B           ORL     A,R3
+   \   000007   6039         JZ      ??bindAddClusterIdToList_0
+   \   000009   EA           MOV     A,R2
+   \   00000A   2405         ADD     A,#0x5
+   \   00000C   F8           MOV     R0,A
+   \   00000D   EB           MOV     A,R3
+   \   00000E   12....       LCALL   ?Subroutine17 & 0xFFFF
+   \                     ??CrossCallReturnLabel_19:
+   \   000011   FF           MOV     R7,A
+   \   000012   90....       MOV     DPTR,#gMAX_BINDING_CLUSTER_IDS
+   \   000015   E4           CLR     A
+   \   000016   93           MOVC    A,@A+DPTR
+   \   000017   FE           MOV     R6,A
+   \   000018   EF           MOV     A,R7
+   \   000019   C3           CLR     C
+   \   00001A   9E           SUBB    A,R6
+   \   00001B   5025         JNC     ??bindAddClusterIdToList_0
+    455            {
+    456              // Add the new one
+    457              entry->clusterIdList[entry->numClusterIds] = clusterId;
+   \   00001D   EF           MOV     A,R7
+   \   00001E   C3           CLR     C
+   \   00001F   33           RLC     A
+   \   000020   FE           MOV     R6,A
+   \   000021   E4           CLR     A
+   \   000022   33           RLC     A
+   \   000023   FF           MOV     R7,A
+   \   000024   EA           MOV     A,R2
+   \   000025   2E           ADD     A,R6
+   \   000026   F582         MOV     DPL,A
+   \   000028   EB           MOV     A,R3
+   \   000029   3F           ADDC    A,R7
+   \   00002A   F583         MOV     DPH,A
+   \   00002C   A3           INC     DPTR
+   \   00002D   A3           INC     DPTR
+   \   00002E   A3           INC     DPTR
+   \   00002F   A3           INC     DPTR
+   \   000030   A3           INC     DPTR
+   \   000031   A3           INC     DPTR
+   \   000032   EC           MOV     A,R4
+   \   000033   F0           MOVX    @DPTR,A
+   \   000034   A3           INC     DPTR
+   \   000035   ED           MOV     A,R5
+   \   000036   F0           MOVX    @DPTR,A
+    458              entry->numClusterIds++;
+   \   000037   8882         MOV     DPL,R0
+   \   000039   8983         MOV     DPH,R1
+   \   00003B   E0           MOVX    A,@DPTR
+   \   00003C   04           INC     A
+   \   00003D   F0           MOVX    @DPTR,A
+    459              return ( TRUE );
+   \   00003E   7901         MOV     R1,#0x1
+   \   000040   8002         SJMP    ??bindAddClusterIdToList_1
+    460            }
+    461            return ( FALSE );
+   \                     ??bindAddClusterIdToList_0:
+   \   000042   7900         MOV     R1,#0x0
+   \                     ??bindAddClusterIdToList_1:
+   \   000044                REQUIRE ?Subroutine2
+   \   000044                ; // Fall through to label ?Subroutine2
+    462          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine17:
+   \   000000   3400         ADDC    A,#0x0
+   \   000002   F9           MOV     R1,A
+   \   000003   8882         MOV     DPL,R0
+   \   000005   8983         MOV     DPH,R1
+   \   000007   E0           MOVX    A,@DPTR
+   \   000008   22           RET
+    463          
+    464          /*********************************************************************
+    465           * @fn      bindFindExisting
+    466           *
+    467           * @brief   Finds an existing src/epint to dst/epint bind record
+    468           *
+    469           * @param   srcAddr - Source address
+    470           * @param   srcEpInt - Source Endpoint/Interface
+    471           * @param   dstAddr - Destination address
+    472           * @param   dstEpInt - Destination Endpoint/Interface
+    473           *
+    474           * @return  pointer to existing entry or NULL
+    475           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    476          BindingEntry_t *bindFindExisting( byte srcEpInt,
+   \                     bindFindExisting:
+    477                                            zAddrType_t *dstAddr, byte dstEpInt )
+    478          {
+   \   000000   74F3         MOV     A,#-0xd
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 13
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV     ?V0 + 0,R1
+   \   000007   8C..         MOV     ?V0 + 1,R4
+    479            uint16 dstIdx;
+    480            bindTableIndex_t x;
+    481          
+    482            // Find the records in the assoc list
+    483            if ( dstAddr->addrMode == AddrGroup )
+   \   000009   12....       LCALL   ?Subroutine16 & 0xFFFF
+   \                     ??CrossCallReturnLabel_17:
+   \   00000C   700B         JNZ     ??bindFindExisting_0
+    484            {
+    485              dstIdx = dstAddr->addr.shortAddr;
+   \   00000E   8A82         MOV     DPL,R2
+   \   000010   8B83         MOV     DPH,R3
+   \   000012   E0           MOVX    A,@DPTR
+   \   000013   FC           MOV     R4,A
+   \   000014   A3           INC     DPTR
+   \   000015   E0           MOVX    A,@DPTR
+   \   000016   FD           MOV     R5,A
+   \   000017   800B         SJMP    ??bindFindExisting_1
+    486            }
+    487            else
+    488            {
+    489              dstIdx = bindingAddrMgsHelperFind( dstAddr );
+   \                     ??bindFindExisting_0:
+   \   000019                ; Setup parameters for call to function bindingAddrMgsHelperFind
+   \   000019   12....       LCALL   ??bindingAddrMgsHelperFind?relay
+   \   00001C   8A..         MOV     ?V0 + 2,R2
+   \   00001E   8B..         MOV     ?V0 + 3,R3
+   \   000020   AC..         MOV     R4,?V0 + 2
+   \   000022   AD..         MOV     R5,?V0 + 3
+    490            }
+    491          
+    492            if ( dstIdx == INVALID_NODE_ADDR )
+   \                     ??bindFindExisting_1:
+   \   000024   74FE         MOV     A,#-0x2
+   \   000026   6C           XRL     A,R4
+   \   000027   7003         JNZ     ??bindFindExisting_2
+   \   000029   74FF         MOV     A,#-0x1
+   \   00002B   6D           XRL     A,R5
+   \                     ??bindFindExisting_2:
+   \   00002C   605C         JZ      ??bindFindExisting_3
+    493            {
+    494              return ( (BindingEntry_t *)NULL );
+    495            }
+    496          
+    497            // Start at the beginning
+    498            for ( x = 0; x < gNWK_MAX_BINDING_ENTRIES; x++ )
+   \   00002E   75..00       MOV     ?V0 + 2,#0x0
+   \   000031   8015         SJMP    ??bindFindExisting_4
+    499            {
+    500              if ( (BindingTable[x].srcEP == srcEpInt) )
+   \                     ??bindFindExisting_5:
+   \   000033   7401         MOV     A,#0x1
+   \   000035   65..         XRL     A,?V0 + 3
+   \   000037   700D         JNZ     ??bindFindExisting_6
+   \   000039   8882         MOV     DPL,R0
+   \   00003B   8983         MOV     DPH,R1
+   \   00003D   E0           MOVX    A,@DPTR
+   \   00003E   6C           XRL     A,R4
+   \   00003F   7003         JNZ     ??bindFindExisting_7
+   \   000041   A3           INC     DPTR
+   \   000042   E0           MOVX    A,@DPTR
+   \   000043   6D           XRL     A,R5
+   \                     ??bindFindExisting_7:
+   \   000044   6048         JZ      ??bindFindExisting_8
+   \                     ??bindFindExisting_6:
+   \   000046   05..         INC     ?V0 + 2
+   \                     ??bindFindExisting_4:
+   \   000048   12....       LCALL   ?Subroutine10 & 0xFFFF
+   \                     ??CrossCallReturnLabel_10:
+   \   00004B   503D         JNC     ??bindFindExisting_3
+   \   00004D   12....       LCALL   ?Subroutine8 & 0xFFFF
+   \                     ??CrossCallReturnLabel_5:
+   \   000050   E0           MOVX    A,@DPTR
+   \   000051   65..         XRL     A,?V0 + 0
+   \   000053   70F1         JNZ     ??bindFindExisting_6
+   \   000055   A3           INC     DPTR
+   \   000056   E0           MOVX    A,@DPTR
+   \   000057   F5..         MOV     ?V0 + 3,A
+   \   000059   EA           MOV     A,R2
+   \   00005A   2402         ADD     A,#0x2
+   \   00005C   F8           MOV     R0,A
+   \   00005D   EB           MOV     A,R3
+   \   00005E   3400         ADDC    A,#0x0
+   \   000060   F9           MOV     R1,A
+   \   000061   8E82         MOV     DPL,R6
+   \   000063   8F83         MOV     DPH,R7
+   \   000065   E0           MOVX    A,@DPTR
+   \   000066   6401         XRL     A,#0x1
+   \   000068   60C9         JZ      ??bindFindExisting_5
+   \   00006A   E5..         MOV     A,?V0 + 3
+   \   00006C   70D8         JNZ     ??bindFindExisting_6
+   \   00006E   8882         MOV     DPL,R0
+   \   000070   8983         MOV     DPH,R1
+   \   000072   E0           MOVX    A,@DPTR
+   \   000073   6C           XRL     A,R4
+   \   000074   7003         JNZ     ??bindFindExisting_9
+   \   000076   A3           INC     DPTR
+   \   000077   E0           MOVX    A,@DPTR
+   \   000078   6D           XRL     A,R5
+   \                     ??bindFindExisting_9:
+   \   000079   70CB         JNZ     ??bindFindExisting_6
+   \   00007B   8A82         MOV     DPL,R2
+   \   00007D   8B83         MOV     DPH,R3
+   \   00007F   A3           INC     DPTR
+   \   000080   A3           INC     DPTR
+   \   000081   A3           INC     DPTR
+   \   000082   A3           INC     DPTR
+   \   000083   E0           MOVX    A,@DPTR
+   \   000084   65..         XRL     A,?V0 + 1
+   \   000086   70BE         JNZ     ??bindFindExisting_6
+    501              {
+    502                if ( ((dstAddr->addrMode == AddrGroup)
+    503                        && (BindingTable[x].dstGroupMode == DSTGROUPMODE_GROUP)
+    504                        && (dstIdx == BindingTable[x].dstIdx))
+    505                   || ((dstAddr->addrMode != AddrGroup)
+    506                       && (BindingTable[x].dstGroupMode == DSTGROUPMODE_ADDR)
+    507                       && (dstIdx == BindingTable[x].dstIdx) && (BindingTable[x].dstEP == dstEpInt)) )
+    508                {
+    509                  return ( &BindingTable[x] );
+   \   000088   8004         SJMP    ??bindFindExisting_8
+    510                }
+    511              }
+    512            }
+    513          
+    514            return ( (BindingEntry_t *)NULL );
+   \                     ??bindFindExisting_3:
+   \   00008A   7A00         MOV     R2,#0x0
+   \   00008C   7B00         MOV     R3,#0x0
+   \                     ??bindFindExisting_8:
+   \   00008E   02....       LJMP    ?Subroutine3 & 0xFFFF
+    515          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine10:
+   \   000000   90....       MOV     DPTR,#gNWK_MAX_BINDING_ENTRIES
+   \   000003   E4           CLR     A
+   \   000004   93           MOVC    A,@A+DPTR
+   \   000005   F8           MOV     R0,A
+   \   000006   E5..         MOV     A,?V0 + 2
+   \   000008   C3           CLR     C
+   \   000009   98           SUBB    A,R0
+   \   00000A   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine8:
+   \   000000   E5..         MOV     A,?V0 + 2
+   \   000002   75F00E       MOV     B,#0xe
+   \   000005   A4           MUL     AB
+   \   000006   F8           MOV     R0,A
+   \   000007   A9F0         MOV     R1,B
+   \   000009   74..         MOV     A,#BindingTable & 0xff
+   \   00000B   28           ADD     A,R0
+   \   00000C   FA           MOV     R2,A
+   \   00000D   74..         MOV     A,#(BindingTable >> 8) & 0xff
+   \   00000F   39           ADDC    A,R1
+   \   000010   FB           MOV     R3,A
+   \   000011   8A82         MOV     DPL,R2
+   \   000013   8B83         MOV     DPH,R3
+   \   000015   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine16:
+   \   000000   EA           MOV     A,R2
+   \   000001   2408         ADD     A,#0x8
+   \   000003   12....       LCALL   ?Subroutine20 & 0xFFFF
+   \                     ??CrossCallReturnLabel_24:
+   \   000006   6401         XRL     A,#0x1
+   \   000008   22           RET
+    516          
+    517          /*********************************************************************
+    518           * @fn       bindRemoveDev()
+    519           *
+    520           * @brief
+    521           *
+    522           *   Remove all bind(s) entries associated to a device address (destination).
+    523           *   Updates binding table.
+    524           *
+    525           * @param   Addr - address of device to be removed from Binding Table
+    526           *
+    527           * @return  none
+    528           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    529          void bindRemoveDev( zAddrType_t *Addr )
+   \                     bindRemoveDev:
+    530          {
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 0
+    531            uint16 idx;
+    532            bindTableIndex_t x;
+    533          
+    534            if ( Addr->addrMode == AddrGroup )
+   \   000005   EA           MOV     A,R2
+   \   000006   2408         ADD     A,#0x8
+   \   000008   F8           MOV     R0,A
+   \   000009   EB           MOV     A,R3
+   \   00000A   3400         ADDC    A,#0x0
+   \   00000C   F9           MOV     R1,A
+   \   00000D   88..         MOV     ?V0 + 0,R0
+   \   00000F   89..         MOV     ?V0 + 1,R1
+   \   000011   8882         MOV     DPL,R0
+   \   000013   F583         MOV     DPH,A
+   \   000015   E0           MOVX    A,@DPTR
+   \   000016   6401         XRL     A,#0x1
+   \   000018   700B         JNZ     ??bindRemoveDev_0
+    535            {
+    536              idx = Addr->addr.shortAddr;
+   \   00001A   8A82         MOV     DPL,R2
+   \   00001C   8B83         MOV     DPH,R3
+   \   00001E   E0           MOVX    A,@DPTR
+   \   00001F   FE           MOV     R6,A
+   \   000020   A3           INC     DPTR
+   \   000021   E0           MOVX    A,@DPTR
+   \   000022   FF           MOV     R7,A
+   \   000023   800B         SJMP    ??bindRemoveDev_1
+    537            }
+    538            else
+    539            {
+    540              idx = bindingAddrMgsHelperFind( Addr );
+   \                     ??bindRemoveDev_0:
+   \   000025                ; Setup parameters for call to function bindingAddrMgsHelperFind
+   \   000025   12....       LCALL   ??bindingAddrMgsHelperFind?relay
+   \   000028   8A..         MOV     ?V0 + 2,R2
+   \   00002A   8B..         MOV     ?V0 + 3,R3
+   \   00002C   AE..         MOV     R6,?V0 + 2
+   \   00002E   AF..         MOV     R7,?V0 + 3
+    541            }
+    542          
+    543            if ( idx == INVALID_NODE_ADDR )
+   \                     ??bindRemoveDev_1:
+   \   000030   74FE         MOV     A,#-0x2
+   \   000032   6E           XRL     A,R6
+   \   000033   7003         JNZ     ??bindRemoveDev_2
+   \   000035   74FF         MOV     A,#-0x1
+   \   000037   6F           XRL     A,R7
+   \                     ??bindRemoveDev_2:
+   \   000038   6053         JZ      ??bindRemoveDev_3
+    544            {
+    545              return;
+    546            }
+    547          
+    548            // Removes all the entries that match the destination Address/Index
+    549            for ( x = 0; x < gNWK_MAX_BINDING_ENTRIES; x++ )
+   \   00003A   75..00       MOV     ?V0 + 2,#0x0
+   \   00003D   8015         SJMP    ??bindRemoveDev_4
+    550            {
+    551              if ( ( (Addr->addrMode == AddrGroup) && (BindingTable[x].dstGroupMode == DSTGROUPMODE_GROUP)
+    552                                                   && (BindingTable[x].dstIdx == idx) ) ||
+    553                   ( (Addr->addrMode != AddrGroup) && (BindingTable[x].dstGroupMode == DSTGROUPMODE_ADDR)
+    554                                                   && (BindingTable[x].dstIdx == idx) ) )
+   \                     ??bindRemoveDev_5:
+   \   00003F   EC           MOV     A,R4
+   \   000040   7010         JNZ     ??bindRemoveDev_6
+   \   000042   8882         MOV     DPL,R0
+   \   000044   8983         MOV     DPH,R1
+   \   000046   E0           MOVX    A,@DPTR
+   \   000047   6E           XRL     A,R6
+   \   000048   7003         JNZ     ??bindRemoveDev_7
+   \   00004A   A3           INC     DPTR
+   \   00004B   E0           MOVX    A,@DPTR
+   \   00004C   6F           XRL     A,R7
+   \                     ??bindRemoveDev_7:
+   \   00004D   7003         JNZ     ??bindRemoveDev_6
+    555              {
+    556                bindRemoveEntry( &BindingTable[x] );
+   \                     ??bindRemoveDev_8:
+   \   00004F                ; Setup parameters for call to function bindRemoveEntry
+   \   00004F   12....       LCALL   ??bindRemoveEntry?relay
+    557              }
+   \                     ??bindRemoveDev_6:
+   \   000052   05..         INC     ?V0 + 2
+   \                     ??bindRemoveDev_4:
+   \   000054   12....       LCALL   ?Subroutine10 & 0xFFFF
+   \                     ??CrossCallReturnLabel_11:
+   \   000057   502D         JNC     ??bindRemoveDev_9
+   \   000059   12....       LCALL   ?Subroutine8 & 0xFFFF
+    558            }
+   \                     ??CrossCallReturnLabel_6:
+   \   00005C   A3           INC     DPTR
+   \   00005D   E0           MOVX    A,@DPTR
+   \   00005E   FC           MOV     R4,A
+   \   00005F   EA           MOV     A,R2
+   \   000060   2402         ADD     A,#0x2
+   \   000062   F8           MOV     R0,A
+   \   000063   EB           MOV     A,R3
+   \   000064   3400         ADDC    A,#0x0
+   \   000066   F9           MOV     R1,A
+   \   000067   85..82       MOV     DPL,?V0 + 0
+   \   00006A   85..83       MOV     DPH,?V0 + 1
+   \   00006D   E0           MOVX    A,@DPTR
+   \   00006E   6401         XRL     A,#0x1
+   \   000070   70CD         JNZ     ??bindRemoveDev_5
+   \   000072   7401         MOV     A,#0x1
+   \   000074   6C           XRL     A,R4
+   \   000075   70DB         JNZ     ??bindRemoveDev_6
+   \   000077   8882         MOV     DPL,R0
+   \   000079   8983         MOV     DPH,R1
+   \   00007B   E0           MOVX    A,@DPTR
+   \   00007C   6E           XRL     A,R6
+   \   00007D   7003         JNZ     ??bindRemoveDev_10
+   \   00007F   A3           INC     DPTR
+   \   000080   E0           MOVX    A,@DPTR
+   \   000081   6F           XRL     A,R7
+   \                     ??bindRemoveDev_10:
+   \   000082   60CB         JZ      ??bindRemoveDev_8
+   \   000084   80CC         SJMP    ??bindRemoveDev_6
+    559          
+    560            // If this is the last Bind Entry for that idx then clear BINDING
+    561            // user from Address Manager
+    562            bindAddressClear( idx );
+   \                     ??bindRemoveDev_9:
+   \   000086                ; Setup parameters for call to function bindAddressClear
+   \   000086   EE           MOV     A,R6
+   \   000087   FA           MOV     R2,A
+   \   000088   EF           MOV     A,R7
+   \   000089   FB           MOV     R3,A
+   \   00008A   12....       LCALL   ??bindAddressClear?relay
+    563          }
+   \                     ??bindRemoveDev_3:
+   \   00008D   80..         SJMP    ??Subroutine22_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine22_0:
+   \   000000   7F04         MOV     R7,#0x4
+   \   000002   02....       LJMP    ?BANKED_LEAVE_XDATA
+    564          
+    565          /*********************************************************************
+    566           * @fn       bindRemoveSrcDev()
+    567           *
+    568           * @brief
+    569           *
+    570           *   Remove binds(s) associated to device address (source).
+    571           *   Updates binding table.
+    572           *
+    573           * @param   srcAddr - address of device
+    574           * @param   ep - endpoint to remove, 0xFF is all endpoints
+    575           *
+    576           * @return  none
+    577           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    578          void bindRemoveSrcDev( uint8 ep )
+   \                     bindRemoveSrcDev:
+    579          {
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV     ?V0 + 1,R1
+    580            bindTableIndex_t x;
+    581          
+    582            for ( x = 0; x < gNWK_MAX_BINDING_ENTRIES; x++ )
+   \   000007   75..00       MOV     ?V0 + 0,#0x0
+   \   00000A   8037         SJMP    ??bindRemoveSrcDev_0
+    583            {
+    584              if ( (ep == 0xFF) || (ep == BindingTable[x].srcEP) )
+   \                     ??bindRemoveSrcDev_1:
+   \   00000C   E5..         MOV     A,?V0 + 0
+   \   00000E   75F00E       MOV     B,#0xe
+   \   000011   A4           MUL     AB
+   \   000012   F8           MOV     R0,A
+   \   000013   A9F0         MOV     R1,B
+   \   000015   74..         MOV     A,#BindingTable & 0xff
+   \   000017   28           ADD     A,R0
+   \   000018   FA           MOV     R2,A
+   \   000019   74..         MOV     A,#(BindingTable >> 8) & 0xff
+   \   00001B   39           ADDC    A,R1
+   \   00001C   FB           MOV     R3,A
+   \   00001D   74FF         MOV     A,#-0x1
+   \   00001F   65..         XRL     A,?V0 + 1
+   \   000021   6009         JZ      ??bindRemoveSrcDev_2
+   \   000023   8A82         MOV     DPL,R2
+   \   000025   8B83         MOV     DPH,R3
+   \   000027   E0           MOVX    A,@DPTR
+   \   000028   65..         XRL     A,?V0 + 1
+   \   00002A   7015         JNZ     ??bindRemoveSrcDev_3
+    585              {
+    586                uint16 idx = BindingTable[x].dstIdx;
+   \                     ??bindRemoveSrcDev_2:
+   \   00002C   8A82         MOV     DPL,R2
+   \   00002E   8B83         MOV     DPH,R3
+   \   000030   A3           INC     DPTR
+   \   000031   A3           INC     DPTR
+   \   000032   E0           MOVX    A,@DPTR
+   \   000033   FE           MOV     R6,A
+   \   000034   A3           INC     DPTR
+   \   000035   E0           MOVX    A,@DPTR
+   \   000036   FF           MOV     R7,A
+    587          
+    588                bindRemoveEntry( &BindingTable[x] );
+   \   000037                ; Setup parameters for call to function bindRemoveEntry
+   \   000037   12....       LCALL   ??bindRemoveEntry?relay
+    589          
+    590                // If this is the last Bind Entry for that idx then clear BINDING
+    591                // user from Address Manager
+    592                bindAddressClear( idx );
+   \   00003A                ; Setup parameters for call to function bindAddressClear
+   \   00003A   EE           MOV     A,R6
+   \   00003B   FA           MOV     R2,A
+   \   00003C   EF           MOV     A,R7
+   \   00003D   FB           MOV     R3,A
+   \   00003E   12....       LCALL   ??bindAddressClear?relay
+    593              }
+    594            }
+   \                     ??bindRemoveSrcDev_3:
+   \   000041   05..         INC     ?V0 + 0
+   \                     ??bindRemoveSrcDev_0:
+   \   000043   90....       MOV     DPTR,#gNWK_MAX_BINDING_ENTRIES
+   \   000046   E4           CLR     A
+   \   000047   93           MOVC    A,@A+DPTR
+   \   000048   F8           MOV     R0,A
+   \   000049   E5..         MOV     A,?V0 + 0
+   \   00004B   C3           CLR     C
+   \   00004C   98           SUBB    A,R0
+   \   00004D   40BD         JC      ??bindRemoveSrcDev_1
+    595          }
+   \   00004F   02....       LJMP    ??Subroutine21_0 & 0xFFFF
+    596          
+    597          /*********************************************************************
+    598           * @fn          bindNumBoundTo
+    599           *
+    600           * @brief       Calculate the number items this device is bound to.
+    601           *              When srcMode is set to TRUE, discard what value devAddr
+    602           *              has, it returns number count bound to the local dev.
+    603           *
+    604           * @param       devAddr - device Address
+    605           * @param       devEP - endpoint
+    606           * @param       srcMode - TRUE - assume devHandle is a source address
+    607           *                        FALSE - destination address
+    608           *
+    609           * @return      status
+    610           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    611          byte bindNumBoundTo( zAddrType_t *devAddr, byte devEpInt, byte srcMode )
+   \                     bindNumBoundTo:
+    612          {
+   \   000000   74F2         MOV     A,#-0xe
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 14
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV     ?V0 + 1,R1
+   \   000007   8C..         MOV     ?V0 + 2,R4
+    613            BindingEntry_t *pBind;
+    614            uint16 idx;
+    615            byte   num;
+    616            bindTableIndex_t x;
+    617          
+    618            // Init
+    619            num = 0;
+   \   000009   75..00       MOV     ?V0 + 0,#0x0
+    620          
+    621            if ( devAddr->addrMode == AddrGroup )
+   \   00000C   12....       LCALL   ?Subroutine16 & 0xFFFF
+   \                     ??CrossCallReturnLabel_18:
+   \   00000F   700B         JNZ     ??bindNumBoundTo_0
+    622            {
+    623              idx = devAddr->addr.shortAddr;
+   \   000011   8A82         MOV     DPL,R2
+   \   000013   8B83         MOV     DPH,R3
+   \   000015   E0           MOVX    A,@DPTR
+   \   000016   FA           MOV     R2,A
+   \   000017   A3           INC     DPTR
+   \   000018   E0           MOVX    A,@DPTR
+   \   000019   FB           MOV     R3,A
+   \   00001A   8003         SJMP    ??bindNumBoundTo_1
+    624            }
+    625            else
+    626            {
+    627              idx = bindingAddrMgsHelperFind( devAddr );
+   \                     ??bindNumBoundTo_0:
+   \   00001C                ; Setup parameters for call to function bindingAddrMgsHelperFind
+   \   00001C   12....       LCALL   ??bindingAddrMgsHelperFind?relay
+    628            }
+    629          
+    630            for ( x = 0; x < gNWK_MAX_BINDING_ENTRIES; x++ )
+   \                     ??bindNumBoundTo_1:
+   \   00001F   7D00         MOV     R5,#0x0
+   \   000021   8022         SJMP    ??bindNumBoundTo_2
+    631            {
+    632              pBind = &BindingTable[x];
+    633              if ( srcMode )
+    634              {
+    635                if ( pBind->srcEP == devEpInt )
+    636                {
+    637                  num++;
+    638                }
+    639              }
+    640              else
+    641              {
+    642                if ( ((devAddr->addrMode == AddrGroup)
+    643                        && (pBind->dstGroupMode == DSTGROUPMODE_GROUP) && (pBind->dstIdx == idx))
+    644                    || ((devAddr->addrMode != AddrGroup) && (pBind->dstGroupMode == DSTGROUPMODE_ADDR)
+    645                                          && (pBind->dstIdx == idx) && (pBind->dstEP == devEpInt)) )
+   \                     ??bindNumBoundTo_3:
+   \   000023   EC           MOV     A,R4
+   \   000024   701E         JNZ     ??bindNumBoundTo_4
+   \   000026   8882         MOV     DPL,R0
+   \   000028   8983         MOV     DPH,R1
+   \   00002A   A3           INC     DPTR
+   \   00002B   A3           INC     DPTR
+   \   00002C   E0           MOVX    A,@DPTR
+   \   00002D   6A           XRL     A,R2
+   \   00002E   7003         JNZ     ??bindNumBoundTo_5
+   \   000030   A3           INC     DPTR
+   \   000031   E0           MOVX    A,@DPTR
+   \   000032   6B           XRL     A,R3
+   \                     ??bindNumBoundTo_5:
+   \   000033   700F         JNZ     ??bindNumBoundTo_4
+   \   000035   8882         MOV     DPL,R0
+   \   000037   8983         MOV     DPH,R1
+   \   000039   A3           INC     DPTR
+   \   00003A   A3           INC     DPTR
+   \   00003B   A3           INC     DPTR
+   \   00003C   A3           INC     DPTR
+   \   00003D   E0           MOVX    A,@DPTR
+   \   00003E   65..         XRL     A,?V0 + 1
+   \   000040   7002         JNZ     ??bindNumBoundTo_4
+    646                {
+    647                  num++;
+   \                     ??bindNumBoundTo_6:
+   \   000042   05..         INC     ?V0 + 0
+    648                }
+   \                     ??bindNumBoundTo_4:
+   \   000044   0D           INC     R5
+   \                     ??bindNumBoundTo_2:
+   \   000045   90....       MOV     DPTR,#gNWK_MAX_BINDING_ENTRIES
+   \   000048   E4           CLR     A
+   \   000049   93           MOVC    A,@A+DPTR
+   \   00004A   F8           MOV     R0,A
+   \   00004B   ED           MOV     A,R5
+   \   00004C   C3           CLR     C
+   \   00004D   98           SUBB    A,R0
+   \   00004E   5034         JNC     ??bindNumBoundTo_7
+   \   000050   12....       LCALL   ?Subroutine11 & 0xFFFF
+   \                     ??CrossCallReturnLabel_26:
+   \   000053   E5..         MOV     A,?V0 + 2
+   \   000055   8882         MOV     DPL,R0
+   \   000057   8983         MOV     DPH,R1
+   \   000059   6007         JZ      ??bindNumBoundTo_8
+   \   00005B   E0           MOVX    A,@DPTR
+   \   00005C   65..         XRL     A,?V0 + 1
+   \   00005E   70E4         JNZ     ??bindNumBoundTo_4
+   \   000060   80E0         SJMP    ??bindNumBoundTo_6
+   \                     ??bindNumBoundTo_8:
+   \   000062   A3           INC     DPTR
+   \   000063   E0           MOVX    A,@DPTR
+   \   000064   FC           MOV     R4,A
+   \   000065   8E82         MOV     DPL,R6
+   \   000067   8F83         MOV     DPH,R7
+   \   000069   E0           MOVX    A,@DPTR
+   \   00006A   6401         XRL     A,#0x1
+   \   00006C   70B5         JNZ     ??bindNumBoundTo_3
+   \   00006E   7401         MOV     A,#0x1
+   \   000070   6C           XRL     A,R4
+   \   000071   70D1         JNZ     ??bindNumBoundTo_4
+   \   000073   8882         MOV     DPL,R0
+   \   000075   8983         MOV     DPH,R1
+   \   000077   A3           INC     DPTR
+   \   000078   A3           INC     DPTR
+   \   000079   E0           MOVX    A,@DPTR
+   \   00007A   6A           XRL     A,R2
+   \   00007B   7003         JNZ     ??bindNumBoundTo_9
+   \   00007D   A3           INC     DPTR
+   \   00007E   E0           MOVX    A,@DPTR
+   \   00007F   6B           XRL     A,R3
+   \                     ??bindNumBoundTo_9:
+   \   000080   60C0         JZ      ??bindNumBoundTo_6
+   \   000082   80C0         SJMP    ??bindNumBoundTo_4
+    649              }
+    650            }
+    651          
+    652            return num;
+   \                     ??bindNumBoundTo_7:
+   \   000084   A9..         MOV     R1,?V0 + 0
+   \   000086                REQUIRE ?Subroutine5
+   \   000086                ; // Fall through to label ?Subroutine5
+    653          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine5:
+   \   000000   7F06         MOV     R7,#0x6
+   \   000002   02....       LJMP    ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine11:
+   \   000000   ED           MOV     A,R5
+   \   000001                REQUIRE ??Subroutine23_0
+   \   000001                ; // Fall through to label ??Subroutine23_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine23_0:
+   \   000000   75F00E       MOV     B,#0xe
+   \   000003   A4           MUL     AB
+   \   000004   F8           MOV     R0,A
+   \   000005   A9F0         MOV     R1,B
+   \   000007   74..         MOV     A,#BindingTable & 0xff
+   \   000009   28           ADD     A,R0
+   \   00000A   F8           MOV     R0,A
+   \   00000B   74..         MOV     A,#(BindingTable >> 8) & 0xff
+   \   00000D   39           ADDC    A,R1
+   \   00000E   F9           MOV     R1,A
+   \   00000F   22           RET
+    654          
+    655          /*********************************************************************
+    656           * @fn          bindNumReflections
+    657           *
+    658           * @brief       Counts the number of reflections needed for a
+    659           *              endpoint and cluster ID combo.
+    660           *
+    661           * @param       ep - source endpoint
+    662           * @param       clusterID - matching clusterID
+    663           *
+    664           * @return      number of reflections needed.
+    665           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    666          uint16 bindNumReflections( uint8 ep, uint16 clusterID )
+   \                     bindNumReflections:
+    667          {
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV     ?V0 + 3,R1
+   \   000007   8A..         MOV     ?V0 + 0,R2
+   \   000009   8B..         MOV     ?V0 + 1,R3
+    668            bindTableIndex_t x;
+    669            BindingEntry_t *pBind;
+    670            uint16 cnt = 0;
+   \   00000B   7E00         MOV     R6,#0x0
+   \   00000D   7F00         MOV     R7,#0x0
+    671            uint8 bindEP;
+    672          
+    673            for ( x = 0; x < gNWK_MAX_BINDING_ENTRIES; x++ )
+   \   00000F   8E..         MOV     ?V0 + 2,R6
+   \   000011   8021         SJMP    ??bindNumReflections_0
+    674            {
+    675              pBind = &BindingTable[x];
+   \                     ??bindNumReflections_1:
+   \   000013   E5..         MOV     A,?V0 + 2
+   \   000015   12....       LCALL   ?Subroutine18 & 0xFFFF
+    676              bindEP = pBind->srcEP;
+    677          
+    678              if ( (bindEP == ep) && (bindIsClusterIDinList( pBind, clusterID )) )
+   \                     ??CrossCallReturnLabel_21:
+   \   000018   65..         XRL     A,?V0 + 3
+   \   00001A   7016         JNZ     ??bindNumReflections_2
+   \   00001C                ; Setup parameters for call to function bindIsClusterIDinList
+   \   00001C   AC..         MOV     R4,?V0 + 0
+   \   00001E   AD..         MOV     R5,?V0 + 1
+   \   000020   AA82         MOV     R2,DPL
+   \   000022   AB83         MOV     R3,DPH
+   \   000024   12....       LCALL   ??bindIsClusterIDinList?relay
+   \   000027   E9           MOV     A,R1
+   \   000028   6008         JZ      ??bindNumReflections_2
+    679              {
+    680                cnt++;
+   \   00002A   EE           MOV     A,R6
+   \   00002B   2401         ADD     A,#0x1
+   \   00002D   0E           INC     R6
+   \   00002E   EF           MOV     A,R7
+   \   00002F   3400         ADDC    A,#0x0
+   \   000031   FF           MOV     R7,A
+    681              }
+    682            }
+   \                     ??bindNumReflections_2:
+   \   000032   05..         INC     ?V0 + 2
+   \                     ??bindNumReflections_0:
+   \   000034   12....       LCALL   ?Subroutine10 & 0xFFFF
+   \                     ??CrossCallReturnLabel_12:
+   \   000037   40DA         JC      ??bindNumReflections_1
+    683          
+    684            return ( cnt );
+   \   000039   EE           MOV     A,R6
+   \   00003A   FA           MOV     R2,A
+   \   00003B   EF           MOV     A,R7
+   \   00003C   FB           MOV     R3,A
+   \   00003D   02....       LJMP    ??Subroutine22_0 & 0xFFFF
+    685          }
+    686          
+    687          /*********************************************************************
+    688           * @fn          bindFind
+    689           *
+    690           * @brief       Finds the binding entry for the source address, endpoint
+    691           *              and cluster ID passed in as a parameter.
+    692           *
+    693           * @param       ep - source endpoint
+    694           * @param       clusterID - matching clusterID
+    695           * @param       skip - number of matches to skip before returning
+    696           *
+    697           * @return      pointer to the binding table entry, NULL if not found
+    698           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    699          BindingEntry_t *bindFind( uint8 ep, uint16 clusterID, uint8 skipping )
+   \                     bindFind:
+    700          {
+   \   000000   74F2         MOV     A,#-0xe
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 14
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV     ?V0 + 4,R1
+   \   000007   8A..         MOV     ?V0 + 0,R2
+   \   000009   8B..         MOV     ?V0 + 1,R3
+   \   00000B   8C..         MOV     ?V0 + 5,R4
+    701            BindingEntry_t *pBind;
+    702            byte skipped = 0;
+   \   00000D   75..00       MOV     ?V0 + 2,#0x0
+    703            bindTableIndex_t x;
+    704          
+    705            for ( x = 0; x < gNWK_MAX_BINDING_ENTRIES; x++ )
+   \   000010   75..00       MOV     ?V0 + 3,#0x0
+   \   000013   8004         SJMP    ??bindFind_0
+    706            {
+    707              pBind = &BindingTable[x];
+    708          
+    709              if ( ( pBind->srcEP == ep) && bindIsClusterIDinList( pBind, clusterID ))
+    710              {
+    711                if ( skipped < skipping )
+    712                {
+    713                  skipped++;
+   \                     ??bindFind_1:
+   \   000015   05..         INC     ?V0 + 2
+    714                }
+   \                     ??bindFind_2:
+   \   000017   05..         INC     ?V0 + 3
+   \                     ??bindFind_0:
+   \   000019   90....       MOV     DPTR,#gNWK_MAX_BINDING_ENTRIES
+   \   00001C   E4           CLR     A
+   \   00001D   93           MOVC    A,@A+DPTR
+   \   00001E   F8           MOV     R0,A
+   \   00001F   E5..         MOV     A,?V0 + 3
+   \   000021   C3           CLR     C
+   \   000022   98           SUBB    A,R0
+   \   000023   5024         JNC     ??bindFind_3
+   \   000025   E5..         MOV     A,?V0 + 3
+   \   000027   12....       LCALL   ?Subroutine7 & 0xFFFF
+   \                     ??CrossCallReturnLabel_3:
+   \   00002A   65..         XRL     A,?V0 + 4
+   \   00002C   70E9         JNZ     ??bindFind_2
+   \   00002E                ; Setup parameters for call to function bindIsClusterIDinList
+   \   00002E   AC..         MOV     R4,?V0 + 0
+   \   000030   AD..         MOV     R5,?V0 + 1
+   \   000032   EE           MOV     A,R6
+   \   000033   FA           MOV     R2,A
+   \   000034   EF           MOV     A,R7
+   \   000035   FB           MOV     R3,A
+   \   000036   12....       LCALL   ??bindIsClusterIDinList?relay
+   \   000039   E9           MOV     A,R1
+   \   00003A   60DB         JZ      ??bindFind_2
+   \   00003C   E5..         MOV     A,?V0 + 2
+   \   00003E   C3           CLR     C
+   \   00003F   95..         SUBB    A,?V0 + 5
+   \   000041   40D2         JC      ??bindFind_1
+    715                else
+    716                {
+    717                  return ( pBind );
+   \   000043   EE           MOV     A,R6
+   \   000044   FA           MOV     R2,A
+   \   000045   EF           MOV     A,R7
+   \   000046   FB           MOV     R3,A
+   \   000047   8004         SJMP    ??bindFind_4
+    718                }
+    719              }
+    720            }
+    721          
+    722            return ( (BindingEntry_t *)NULL );
+   \                     ??bindFind_3:
+   \   000049   7A00         MOV     R2,#0x0
+   \   00004B   7B00         MOV     R3,#0x0
+   \                     ??bindFind_4:
+   \   00004D   02....       LJMP    ?Subroutine5 & 0xFFFF
+    723          }
+    724          
+    725          /*********************************************************************
+    726           * @fn      bindAddressClear
+    727           *
+    728           * @brief   Lookup a binding entry by specific Idx, if none is found
+    729           *          clears the BINDING user from Address Manager.
+    730           *
+    731           * @param   dstIdx - Source Address Manager Index
+    732           *
+    733           * @return  none
+    734           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    735          void bindAddressClear( uint16 dstIdx )
+   \                     bindAddressClear:
+    736          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 13
+   \   000004   74F3         MOV     A,#-0xd
+   \   000006   12....       LCALL   ?ALLOC_XSTACK8
+    737            bindTableIndex_t i;
+    738          
+    739            if ( dstIdx != INVALID_NODE_ADDR )
+   \   000009   74FE         MOV     A,#-0x2
+   \   00000B   6A           XRL     A,R2
+   \   00000C   7003         JNZ     ??bindAddressClear_0
+   \   00000E   74FF         MOV     A,#-0x1
+   \   000010   6B           XRL     A,R3
+   \                     ??bindAddressClear_0:
+   \   000011   604A         JZ      ??bindAddressClear_1
+    740            {
+    741              // Looks for a specific Idx
+    742              for ( i = 0; i < gNWK_MAX_BINDING_ENTRIES; i++ )
+   \   000013   7D00         MOV     R5,#0x0
+   \   000015   8022         SJMP    ??bindAddressClear_2
+    743              {
+    744                if ( ( BindingTable[i].dstGroupMode != AddrGroup ) &&
+    745                     ( BindingTable[i].dstGroupMode == DSTGROUPMODE_ADDR ) &&
+    746                     ( BindingTable[i].dstIdx == dstIdx ) )
+   \                     ??bindAddressClear_3:
+   \   000017   12....       LCALL   ?Subroutine11 & 0xFFFF
+    747                {
+    748                  break;  // found at least one
+    749                }
+    750              }
+   \                     ??CrossCallReturnLabel_27:
+   \   00001A   8882         MOV     DPL,R0
+   \   00001C   8983         MOV     DPH,R1
+   \   00001E   A3           INC     DPTR
+   \   00001F   E0           MOVX    A,@DPTR
+   \   000020   FC           MOV     R4,A
+   \   000021   7401         MOV     A,#0x1
+   \   000023   6C           XRL     A,R4
+   \   000024   6012         JZ      ??bindAddressClear_4
+   \   000026   EC           MOV     A,R4
+   \   000027   700F         JNZ     ??bindAddressClear_4
+   \   000029   8882         MOV     DPL,R0
+   \   00002B   8983         MOV     DPH,R1
+   \   00002D   A3           INC     DPTR
+   \   00002E   A3           INC     DPTR
+   \   00002F   E0           MOVX    A,@DPTR
+   \   000030   6A           XRL     A,R2
+   \   000031   7003         JNZ     ??bindAddressClear_5
+   \   000033   A3           INC     DPTR
+   \   000034   E0           MOVX    A,@DPTR
+   \   000035   6B           XRL     A,R3
+   \                     ??bindAddressClear_5:
+   \   000036   6025         JZ      ??bindAddressClear_1
+   \                     ??bindAddressClear_4:
+   \   000038   0D           INC     R5
+   \                     ??bindAddressClear_2:
+   \   000039   90....       MOV     DPTR,#gNWK_MAX_BINDING_ENTRIES
+   \   00003C   E4           CLR     A
+   \   00003D   93           MOVC    A,@A+DPTR
+   \   00003E   F8           MOV     R0,A
+   \   00003F   ED           MOV     A,R5
+   \   000040   C3           CLR     C
+   \   000041   98           SUBB    A,R0
+   \   000042   40D3         JC      ??bindAddressClear_3
+    751          
+    752              if ( i == gNWK_MAX_BINDING_ENTRIES )
+   \   000044   E4           CLR     A
+   \   000045   93           MOVC    A,@A+DPTR
+   \   000046   6D           XRL     A,R5
+   \   000047   7014         JNZ     ??bindAddressClear_1
+    753              {
+    754                // No binding entry is associated with dstIdx.
+    755                // Remove user binding bit from the address manager entry corresponding to dstIdx.
+    756                AddrMgrEntry_t addrEntry;
+    757          
+    758                addrEntry.user = ADDRMGR_USER_BINDING;
+   \   000049   85..82       MOV     DPL,?XSP + 0
+   \   00004C   85..83       MOV     DPH,?XSP + 1
+   \   00004F   7404         MOV     A,#0x4
+   \   000051   F0           MOVX    @DPTR,A
+    759                addrEntry.index = dstIdx;
+   \   000052   740B         MOV     A,#0xb
+   \   000054   12....       LCALL   ?XSTACK_DISP0_8
+   \   000057   12....       LCALL   ?Subroutine12 & 0xFFFF
+    760          
+    761                AddrMgrEntryRelease( &addrEntry );
+    762              }
+    763            }
+   \                     ??CrossCallReturnLabel_28:
+   \   00005A   12....       LCALL   ??AddrMgrEntryRelease?relay
+    764          }
+   \                     ??bindAddressClear_1:
+   \   00005D   80..         SJMP    ??Subroutine26_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine12:
+   \   000000   EA           MOV     A,R2
+   \   000001   F0           MOVX    @DPTR,A
+   \   000002   A3           INC     DPTR
+   \   000003   EB           MOV     A,R3
+   \   000004                REQUIRE ??Subroutine24_0
+   \   000004                ; // Fall through to label ??Subroutine24_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine24_0:
+   \   000000   12....       LCALL   ?Subroutine19 & 0xFFFF
+   \                     ??CrossCallReturnLabel_35:
+   \   000003   AA82         MOV     R2,DPL
+   \   000005   AB83         MOV     R3,DPH
+   \   000007   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine26_0:
+   \   000000   740D         MOV     A,#0xd
+   \   000002   12....       LCALL   ?DEALLOC_XSTACK8
+   \   000005                REQUIRE ??Subroutine27_0
+   \   000005                ; // Fall through to label ??Subroutine27_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine19:
+   \   000000   F0           MOVX    @DPTR,A
+   \   000001                ; Setup parameters for call to function AddrMgrEntryRelease
+   \   000001                ; Setup parameters for call to function bindingAddrMgsHelperFind
+   \   000001                ; Setup parameters for call to function AddrMgrEntryGet
+   \   000001                ; Setup parameters for call to function AddrMgrEntryGet
+   \   000001                ; Setup parameters for call to function bindingAddrMgsHelperFind
+   \   000001                ; Setup parameters for call to function AddrMgrEntryLookupNwk
+   \   000001                ; Setup parameters for call to function AddrMgrEntryLookupNwk
+   \   000001                ; Setup parameters for call to function osal_nv_write
+   \   000001   85..82       MOV     DPL,?XSP + 0
+   \   000004   85..83       MOV     DPH,?XSP + 1
+   \   000007   22           RET
+    765          
+    766          /*********************************************************************
+    767           * @fn          BindInitNV
+    768           *
+    769           * @brief       Initialize the Binding NV Item
+    770           *
+    771           * @param       none
+    772           *
+    773           * @return      ZSUCCESS if successful, NV_ITEM_UNINIT if item did not
+    774           *              exist in NV, NV_OPER_FAILED if failure.
+    775           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    776          byte BindInitNV( void )
+   \                     BindInitNV:
+    777          {
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+    778            byte ret;
+    779          
+    780            // Initialize the device list
+    781            ret = osal_nv_item_init( ZCD_NV_BINDING_TABLE,
+    782                            (uint16)(gBIND_REC_SIZE + NV_BIND_ITEM_SIZE), NULL );
+   \   000005                ; Setup parameters for call to function osal_nv_item_init
+   \   000005   E4           CLR     A
+   \   000006   F5..         MOV     ?V0 + 0,A
+   \   000008   F5..         MOV     ?V0 + 1,A
+   \   00000A   78..         MOV     R0,#?V0 + 0
+   \   00000C   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00000F   90....       MOV     DPTR,#gBIND_REC_SIZE
+   \   000012   E4           CLR     A
+   \   000013   93           MOVC    A,@A+DPTR
+   \   000014   F8           MOV     R0,A
+   \   000015   7401         MOV     A,#0x1
+   \   000017   93           MOVC    A,@A+DPTR
+   \   000018   F9           MOV     R1,A
+   \   000019   90....       MOV     DPTR,#gNWK_MAX_BINDING_ENTRIES
+   \   00001C   E4           CLR     A
+   \   00001D   93           MOVC    A,@A+DPTR
+   \   00001E   F5..         MOV     ?V0 + 0,A
+   \   000020   E8           MOV     A,R0
+   \   000021   85..F0       MOV     B,?V0 + 0
+   \   000024   A4           MUL     AB
+   \   000025   F8           MOV     R0,A
+   \   000026   AAF0         MOV     R2,B
+   \   000028   85..F0       MOV     B,?V0 + 0
+   \   00002B   E9           MOV     A,R1
+   \   00002C   A4           MUL     AB
+   \   00002D   2A           ADD     A,R2
+   \   00002E   F9           MOV     R1,A
+   \   00002F   7583..       MOV     DPH,#(gBIND_REC_SIZE >> 8) & 0xff
+   \   000032   7582..       MOV     DPL,#gBIND_REC_SIZE & 0xff
+   \   000035   E4           CLR     A
+   \   000036   93           MOVC    A,@A+DPTR
+   \   000037   28           ADD     A,R0
+   \   000038   FC           MOV     R4,A
+   \   000039   A3           INC     DPTR
+   \   00003A   E4           CLR     A
+   \   00003B   93           MOVC    A,@A+DPTR
+   \   00003C   39           ADDC    A,R1
+   \   00003D   FD           MOV     R5,A
+   \   00003E   7A41         MOV     R2,#0x41
+   \   000040   7B00         MOV     R3,#0x0
+   \   000042   12....       LCALL   ??osal_nv_item_init?relay
+   \   000045   7402         MOV     A,#0x2
+   \   000047   12....       LCALL   ?DEALLOC_XSTACK8
+   \   00004A   E9           MOV     A,R1
+   \   00004B   FE           MOV     R6,A
+    783          
+    784            if ( ret != ZSUCCESS )
+   \   00004C   6003         JZ      ??BindInitNV_0
+    785            {
+    786              BindSetDefaultNV();
+   \   00004E                ; Setup parameters for call to function BindSetDefaultNV
+   \   00004E   12....       LCALL   ??BindSetDefaultNV?relay
+    787            }
+    788          
+    789            return ( ret );
+   \                     ??BindInitNV_0:
+   \   000051   EE           MOV     A,R6
+   \   000052   F9           MOV     R1,A
+   \   000053   02....       LJMP    ??Subroutine21_0 & 0xFFFF
+    790          }
+    791          
+    792          /*********************************************************************
+    793           * @fn          BindSetDefaultNV
+    794           *
+    795           * @brief       Write the defaults to NV
+    796           *
+    797           * @param       none
+    798           *
+    799           * @return      none
+    800           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   12....       LCALL   ?DEALLOC_XSTACK8
+   \   000003                REQUIRE ??Subroutine21_0
+   \   000003                ; // Fall through to label ??Subroutine21_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    801          void BindSetDefaultNV( void )
+   \                     BindSetDefaultNV:
+    802          {
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 2
+   \   000005   74FE         MOV     A,#-0x2
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+    803            nvBindingHdr_t hdr;
+    804          
+    805            // Initialize the header
+    806            hdr.numRecs = 0;
+   \   00000A   85..82       MOV     DPL,?XSP + 0
+   \   00000D   85..83       MOV     DPH,?XSP + 1
+   \   000010   E4           CLR     A
+   \   000011   F0           MOVX    @DPTR,A
+   \   000012   A3           INC     DPTR
+   \   000013   12....       LCALL   ?Subroutine19 & 0xFFFF
+    807          
+    808            // Save off the header
+    809            osal_nv_write( ZCD_NV_BINDING_TABLE, 0, sizeof( nvBindingHdr_t ), &hdr );
+   \                     ??CrossCallReturnLabel_36:
+   \   000016   8582..       MOV     ?V0 + 0,DPL
+   \   000019   8583..       MOV     ?V0 + 1,DPH
+   \   00001C   78..         MOV     R0,#?V0 + 0
+   \   00001E   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000021   75..02       MOV     ?V0 + 0,#0x2
+   \   000024   75..00       MOV     ?V0 + 1,#0x0
+   \   000027   78..         MOV     R0,#?V0 + 0
+   \   000029   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00002C   7C00         MOV     R4,#0x0
+   \   00002E   7D00         MOV     R5,#0x0
+   \   000030   7A41         MOV     R2,#0x41
+   \   000032   7B00         MOV     R3,#0x0
+   \   000034   12....       LCALL   ??osal_nv_write?relay
+   \   000037   7404         MOV     A,#0x4
+   \   000039   12....       LCALL   ?DEALLOC_XSTACK8
+    810          }
+   \   00003C   7402         MOV     A,#0x2
+   \   00003E   02....       LJMP    ?Subroutine0 & 0xFFFF
+    811          
+    812          /*********************************************************************
+    813           * @fn          BindRestoreFromNV
+    814           *
+    815           * @brief       Restore the binding table from NV
+    816           *
+    817           * @param       none
+    818           *
+    819           * @return      Number of entries restored
+    820           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine4:
+   \   000000   12....       LCALL   ?DEALLOC_XSTACK8
+   \   000003                REQUIRE ??Subroutine22_0
+   \   000003                ; // Fall through to label ??Subroutine22_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    821          uint16 BindRestoreFromNV( void )
+   \                     BindRestoreFromNV:
+    822          {
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 2
+   \   000005   74FE         MOV     A,#-0x2
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+    823            nvBindingHdr_t hdr;
+    824            uint16 numAdded = 0;
+   \   00000A   7E00         MOV     R6,#0x0
+    825          
+    826            if ( osal_nv_read( ZCD_NV_BINDING_TABLE, 0, sizeof(nvBindingHdr_t), &hdr ) == ZSuccess )
+   \   00000C                ; Setup parameters for call to function osal_nv_read
+   \   00000C   85..82       MOV     DPL,?XSP + 0
+   \   00000F   85..83       MOV     DPH,?XSP + 1
+   \   000012   8582..       MOV     ?V0 + 0,DPL
+   \   000015   8583..       MOV     ?V0 + 1,DPH
+   \   000018   78..         MOV     R0,#?V0 + 0
+   \   00001A   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00001D   75..02       MOV     ?V0 + 0,#0x2
+   \   000020   8E..         MOV     ?V0 + 1,R6
+   \   000022   78..         MOV     R0,#?V0 + 0
+   \   000024   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000027   7C00         MOV     R4,#0x0
+   \   000029   7D00         MOV     R5,#0x0
+   \   00002B   7A41         MOV     R2,#0x41
+   \   00002D   7B00         MOV     R3,#0x0
+   \   00002F   12....       LCALL   ??osal_nv_read?relay
+   \   000032   7404         MOV     A,#0x4
+   \   000034   12....       LCALL   ?DEALLOC_XSTACK8
+   \   000037   E9           MOV     A,R1
+   \   000038   705A         JNZ     ??BindRestoreFromNV_0
+    827            {
+    828              if (hdr.numRecs > 0)
+   \   00003A   85..82       MOV     DPL,?XSP + 0
+   \   00003D   85..83       MOV     DPH,?XSP + 1
+   \   000040   E0           MOVX    A,@DPTR
+   \   000041   F8           MOV     R0,A
+   \   000042   A3           INC     DPTR
+   \   000043   E0           MOVX    A,@DPTR
+   \   000044   F9           MOV     R1,A
+   \   000045   E8           MOV     A,R0
+   \   000046   49           ORL     A,R1
+   \   000047   604B         JZ      ??BindRestoreFromNV_0
+    829              {
+    830                // Read the whole table at once
+    831                if ( osal_nv_read( ZCD_NV_BINDING_TABLE,
+    832                                   (uint16)(sizeof(nvBindingHdr_t)),
+    833                                   (NV_BIND_REC_SIZE * gNWK_MAX_BINDING_ENTRIES), BindingTable ) == ZSUCCESS )
+   \   000049   90....       MOV     DPTR,#gNWK_MAX_BINDING_ENTRIES
+   \   00004C   E4           CLR     A
+   \   00004D   93           MOVC    A,@A+DPTR
+   \   00004E   F5..         MOV     ?V0 + 0,A
+   \   000050                ; Setup parameters for call to function osal_nv_read
+   \   000050   75....       MOV     ?V0 + 2,#BindingTable & 0xff
+   \   000053   75....       MOV     ?V0 + 3,#(BindingTable >> 8) & 0xff
+   \   000056   78..         MOV     R0,#?V0 + 2
+   \   000058   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00005B   90....       MOV     DPTR,#gBIND_REC_SIZE
+   \   00005E   E4           CLR     A
+   \   00005F   93           MOVC    A,@A+DPTR
+   \   000060   F5..         MOV     ?V0 + 2,A
+   \   000062   7401         MOV     A,#0x1
+   \   000064   93           MOVC    A,@A+DPTR
+   \   000065   F5..         MOV     ?V0 + 3,A
+   \   000067   E5..         MOV     A,?V0 + 2
+   \   000069   85..F0       MOV     B,?V0 + 0
+   \   00006C   A4           MUL     AB
+   \   00006D   F5..         MOV     ?V0 + 2,A
+   \   00006F   A8F0         MOV     R0,B
+   \   000071   85..F0       MOV     B,?V0 + 0
+   \   000074   E5..         MOV     A,?V0 + 3
+   \   000076   A4           MUL     AB
+   \   000077   28           ADD     A,R0
+   \   000078   F5..         MOV     ?V0 + 3,A
+   \   00007A   78..         MOV     R0,#?V0 + 2
+   \   00007C   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00007F   7C02         MOV     R4,#0x2
+   \   000081   7D00         MOV     R5,#0x0
+   \   000083   7A41         MOV     R2,#0x41
+   \   000085   7B00         MOV     R3,#0x0
+   \   000087   12....       LCALL   ??osal_nv_read?relay
+   \   00008A   7404         MOV     A,#0x4
+   \   00008C   12....       LCALL   ?DEALLOC_XSTACK8
+   \   00008F   E9           MOV     A,R1
+   \   000090   7002         JNZ     ??BindRestoreFromNV_0
+    834                {
+    835                  numAdded = gNWK_MAX_BINDING_ENTRIES;
+   \   000092   AE..         MOV     R6,?V0 + 0
+    836                }
+    837              }
+    838            }
+    839            return ( numAdded );
+   \                     ??BindRestoreFromNV_0:
+   \   000094   EE           MOV     A,R6
+   \   000095   FA           MOV     R2,A
+   \   000096   7B00         MOV     R3,#0x0
+   \   000098   7402         MOV     A,#0x2
+   \   00009A   02....       LJMP    ?Subroutine4 & 0xFFFF
+    840          }
+    841          
+    842          /*********************************************************************
+    843           * @fn          BindWriteNV
+    844           *
+    845           * @brief       Save the Binding Table in NV
+    846           *
+    847           * @param       none
+    848           *
+    849           * @return      none
+    850           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    851          void BindWriteNV( void )
+   \                     BindWriteNV:
+    852          {
+   \   000000   74F1         MOV     A,#-0xf
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 15
+   \   000005                ; Auto size: 16
+   \   000005   74F0         MOV     A,#-0x10
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+    853            BindingEntry_t *pBind;
+    854            BindingEntry_t bind;
+    855            nvBindingHdr_t hdr;
+    856            bindTableIndex_t x;
+    857          
+    858            hdr.numRecs = 0;
+   \   00000A   85..82       MOV     DPL,?XSP + 0
+   \   00000D   85..83       MOV     DPH,?XSP + 1
+   \   000010   E4           CLR     A
+   \   000011   F0           MOVX    @DPTR,A
+   \   000012   A3           INC     DPTR
+   \   000013   F0           MOVX    @DPTR,A
+    859          
+    860            for ( x = 0; x < gNWK_MAX_BINDING_ENTRIES; x++ )
+   \   000014   FE           MOV     R6,A
+   \   000015   02....       LJMP    ??BindWriteNV_0 & 0xFFFF
+    861            {
+    862              pBind = &BindingTable[x];
+   \                     ??BindWriteNV_1:
+   \   000018   EE           MOV     A,R6
+   \   000019   75F00E       MOV     B,#0xe
+   \   00001C   A4           MUL     AB
+   \   00001D   F8           MOV     R0,A
+   \   00001E   A9F0         MOV     R1,B
+   \   000020   74..         MOV     A,#BindingTable & 0xff
+   \   000022   28           ADD     A,R0
+   \   000023   F5..         MOV     ?V0 + 0,A
+   \   000025   74..         MOV     A,#(BindingTable >> 8) & 0xff
+   \   000027   39           ADDC    A,R1
+   \   000028   F5..         MOV     ?V0 + 1,A
+    863          
+    864              osal_memcpy( &bind, pBind, gBIND_REC_SIZE );
+   \   00002A                ; Setup parameters for call to function osal_memcpy
+   \   00002A   85....       MOV     ?V0 + 4,?V0 + 0
+   \   00002D   F5..         MOV     ?V0 + 5,A
+   \   00002F   75..00       MOV     ?V0 + 6,#0x0
+   \   000032   78..         MOV     R0,#?V0 + 4
+   \   000034   12....       LCALL   ?PUSH_XSTACK_I_THREE
+   \   000037   12....       LCALL   ?Subroutine9 & 0xFFFF
+   \                     ??CrossCallReturnLabel_9:
+   \   00003A   7405         MOV     A,#0x5
+   \   00003C   12....       LCALL   ?XSTACK_DISP0_8
+   \   00003F   AA82         MOV     R2,DPL
+   \   000041   AB83         MOV     R3,DPH
+   \   000043   12....       LCALL   ??osal_memcpy?relay
+   \   000046   7403         MOV     A,#0x3
+   \   000048   12....       LCALL   ?DEALLOC_XSTACK8
+    865          
+    866              // Save the record to NV
+    867              osal_nv_write( ZCD_NV_BINDING_TABLE,
+    868                             (uint16)((sizeof(nvBindingHdr_t)) + (x * NV_BIND_REC_SIZE)),
+    869                             NV_BIND_REC_SIZE, &bind );
+   \   00004B                ; Setup parameters for call to function osal_nv_write
+   \   00004B   7402         MOV     A,#0x2
+   \   00004D   12....       LCALL   ?XSTACK_DISP0_8
+   \   000050   8582..       MOV     ?V0 + 2,DPL
+   \   000053   8583..       MOV     ?V0 + 3,DPH
+   \   000056   78..         MOV     R0,#?V0 + 2
+   \   000058   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00005B   90....       MOV     DPTR,#gBIND_REC_SIZE
+   \   00005E   12....       LCALL   ?PUSH_XSTACK8_C_TWO
+   \   000061   8E..         MOV     ?V0 + 2,R6
+   \   000063   90....       MOV     DPTR,#gBIND_REC_SIZE
+   \   000066   E4           CLR     A
+   \   000067   93           MOVC    A,@A+DPTR
+   \   000068   F8           MOV     R0,A
+   \   000069   7401         MOV     A,#0x1
+   \   00006B   93           MOVC    A,@A+DPTR
+   \   00006C   F9           MOV     R1,A
+   \   00006D   E8           MOV     A,R0
+   \   00006E   85..F0       MOV     B,?V0 + 2
+   \   000071   A4           MUL     AB
+   \   000072   F8           MOV     R0,A
+   \   000073   AAF0         MOV     R2,B
+   \   000075   85..F0       MOV     B,?V0 + 2
+   \   000078   E9           MOV     A,R1
+   \   000079   A4           MUL     AB
+   \   00007A   2A           ADD     A,R2
+   \   00007B   F9           MOV     R1,A
+   \   00007C   E8           MOV     A,R0
+   \   00007D   2402         ADD     A,#0x2
+   \   00007F   FC           MOV     R4,A
+   \   000080   E9           MOV     A,R1
+   \   000081   3400         ADDC    A,#0x0
+   \   000083   FD           MOV     R5,A
+   \   000084   7A41         MOV     R2,#0x41
+   \   000086   7B00         MOV     R3,#0x0
+   \   000088   12....       LCALL   ??osal_nv_write?relay
+   \   00008B   7404         MOV     A,#0x4
+   \   00008D   12....       LCALL   ?DEALLOC_XSTACK8
+    870          
+    871              if ( pBind->srcEP != NV_BIND_EMPTY )
+   \   000090   85..82       MOV     DPL,?V0 + 0
+   \   000093   85..83       MOV     DPH,?V0 + 1
+   \   000096   E0           MOVX    A,@DPTR
+   \   000097   F4           CPL     A
+   \   000098   600F         JZ      ??BindWriteNV_2
+    872              {
+    873                hdr.numRecs++;
+   \   00009A   85..82       MOV     DPL,?XSP + 0
+   \   00009D   85..83       MOV     DPH,?XSP + 1
+   \   0000A0   E0           MOVX    A,@DPTR
+   \   0000A1   2401         ADD     A,#0x1
+   \   0000A3   F0           MOVX    @DPTR,A
+   \   0000A4   A3           INC     DPTR
+   \   0000A5   E0           MOVX    A,@DPTR
+   \   0000A6   3400         ADDC    A,#0x0
+   \   0000A8   F0           MOVX    @DPTR,A
+    874              }
+    875            }
+   \                     ??BindWriteNV_2:
+   \   0000A9   0E           INC     R6
+   \                     ??BindWriteNV_0:
+   \   0000AA   90....       MOV     DPTR,#gNWK_MAX_BINDING_ENTRIES
+   \   0000AD   E4           CLR     A
+   \   0000AE   93           MOVC    A,@A+DPTR
+   \   0000AF   F8           MOV     R0,A
+   \   0000B0   EE           MOV     A,R6
+   \   0000B1   C3           CLR     C
+   \   0000B2   98           SUBB    A,R0
+   \   0000B3   5003         JNC     $+5
+   \   0000B5   02....       LJMP    ??BindWriteNV_1 & 0xFFFF
+    876          
+    877            // Save off the header
+    878            osal_nv_write( ZCD_NV_BINDING_TABLE, 0, sizeof(nvBindingHdr_t), &hdr );
+   \   0000B8                ; Setup parameters for call to function osal_nv_write
+   \   0000B8   85..82       MOV     DPL,?XSP + 0
+   \   0000BB   85..83       MOV     DPH,?XSP + 1
+   \   0000BE   8582..       MOV     ?V0 + 0,DPL
+   \   0000C1   8583..       MOV     ?V0 + 1,DPH
+   \   0000C4   78..         MOV     R0,#?V0 + 0
+   \   0000C6   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   0000C9   75..02       MOV     ?V0 + 0,#0x2
+   \   0000CC   75..00       MOV     ?V0 + 1,#0x0
+   \   0000CF   78..         MOV     R0,#?V0 + 0
+   \   0000D1   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   0000D4   7C00         MOV     R4,#0x0
+   \   0000D6   7D00         MOV     R5,#0x0
+   \   0000D8   7A41         MOV     R2,#0x41
+   \   0000DA   7B00         MOV     R3,#0x0
+   \   0000DC   12....       LCALL   ??osal_nv_write?relay
+   \   0000DF   7404         MOV     A,#0x4
+   \   0000E1   12....       LCALL   ?DEALLOC_XSTACK8
+    879          }
+   \   0000E4   7410         MOV     A,#0x10
+   \   0000E6   12....       LCALL   ?DEALLOC_XSTACK8
+   \   0000E9   7F07         MOV     R7,#0x7
+   \   0000EB   02....       LJMP    ?BANKED_LEAVE_XDATA
+    880          
+    881          /*********************************************************************
+    882           * @fn          bindUpdateAddr
+    883           *
+    884           * @brief       Update the network address in the binding table.
+    885           *
+    886           * @param       oldAddr - old network address
+    887           * @param       newAddr - new network address
+    888           *
+    889           * @return      none
+    890           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    891          void bindUpdateAddr( uint16 oldAddr, uint16 newAddr )
+   \                     bindUpdateAddr:
+    892          {
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 9
+   \   000005   74F7         MOV     A,#-0x9
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+   \   00000A   EC           MOV     A,R4
+   \   00000B   FE           MOV     R6,A
+   \   00000C   ED           MOV     A,R5
+   \   00000D   FF           MOV     R7,A
+    893            uint16 oldIdx;
+    894            uint16 newIdx;
+    895            zAddrType_t addr;
+    896            bindTableIndex_t x;
+    897            BindingEntry_t *pBind;
+    898          
+    899            addr.addrMode = Addr16Bit;
+   \   00000E   7408         MOV     A,#0x8
+   \   000010   12....       LCALL   ?XSTACK_DISP0_8
+   \   000013   7402         MOV     A,#0x2
+   \   000015   12....       LCALL   ?Subroutine19 & 0xFFFF
+    900            addr.addr.shortAddr = oldAddr;
+   \                     ??CrossCallReturnLabel_37:
+   \   000018   12....       LCALL   ?Subroutine12 & 0xFFFF
+    901            oldIdx = bindingAddrMgsHelperFind( &addr );
+   \                     ??CrossCallReturnLabel_29:
+   \   00001B   12....       LCALL   ??bindingAddrMgsHelperFind?relay
+   \   00001E   8A..         MOV     ?V0 + 0,R2
+   \   000020   8B..         MOV     ?V0 + 1,R3
+    902            addr.addr.shortAddr = newAddr;
+   \   000022   85..82       MOV     DPL,?XSP + 0
+   \   000025   85..83       MOV     DPH,?XSP + 1
+   \   000028   EE           MOV     A,R6
+   \   000029   F0           MOVX    @DPTR,A
+   \   00002A   A3           INC     DPTR
+   \   00002B   EF           MOV     A,R7
+   \   00002C   12....       LCALL   ??Subroutine24_0 & 0xFFFF
+    903            newIdx = bindingAddrMgsHelperFind( &addr );
+   \                     ??CrossCallReturnLabel_32:
+   \   00002F   12....       LCALL   ??bindingAddrMgsHelperFind?relay
+   \   000032   8B..         MOV     ?V0 + 3,R3
+    904          
+    905            for ( x = 0; x < gNWK_MAX_BINDING_ENTRIES; x++ )
+   \   000034   7B00         MOV     R3,#0x0
+   \   000036   8021         SJMP    ??bindUpdateAddr_0
+    906            {
+    907              pBind = &BindingTable[x];
+   \                     ??bindUpdateAddr_1:
+   \   000038   EB           MOV     A,R3
+   \   000039   12....       LCALL   ??Subroutine23_0 & 0xFFFF
+    908          
+    909              if ( pBind->dstIdx == oldIdx )
+   \                     ??CrossCallReturnLabel_25:
+   \   00003C   E8           MOV     A,R0
+   \   00003D   2402         ADD     A,#0x2
+   \   00003F   F8           MOV     R0,A
+   \   000040   E9           MOV     A,R1
+   \   000041   12....       LCALL   ?Subroutine17 & 0xFFFF
+   \                     ??CrossCallReturnLabel_20:
+   \   000044   65..         XRL     A,?V0 + 0
+   \   000046   7004         JNZ     ??bindUpdateAddr_2
+   \   000048   A3           INC     DPTR
+   \   000049   E0           MOVX    A,@DPTR
+   \   00004A   65..         XRL     A,?V0 + 1
+   \                     ??bindUpdateAddr_2:
+   \   00004C   700A         JNZ     ??bindUpdateAddr_3
+    910              {
+    911                pBind->dstIdx = newIdx;
+   \   00004E   8882         MOV     DPL,R0
+   \   000050   8983         MOV     DPH,R1
+   \   000052   EA           MOV     A,R2
+   \   000053   F0           MOVX    @DPTR,A
+   \   000054   A3           INC     DPTR
+   \   000055   E5..         MOV     A,?V0 + 3
+   \   000057   F0           MOVX    @DPTR,A
+    912              }
+    913            }
+   \                     ??bindUpdateAddr_3:
+   \   000058   0B           INC     R3
+   \                     ??bindUpdateAddr_0:
+   \   000059   90....       MOV     DPTR,#gNWK_MAX_BINDING_ENTRIES
+   \   00005C   E4           CLR     A
+   \   00005D   93           MOVC    A,@A+DPTR
+   \   00005E   F8           MOV     R0,A
+   \   00005F   EB           MOV     A,R3
+   \   000060   C3           CLR     C
+   \   000061   98           SUBB    A,R0
+   \   000062   40D4         JC      ??bindUpdateAddr_1
+    914          }
+   \   000064   7409         MOV     A,#0x9
+   \   000066   02....       LJMP    ?Subroutine4 & 0xFFFF
+    915          
+    916          /*********************************************************************
+    917           * @fn      bindingAddrMgsHelperFind
+    918           *
+    919           * @brief   Turns an zAddrType_t to an Addr Manager index
+    920           *
+    921           * @param   addr - zAddrType_t
+    922           *
+    923           * @return  INVALID_NODE_ADDR if not found, otherwise an index
+    924           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000   740B         MOV     A,#0xb
+   \   000002                REQUIRE ??Subroutine25_0
+   \   000002                ; // Fall through to label ??Subroutine25_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine25_0:
+   \   000000   12....       LCALL   ?XSTACK_DISP0_8
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   FA           MOV     R2,A
+   \   000005   A3           INC     DPTR
+   \   000006   E0           MOVX    A,@DPTR
+   \   000007   FB           MOV     R3,A
+   \   000008                REQUIRE ??Subroutine26_0
+   \   000008                ; // Fall through to label ??Subroutine26_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    925          uint16 bindingAddrMgsHelperFind( zAddrType_t *addr )
+   \                     bindingAddrMgsHelperFind:
+    926          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 13
+   \   000004   74F3         MOV     A,#-0xd
+   \   000006   12....       LCALL   ?ALLOC_XSTACK8
+    927            AddrMgrEntry_t entry;
+    928          
+    929            // Resolve addresses with the address manager
+    930            entry.user = ADDRMGR_USER_BINDING;
+   \   000009   12....       LCALL   ?Subroutine13 & 0xFFFF
+    931            if ( addr->addrMode == Addr16Bit )
+   \                     ??CrossCallReturnLabel_13:
+   \   00000C   6402         XRL     A,#0x2
+   \   00000E   7012         JNZ     ??bindingAddrMgsHelperFind_0
+    932            {
+    933              entry.nwkAddr = addr->addr.shortAddr;
+   \   000010   12....       LCALL   ?Subroutine14 & 0xFFFF
+    934              AddrMgrEntryLookupNwk( &entry );
+    935            }
+   \                     ??CrossCallReturnLabel_39:
+   \   000013   12....       LCALL   ?XSTACK_DISP0_8
+   \   000016   E8           MOV     A,R0
+   \   000017   F0           MOVX    @DPTR,A
+   \   000018   A3           INC     DPTR
+   \   000019   E9           MOV     A,R1
+   \   00001A   12....       LCALL   ??Subroutine24_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_33:
+   \   00001D   12....       LCALL   ??AddrMgrEntryLookupNwk?relay
+   \   000020   801D         SJMP    ??bindingAddrMgsHelperFind_1
+    936            else
+    937            {
+    938              AddrMgrExtAddrSet( entry.extAddr, addr->addr.extAddr );
+   \                     ??bindingAddrMgsHelperFind_0:
+   \   000022                ; Setup parameters for call to function AddrMgrExtAddrSet
+   \   000022   EA           MOV     A,R2
+   \   000023   FC           MOV     R4,A
+   \   000024   EB           MOV     A,R3
+   \   000025   FD           MOV     R5,A
+   \   000026   7403         MOV     A,#0x3
+   \   000028   12....       LCALL   ?XSTACK_DISP0_8
+   \   00002B   AA82         MOV     R2,DPL
+   \   00002D   AB83         MOV     R3,DPH
+   \   00002F   12....       LCALL   ??AddrMgrExtAddrSet?relay
+    939              AddrMgrEntryLookupExt( &entry );
+   \   000032                ; Setup parameters for call to function AddrMgrEntryLookupExt
+   \   000032   85..82       MOV     DPL,?XSP + 0
+   \   000035   85..83       MOV     DPH,?XSP + 1
+   \   000038   AA82         MOV     R2,DPL
+   \   00003A   AB83         MOV     R3,DPH
+   \   00003C   12....       LCALL   ??AddrMgrEntryLookupExt?relay
+    940            }
+    941          
+    942            return ( entry.index );
+   \                     ??bindingAddrMgsHelperFind_1:
+   \   00003F   02....       LJMP    ?Subroutine1 & 0xFFFF
+    943          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine14:
+   \   000000   8A82         MOV     DPL,R2
+   \   000002   8B83         MOV     DPH,R3
+   \   000004                REQUIRE ??Subroutine28_0
+   \   000004                ; // Fall through to label ??Subroutine28_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine28_0:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   F8           MOV     R0,A
+   \   000002   A3           INC     DPTR
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   F9           MOV     R1,A
+   \   000005   7401         MOV     A,#0x1
+   \   000007   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine13:
+   \   000000   85..82       MOV     DPL,?XSP + 0
+   \   000003   85..83       MOV     DPH,?XSP + 1
+   \   000006   7404         MOV     A,#0x4
+   \   000008   F0           MOVX    @DPTR,A
+   \   000009   8A82         MOV     DPL,R2
+   \   00000B   8B83         MOV     DPH,R3
+   \   00000D   A3           INC     DPTR
+   \   00000E   A3           INC     DPTR
+   \   00000F   A3           INC     DPTR
+   \   000010   A3           INC     DPTR
+   \   000011   A3           INC     DPTR
+   \   000012   A3           INC     DPTR
+   \   000013   A3           INC     DPTR
+   \   000014   A3           INC     DPTR
+   \   000015   E0           MOVX    A,@DPTR
+   \   000016   22           RET
+    944          
+    945          /*********************************************************************
+    946           * @fn      bindingAddrMgsHelperConvert
+    947           *
+    948           * @brief   Convert an index into an zAddrType_t
+    949           *
+    950           * @param   idx -
+    951           * @param   addr - zAddrType_t
+    952           *
+    953           * @return  TRUE if found, FALSE if not
+    954           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    955          uint8 bindingAddrMgsHelperConvert( uint16 idx, zAddrType_t *addr )
+   \                     bindingAddrMgsHelperConvert:
+    956          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 13
+   \   000005   74F3         MOV     A,#-0xd
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+   \   00000A   EC           MOV     A,R4
+   \   00000B   FE           MOV     R6,A
+   \   00000C   ED           MOV     A,R5
+   \   00000D   FF           MOV     R7,A
+    957            AddrMgrEntry_t entry;
+    958            uint8 stat;
+    959          
+    960            // Resolve addresses with the address manager
+    961            entry.user = ADDRMGR_USER_BINDING;
+   \   00000E   85..82       MOV     DPL,?XSP + 0
+   \   000011   85..83       MOV     DPH,?XSP + 1
+   \   000014   7404         MOV     A,#0x4
+   \   000016   F0           MOVX    @DPTR,A
+    962            entry.index = idx;
+   \   000017   740B         MOV     A,#0xb
+   \   000019   12....       LCALL   ?XSTACK_DISP0_8
+   \   00001C   12....       LCALL   ?Subroutine12 & 0xFFFF
+    963            stat = AddrMgrEntryGet( &entry );
+   \                     ??CrossCallReturnLabel_30:
+   \   00001F   12....       LCALL   ??AddrMgrEntryGet?relay
+   \   000022   E9           MOV     A,R1
+   \   000023   F5..         MOV     ?V0 + 0,A
+    964            if ( stat )
+   \   000025   601D         JZ      ??bindingAddrMgsHelperConvert_0
+    965            {
+    966              addr->addrMode = Addr64Bit;
+   \   000027   8E82         MOV     DPL,R6
+   \   000029   8F83         MOV     DPH,R7
+   \   00002B   A3           INC     DPTR
+   \   00002C   A3           INC     DPTR
+   \   00002D   A3           INC     DPTR
+   \   00002E   A3           INC     DPTR
+   \   00002F   A3           INC     DPTR
+   \   000030   A3           INC     DPTR
+   \   000031   A3           INC     DPTR
+   \   000032   A3           INC     DPTR
+   \   000033   7403         MOV     A,#0x3
+   \   000035   F0           MOVX    @DPTR,A
+    967              osal_cpyExtAddr( addr->addr.extAddr, entry.extAddr );
+   \   000036                ; Setup parameters for call to function sAddrExtCpy
+   \   000036   12....       LCALL   ?XSTACK_DISP0_8
+   \   000039   AC82         MOV     R4,DPL
+   \   00003B   AD83         MOV     R5,DPH
+   \   00003D   EE           MOV     A,R6
+   \   00003E   FA           MOV     R2,A
+   \   00003F   EF           MOV     A,R7
+   \   000040   FB           MOV     R3,A
+   \   000041   12....       LCALL   ??sAddrExtCpy?relay
+    968            }
+    969          
+    970            return ( stat );
+   \                     ??bindingAddrMgsHelperConvert_0:
+   \   000044   A9..         MOV     R1,?V0 + 0
+   \   000046   740D         MOV     A,#0xd
+   \   000048   12....       LCALL   ?DEALLOC_XSTACK8
+   \   00004B   02....       LJMP    ?Subroutine2 & 0xFFFF
+    971          }
+    972          
+    973          /*********************************************************************
+    974           * @fn      bindingAddrMgsHelperConvertShort
+    975           *
+    976           * @brief   Convert an index into a short address
+    977           *
+    978           * @param   idx -
+    979           *
+    980           * @return  INVALID_NODE_ADDR if not available, otherwise the short address
+    981           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    982          uint16 bindingAddrMgsHelperConvertShort( uint16 idx )
+   \                     bindingAddrMgsHelperConvertShort:
+    983          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 13
+   \   000004   74F3         MOV     A,#-0xd
+   \   000006   12....       LCALL   ?ALLOC_XSTACK8
+    984            AddrMgrEntry_t entry;
+    985          
+    986            // Resolve addresses with the address manager
+    987            entry.user = ADDRMGR_USER_BINDING;
+   \   000009   85..82       MOV     DPL,?XSP + 0
+   \   00000C   85..83       MOV     DPH,?XSP + 1
+   \   00000F   7404         MOV     A,#0x4
+   \   000011   F0           MOVX    @DPTR,A
+    988            entry.index = idx;
+   \   000012   740B         MOV     A,#0xb
+   \   000014   12....       LCALL   ?XSTACK_DISP0_8
+   \   000017   12....       LCALL   ?Subroutine12 & 0xFFFF
+    989            AddrMgrEntryGet( &entry );
+   \                     ??CrossCallReturnLabel_31:
+   \   00001A   12....       LCALL   ??AddrMgrEntryGet?relay
+    990          
+    991            return ( entry.nwkAddr );
+   \   00001D   7401         MOV     A,#0x1
+   \   00001F   02....       LJMP    ??Subroutine25_0 & 0xFFFF
+    992          }
+    993          
+    994          /*********************************************************************
+    995           * @fn      bindAddrMgrLocalLoad
+    996           *
+    997           * @brief   Load local(self and parent) address information into
+    998           *          Address Manager
+    999           *
+   1000           * @param   none
+   1001           *
+   1002           * @return  none
+   1003           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   1004          void bindAddrMgrLocalLoad( void )
+   \                     bindAddrMgrLocalLoad:
+   1005          {
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 13
+   \   000005   74F3         MOV     A,#-0xd
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+   1006            AddrMgrEntry_t entry;
+   1007            uint16         parent;
+   1008          
+   1009            // add "local"(self and parent) address informtion into the Address
+   1010            // Manager
+   1011            if ( bindAddrMgrLocalLoaded == FALSE )
+   \   00000A   90....       MOV     DPTR,#bindAddrMgrLocalLoaded
+   \   00000D   E0           MOVX    A,@DPTR
+   \   00000E   6003         JZ      $+5
+   \   000010   02....       LJMP    ??bindAddrMgrLocalLoad_0 & 0xFFFF
+   1012            {
+   1013              // add the device's address information
+   1014              entry.user    = ADDRMGR_USER_BINDING;
+   \   000013   85..82       MOV     DPL,?XSP + 0
+   \   000016   85..83       MOV     DPH,?XSP + 1
+   \   000019   7404         MOV     A,#0x4
+   \   00001B   F0           MOVX    @DPTR,A
+   1015              entry.nwkAddr = _NIB.nwkDevAddress;
+   \   00001C   90....       MOV     DPTR,#_NIB + 20
+   \   00001F   12....       LCALL   ??Subroutine28_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_38:
+   \   000022   12....       LCALL   ?XSTACK_DISP0_8
+   \   000025   E8           MOV     A,R0
+   \   000026   F0           MOVX    @DPTR,A
+   \   000027   A3           INC     DPTR
+   \   000028   E9           MOV     A,R1
+   \   000029   F0           MOVX    @DPTR,A
+   1016              AddrMgrExtAddrSet( entry.extAddr, NLME_GetExtAddr() );
+   \   00002A                ; Setup parameters for call to function AddrMgrExtAddrSet
+   \   00002A                ; Setup parameters for call to function NLME_GetExtAddr
+   \   00002A   12....       LCALL   ??NLME_GetExtAddr?relay
+   \   00002D   EA           MOV     A,R2
+   \   00002E   FC           MOV     R4,A
+   \   00002F   EB           MOV     A,R3
+   \   000030   FD           MOV     R5,A
+   \   000031   7403         MOV     A,#0x3
+   \   000033   12....       LCALL   ?XSTACK_DISP0_8
+   \   000036   AA82         MOV     R2,DPL
+   \   000038   AB83         MOV     R3,DPH
+   \   00003A   12....       LCALL   ??AddrMgrExtAddrSet?relay
+   1017              AddrMgrEntryUpdate( &entry );
+   \   00003D                ; Setup parameters for call to function AddrMgrEntryUpdate
+   \   00003D   85..82       MOV     DPL,?XSP + 0
+   \   000040   85..83       MOV     DPH,?XSP + 1
+   \   000043   AA82         MOV     R2,DPL
+   \   000045   AB83         MOV     R3,DPH
+   \   000047   12....       LCALL   ??AddrMgrEntryUpdate?relay
+   1018          
+   1019              // make sure parent address is valid
+   1020              parent = NLME_GetCoordShortAddr();
+   \   00004A                ; Setup parameters for call to function NLME_GetCoordShortAddr
+   \   00004A   12....       LCALL   ??NLME_GetCoordShortAddr?relay
+   \   00004D   8A..         MOV     ?V0 + 0,R2
+   \   00004F   8B..         MOV     ?V0 + 1,R3
+   \   000051   A8..         MOV     R0,?V0 + 0
+   \   000053   A9..         MOV     R1,?V0 + 1
+   1021              if ( ( parent != entry.nwkAddr     ) &&
+   1022                   ( parent != INVALID_NODE_ADDR )    )
+   \   000055   7401         MOV     A,#0x1
+   \   000057   12....       LCALL   ?XSTACK_DISP0_8
+   \   00005A   E0           MOVX    A,@DPTR
+   \   00005B   68           XRL     A,R0
+   \   00005C   7003         JNZ     ??bindAddrMgrLocalLoad_1
+   \   00005E   A3           INC     DPTR
+   \   00005F   E0           MOVX    A,@DPTR
+   \   000060   69           XRL     A,R1
+   \                     ??bindAddrMgrLocalLoad_1:
+   \   000061   602D         JZ      ??bindAddrMgrLocalLoad_2
+   \   000063   74FE         MOV     A,#-0x2
+   \   000065   68           XRL     A,R0
+   \   000066   7003         JNZ     ??bindAddrMgrLocalLoad_3
+   \   000068   74FF         MOV     A,#-0x1
+   \   00006A   69           XRL     A,R1
+   \                     ??bindAddrMgrLocalLoad_3:
+   \   00006B   6023         JZ      ??bindAddrMgrLocalLoad_2
+   1023              {
+   1024                // add the parent's address information
+   1025                entry.nwkAddr = parent;
+   \   00006D   7401         MOV     A,#0x1
+   \   00006F   12....       LCALL   ?XSTACK_DISP0_8
+   \   000072   E8           MOV     A,R0
+   \   000073   F0           MOVX    @DPTR,A
+   \   000074   A3           INC     DPTR
+   \   000075   E9           MOV     A,R1
+   \   000076   F0           MOVX    @DPTR,A
+   1026                NLME_GetCoordExtAddr( entry.extAddr );
+   \   000077                ; Setup parameters for call to function NLME_GetCoordExtAddr
+   \   000077   7403         MOV     A,#0x3
+   \   000079   12....       LCALL   ?XSTACK_DISP0_8
+   \   00007C   AA82         MOV     R2,DPL
+   \   00007E   AB83         MOV     R3,DPH
+   \   000080   12....       LCALL   ??NLME_GetCoordExtAddr?relay
+   1027                AddrMgrEntryUpdate( &entry );
+   \   000083                ; Setup parameters for call to function AddrMgrEntryUpdate
+   \   000083   85..82       MOV     DPL,?XSP + 0
+   \   000086   85..83       MOV     DPH,?XSP + 1
+   \   000089   AA82         MOV     R2,DPL
+   \   00008B   AB83         MOV     R3,DPH
+   \   00008D   12....       LCALL   ??AddrMgrEntryUpdate?relay
+   1028              }
+   1029          
+   1030              bindAddrMgrLocalLoaded = TRUE;
+   \                     ??bindAddrMgrLocalLoad_2:
+   \   000090   90....       MOV     DPTR,#bindAddrMgrLocalLoaded
+   \   000093   7401         MOV     A,#0x1
+   \   000095   F0           MOVX    @DPTR,A
+   1031            }
+   1032          }
+   \                     ??bindAddrMgrLocalLoad_0:
+   \   000096   740D         MOV     A,#0xd
+   \   000098   02....       LJMP    ?Subroutine0 & 0xFFFF
+   1033          
+   1034          /*********************************************************************
+   1035           * @fn      bindAddrIndexGet
+   1036           *
+   1037           * @brief   Get bind address index.
+   1038           *
+   1039           * @param   addr - <zAddrType_t>
+   1040           *
+   1041           * @return  (uint16) address index
+   1042           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   1043          uint16 bindAddrIndexGet( zAddrType_t* addr )
+   \                     bindAddrIndexGet:
+   1044          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 13
+   \   000004   74F3         MOV     A,#-0xd
+   \   000006   12....       LCALL   ?ALLOC_XSTACK8
+   1045            AddrMgrEntry_t entry;
+   1046            uint8          update;
+   1047          
+   1048            update = FALSE;
+   1049          
+   1050            // sync binding addresses with the address manager
+   1051            entry.user = ADDRMGR_USER_BINDING;
+   \   000009   12....       LCALL   ?Subroutine13 & 0xFFFF
+   1052          
+   1053            if ( addr->addrMode == Addr16Bit )
+   \                     ??CrossCallReturnLabel_14:
+   \   00000C   F8           MOV     R0,A
+   \   00000D   7402         MOV     A,#0x2
+   \   00000F   68           XRL     A,R0
+   \   000010   7015         JNZ     ??bindAddrIndexGet_0
+   1054            {
+   1055              entry.nwkAddr = addr->addr.shortAddr;
+   \   000012   12....       LCALL   ?Subroutine14 & 0xFFFF
+   1056          
+   1057              if ( AddrMgrEntryLookupNwk( &entry ) == FALSE )
+   1058              {
+   1059                update = TRUE;
+   1060              }
+   1061            }
+   \                     ??CrossCallReturnLabel_40:
+   \   000015   12....       LCALL   ?XSTACK_DISP0_8
+   \   000018   E8           MOV     A,R0
+   \   000019   F0           MOVX    @DPTR,A
+   \   00001A   A3           INC     DPTR
+   \   00001B   E9           MOV     A,R1
+   \   00001C   12....       LCALL   ??Subroutine24_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_34:
+   \   00001F   12....       LCALL   ??AddrMgrEntryLookupNwk?relay
+   \   000022   E9           MOV     A,R1
+   \   000023   705A         JNZ     ??bindAddrIndexGet_1
+   \   000025   8025         SJMP    ??bindAddrIndexGet_2
+   1062            else if ( addr->addrMode == Addr64Bit )
+   \                     ??bindAddrIndexGet_0:
+   \   000027   7403         MOV     A,#0x3
+   \   000029   68           XRL     A,R0
+   \   00002A   702F         JNZ     ??bindAddrIndexGet_3
+   1063            {
+   1064              AddrMgrExtAddrSet( entry.extAddr, addr->addr.extAddr );
+   \   00002C                ; Setup parameters for call to function AddrMgrExtAddrSet
+   \   00002C   EA           MOV     A,R2
+   \   00002D   FC           MOV     R4,A
+   \   00002E   EB           MOV     A,R3
+   \   00002F   FD           MOV     R5,A
+   \   000030   7403         MOV     A,#0x3
+   \   000032   12....       LCALL   ?XSTACK_DISP0_8
+   \   000035   AA82         MOV     R2,DPL
+   \   000037   AB83         MOV     R3,DPH
+   \   000039   12....       LCALL   ??AddrMgrExtAddrSet?relay
+   1065          
+   1066              if ( AddrMgrEntryLookupExt( &entry ) == FALSE )
+   \   00003C                ; Setup parameters for call to function AddrMgrEntryLookupExt
+   \   00003C   85..82       MOV     DPL,?XSP + 0
+   \   00003F   85..83       MOV     DPH,?XSP + 1
+   \   000042   AA82         MOV     R2,DPL
+   \   000044   AB83         MOV     R3,DPH
+   \   000046   12....       LCALL   ??AddrMgrEntryLookupExt?relay
+   \   000049   E9           MOV     A,R1
+   \   00004A   7033         JNZ     ??bindAddrIndexGet_1
+   1067              {
+   1068                update = TRUE;
+   1069              }
+   1070            }
+   1071            else if ( addr->addrMode == AddrGroup )
+   1072            {
+   1073              entry.index = addr->addr.shortAddr;
+   1074            }
+   1075            else
+   1076            {
+   1077              entry.index = INVALID_NODE_ADDR;
+   1078            }
+   1079          
+   1080            if ( update )
+   1081            {
+   1082              AddrMgrEntryUpdate( &entry );
+   \                     ??bindAddrIndexGet_2:
+   \   00004C                ; Setup parameters for call to function AddrMgrEntryUpdate
+   \   00004C   85..82       MOV     DPL,?XSP + 0
+   \   00004F   85..83       MOV     DPH,?XSP + 1
+   \   000052   AA82         MOV     R2,DPL
+   \   000054   AB83         MOV     R3,DPH
+   \   000056   12....       LCALL   ??AddrMgrEntryUpdate?relay
+   \   000059   8024         SJMP    ??bindAddrIndexGet_1
+   1083            }
+   \                     ??bindAddrIndexGet_3:
+   \   00005B   7401         MOV     A,#0x1
+   \   00005D   68           XRL     A,R0
+   \   00005E   7014         JNZ     ??bindAddrIndexGet_4
+   \   000060   8A82         MOV     DPL,R2
+   \   000062   8B83         MOV     DPH,R3
+   \   000064   E0           MOVX    A,@DPTR
+   \   000065   F8           MOV     R0,A
+   \   000066   A3           INC     DPTR
+   \   000067   E0           MOVX    A,@DPTR
+   \   000068   F9           MOV     R1,A
+   \   000069   740B         MOV     A,#0xb
+   \   00006B   12....       LCALL   ?XSTACK_DISP0_8
+   \   00006E   E8           MOV     A,R0
+   \   00006F   F0           MOVX    @DPTR,A
+   \   000070   A3           INC     DPTR
+   \   000071   E9           MOV     A,R1
+   \   000072   800A         SJMP    ??bindAddrIndexGet_5
+   \                     ??bindAddrIndexGet_4:
+   \   000074   740B         MOV     A,#0xb
+   \   000076   12....       LCALL   ?XSTACK_DISP0_8
+   \   000079   74FE         MOV     A,#-0x2
+   \   00007B   F0           MOVX    @DPTR,A
+   \   00007C   A3           INC     DPTR
+   \   00007D   04           INC     A
+   \                     ??bindAddrIndexGet_5:
+   \   00007E   F0           MOVX    @DPTR,A
+   1084          
+   1085            return entry.index;
+   \                     ??bindAddrIndexGet_1:
+   \   00007F   02....       LJMP    ?Subroutine1 & 0xFFFF
+   1086          }
+   1087          
+   1088          /*********************************************************************
+   1089           * @fn      GetBindingTableEntry
+   1090           *
+   1091           * @brief   Get a pointer to the Nth valid binding table entry.
+   1092           *
+   1093           * @param   Nth valid entry being requested.
+   1094           *
+   1095           * @return  The Nth valid binding table entry.
+   1096           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   1097          BindingEntry_t *GetBindingTableEntry( uint16 Nth )
+   \                     GetBindingTableEntry:
+   1098          {
+   \   000000   74F5         MOV     A,#-0xb
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 11
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV     A,R2
+   \   000006   F8           MOV     R0,A
+   \   000007   EB           MOV     A,R3
+   \   000008   F9           MOV     R1,A
+   1099            BindingEntry_t *rtrn = NULL;
+   \   000009   7A00         MOV     R2,#0x0
+   \   00000B   7B00         MOV     R3,#0x0
+   1100          
+   1101          #if defined ( REFLECTOR )
+   1102            bindTableIndex_t idx, cnt = 0;
+   \   00000D   8A..         MOV     ?V0 + 2,R2
+   1103          
+   1104            for ( idx = 0; idx < gNWK_MAX_BINDING_ENTRIES; idx++ )
+   \   00000F   7F00         MOV     R7,#0x0
+   \   000011   8001         SJMP    ??GetBindingTableEntry_0
+   \                     ??GetBindingTableEntry_1:
+   \   000013   0F           INC     R7
+   \                     ??GetBindingTableEntry_0:
+   \   000014   90....       MOV     DPTR,#gNWK_MAX_BINDING_ENTRIES
+   \   000017   E4           CLR     A
+   \   000018   93           MOVC    A,@A+DPTR
+   \   000019   FC           MOV     R4,A
+   \   00001A   EF           MOV     A,R7
+   \   00001B   C3           CLR     C
+   \   00001C   9C           SUBB    A,R4
+   \   00001D   502B         JNC     ??GetBindingTableEntry_2
+   1105            {
+   1106              if ( BindingTable[idx].srcEP != NV_BIND_EMPTY )
+   \   00001F   EF           MOV     A,R7
+   \   000020   75F00E       MOV     B,#0xe
+   \   000023   A4           MUL     AB
+   \   000024   FC           MOV     R4,A
+   \   000025   ADF0         MOV     R5,B
+   \   000027   74..         MOV     A,#BindingTable & 0xff
+   \   000029   2C           ADD     A,R4
+   \   00002A   F582         MOV     DPL,A
+   \   00002C   74..         MOV     A,#(BindingTable >> 8) & 0xff
+   \   00002E   3D           ADDC    A,R5
+   \   00002F   F583         MOV     DPH,A
+   \   000031   E0           MOVX    A,@DPTR
+   \   000032   F4           CPL     A
+   \   000033   60DE         JZ      ??GetBindingTableEntry_1
+   1107              {
+   1108                if ( cnt++ == Nth )
+   \   000035   AC..         MOV     R4,?V0 + 2
+   \   000037   7401         MOV     A,#0x1
+   \   000039   2C           ADD     A,R4
+   \   00003A   F5..         MOV     ?V0 + 2,A
+   \   00003C   8C..         MOV     ?V0 + 0,R4
+   \   00003E   E8           MOV     A,R0
+   \   00003F   65..         XRL     A,?V0 + 0
+   \   000041   7001         JNZ     ??GetBindingTableEntry_3
+   \   000043   E9           MOV     A,R1
+   \                     ??GetBindingTableEntry_3:
+   \   000044   70CD         JNZ     ??GetBindingTableEntry_1
+   1109                {
+   1110                  rtrn = BindingTable+idx;
+   \   000046   AA82         MOV     R2,DPL
+   \   000048   AB83         MOV     R3,DPH
+   1111                  break;
+   1112                }
+   1113              }
+   1114            }
+   1115          #else
+   1116            (void)Nth;
+   1117          #endif
+   1118          
+   1119            return rtrn;
+   \                     ??GetBindingTableEntry_2:
+   \   00004A   7F03         MOV     R7,#0x3
+   \   00004C   02....       LJMP    ?BANKED_LEAVE_XDATA
+   1120          }
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??InitBindingTable?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    InitBindingTable
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindFindEmpty?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindFindEmpty
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindNumOfEntries?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindNumOfEntries
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindCapacity?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindCapacity
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindAddEntry?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindAddEntry
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindRemoveEntry?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindRemoveEntry
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindIsClusterIDinList?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindIsClusterIDinList
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindRemoveClusterIdFromList?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindRemoveClusterIdFromList
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindAddClusterIdToList?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindAddClusterIdToList
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindFindExisting?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindFindExisting
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindRemoveDev?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindRemoveDev
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindRemoveSrcDev?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindRemoveSrcDev
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindNumBoundTo?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindNumBoundTo
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindNumReflections?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindNumReflections
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindFind?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindFind
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindAddressClear?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindAddressClear
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??BindInitNV?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    BindInitNV
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??BindSetDefaultNV?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    BindSetDefaultNV
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??BindRestoreFromNV?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    BindRestoreFromNV
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??BindWriteNV?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    BindWriteNV
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindUpdateAddr?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindUpdateAddr
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindingAddrMgsHelperFind?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindingAddrMgsHelperFind
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindingAddrMgsHelperConvert?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindingAddrMgsHelperConvert
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindingAddrMgsHelperConvertShort?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindingAddrMgsHelperConvertShort
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindAddrMgrLocalLoad?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindAddrMgrLocalLoad
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??bindAddrIndexGet?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    bindAddrIndexGet
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??GetBindingTableEntry?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    GetBindingTableEntry
+   1121          
+   1122          /*********************************************************************
+   1123          *********************************************************************/
+
+   Maximum stack usage in bytes:
+
+   ISTACK PSTACK XSTACK Function
+   ------ ------ ------ --------
+       2      0     12  BindInitNV
+                          0 0 10 -> BindSetDefaultNV
+                          0 0 12 -> osal_nv_item_init
+       0      0     18  BindRestoreFromNV
+                          0 0 18 -> osal_nv_read
+       0      0     26  BindSetDefaultNV
+                          0 0 16 -> osal_nv_write
+       0      0     35  BindWriteNV
+                          0 0 34 -> osal_memcpy
+                          0 0 35 -> osal_nv_write
+       0      0     11  GetBindingTableEntry
+       0      0     10  InitBindingTable
+                          0 0 10 -> osal_memset
+       0      0     29  bindAddClusterIdToList
+       1      0     25  bindAddEntry
+                          0 0 20 -> bindAddClusterIdToList
+                          0 0 20 -> bindAddrIndexGet
+                          0 0 20 -> bindAddrMgrLocalLoad
+                          0 0 20 -> bindFindEmpty
+                          0 0 20 -> bindIsClusterIDinList
+                          0 0 23 -> osal_memcpy
+       2      0     33  bindAddrIndexGet
+                          2 0 13 -> AddrMgrEntryLookupExt
+                          2 0 13 -> AddrMgrEntryLookupNwk
+                          2 0 13 -> AddrMgrEntryUpdate
+                          2 0 13 -> AddrMgrExtAddrSet
+       0      0     43  bindAddrMgrLocalLoad
+                          0 0 23 -> AddrMgrEntryUpdate
+                          0 0 23 -> AddrMgrExtAddrSet
+                          0 0 23 -> NLME_GetCoordExtAddr
+                          0 0 23 -> NLME_GetCoordShortAddr
+                          0 0 23 -> NLME_GetExtAddr
+       2      0     25  bindAddressClear
+                          2 0 13 -> AddrMgrEntryRelease
+       0      0      9  bindCapacity
+       0      0     14  bindFind
+                          0 0 14 -> bindIsClusterIDinList
+       2      0     20  bindFindEmpty
+       0      0     13  bindFindExisting
+                          0 0 13 -> bindingAddrMgsHelperFind
+       0      0     29  bindIsClusterIDinList
+       0      0     14  bindNumBoundTo
+                          0 0 14 -> bindingAddrMgsHelperFind
+       2      0      0  bindNumOfEntries
+       0      0     12  bindNumReflections
+                          0 0 12 -> bindIsClusterIDinList
+       0      0     13  bindRemoveClusterIdFromList
+       0      0     12  bindRemoveDev
+                          0 0 12 -> bindAddressClear
+                          0 0 12 -> bindRemoveEntry
+                          0 0 12 -> bindingAddrMgsHelperFind
+       2      0     12  bindRemoveEntry
+                          2 0  0 -> osal_memset
+       0      0     10  bindRemoveSrcDev
+                          0 0 10 -> bindAddressClear
+                          0 0 10 -> bindRemoveEntry
+       0      0     21  bindUpdateAddr
+                          0 0 21 -> bindingAddrMgsHelperFind
+       0      0     22  bindingAddrMgsHelperConvert
+                          0 0 22 -> AddrMgrEntryGet
+                          0 0 22 -> sAddrExtCpy
+       2      0     13  bindingAddrMgsHelperConvertShort
+                          2 0 13 -> AddrMgrEntryGet
+       2      0     34  bindingAddrMgsHelperFind
+                          2 0 13 -> AddrMgrEntryLookupExt
+                          2 0 13 -> AddrMgrEntryLookupNwk
+                          2 0 13 -> AddrMgrExtAddrSet
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       6  ??BindInitNV?relay
+       6  ??BindRestoreFromNV?relay
+       6  ??BindSetDefaultNV?relay
+       6  ??BindWriteNV?relay
+       6  ??GetBindingTableEntry?relay
+       6  ??InitBindingTable?relay
+       5  ??Subroutine21_0
+       5  ??Subroutine22_0
+      16  ??Subroutine23_0
+       8  ??Subroutine24_0
+       8  ??Subroutine25_0
+       5  ??Subroutine26_0
+       7  ??Subroutine27_0
+       8  ??Subroutine28_0
+       6  ??bindAddClusterIdToList?relay
+       6  ??bindAddEntry?relay
+       6  ??bindAddrIndexGet?relay
+       6  ??bindAddrMgrLocalLoad?relay
+       6  ??bindAddressClear?relay
+       6  ??bindCapacity?relay
+       6  ??bindFind?relay
+       6  ??bindFindEmpty?relay
+       6  ??bindFindExisting?relay
+       6  ??bindIsClusterIDinList?relay
+       6  ??bindNumBoundTo?relay
+       6  ??bindNumOfEntries?relay
+       6  ??bindNumReflections?relay
+       6  ??bindRemoveClusterIdFromList?relay
+       6  ??bindRemoveDev?relay
+       6  ??bindRemoveEntry?relay
+       6  ??bindRemoveSrcDev?relay
+       6  ??bindUpdateAddr?relay
+       6  ??bindingAddrMgsHelperConvert?relay
+       6  ??bindingAddrMgsHelperConvertShort?relay
+       6  ??bindingAddrMgsHelperFind?relay
+       3  ?Subroutine0
+       2  ?Subroutine1
+      11  ?Subroutine10
+       1  ?Subroutine11
+       4  ?Subroutine12
+      23  ?Subroutine13
+       4  ?Subroutine14
+      10  ?Subroutine15
+       9  ?Subroutine16
+       9  ?Subroutine17
+      19  ?Subroutine18
+       8  ?Subroutine19
+       5  ?Subroutine2
+      15  ?Subroutine20
+       5  ?Subroutine3
+       3  ?Subroutine4
+       5  ?Subroutine5
+       5  ?Subroutine6
+      21  ?Subroutine7
+      22  ?Subroutine8
+      11  ?Subroutine9
+      86  BindInitNV
+     157  BindRestoreFromNV
+      65  BindSetDefaultNV
+     238  BindWriteNV
+      79  GetBindingTableEntry
+     116  InitBindingTable
+      68  bindAddClusterIdToList
+     342  bindAddEntry
+     130  bindAddrIndexGet
+     155  bindAddrMgrLocalLoad
+       1  bindAddrMgrLocalLoaded
+      95  bindAddressClear
+      55  bindCapacity
+      80  bindFind
+      39  bindFindEmpty
+     145  bindFindExisting
+      69  bindIsClusterIDinList
+     134  bindNumBoundTo
+      47  bindNumOfEntries
+      64  bindNumReflections
+     130  bindRemoveClusterIdFromList
+     143  bindRemoveDev
+      17  bindRemoveEntry
+      82  bindRemoveSrcDev
+     105  bindUpdateAddr
+      78  bindingAddrMgsHelperConvert
+      34  bindingAddrMgsHelperConvertShort
+      66  bindingAddrMgsHelperFind
+       2  pBindInitNV
+       2  pBindRestoreFromNV
+       2  pBindSetDefaultNV
+       2  pBindWriteNV
+       2  pbindAddEntry
+       2  pbindNumOfEntries
+       2  pbindRemoveDev
+
+ 
+ 3 076 bytes in segment BANKED_CODE
+   162 bytes in segment BANK_RELAYS
+    15 bytes in segment XDATA_Z
+ 
+ 3 238 bytes of CODE  memory
+    15 bytes of XDATA memory
+
+Errors: none
+Warnings: none

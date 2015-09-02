@@ -1,0 +1,3163 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.20.2.41139 for 8051             27/May/2014  19:14:30 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\Source\Light\z #
+#                          ll_samplelight.c                                   #
+#    Command line       =  -f "D:\Texas Instruments\Z-Stack Lighting          #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wRouter.cfg" (-DCPU32MHZ        #
+#                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TRU #
+#                          E -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8       #
+#                          -DMAC_CFG_RX_MAX=5 -DRTR_NWK) -f "D:\Texas         #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wConfig.cfg" (-DZIGBEEPRO       #
+#                          -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR       #
+#                          -DDEFAULT_CHANLIST=0x00000800                      #
+#                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                       #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MA #
+#                          SK=0x007F -DBEACON_REQUEST_DELAY=100               #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                     #
+#                          -DLINK_STATUS_JITTER_MASK=0x007F                   #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_PO #
+#                          LLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7             #
+#                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3    #
+#                          -DNWK_MAX_DATA_RETRIES=2                           #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9         #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40           #
+#                          -DNWK_MAX_BINDING_ENTRIES=4                        #
+#                          -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01,  #
+#                          0x03, 0x05, 0x07, 0x09, 0x0B, 0x0D, 0x0F, 0x00,    #
+#                          0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0D}"         #
+#                          -DMAC_MAX_FRAME_SIZE=116                           #
+#                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const     #
+#                          __code" -DGENERIC=__generic                        #
+#                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000        #
+#                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100    #
+#                          -DREJOIN_POLL_RATE=440) -f "D:\Texas               #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\Tools\CC2530DB\f8wZCL.cfg" "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\Source\Light\z #
+#                          ll_samplelight.c" -D FEATURE_GREEN_POWER -D        #
+#                          SECURE=1 -D TC_LINKKEY_JOIN -D                     #
+#                          ZDSECMGR_TC_DEVICE_MAX=2 -D NV_RESTORE -D          #
+#                          HOLD_AUTO_START -D INTER_PAN -D                    #
+#                          LCD_SUPPORTED=DEBUG -D ZCL_BASIC -D ZCL_READ -D    #
+#                          ZCL_WRITE -D ZCL_IDENTIFY -D ZCL_ON_OFF -D         #
+#                          ZCL_SCENES -D ZCL_GROUPS -D                        #
+#                          ZCL_LIGHT_LINK_ENHANCE -D ZCL_LEVEL_CTRL -D        #
+#                          ZCL_COLOR_CTRL -D MAX_CHANNELS_24GHZ=0x02108800    #
+#                          -D xPWM_ALT2 -D xTHERMAL_SHUTDOWN -D               #
+#                          ZLL_1_0_HUB_COMPATIBILITY -D DALI_LIGHT -lC        #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\List\" -lA "D:\Texas Instruments\Z-Stack  #
+#                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC253 #
+#                          x\Zlight - Router\List\" --diag_suppress           #
+#                          Pe001,Pa010 -o "D:\Texas Instruments\Z-Stack       #
+#                          Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\CC253 #
+#                          x\Zlight - Router\Obj\" -e --debug --core=plain    #
+#                          --dptr=16,1 --data_model=large                     #
+#                          --code_model=banked --calling_convention=xdata_ree #
+#                          ntrant --place_constants=data_rom                  #
+#                          --nr_virtual_regs 16 -I "D:\Texas                  #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\" -I    #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\Sour #
+#                          ce\" -I "D:\Texas Instruments\Z-Stack Lighting     #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\S #
+#                          ource\" -I "D:\Texas Instruments\Z-Stack Lighting  #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\HomeAutomation\Source\" -I "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\HomeAutomation\SampleLight\Source\" -I           #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\ZMain\TI2530DB\" -I "D:\Texas                    #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\hal\include\" -I "D:\Texas      #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\hal\target\CC2530PMP4712\" -I   #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\include\" -I "D:\Texas      #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\high_level\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\low_level\srf04\" -I        #
+#                          "D:\Texas Instruments\Z-Stack Lighting             #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mac\low_level\srf04\single_chip #
+#                          \" -I "D:\Texas Instruments\Z-Stack Lighting       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\mt\" -I "D:\Texas               #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\osal\include\" -I "D:\Texas     #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\services\saddr\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\services\sdata\" -I "D:\Texas   #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\af\" -I "D:\Texas         #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\nwk\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sapi\" -I "D:\Texas       #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sec\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\sys\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\zcl\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\stack\zdo\" -I "D:\Texas        #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\zmac\" -I "D:\Texas             #
+#                          Instruments\Z-Stack Lighting                       #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\..\..\. #
+#                          .\..\..\Components\zmac\f8w\" -Ohz                 #
+#                          --require_prototypes                               #
+#    List file          =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\List\zll_samplelight.lst                  #
+#    Object file        =  D:\Texas Instruments\Z-Stack Lighting              #
+#                          1.0.2\Projects\zstack\ZLL\SampleApp\CC253x\Zlight  #
+#                          - Router\Obj\zll_samplelight.r51                   #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\Texas Instruments\Z-Stack Lighting 1.0.2\Projects\zstack\ZLL\SampleApp\Source\Light\zll_samplelight.c
+      1          /**************************************************************************************************
+      2            Filename:       zll_samplelight.c
+      3            Revised:        $Date: 2013-12-05 14:36:32 -0800 (Thu, 05 Dec 2013) $
+      4            Revision:       $Revision: 36404 $
+      5          
+      6          
+      7            Description:    Zigbee Cluster Library - Light Link (ZLL) Light Sample
+      8                            Application.
+      9          
+     10          
+     11            Copyright 2010-2013 Texas Instruments Incorporated. All rights reserved.
+     12          
+     13            IMPORTANT: Your use of this Software is limited to those specific rights
+     14            granted under the terms of a software license agreement between the user
+     15            who downloaded the software, his/her employer (which must be your employer)
+     16            and Texas Instruments Incorporated (the "License").  You may not use this
+     17            Software unless you agree to abide by the terms of the License. The License
+     18            limits your use, and you acknowledge, that the Software may not be modified,
+     19            copied or distributed unless embedded on a Texas Instruments microcontroller
+     20            or used solely and exclusively in conjunction with a Texas Instruments radio
+     21            frequency transceiver, which is integrated into your product.  Other than for
+     22            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     23            works of, modify, distribute, perform, display or sell this Software and/or
+     24            its documentation for any purpose.
+     25          
+     26            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     27            PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     28            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     29            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     30            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     31            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     32            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     33            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     34            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     35            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     36            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     37          
+     38            Should you have any questions regarding your right to use this Software,
+     39            contact Texas Instruments Incorporated at www.TI.com.
+     40          **************************************************************************************************/
+     41          
+     42          /*********************************************************************
+     43            This device will be like a Light device.  This application is not
+     44            intended to be a Light device, but will use the device description
+     45            to implement this sample code.
+     46          *********************************************************************/
+     47          
+     48          /*********************************************************************
+     49           * INCLUDES
+     50           */
+     51          #include "onboard.h"
+     52          
+     53          #include "nwk_util.h"
+     54          
+     55          
+     56          #include "zll_target.h"
+     57          #include "zll_samplelight.h"
+     58          #include "zll_effects_ctrl.h"
+     59          
+     60          #ifdef THERMAL_SHUTDOWN
+     61          #include "hw_thermal_ctrl.h"
+     62          #endif
+     63          
+     64          /* HAL */
+     65          //#include "hal_lcd.h"
+     66          #include "hal_oled.h"
+     67          #include "hal_led.h"
+     68          #include "hal_key.h"
+     69          #include "hal_timer.h"
+     70          
+     71          #ifdef HAL_BOARD_ZLIGHT
+     72          #include "osal_clock.h"
+     73          #else
+     74          // NWK key printout
+     75          #include "osal_nv.h"
+     76          #endif
+     77          
+     78          /*********************************************************************
+     79           * MACROS
+     80           */
+     81          
+     82          /*********************************************************************
+     83           * CONSTANTS
+     84           */
+     85          #define FACTORY_RESET_KEY     HAL_KEY_RIGHT
+     86          #define CLASSIC_COMMISS_KEY   HAL_KEY_UP
+     87          #define PERMIT_JOIN_KEY       HAL_KEY_DOWN
+     88          #define DISPLAY_NWK_KEY_KEY   HAL_KEY_LEFT
+     89          
+     90          #define KEY_HOLD_SHORT_INTERVAL    1
+     91          #define KEY_HOLD_LONG_INTERVAL     5
+     92          #define PERMIT_JOIN_DURATION       60
+     93          
+     94          
+     95          /*********************************************************************
+     96           * TYPEDEFS
+     97           */
+     98          
+     99          /*********************************************************************
+    100           * GLOBAL VARIABLES
+    101           */
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    102          byte zllSampleLight_TaskID;
+   \                     zllSampleLight_TaskID:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+    103          
+    104          /*********************************************************************
+    105           * GLOBAL FUNCTIONS
+    106           */
+    107          #ifdef ZLL_1_0_HUB_COMPATIBILITY
+    108          extern ZStatus_t zll_RegisterSimpleDesc( SimpleDescriptionFormat_t *simpleDesc );
+    109          #endif
+    110          
+    111          /*********************************************************************
+    112           * LOCAL VARIABLES
+    113           */
+    114          
+    115          /*********************************************************************
+    116           * LOCAL FUNCTIONS
+    117           */
+    118          static void zllSampleLight_HandleKeys( byte shift, byte keys );
+    119          static void zllSampleLight_BasicResetCB( void );
+    120          static void zllSampleLight_IdentifyCB( zclIdentify_t *pCmd );
+    121          static void zllSampleLight_IdentifyQueryRspCB( zclIdentifyQueryRsp_t *pRsp );
+    122          static void zllSampleLight_OnOffCB( uint8 cmd );
+    123          static void zllSampleLight_OnOff_OffWithEffectCB( zclOffWithEffect_t *pCmd );
+    124          static void zllSampleLight_OnOff_OnWithRecallGlobalSceneCB( void );
+    125          static void zllSampleLight_OnOff_OnWithTimedOffCB( zclOnWithTimedOff_t *pCmd );
+    126          static void zllSampleLight_ProcessIdentifyTimeChange( void );
+    127          static void zllSampleLight_ProcessOnWithTimedOffTimer( void );
+    128          static void zllSampleLight_IdentifyEffectCB( zclIdentifyTriggerEffect_t *pCmd );
+    129          
+    130          // This callback is called to process attribute not handled in ZCL
+    131          static ZStatus_t zllSampleLight_AttrReadWriteCB( uint16 clusterId, uint16 attrId,
+    132                                                 uint8 oper, uint8 *pValue, uint16 *pLen );
+    133          
+    134          static uint8 zllSampleLight_SceneStoreCB( zclSceneReq_t *pReq );
+    135          static void zllSampleLight_SceneRecallCB( zclSceneReq_t *pReq );
+    136          
+    137          #if ( HAL_LCD == TRUE )
+    138          static void zllSampleLight_PrintNwkKey( uint8 reverse );
+    139          #endif
+    140          
+    141          /*********************************************************************
+    142           * ZCL General Profile Callback table
+    143           */
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+    144          static zclGeneral_AppCallbacks_t zllSampleLight_GenCmdCBs =
+   \                     zllSampleLight_GenCmdCBs:
+   \   000000                DS 36
+   \   000024                REQUIRE `?<Initializer for zllSampleLight_GenCmdCBs>`
+   \   000024                REQUIRE __INIT_XDATA_I
+    145          {
+    146            zllSampleLight_BasicResetCB,            // Basic Cluster Reset command
+    147            zllSampleLight_IdentifyCB,              // Identify command
+    148          #ifdef ZCL_EZMODE
+    149            NULL,                                   // Identify EZ-Mode Invoke command
+    150            NULL,                                   // Identify Update Commission State command
+    151          #endif
+    152            zllSampleLight_IdentifyEffectCB,        // Identify Trigger Effect command
+    153            zllSampleLight_IdentifyQueryRspCB,      // Identify Query Response command
+    154            zllSampleLight_OnOffCB,                 // On/Off cluster commands
+    155            zllSampleLight_OnOff_OffWithEffectCB,   // On/Off cluster enhanced command Off with Effect
+    156            zllSampleLight_OnOff_OnWithRecallGlobalSceneCB, // On/Off cluster enhanced command On with Recall Global Scene
+    157            zllSampleLight_OnOff_OnWithTimedOffCB,  // On/Off cluster enhanced command On with Timed Off
+    158          #ifdef ZCL_LEVEL_CTRL
+    159            zclLevel_MoveToLevelCB,                 // Level Control Move to Level command
+    160            zclLevel_MoveCB,                        // Level Control Move command
+    161            zclLevel_StepCB,                        // Level Control Step command
+    162            zclLevel_StopCB,                        // Level Control Stop command
+    163          #endif
+    164          #ifdef ZCL_GROUPS
+    165            NULL,                                   // Group Response commands
+    166          #endif
+    167          #ifdef ZCL_SCENES
+    168            zllSampleLight_SceneStoreCB,            // Scene Store Request command
+    169            zllSampleLight_SceneRecallCB,           // Scene Recall Request command
+    170            NULL,                                   // Scene Response command
+    171          #endif
+    172          #if ZCL_ALARMS
+    173            NULL,                                   // Alarm (Response) commands
+    174          #endif
+    175          #ifdef SE_UK_EXT
+    176            NULL,                                   // Get Event Log command
+    177            NULL,                                   // Publish Event Log command
+    178          #endif
+    179            NULL,                                   // RSSI Location command
+    180            NULL                                    // RSSI Location Response command
+    181          };
+    182          
+    183          #ifdef ZCL_COLOR_CTRL
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+    184          static zclLighting_AppCallbacks_t zllSampleLight_LightingCmdCBs =
+   \                     zllSampleLight_LightingCmdCBs:
+   \   000000                DS 34
+   \   000022                REQUIRE `?<Initializer for zllSampleLight_LightingCmdCB`
+   \   000022                REQUIRE __INIT_XDATA_I
+    185          {
+    186            zclColor_MoveToHueCB,   //Move To Hue Command
+    187            zclColor_MoveHueCB,   //Move Hue Command
+    188            zclColor_StepHueCB,   //Step Hue Command
+    189            zclColor_MoveToSaturationCB,   //Move To Saturation Command
+    190            zclColor_MoveSaturationCB,   //Move Saturation Command
+    191            zclColor_StepSaturationCB,   //Step Saturation Command
+    192            zclColor_MoveToHueAndSaturationCB,   //Move To Hue And Saturation  Command
+    193            zclColor_MoveToColorCB, // Move To Color Command
+    194            zclColor_MoveColorCB,   // Move Color Command
+    195            zclColor_StepColorCB,   // STEP To Color Command
+    196            NULL,                                     // Move To Color Temperature Command
+    197            zclColor_EnhMoveToHueCB,// Enhanced Move To Hue
+    198            zclColor_MoveEnhHueCB,  // Enhanced Move Hue;
+    199            zclColor_StepEnhHueCB,  // Enhanced Step Hue;
+    200            zclColor_MoveToEnhHueAndSaturationCB, // Enhanced Move To Hue And Saturation;
+    201            zclColor_SetColorLoopCB, // Color Loop Set Command
+    202            zclColor_StopCB,        // Stop Move Step;
+    203          };
+    204          #endif //ZCL_COLOR_CTRL
+    205          
+    206          /*********************************************************************
+    207           * @fn          zllSampleLight_Init
+    208           *
+    209           * @brief       Initialization function for the Sample Light App Task.
+    210           *
+    211           * @param       task_id
+    212           *
+    213           * @return      none
+    214           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    215          void zllSampleLight_Init( byte task_id )
+   \                     zllSampleLight_Init:
+    216          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+    217            zllSampleLight_TaskID = task_id;
+   \   000006   90....       MOV     DPTR,#zllSampleLight_TaskID
+   \   000009   F0           MOVX    @DPTR,A
+    218          
+    219            // Register the ZCL General Cluster Library callback functions
+    220            zclGeneral_RegisterCmdCallbacks( SAMPLELIGHT_ENDPOINT, &zllSampleLight_GenCmdCBs );
+   \   00000A                ; Setup parameters for call to function zclGeneral_RegisterCmdCallbacks
+   \   00000A   7A..         MOV     R2,#zllSampleLight_GenCmdCBs & 0xff
+   \   00000C   7B..         MOV     R3,#(zllSampleLight_GenCmdCBs >> 8) & 0xff
+   \   00000E   790B         MOV     R1,#0xb
+   \   000010   12....       LCALL   ??zclGeneral_RegisterCmdCallbacks?relay
+    221          
+    222          #ifdef ZLL_HW_LED_LAMP
+    223            HalTimer1Init(0);
+   \   000013                ; Setup parameters for call to function HalTimer1Init
+   \   000013   7A00         MOV     R2,#0x0
+   \   000015   7B00         MOV     R3,#0x0
+   \   000017   12....       LCALL   ??HalTimer1Init?relay
+    224          #endif //ZLL_HW_LED_LAMP
+    225          
+    226            zllEffects_Init(zllSampleLight_TaskID, zllSampleLight_OnOffCB);
+   \   00001A                ; Setup parameters for call to function zllEffects_Init
+   \   00001A   7A..         MOV     R2,#??zllSampleLight_OnOffCB?relay & 0xff
+   \   00001C   7B..         MOV     R3,#(??zllSampleLight_OnOffCB?relay >> 8) & 0xff
+   \   00001E   90....       MOV     DPTR,#zllSampleLight_TaskID
+   \   000021   E0           MOVX    A,@DPTR
+   \   000022   F9           MOV     R1,A
+   \   000023   12....       LCALL   ??zllEffects_Init?relay
+    227          
+    228          #ifdef ZCL_LEVEL_CTRL
+    229            zclLevel_init(zllSampleLight_TaskID, zllSampleLight_OnOffCB);
+   \   000026                ; Setup parameters for call to function zclLevel_init
+   \   000026   7A..         MOV     R2,#??zllSampleLight_OnOffCB?relay & 0xff
+   \   000028   7B..         MOV     R3,#(??zllSampleLight_OnOffCB?relay >> 8) & 0xff
+   \   00002A   90....       MOV     DPTR,#zllSampleLight_TaskID
+   \   00002D   E0           MOVX    A,@DPTR
+   \   00002E   F9           MOV     R1,A
+   \   00002F   12....       LCALL   ??zclLevel_init?relay
+    230          #else
+    231            #ifdef ZLL_HW_LED_LAMP
+    232              halTimer1SetChannelDuty (WHITE_LED, PWM_FULL_DUTY_CYCLE); //initialize on/off LED to full power
+    233            #endif
+    234          #endif //ZCL_LEVEL_CTRL
+    235          
+    236          #ifdef ZCL_COLOR_CTRL
+    237            // Register the ZCL Lighting Cluster Library callback functions
+    238            zclLighting_RegisterCmdCallbacks( SAMPLELIGHT_ENDPOINT, &zllSampleLight_LightingCmdCBs );
+   \   000032                ; Setup parameters for call to function zclLighting_RegisterCmdCallbacks
+   \   000032   7A..         MOV     R2,#zllSampleLight_LightingCmdCBs & 0xff
+   \   000034   7B..         MOV     R3,#(zllSampleLight_LightingCmdCBs >> 8) & 0xff
+   \   000036   790B         MOV     R1,#0xb
+   \   000038   12....       LCALL   ??zclLighting_RegisterCmdCallbacks?relay
+    239            zclColor_init(zllSampleLight_TaskID);
+   \   00003B                ; Setup parameters for call to function zclColor_init
+   \   00003B   90....       MOV     DPTR,#zllSampleLight_TaskID
+   \   00003E   E0           MOVX    A,@DPTR
+   \   00003F   F9           MOV     R1,A
+   \   000040   12....       LCALL   ??zclColor_init?relay
+    240          #endif //#ifdef ZCL_COLOR_CTRL
+    241          
+    242            // Register the application's attribute list
+    243            zcl_registerAttrList( SAMPLELIGHT_ENDPOINT, SAMPLELIGHT_NUM_ATTRIBUTES, zllSampleLight_Attrs );
+   \   000043                ; Setup parameters for call to function zcl_registerAttrList
+   \   000043   7C..         MOV     R4,#zllSampleLight_Attrs & 0xff
+   \   000045   7D..         MOV     R5,#(zllSampleLight_Attrs >> 8) & 0xff
+   \   000047   7A2E         MOV     R2,#0x2e
+   \   000049   790B         MOV     R1,#0xb
+   \   00004B   12....       LCALL   ??zcl_registerAttrList?relay
+    244          
+    245            // Register the application's callback function to read the Scene Count attribute.
+    246            zcl_registerReadWriteCB( SAMPLELIGHT_ENDPOINT, zllSampleLight_AttrReadWriteCB, NULL );
+   \   00004E                ; Setup parameters for call to function zcl_registerReadWriteCB
+   \   00004E   7C00         MOV     R4,#0x0
+   \   000050   7D00         MOV     R5,#0x0
+   \   000052   7A..         MOV     R2,#??zllSampleLight_AttrReadWriteCB?relay & 0xff
+   \   000054   7B..         MOV     R3,#(??zllSampleLight_AttrReadWriteCB?relay >> 8) & 0xff
+   \   000056   790B         MOV     R1,#0xb
+   \   000058   12....       LCALL   ??zcl_registerReadWriteCB?relay
+    247          
+    248            // Register for all key events - This app will handle all key events
+    249            RegisterForKeys( zllSampleLight_TaskID );
+   \   00005B                ; Setup parameters for call to function RegisterForKeys
+   \   00005B   90....       MOV     DPTR,#zllSampleLight_TaskID
+   \   00005E   E0           MOVX    A,@DPTR
+   \   00005F   F9           MOV     R1,A
+   \   000060   12....       LCALL   ??RegisterForKeys?relay
+    250          
+    251            zllTarget_RegisterApp( &zllSampleLight_SimpleDesc, &zllSampleLight_DeviceInfo );
+   \   000063                ; Setup parameters for call to function zllTarget_RegisterApp
+   \   000063   7C..         MOV     R4,#zllSampleLight_DeviceInfo & 0xff
+   \   000065   7D..         MOV     R5,#(zllSampleLight_DeviceInfo >> 8) & 0xff
+   \   000067   7A..         MOV     R2,#zllSampleLight_SimpleDesc & 0xff
+   \   000069   7B..         MOV     R3,#(zllSampleLight_SimpleDesc >> 8) & 0xff
+   \   00006B   12....       LCALL   ??zllTarget_RegisterApp?relay
+    252          
+    253            zllTarget_RegisterIdentifyCB( zllSampleLight_IdentifyCB );
+   \   00006E                ; Setup parameters for call to function zllTarget_RegisterIdentifyCB
+   \   00006E   7A..         MOV     R2,#??zllSampleLight_IdentifyCB?relay & 0xff
+   \   000070   7B..         MOV     R3,#(??zllSampleLight_IdentifyCB?relay >> 8) & 0xff
+   \   000072   12....       LCALL   ??zllTarget_RegisterIdentifyCB?relay
+    254          
+    255            zllTarget_InitDevice();
+   \   000075                ; Setup parameters for call to function zllTarget_InitDevice
+   \   000075   12....       LCALL   ??zllTarget_InitDevice?relay
+    256          
+    257            zllSampleLight_OnOffCB( zllSampleLight_OnOff );
+   \   000078                ; Setup parameters for call to function zllSampleLight_OnOffCB
+   \   000078   90....       MOV     DPTR,#zllSampleLight_OnOff
+   \   00007B   E0           MOVX    A,@DPTR
+   \   00007C   F9           MOV     R1,A
+   \   00007D   12....       LCALL   ??zllSampleLight_OnOffCB?relay
+    258          
+    259          #ifdef ZLL_1_0_HUB_COMPATIBILITY
+    260            zclGeneral_RegisterCmdCallbacks( SAMPLELIGHT_ENDPOINT2, &zllSampleLight_GenCmdCBs );
+   \   000080                ; Setup parameters for call to function zclGeneral_RegisterCmdCallbacks
+   \   000080   7A..         MOV     R2,#zllSampleLight_GenCmdCBs & 0xff
+   \   000082   7B..         MOV     R3,#(zllSampleLight_GenCmdCBs >> 8) & 0xff
+   \   000084   790C         MOV     R1,#0xc
+   \   000086   12....       LCALL   ??zclGeneral_RegisterCmdCallbacks?relay
+    261          #ifdef ZCL_COLOR_CTRL
+    262            zclLighting_RegisterCmdCallbacks( SAMPLELIGHT_ENDPOINT2, &zllSampleLight_LightingCmdCBs );
+   \   000089                ; Setup parameters for call to function zclLighting_RegisterCmdCallbacks
+   \   000089   7A..         MOV     R2,#zllSampleLight_LightingCmdCBs & 0xff
+   \   00008B   7B..         MOV     R3,#(zllSampleLight_LightingCmdCBs >> 8) & 0xff
+   \   00008D   790C         MOV     R1,#0xc
+   \   00008F   12....       LCALL   ??zclLighting_RegisterCmdCallbacks?relay
+    263          #endif //ZCL_COLOR_CTRL
+    264            zcl_registerAttrList( SAMPLELIGHT_ENDPOINT2, SAMPLELIGHT_NUM_ATTRIBUTES, zllSampleLight_Attrs );
+   \   000092                ; Setup parameters for call to function zcl_registerAttrList
+   \   000092   7C..         MOV     R4,#zllSampleLight_Attrs & 0xff
+   \   000094   7D..         MOV     R5,#(zllSampleLight_Attrs >> 8) & 0xff
+   \   000096   7A2E         MOV     R2,#0x2e
+   \   000098   790C         MOV     R1,#0xc
+   \   00009A   12....       LCALL   ??zcl_registerAttrList?relay
+    265            zll_RegisterSimpleDesc( &zllSampleLight_SimpleDesc2 );
+   \   00009D                ; Setup parameters for call to function zll_RegisterSimpleDesc
+   \   00009D   7A..         MOV     R2,#zllSampleLight_SimpleDesc2 & 0xff
+   \   00009F   7B..         MOV     R3,#(zllSampleLight_SimpleDesc2 >> 8) & 0xff
+   \   0000A1   12....       LCALL   ??zll_RegisterSimpleDesc?relay
+    266          #endif //ZLL_1_0_HUB_COMPATIBILITY
+    267          
+    268          #ifdef THERMAL_SHUTDOWN
+    269            hwThermal_Init( zllSampleLight_TaskID, TRUE );
+    270          #endif
+    271          }
+   \   0000A4                REQUIRE ?Subroutine0
+   \   0000A4                ; // Fall through to label ?Subroutine0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   7F01         MOV     R7,#0x1
+   \   000002   02....       LJMP    ?BANKED_LEAVE_XDATA
+    272          
+    273          /*********************************************************************
+    274           * @fn          zclSample_event_loop
+    275           *
+    276           * @brief       Event Loop Processor for the Sample Light App Task.
+    277           *
+    278           * @param       task_id
+    279           * @param       events - events bitmap
+    280           *
+    281           * @return      unprocessed events bitmap
+    282           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    283          uint16 zllSampleLight_event_loop( uint8 task_id, uint16 events )
+   \                     zllSampleLight_event_loop:
+    284          {
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 2
+   \   000005   74FE         MOV     A,#-0x2
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+   \   00000A   85..82       MOV     DPL,?XSP + 0
+   \   00000D   85..83       MOV     DPH,?XSP + 1
+   \   000010   EA           MOV     A,R2
+   \   000011   F0           MOVX    @DPTR,A
+   \   000012   A3           INC     DPTR
+   \   000013   EB           MOV     A,R3
+   \   000014   F0           MOVX    @DPTR,A
+    285            (void)task_id;  // Intentionally unreferenced parameter
+    286          
+    287            if ( events & SYS_EVENT_MSG )
+   \   000015   5480         ANL     A,#0x80
+   \   000017   7003         JNZ     $+5
+   \   000019   02....       LJMP    ??zllSampleLight_event_loop_0 & 0xFFFF
+    288            {
+    289              afIncomingMSGPacket_t *pMsg;
+    290          
+    291              if ( (pMsg = (afIncomingMSGPacket_t *)osal_msg_receive( zllSampleLight_TaskID )) )
+   \   00001C                ; Setup parameters for call to function osal_msg_receive
+   \   00001C   90....       MOV     DPTR,#zllSampleLight_TaskID
+   \   00001F   E0           MOVX    A,@DPTR
+   \   000020   F9           MOV     R1,A
+   \   000021   12....       LCALL   ??osal_msg_receive?relay
+   \   000024   8A..         MOV     ?V0 + 0,R2
+   \   000026   8B..         MOV     ?V0 + 1,R3
+   \   000028   AE..         MOV     R6,?V0 + 0
+   \   00002A   AF..         MOV     R7,?V0 + 1
+   \   00002C   EE           MOV     A,R6
+   \   00002D   4F           ORL     A,R7
+   \   00002E   7003         JNZ     $+5
+   \   000030   02....       LJMP    ??zllSampleLight_event_loop_1 & 0xFFFF
+    292              {
+    293                switch ( pMsg->hdr.event )
+   \   000033   8E82         MOV     DPL,R6
+   \   000035   8F83         MOV     DPH,R7
+   \   000037   E0           MOVX    A,@DPTR
+   \   000038   64C0         XRL     A,#0xc0
+   \   00003A   707C         JNZ     ??zllSampleLight_event_loop_2
+    294                {
+    295                  case KEY_CHANGE:
+    296                    zllSampleLight_HandleKeys( ((keyChange_t *)pMsg)->state, ((keyChange_t *)pMsg)->keys );
+   \   00003C   A3           INC     DPTR
+   \   00003D   A3           INC     DPTR
+   \   00003E   A3           INC     DPTR
+   \   00003F   E0           MOVX    A,@DPTR
+   \   000040   600B         JZ      ??zllSampleLight_event_loop_3
+   \   000042                ; Setup parameters for call to function osal_getClock
+   \   000042   12....       LCALL   ??osal_getClock?relay
+   \   000045   90....       MOV     DPTR,#??keyPressTime
+   \   000048   12....       LCALL   ?XSTORE_R2345
+   \   00004B   806B         SJMP    ??zllSampleLight_event_loop_2
+   \                     ??zllSampleLight_event_loop_3:
+   \   00004D   90....       MOV     DPTR,#??keyPressTime
+   \   000050   78..         MOV     R0,#?V0 + 0
+   \   000052   12....       LCALL   ?L_MOV_X
+   \   000055   E5..         MOV     A,?V0 + 0
+   \   000057   45..         ORL     A,?V0 + 1
+   \   000059   45..         ORL     A,?V0 + 2
+   \   00005B   45..         ORL     A,?V0 + 3
+   \   00005D   6059         JZ      ??zllSampleLight_event_loop_2
+   \   00005F                ; Setup parameters for call to function osal_getClock
+   \   00005F   12....       LCALL   ??osal_getClock?relay
+   \   000062   8A..         MOV     ?V0 + 0,R2
+   \   000064   8B..         MOV     ?V0 + 1,R3
+   \   000066   8C..         MOV     ?V0 + 2,R4
+   \   000068   8D..         MOV     ?V0 + 3,R5
+   \   00006A   90....       MOV     DPTR,#??keyPressTime
+   \   00006D   78..         MOV     R0,#?V0 + 0
+   \   00006F   12....       LCALL   ?L_SUB_X
+   \   000072   90....       MOV     DPTR,#??keyPressTime
+   \   000075   78..         MOV     R0,#?V0 + 0
+   \   000077   12....       LCALL   ?L_MOV_TO_X
+   \   00007A   90....       MOV     DPTR,#__Constant_2
+   \   00007D   78..         MOV     R0,#?V0 + 0
+   \   00007F   12....       LCALL   ?L_MOV_X
+   \   000082   90....       MOV     DPTR,#??keyPressTime
+   \   000085   78..         MOV     R0,#?V0 + 0
+   \   000087   12....       LCALL   ?UL_GT_X
+   \   00008A   5007         JNC     ??zllSampleLight_event_loop_4
+   \   00008C                ; Setup parameters for call to function zllTarget_PermitJoin
+   \   00008C   793C         MOV     R1,#0x3c
+   \   00008E   12....       LCALL   ??zllTarget_PermitJoin?relay
+   \   000091   801A         SJMP    ??zllSampleLight_event_loop_5
+   \                     ??zllSampleLight_event_loop_4:
+   \   000093   90....       MOV     DPTR,#__Constant_6
+   \   000096   78..         MOV     R0,#?V0 + 0
+   \   000098   12....       LCALL   ?L_MOV_X
+   \   00009B   90....       MOV     DPTR,#??keyPressTime
+   \   00009E   78..         MOV     R0,#?V0 + 0
+   \   0000A0   12....       LCALL   ?UL_GT_X
+   \   0000A3   4005         JC      ??zllSampleLight_event_loop_6
+   \   0000A5                ; Setup parameters for call to function zllTarget_ClassicalCommissioningStart
+   \   0000A5   12....       LCALL   ??zllTarget_ClassicalCommissioningStart?relay
+   \   0000A8   8003         SJMP    ??zllSampleLight_event_loop_5
+   \                     ??zllSampleLight_event_loop_6:
+   \   0000AA                ; Setup parameters for call to function zllTarget_ResetToFactoryNew
+   \   0000AA   12....       LCALL   ??zllTarget_ResetToFactoryNew?relay
+   \                     ??zllSampleLight_event_loop_5:
+   \   0000AD   90....       MOV     DPTR,#??keyPressTime
+   \   0000B0   E4           CLR     A
+   \   0000B1   F0           MOVX    @DPTR,A
+   \   0000B2   A3           INC     DPTR
+   \   0000B3   F0           MOVX    @DPTR,A
+   \   0000B4   A3           INC     DPTR
+   \   0000B5   F0           MOVX    @DPTR,A
+   \   0000B6   A3           INC     DPTR
+   \   0000B7   F0           MOVX    @DPTR,A
+    297                    break;
+    298          
+    299                  default:
+    300                    break;
+    301                }
+    302          
+    303                // Release the memory
+    304                osal_msg_deallocate( (uint8 *)pMsg );
+   \                     ??zllSampleLight_event_loop_2:
+   \   0000B8                ; Setup parameters for call to function osal_msg_deallocate
+   \   0000B8   EE           MOV     A,R6
+   \   0000B9   FA           MOV     R2,A
+   \   0000BA   EF           MOV     A,R7
+   \   0000BB   FB           MOV     R3,A
+   \   0000BC   12....       LCALL   ??osal_msg_deallocate?relay
+    305              }
+    306          
+    307              // return unprocessed events
+    308              return (events ^ SYS_EVENT_MSG);
+   \                     ??zllSampleLight_event_loop_1:
+   \   0000BF   85..82       MOV     DPL,?XSP + 0
+   \   0000C2   85..83       MOV     DPH,?XSP + 1
+   \   0000C5   E0           MOVX    A,@DPTR
+   \   0000C6   FA           MOV     R2,A
+   \   0000C7   A3           INC     DPTR
+   \   0000C8   E0           MOVX    A,@DPTR
+   \   0000C9   6480         XRL     A,#0x80
+   \   0000CB   02....       LJMP    ??zllSampleLight_event_loop_7 & 0xFFFF
+    309            }
+    310          
+    311          #ifdef THERMAL_SHUTDOWN
+    312            if ( events & SAMPLELIGHT_THERMAL_SAMPLE_EVT )
+    313            {
+    314              hwThermal_Monitor( TRUE );
+    315              return ( events ^ SAMPLELIGHT_THERMAL_SAMPLE_EVT );
+    316            }
+    317          #endif
+    318          
+    319            if ( events & SAMPLELIGHT_IDENTIFY_TIMEOUT_EVT )
+   \                     ??zllSampleLight_event_loop_0:
+   \   0000CE   85..82       MOV     DPL,?XSP + 0
+   \   0000D1   85..83       MOV     DPH,?XSP + 1
+   \   0000D4   E0           MOVX    A,@DPTR
+   \   0000D5   A2E0         MOV     C,0xE0 /* A   */.0
+   \   0000D7   500F         JNC     ??zllSampleLight_event_loop_8
+    320            {
+    321              zllSampleLight_ProcessIdentifyTimeChange();
+   \   0000D9                ; Setup parameters for call to function zllSampleLight_ProcessIdentifyTimeChange
+   \   0000D9   12....       LCALL   ??zllSampleLight_ProcessIdentifyTimeChange?rela
+    322          
+    323              return ( events ^ SAMPLELIGHT_IDENTIFY_TIMEOUT_EVT );
+   \   0000DC   85..82       MOV     DPL,?XSP + 0
+   \   0000DF   85..83       MOV     DPH,?XSP + 1
+   \   0000E2   E0           MOVX    A,@DPTR
+   \   0000E3   6401         XRL     A,#0x1
+   \   0000E5   02....       LJMP    ??zllSampleLight_event_loop_9 & 0xFFFF
+    324            }
+    325          
+    326            if ( events & SAMPLELIGHT_EFFECT_PROCESS_EVT )
+   \                     ??zllSampleLight_event_loop_8:
+   \   0000E8   5402         ANL     A,#0x2
+   \   0000EA   600E         JZ      ??zllSampleLight_event_loop_10
+    327            {
+    328              zllEffects_ProcessEffect();
+   \   0000EC                ; Setup parameters for call to function zllEffects_ProcessEffect
+   \   0000EC   12....       LCALL   ??zllEffects_ProcessEffect?relay
+    329              return ( events ^ SAMPLELIGHT_EFFECT_PROCESS_EVT );
+   \   0000EF   85..82       MOV     DPL,?XSP + 0
+   \   0000F2   85..83       MOV     DPH,?XSP + 1
+   \   0000F5   E0           MOVX    A,@DPTR
+   \   0000F6   6402         XRL     A,#0x2
+   \   0000F8   8076         SJMP    ??zllSampleLight_event_loop_9
+    330            }
+    331          
+    332            if ( events & SAMPLELIGHT_ON_TIMED_OFF_TIMER_EVT )
+   \                     ??zllSampleLight_event_loop_10:
+   \   0000FA   E0           MOVX    A,@DPTR
+   \   0000FB   5404         ANL     A,#0x4
+   \   0000FD   6077         JZ      ??zllSampleLight_event_loop_11
+    333            {
+    334              zllSampleLight_ProcessOnWithTimedOffTimer();
+   \   0000FF   90....       MOV     DPTR,#zllSampleLight_OnOff
+   \   000102   E0           MOVX    A,@DPTR
+   \   000103   6401         XRL     A,#0x1
+   \   000105   7018         JNZ     ??zllSampleLight_event_loop_12
+   \   000107   12....       LCALL   ?Subroutine12 & 0xFFFF
+   \                     ??CrossCallReturnLabel_48:
+   \   00010A   603C         JZ      ??zllSampleLight_event_loop_13
+   \   00010C   90....       MOV     DPTR,#zllSampleLight_OnTime
+   \   00010F   12....       LCALL   ?Subroutine8 & 0xFFFF
+   \                     ??CrossCallReturnLabel_21:
+   \   000112   702F         JNZ     ??zllSampleLight_event_loop_14
+   \   000114   90....       MOV     DPTR,#zllSampleLight_OffWaitTime
+   \   000117   E4           CLR     A
+   \   000118   F0           MOVX    @DPTR,A
+   \   000119   A3           INC     DPTR
+   \   00011A   F0           MOVX    @DPTR,A
+   \   00011B                ; Setup parameters for call to function zllSampleLight_OnOffCB
+   \   00011B   F9           MOV     R1,A
+   \   00011C   12....       LCALL   ??zllSampleLight_OnOffCB?relay
+   \                     ??zllSampleLight_event_loop_12:
+   \   00011F   90....       MOV     DPTR,#zllSampleLight_OnOff
+   \   000122   E0           MOVX    A,@DPTR
+   \   000123   701E         JNZ     ??zllSampleLight_event_loop_14
+   \   000125   90....       MOV     DPTR,#zllSampleLight_OffWaitTime
+   \   000128   12....       LCALL   ??Subroutine21_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_42:
+   \   00012B   6016         JZ      ??zllSampleLight_event_loop_14
+   \   00012D   90....       MOV     DPTR,#zllSampleLight_OffWaitTime
+   \   000130   12....       LCALL   ?Subroutine8 & 0xFFFF
+   \                     ??CrossCallReturnLabel_22:
+   \   000133   700E         JNZ     ??zllSampleLight_event_loop_14
+   \   000135                ; Setup parameters for call to function osal_stop_timerEx
+   \   000135   7A04         MOV     R2,#0x4
+   \   000137   7B00         MOV     R3,#0x0
+   \   000139   90....       MOV     DPTR,#zllSampleLight_TaskID
+   \   00013C   E0           MOVX    A,@DPTR
+   \   00013D   F9           MOV     R1,A
+   \   00013E   12....       LCALL   ??osal_stop_timerEx?relay
+   \   000141   8024         SJMP    ??zllSampleLight_event_loop_15
+   \                     ??zllSampleLight_event_loop_14:
+   \   000143   12....       LCALL   ?Subroutine12 & 0xFFFF
+   \                     ??CrossCallReturnLabel_49:
+   \   000146   7008         JNZ     ??zllSampleLight_event_loop_16
+   \                     ??zllSampleLight_event_loop_13:
+   \   000148   90....       MOV     DPTR,#zllSampleLight_OffWaitTime
+   \   00014B   12....       LCALL   ??Subroutine21_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_43:
+   \   00014E   6017         JZ      ??zllSampleLight_event_loop_15
+   \                     ??zllSampleLight_event_loop_16:
+   \   000150                ; Setup parameters for call to function osal_start_timerEx
+   \   000150   90....       MOV     DPTR,#__Constant_64
+   \   000153   12....       LCALL   ?PUSH_XSTACK8_X_FOUR
+   \   000156   7A04         MOV     R2,#0x4
+   \   000158   7B00         MOV     R3,#0x0
+   \   00015A   90....       MOV     DPTR,#zllSampleLight_TaskID
+   \   00015D   E0           MOVX    A,@DPTR
+   \   00015E   F9           MOV     R1,A
+   \   00015F   12....       LCALL   ??osal_start_timerEx?relay
+   \   000162   7404         MOV     A,#0x4
+   \   000164   12....       LCALL   ?DEALLOC_XSTACK8
+    335              return ( events ^ SAMPLELIGHT_ON_TIMED_OFF_TIMER_EVT );
+   \                     ??zllSampleLight_event_loop_15:
+   \   000167   85..82       MOV     DPL,?XSP + 0
+   \   00016A   85..83       MOV     DPH,?XSP + 1
+   \   00016D   E0           MOVX    A,@DPTR
+   \   00016E   6404         XRL     A,#0x4
+   \                     ??zllSampleLight_event_loop_9:
+   \   000170   FA           MOV     R2,A
+   \   000171   A3           INC     DPTR
+   \   000172   E0           MOVX    A,@DPTR
+   \                     ??zllSampleLight_event_loop_7:
+   \   000173   FB           MOV     R3,A
+   \   000174   8025         SJMP    ??zllSampleLight_event_loop_17
+    336            }
+    337          
+    338          #ifdef ZCL_LEVEL_CTRL
+    339              //update the level
+    340              zclLevel_process(&events);
+   \                     ??zllSampleLight_event_loop_11:
+   \   000176                ; Setup parameters for call to function zclLevel_process
+   \   000176   AA82         MOV     R2,DPL
+   \   000178   AB83         MOV     R3,DPH
+   \   00017A   12....       LCALL   ??zclLevel_process?relay
+    341          #endif //ZCL_COLOR_CTRL
+    342          
+    343          #ifdef ZCL_COLOR_CTRL
+    344              //update the color
+    345              zclColor_process(&events);
+   \   00017D                ; Setup parameters for call to function zclColor_process
+   \   00017D   85..82       MOV     DPL,?XSP + 0
+   \   000180   85..83       MOV     DPH,?XSP + 1
+   \   000183   AA82         MOV     R2,DPL
+   \   000185   AB83         MOV     R3,DPH
+   \   000187   12....       LCALL   ??zclColor_process?relay
+    346              zclColor_processColorLoop(&events);
+   \   00018A                ; Setup parameters for call to function zclColor_processColorLoop
+   \   00018A   85..82       MOV     DPL,?XSP + 0
+   \   00018D   85..83       MOV     DPH,?XSP + 1
+   \   000190   AA82         MOV     R2,DPL
+   \   000192   AB83         MOV     R3,DPH
+   \   000194   12....       LCALL   ??zclColor_processColorLoop?relay
+    347          #endif //ZCL_COLOR_CTRL
+    348          
+    349          
+    350            // Discard unknown events
+    351            return 0;
+   \   000197   7A00         MOV     R2,#0x0
+   \   000199   7B00         MOV     R3,#0x0
+   \                     ??zllSampleLight_event_loop_17:
+   \   00019B   7402         MOV     A,#0x2
+   \   00019D   02....       LJMP    ??Subroutine19_0 & 0xFFFF
+    352          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine19_0:
+   \   000000   12....       LCALL   ?DEALLOC_XSTACK8
+   \   000003   7F04         MOV     R7,#0x4
+   \   000005   02....       LJMP    ?BANKED_LEAVE_XDATA
+    353          
+    354          /*********************************************************************
+    355           * @fn      zllSampleLight_HandleKeys
+    356           *
+    357           * @brief   Handles all key events for this device.
+    358           *
+    359           * @param   shift - true if in shift/alt.
+    360           * @param   keys - bit field for key events.
+    361           *
+    362           * @return  none
+    363           */
+    364          static void zllSampleLight_HandleKeys( byte shift, byte keys )
+    365          {
+    366            (void)shift;  // Intentionally unreferenced parameter
+    367          #ifdef HAL_BOARD_ZLIGHT
+    368            // Zlight has only a single button
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    369            static uint32 keyPressTime = 0;
+   \                     ??keyPressTime:
+   \   000000                DS 4
+   \   000004                REQUIRE __INIT_XDATA_Z
+    370            if ( keys )
+    371            {
+    372              keyPressTime = osal_getClock();
+    373            }
+    374            else //key released
+    375            {
+    376              if ( keyPressTime )
+    377              {
+    378                keyPressTime = ( osal_getClock() - keyPressTime );
+    379                if ( keyPressTime <= KEY_HOLD_SHORT_INTERVAL )
+    380                {
+    381                  zllTarget_PermitJoin( PERMIT_JOIN_DURATION );
+    382                }
+    383                else if ( keyPressTime > KEY_HOLD_LONG_INTERVAL )
+    384                {
+    385                  zllTarget_ClassicalCommissioningStart();
+    386                }
+    387                else
+    388                {
+    389                  zllTarget_ResetToFactoryNew();
+    390                }
+    391                keyPressTime = 0;
+    392              }
+    393            }
+    394          #else //HAL_BOARD_CC2530EB ?
+    395            if ( keys & CLASSIC_COMMISS_KEY )
+    396            {
+    397              zllTarget_ClassicalCommissioningStart();
+    398            }
+    399          
+    400            if ( keys & FACTORY_RESET_KEY )
+    401            {
+    402              zllTarget_ResetToFactoryNew();
+    403            }
+    404          
+    405            if ( keys & PERMIT_JOIN_KEY )
+    406            {
+    407              zllTarget_PermitJoin( PERMIT_JOIN_DURATION );
+    408              HalLcdWriteString( "PermitJoin", HAL_LCD_LINE_3 );
+    409            }
+    410          
+    411            if ( keys & DISPLAY_NWK_KEY_KEY )
+    412            {
+    413          #if ( HAL_LCD == TRUE )
+    414              zllSampleLight_PrintNwkKey( FALSE );
+    415          #endif //( HAL_LCD == TRUE )
+    416            }
+    417          
+    418          #endif //HAL_BOARD_ZLIGHT
+    419          }
+    420          
+    421          #if (HAL_LCD == TRUE)
+    422          /*********************************************************************
+    423           * @fn      zllSampleLight_PrintNwkKey
+    424           *
+    425           * @brief   Print current NWK key on the LCD screen
+    426           *
+    427           * @param   reverse - TRUE to print the bytes in reverse order
+    428           *
+    429           * @return  none
+    430           */
+    431          static void zllSampleLight_PrintNwkKey( uint8 reverse )
+    432          {
+    433            nwkKeyDesc KeyInfo;
+    434            uint8 lcd_buf[SEC_KEY_LEN+1];
+    435            uint8 lcd_buf1[SEC_KEY_LEN+1];
+    436            uint8 lcd_buf2[SEC_KEY_LEN+1];
+    437            uint8 i;
+    438            static uint8 clear = 1;
+    439          
+    440            clear ^= 1;
+    441            if ( clear )
+    442            {
+    443              nwk_Status( NWK_STATUS_ROUTER_ADDR, _NIB.nwkDevAddress );
+    444              nwk_Status( NWK_STATUS_PARENT_ADDR, _NIB.nwkCoordAddress );
+    445              HalLcdWriteString( "", HAL_LCD_LINE_3 );
+    446              return;
+    447            }
+    448          
+    449            // Swap active and alternate keys writing them directly to NV
+    450            osal_nv_read(ZCD_NV_NWK_ACTIVE_KEY_INFO, 0,
+    451                         sizeof(nwkKeyDesc), &KeyInfo);
+    452          
+    453            for (i = 0; i < SEC_KEY_LEN/2; i++)
+    454            {
+    455              uint8 key = KeyInfo.key[i];
+    456              _itoa(KeyInfo.key[i], &lcd_buf[i*2], 16);
+    457              if( (key & 0xF0) == 0)
+    458              {
+    459                //_itoa shift to significant figures, so swaps bytes if 0x0?
+    460                lcd_buf[(i*2) + 1] = lcd_buf[i*2];
+    461                lcd_buf[i*2] = '0';
+    462              }
+    463              if( (key & 0xF) == 0)
+    464              {
+    465                lcd_buf[(i*2) + 1] = '0';
+    466              }
+    467            }
+    468          
+    469            if ( reverse )
+    470            {
+    471              //print in daintree format. Reverse bytes.
+    472              for (i = 0; i < (SEC_KEY_LEN); i+=2)
+    473              {
+    474                lcd_buf2[SEC_KEY_LEN - (i+2)] = lcd_buf[i];
+    475                lcd_buf2[SEC_KEY_LEN - (i+1)] = lcd_buf[i+1];
+    476              }
+    477            }
+    478            else
+    479            {
+    480              osal_memcpy(lcd_buf1, lcd_buf, SEC_KEY_LEN);
+    481            }
+    482          
+    483            for (i = 0; i < SEC_KEY_LEN/2; i++)
+    484            {
+    485              uint8 key = KeyInfo.key[i + SEC_KEY_LEN/2];
+    486              _itoa(KeyInfo.key[i + SEC_KEY_LEN/2], &lcd_buf[i*2], 16);
+    487              if( (key & 0xF0) == 0)
+    488              {
+    489                //_itoa shift to significant figures, so swaps bytes if 0x0?
+    490                lcd_buf[(i*2) + 1] = lcd_buf[i*2];
+    491                lcd_buf[i*2] = '0';
+    492              }
+    493              if( (key & 0xF) == 0)
+    494              {
+    495                lcd_buf[(i*2) + 1] = '0';
+    496              }
+    497            }
+    498          
+    499            if ( reverse )
+    500            {
+    501              //print in daintree format. Reverse bytes.
+    502              for (i = 0; i < (SEC_KEY_LEN); i+=2)
+    503              {
+    504                lcd_buf1[SEC_KEY_LEN - (i+2)] = lcd_buf[i];
+    505                lcd_buf1[SEC_KEY_LEN - (i+1)] = lcd_buf[i+1];
+    506              }
+    507            }
+    508            else
+    509            {
+    510              osal_memcpy(lcd_buf2, lcd_buf, SEC_KEY_LEN);
+    511            }
+    512          
+    513            lcd_buf1[SEC_KEY_LEN] = '\0';
+    514            lcd_buf2[SEC_KEY_LEN] = '\0';
+    515            if ( reverse )
+    516            {
+    517              HalLcdWriteString( "NWK KEY (Rev.):", HAL_LCD_LINE_1 );
+    518            }
+    519            else
+    520            {
+    521              HalLcdWriteString( "NWK KEY: ", HAL_LCD_LINE_1 );
+    522            }
+    523            HalLcdWriteString( (char*)lcd_buf1, HAL_LCD_LINE_2 );
+    524            HalLcdWriteString( (char*)lcd_buf2, HAL_LCD_LINE_3 );
+    525          }
+    526          #endif //(HAL_LCD == TRUE)
+    527          
+    528          /*********************************************************************
+    529           * @fn      zllSampleLight_ProcessIdentifyTimeChange
+    530           *
+    531           * @brief   Called to process any change to the IdentifyTime attribute.
+    532           *
+    533           * @param   none
+    534           *
+    535           * @return  none
+    536           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    537          static void zllSampleLight_ProcessIdentifyTimeChange( void )
+   \                     zllSampleLight_ProcessIdentifyTimeChange:
+    538          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    539            if ( zllSampleLight_IdentifyTime > 0 )
+   \   000004   90....       MOV     DPTR,#zllSampleLight_IdentifyTime
+   \   000007   12....       LCALL   ??Subroutine21_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_44:
+   \   00000A   6026         JZ      ??zllSampleLight_ProcessIdentifyTimeChange_0
+    540            {
+    541              zllSampleLight_IdentifyTime--;
+   \   00000C   90....       MOV     DPTR,#zllSampleLight_IdentifyTime
+   \   00000F   E0           MOVX    A,@DPTR
+   \   000010   24FF         ADD     A,#-0x1
+   \   000012   F0           MOVX    @DPTR,A
+   \   000013   A3           INC     DPTR
+   \   000014   E0           MOVX    A,@DPTR
+   \   000015   34FF         ADDC    A,#-0x1
+   \   000017   F0           MOVX    @DPTR,A
+    542              zllEffects_Blink();
+   \   000018                ; Setup parameters for call to function zllEffects_Blink
+   \   000018   12....       LCALL   ??zllEffects_Blink?relay
+    543              osal_start_timerEx( zllSampleLight_TaskID, SAMPLELIGHT_IDENTIFY_TIMEOUT_EVT, 1000 );
+   \   00001B                ; Setup parameters for call to function osal_start_timerEx
+   \   00001B   90....       MOV     DPTR,#__Constant_3e8
+   \   00001E   12....       LCALL   ?PUSH_XSTACK8_X_FOUR
+   \   000021   7A01         MOV     R2,#0x1
+   \   000023   7B00         MOV     R3,#0x0
+   \   000025   90....       MOV     DPTR,#zllSampleLight_TaskID
+   \   000028   E0           MOVX    A,@DPTR
+   \   000029   F9           MOV     R1,A
+   \   00002A   12....       LCALL   ??osal_start_timerEx?relay
+   \   00002D   7404         MOV     A,#0x4
+   \   00002F   12....       LCALL   ?DEALLOC_XSTACK8
+    544            }
+    545          }
+   \                     ??zllSampleLight_ProcessIdentifyTimeChange_0:
+   \   000032                REQUIRE ?Subroutine2
+   \   000032                ; // Fall through to label ?Subroutine2
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine2:
+   \   000000   D083         POP     DPH
+   \   000002   D082         POP     DPL
+   \   000004   02....       LJMP    ?BRET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine21_0:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   F8           MOV     R0,A
+   \   000002   A3           INC     DPTR
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   F9           MOV     R1,A
+   \   000005   E8           MOV     A,R0
+   \   000006   49           ORL     A,R1
+   \   000007   22           RET
+    546          
+    547          /*********************************************************************
+    548           * @fn      zllSampleLight_ProcessOnWithTimedOffTimer
+    549           *
+    550           * @brief   Called to process On with Timed Off attributes changes over time.
+    551           *
+    552           * @param   none
+    553           *
+    554           * @return  none
+    555           */
+    556          static void zllSampleLight_ProcessOnWithTimedOffTimer( void )
+    557          {
+    558            if ( ( zllSampleLight_OnOff == LIGHT_ON ) && ( zllSampleLight_OnTime > 0 ) )
+    559            {
+    560              zllSampleLight_OnTime--;
+    561              if ( zllSampleLight_OnTime <= 0 )
+    562              {
+    563                zllSampleLight_OffWaitTime = 0x00;
+    564                zllSampleLight_OnOffCB( COMMAND_OFF );
+    565              }
+    566            }
+    567            if ( ( zllSampleLight_OnOff == LIGHT_OFF ) && ( zllSampleLight_OffWaitTime > 0 ) )
+    568            {
+    569              zllSampleLight_OffWaitTime--;
+    570              if ( zllSampleLight_OffWaitTime <= 0 )
+    571              {
+    572                osal_stop_timerEx( zllSampleLight_TaskID, SAMPLELIGHT_ON_TIMED_OFF_TIMER_EVT);
+    573                return;
+    574              }
+    575            }
+    576          
+    577            if ( ( zllSampleLight_OnTime > 0 ) || ( zllSampleLight_OffWaitTime > 0 ) )
+    578            {
+    579              osal_start_timerEx( zllSampleLight_TaskID, SAMPLELIGHT_ON_TIMED_OFF_TIMER_EVT, 100 );
+    580            }
+    581          }
+    582          
+    583          /*********************************************************************
+    584           * @fn      zllSampleLight_AttrReadWriteCB
+    585           *
+    586           * @brief   Read/write callbackfor read/wtire attrs tha have NULL dataPtr
+    587           *
+    588           *          Note: This function gets called only when the pointer
+    589           *                'dataPtr' to the Scene Count attribute value is
+    590           *                NULL in the attribute database registered with
+    591           *                the ZCL.
+    592           *
+    593           * @param   clusterId - cluster that attribute belongs to
+    594           * @param   attrId - attribute to be read or written
+    595           * @param   oper - ZCL_OPER_LEN, ZCL_OPER_READ, or ZCL_OPER_WRITE
+    596           * @param   pValue - pointer to attribute value
+    597           * @param   pLen - length of attribute value read
+    598           *
+    599           * @return  status
+    600           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    601          ZStatus_t zllSampleLight_AttrReadWriteCB( uint16 clusterId, uint16 attrId,
+   \                     zllSampleLight_AttrReadWriteCB:
+    602                                                 uint8 oper, uint8 *pValue, uint16 *pLen )
+    603          {
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 4
+   \   000005   74FC         MOV     A,#-0x4
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+   \   00000A   E9           MOV     A,R1
+   \   00000B   FE           MOV     R6,A
+    604            ZStatus_t status = ZCL_STATUS_SUCCESS;
+   \   00000C   7F00         MOV     R7,#0x0
+   \   00000E   7410         MOV     A,#0x10
+   \   000010   12....       LCALL   ?XSTACK_DISP0_8
+   \   000013   E0           MOVX    A,@DPTR
+   \   000014   F5..         MOV     ?V0 + 2,A
+   \   000016   A3           INC     DPTR
+   \   000017   E0           MOVX    A,@DPTR
+   \   000018   F5..         MOV     ?V0 + 3,A
+   \   00001A   7412         MOV     A,#0x12
+   \   00001C   12....       LCALL   ?XSTACK_DISP0_8
+   \   00001F   E0           MOVX    A,@DPTR
+   \   000020   F5..         MOV     ?V0 + 0,A
+   \   000022   A3           INC     DPTR
+   \   000023   E0           MOVX    A,@DPTR
+   \   000024   F5..         MOV     ?V0 + 1,A
+    605          
+    606          #if defined ZCL_SCENES
+    607            //SceneCount Attr
+    608            if( (clusterId == ZCL_CLUSTER_ID_GEN_SCENES) &&
+    609               (attrId == ATTRID_SCENES_COUNT) )
+   \   000026   7405         MOV     A,#0x5
+   \   000028   6A           XRL     A,R2
+   \   000029   7001         JNZ     ??zllSampleLight_AttrReadWriteCB_0
+   \   00002B   EB           MOV     A,R3
+   \                     ??zllSampleLight_AttrReadWriteCB_0:
+   \   00002C   7025         JNZ     ??zllSampleLight_AttrReadWriteCB_1
+   \   00002E   EC           MOV     A,R4
+   \   00002F   4D           ORL     A,R5
+   \   000030   6003         JZ      $+5
+   \   000032   02....       LJMP    ??zllSampleLight_AttrReadWriteCB_2 & 0xFFFF
+    610            {
+    611              status = zclGeneral_ReadSceneCountCB(clusterId, attrId, oper, pValue, pLen);
+   \   000035                ; Setup parameters for call to function zclGeneral_ReadSceneCountCB
+   \   000035   78..         MOV     R0,#?V0 + 0
+   \   000037   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00003A   78..         MOV     R0,#?V0 + 2
+   \   00003C   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00003F   7C00         MOV     R4,#0x0
+   \   000041   7D00         MOV     R5,#0x0
+   \   000043   7A05         MOV     R2,#0x5
+   \   000045   7B00         MOV     R3,#0x0
+   \   000047   12....       LCALL   ??zclGeneral_ReadSceneCountCB?relay
+   \   00004A   7404         MOV     A,#0x4
+   \   00004C   12....       LCALL   ?DEALLOC_XSTACK8
+   \   00004F   E9           MOV     A,R1
+   \   000050   FF           MOV     R7,A
+   \   000051   806C         SJMP    ??zllSampleLight_AttrReadWriteCB_3
+    612            } else
+    613          #endif //ZCL_SCENES
+    614            //IdentifyTime Attr
+    615            if( (clusterId == ZCL_CLUSTER_ID_GEN_IDENTIFY) &&
+    616               (attrId == ATTRID_IDENTIFY_TIME) )
+   \                     ??zllSampleLight_AttrReadWriteCB_1:
+   \   000053   7403         MOV     A,#0x3
+   \   000055   6A           XRL     A,R2
+   \   000056   7001         JNZ     ??zllSampleLight_AttrReadWriteCB_4
+   \   000058   EB           MOV     A,R3
+   \                     ??zllSampleLight_AttrReadWriteCB_4:
+   \   000059   7062         JNZ     ??zllSampleLight_AttrReadWriteCB_2
+   \   00005B   EC           MOV     A,R4
+   \   00005C   4D           ORL     A,R5
+   \   00005D   705E         JNZ     ??zllSampleLight_AttrReadWriteCB_2
+    617            {
+    618              switch ( oper )
+   \   00005F   85..82       MOV     DPL,?V0 + 2
+   \   000062   85..83       MOV     DPH,?V0 + 3
+   \   000065   A3           INC     DPTR
+   \   000066   A882         MOV     R0,DPL
+   \   000068   A983         MOV     R1,DPH
+   \   00006A   EE           MOV     A,R6
+   \   00006B   6022         JZ      ??zllSampleLight_AttrReadWriteCB_5
+   \   00006D   14           DEC     A
+   \   00006E   6005         JZ      ??zllSampleLight_AttrReadWriteCB_6
+   \   000070   14           DEC     A
+   \   000071   602A         JZ      ??zllSampleLight_AttrReadWriteCB_7
+   \   000073   8048         SJMP    ??zllSampleLight_AttrReadWriteCB_2
+    619              {
+    620                case ZCL_OPER_LEN:
+    621                  *pLen = 2; // uint16
+    622                  break;
+    623          
+    624                case ZCL_OPER_READ:
+    625                  pValue[0] = LO_UINT16( zllSampleLight_IdentifyTime );
+   \                     ??zllSampleLight_AttrReadWriteCB_6:
+   \   000075   90....       MOV     DPTR,#zllSampleLight_IdentifyTime
+   \   000078   E0           MOVX    A,@DPTR
+   \   000079   85..82       MOV     DPL,?V0 + 2
+   \   00007C   85..83       MOV     DPH,?V0 + 3
+   \   00007F   F0           MOVX    @DPTR,A
+    626                  pValue[1] = HI_UINT16( zllSampleLight_IdentifyTime );
+   \   000080   90....       MOV     DPTR,#zllSampleLight_IdentifyTime + 1
+   \   000083   E0           MOVX    A,@DPTR
+   \   000084   8882         MOV     DPL,R0
+   \   000086   8983         MOV     DPH,R1
+   \   000088   F0           MOVX    @DPTR,A
+    627          
+    628                  if ( pLen != NULL )
+   \   000089   E5..         MOV     A,?V0 + 0
+   \   00008B   45..         ORL     A,?V0 + 1
+   \   00008D   6030         JZ      ??zllSampleLight_AttrReadWriteCB_3
+    629                  {
+    630                    *pLen = 2;
+   \                     ??zllSampleLight_AttrReadWriteCB_5:
+   \   00008F   85..82       MOV     DPL,?V0 + 0
+   \   000092   85..83       MOV     DPH,?V0 + 1
+   \   000095   7402         MOV     A,#0x2
+   \   000097   F0           MOVX    @DPTR,A
+   \   000098   A3           INC     DPTR
+   \   000099   E4           CLR     A
+   \   00009A   F0           MOVX    @DPTR,A
+   \   00009B   8022         SJMP    ??zllSampleLight_AttrReadWriteCB_3
+    631                  }
+    632                  break;
+    633          
+    634                case ZCL_OPER_WRITE:
+    635                {
+    636                  zclIdentify_t cmd;
+    637                  cmd.identifyTime = BUILD_UINT16( pValue[0], pValue[1] );
+   \                     ??zllSampleLight_AttrReadWriteCB_7:
+   \   00009D   85..82       MOV     DPL,?V0 + 2
+   \   0000A0   85..83       MOV     DPH,?V0 + 3
+   \   0000A3   E0           MOVX    A,@DPTR
+   \   0000A4   FA           MOV     R2,A
+   \   0000A5   8882         MOV     DPL,R0
+   \   0000A7   8983         MOV     DPH,R1
+   \   0000A9   12....       LCALL   ??Subroutine24_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_51:
+   \   0000AC   7402         MOV     A,#0x2
+   \   0000AE   12....       LCALL   ?XSTACK_DISP0_8
+   \   0000B1   E8           MOV     A,R0
+   \   0000B2   F0           MOVX    @DPTR,A
+   \   0000B3   A3           INC     DPTR
+   \   0000B4   E9           MOV     A,R1
+   \   0000B5   12....       LCALL   ??Subroutine20_0 & 0xFFFF
+    638          
+    639                  zllSampleLight_IdentifyCB( &cmd );
+   \                     ??CrossCallReturnLabel_41:
+   \   0000B8   12....       LCALL   ??zllSampleLight_IdentifyCB?relay
+    640          
+    641                  break;
+   \   0000BB   8002         SJMP    ??zllSampleLight_AttrReadWriteCB_3
+    642                }
+    643          
+    644                default:
+    645                  status = ZCL_STATUS_SOFTWARE_FAILURE; // should never get here!
+    646                  break;
+    647              }
+    648            }
+    649            else
+    650            {
+    651              status = ZCL_STATUS_SOFTWARE_FAILURE; // should never get here!
+   \                     ??zllSampleLight_AttrReadWriteCB_2:
+   \   0000BD   7FC1         MOV     R7,#-0x3f
+    652            }
+    653          
+    654            return ( status );
+   \                     ??zllSampleLight_AttrReadWriteCB_3:
+   \   0000BF   EF           MOV     A,R7
+   \   0000C0   F9           MOV     R1,A
+   \   0000C1                REQUIRE ?Subroutine1
+   \   0000C1                ; // Fall through to label ?Subroutine1
+    655          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000   7404         MOV     A,#0x4
+   \   000002                REQUIRE ??Subroutine19_0
+   \   000002                ; // Fall through to label ??Subroutine19_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine20_0:
+   \   000000   F0           MOVX    @DPTR,A
+   \   000001                ; Setup parameters for call to function zllSampleLight_SceneStoreCB
+   \   000001                ; Setup parameters for call to function zllSampleLight_SceneRecallCB
+   \   000001                ; Setup parameters for call to function zllSampleLight_IdentifyCB
+   \   000001   85..82       MOV     DPL,?XSP + 0
+   \   000004   85..83       MOV     DPH,?XSP + 1
+   \   000007   AA82         MOV     R2,DPL
+   \   000009   AB83         MOV     R3,DPH
+   \   00000B   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine24_0:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   F9           MOV     R1,A
+   \   000002   EA           MOV     A,R2
+   \   000003   F8           MOV     R0,A
+   \   000004   22           RET
+    656          /*********************************************************************
+    657           * @fn      zllSampleLight_BasicResetCB
+    658           *
+    659           * @brief   Callback from the ZCL General Cluster Library
+    660           *          to set all the Basic Cluster attributes to default values.
+    661           *
+    662           * @param   none
+    663           *
+    664           * @return  none
+    665           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    666          static void zllSampleLight_BasicResetCB( void )
+   \                     zllSampleLight_BasicResetCB:
+    667          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    668            // Reset all attributes to default values
+    669          }
+   \   000000   02....       LJMP    ?BRET
+    670          
+    671          /*********************************************************************
+    672           * @fn      zllSampleLight_IdentifyCB
+    673           *
+    674           * @brief   Callback from the ZCL General Cluster Library when
+    675           *          it received an Identity Command for this application.
+    676           *
+    677           * @param   srcAddr - source address and endpoint of the response message
+    678           * @param   identifyTime - the number of seconds to identify yourself
+    679           *
+    680           * @return  none
+    681           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    682          static void zllSampleLight_IdentifyCB( zclIdentify_t *pCmd )
+   \                     zllSampleLight_IdentifyCB:
+    683          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    684            zllSampleLight_IdentifyTime = pCmd->identifyTime;
+   \   000004   12....       LCALL   ?Subroutine13 & 0xFFFF
+   \                     ??CrossCallReturnLabel_61:
+   \   000007   90....       MOV     DPTR,#zllSampleLight_IdentifyTime
+   \   00000A   12....       LCALL   ?Subroutine7 & 0xFFFF
+    685            zllSampleLight_ProcessIdentifyTimeChange();
+   \                     ??CrossCallReturnLabel_13:
+   \   00000D                ; Setup parameters for call to function zllSampleLight_ProcessIdentifyTimeChange
+   \   00000D   12....       LCALL   ??zllSampleLight_ProcessIdentifyTimeChange?rela
+    686          }
+   \   000010   02....       LJMP    ?Subroutine2 & 0xFFFF
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine7:
+   \   000000   E8           MOV     A,R0
+   \   000001   F0           MOVX    @DPTR,A
+   \   000002   A3           INC     DPTR
+   \   000003   E9           MOV     A,R1
+   \   000004   F0           MOVX    @DPTR,A
+   \   000005   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine13:
+   \   000000   8A82         MOV     DPL,R2
+   \   000002   8B83         MOV     DPH,R3
+   \   000004                REQUIRE ??Subroutine25_0
+   \   000004                ; // Fall through to label ??Subroutine25_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine25_0:
+   \   000000   A3           INC     DPTR
+   \   000001   A3           INC     DPTR
+   \   000002                REQUIRE ??Subroutine26_0
+   \   000002                ; // Fall through to label ??Subroutine26_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine26_0:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   F8           MOV     R0,A
+   \   000002   A3           INC     DPTR
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   F9           MOV     R1,A
+   \   000005   22           RET
+    687          
+    688          
+    689          /*********************************************************************
+    690           * @fn      zllSampleLight_IdentifyCB
+    691           *
+    692           * @brief   Callback from the ZCL General Cluster Library when
+    693           *          it received an Identity Command for this application.
+    694           *
+    695           * @param   srcAddr - source address and endpoint of the response message
+    696           * @param   identifyTime - the number of seconds to identify yourself
+    697           *
+    698           * @return  none
+    699           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    700          static void zllSampleLight_IdentifyEffectCB( zclIdentifyTriggerEffect_t *pCmd )
+   \                     zllSampleLight_IdentifyEffectCB:
+    701          {
+   \   000000   74F5         MOV     A,#-0xb
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 11
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV     A,R2
+   \   000006   FE           MOV     R6,A
+   \   000007   EB           MOV     A,R3
+   \   000008   FF           MOV     R7,A
+    702            HalLcdWriteStringValue( "IdentifyEffId", pCmd->effectId, 16, HAL_LCD_LINE_1 );
+   \   000009   EE           MOV     A,R6
+   \   00000A   2402         ADD     A,#0x2
+   \   00000C   F8           MOV     R0,A
+   \   00000D   EF           MOV     A,R7
+   \   00000E   12....       LCALL   ?Subroutine18 & 0xFFFF
+   \                     ??CrossCallReturnLabel_37:
+   \   000011   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   000014   7910         MOV     R1,#0x10
+   \   000016   85..82       MOV     DPL,?V0 + 0
+   \   000019   85..83       MOV     DPH,?V0 + 1
+   \   00001C   E0           MOVX    A,@DPTR
+   \   00001D   FC           MOV     R4,A
+   \   00001E   7D00         MOV     R5,#0x0
+   \   000020   7A..         MOV     R2,#`?<Constant "IdentifyEffId">` & 0xff
+   \   000022   7B..         MOV     R3,#(`?<Constant "IdentifyEffId">` >> 8) & 0xff
+   \   000024   12....       LCALL   ??HalLcdWriteStringValue?relay
+   \   000027   7401         MOV     A,#0x1
+   \   000029   12....       LCALL   ?DEALLOC_XSTACK8
+    703            zllEffects_InitiateEffect( ZCL_CLUSTER_ID_GEN_IDENTIFY, COMMAND_IDENTIFY_TRIGGER_EFFECT,
+    704                                           pCmd->effectId, pCmd->effectVariant );
+   \   00002C                ; Setup parameters for call to function zllEffects_InitiateEffect
+   \   00002C   8E82         MOV     DPL,R6
+   \   00002E   8F83         MOV     DPH,R7
+   \   000030   A3           INC     DPTR
+   \   000031   A3           INC     DPTR
+   \   000032   A3           INC     DPTR
+   \   000033   E0           MOVX    A,@DPTR
+   \   000034   FD           MOV     R5,A
+   \   000035   85..82       MOV     DPL,?V0 + 0
+   \   000038   85..83       MOV     DPH,?V0 + 1
+   \   00003B   E0           MOVX    A,@DPTR
+   \   00003C   FC           MOV     R4,A
+   \   00003D   7940         MOV     R1,#0x40
+   \   00003F   7A03         MOV     R2,#0x3
+   \   000041   7B00         MOV     R3,#0x0
+   \   000043   12....       LCALL   ??zllEffects_InitiateEffect?relay
+    705          }
+   \   000046   7F03         MOV     R7,#0x3
+   \   000048   02....       LJMP    ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine18:
+   \   000000   3400         ADDC    A,#0x0
+   \   000002   F9           MOV     R1,A
+   \   000003   88..         MOV     ?V0 + 0,R0
+   \   000005   89..         MOV     ?V0 + 1,R1
+   \   000007                ; Setup parameters for call to function HalLcdWriteStringValue
+   \   000007                ; Setup parameters for call to function HalLcdWriteStringValueValue
+   \   000007   75..01       MOV     ?V0 + 2,#0x1
+   \   00000A   78..         MOV     R0,#?V0 + 2
+   \   00000C   22           RET
+    706          
+    707          /*********************************************************************
+    708           * @fn      zllSampleLight_IdentifyQueryRspCB
+    709           *
+    710           * @brief   Callback from the ZCL General Cluster Library when
+    711           *          it received an Identity Query Response Command for this application.
+    712           *
+    713           * @param   srcAddr - requestor's address
+    714           * @param   timeout - number of seconds to identify yourself (valid for query response)
+    715           *
+    716           * @return  none
+    717           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    718          static void zllSampleLight_IdentifyQueryRspCB(  zclIdentifyQueryRsp_t *pRsp )
+   \                     zllSampleLight_IdentifyQueryRspCB:
+    719          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    720            // Query Response (with timeout value)
+    721            (void)pRsp;
+    722          }
+   \   000000   02....       LJMP    ?BRET
+    723          
+    724          /*********************************************************************
+    725           * @fn      zllSampleLight_OnOffCB
+    726           *
+    727           * @brief   Callback from the ZCL General Cluster Library when
+    728           *          it received an On/Off Command for this application.
+    729           *
+    730           * @param   cmd - COMMAND_ON, COMMAND_OFF, or COMMAND_TOGGLE
+    731           *
+    732           * @return  none
+    733           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    734          static void zllSampleLight_OnOffCB( uint8 cmd )
+   \                     zllSampleLight_OnOffCB:
+    735          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+   \   000006   FE           MOV     R6,A
+    736            // Turn on the light
+    737            if ( cmd == COMMAND_ON )
+   \   000007   7401         MOV     A,#0x1
+   \   000009   6E           XRL     A,R6
+   \   00000A   6009         JZ      ??zllSampleLight_OnOffCB_0
+    738            {
+    739              zllSampleLight_OnOff = LIGHT_ON;
+    740              zllSampleLight_GlobalSceneCtrl = TRUE;
+    741              if ( zllSampleLight_OnTime == 0 )
+    742              {
+    743                zllSampleLight_OffWaitTime = 0;
+    744              }
+    745            }
+    746          
+    747            // Turn off the light
+    748            else if ( cmd == COMMAND_OFF )
+   \   00000C   EE           MOV     A,R6
+   \   00000D   601B         JZ      ??zllSampleLight_OnOffCB_1
+    749            {
+    750              zllSampleLight_OnOff = LIGHT_OFF;
+    751              //zllSampleLight_GlobalSceneCtrl = FALSE; //see ZLL spec 11-0037-03 6.6.1.2.1
+    752              zllSampleLight_OnTime = 0;
+    753            }
+    754          
+    755            // Toggle the light
+    756            else
+    757            {
+    758              if ( zllSampleLight_OnOff == LIGHT_OFF )
+   \   00000F   90....       MOV     DPTR,#zllSampleLight_OnOff
+   \   000012   E0           MOVX    A,@DPTR
+   \   000013   7015         JNZ     ??zllSampleLight_OnOffCB_1
+    759              {
+    760                zllSampleLight_OnOff = LIGHT_ON;
+   \                     ??zllSampleLight_OnOffCB_0:
+   \   000015   90....       MOV     DPTR,#zllSampleLight_OnOff
+   \   000018   7401         MOV     A,#0x1
+   \   00001A   F0           MOVX    @DPTR,A
+    761                zllSampleLight_GlobalSceneCtrl = TRUE;
+   \   00001B   90....       MOV     DPTR,#zllSampleLight_GlobalSceneCtrl
+   \   00001E   F0           MOVX    @DPTR,A
+    762                if ( zllSampleLight_OnTime == 0 )
+   \   00001F   12....       LCALL   ?Subroutine12 & 0xFFFF
+   \                     ??CrossCallReturnLabel_50:
+   \   000022   7011         JNZ     ??zllSampleLight_OnOffCB_2
+    763                {
+    764                  zllSampleLight_OffWaitTime = 0;
+   \   000024   90....       MOV     DPTR,#zllSampleLight_OffWaitTime
+   \   000027   E4           CLR     A
+   \   000028   8008         SJMP    ??zllSampleLight_OnOffCB_3
+    765                }
+    766              }
+    767              else
+    768              {
+    769                zllSampleLight_OnOff = LIGHT_OFF;
+   \                     ??zllSampleLight_OnOffCB_1:
+   \   00002A   90....       MOV     DPTR,#zllSampleLight_OnOff
+   \   00002D   E4           CLR     A
+   \   00002E   F0           MOVX    @DPTR,A
+    770                zllSampleLight_OnTime = 0;
+   \   00002F   90....       MOV     DPTR,#zllSampleLight_OnTime
+   \                     ??zllSampleLight_OnOffCB_3:
+   \   000032   F0           MOVX    @DPTR,A
+   \   000033   A3           INC     DPTR
+   \   000034   F0           MOVX    @DPTR,A
+    771              }
+    772            }
+    773          
+    774            hwLight_UpdateOnOff( zllSampleLight_OnOff );
+   \                     ??zllSampleLight_OnOffCB_2:
+   \   000035                ; Setup parameters for call to function hwLight_UpdateOnOff
+   \   000035   90....       MOV     DPTR,#zllSampleLight_OnOff
+   \   000038   E0           MOVX    A,@DPTR
+   \   000039   F9           MOV     R1,A
+   \   00003A   12....       LCALL   ??hwLight_UpdateOnOff?relay
+    775          
+    776            zllSampleLight_SceneValid = 0;
+   \   00003D   90....       MOV     DPTR,#zllSampleLight_SceneValid
+   \   000040   E4           CLR     A
+   \   000041   F0           MOVX    @DPTR,A
+    777          }
+   \   000042   02....       LJMP    ?Subroutine0 & 0xFFFF
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine12:
+   \   000000   90....       MOV     DPTR,#zllSampleLight_OnTime
+   \   000003                REQUIRE ??Subroutine21_0
+   \   000003                ; // Fall through to label ??Subroutine21_0
+    778          
+    779          
+    780          /*********************************************************************
+    781           * @fn      zllSampleLight_OffWithEffect
+    782           *
+    783           * @brief   Callback from the ZCL General Cluster Library when it
+    784           *          received an Off with Effect Command for this application.
+    785           *
+    786           * @param   pCmd - Off with Effect parameters
+    787           *
+    788           * @return  none
+    789           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    790          static void zllSampleLight_OnOff_OffWithEffectCB( zclOffWithEffect_t *pCmd )
+   \                     zllSampleLight_OnOff_OffWithEffectCB:
+    791          {
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 4
+   \   000005   74FC         MOV     A,#-0x4
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+    792            HalLcdWriteStringValueValue( "OffWithEff", pCmd->effectId, 16,
+    793                                         pCmd->effectVariant, 16, HAL_LCD_LINE_1 );
+   \   00000A   EA           MOV     A,R2
+   \   00000B   2402         ADD     A,#0x2
+   \   00000D   F8           MOV     R0,A
+   \   00000E   EB           MOV     A,R3
+   \   00000F   3400         ADDC    A,#0x0
+   \   000011   F9           MOV     R1,A
+   \   000012   E8           MOV     A,R0
+   \   000013   FE           MOV     R6,A
+   \   000014   E9           MOV     A,R1
+   \   000015   FF           MOV     R7,A
+   \   000016   EA           MOV     A,R2
+   \   000017   2403         ADD     A,#0x3
+   \   000019   08           INC     R0
+   \   00001A   EB           MOV     A,R3
+   \   00001B   12....       LCALL   ?Subroutine18 & 0xFFFF
+   \                     ??CrossCallReturnLabel_38:
+   \   00001E   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   000021   75..10       MOV     ?V0 + 2,#0x10
+   \   000024   78..         MOV     R0,#?V0 + 2
+   \   000026   12....       LCALL   ?PUSH_XSTACK_I_ONE
+   \   000029   85..82       MOV     DPL,?V0 + 0
+   \   00002C   8983         MOV     DPH,R1
+   \   00002E   E0           MOVX    A,@DPTR
+   \   00002F   F5..         MOV     ?V0 + 2,A
+   \   000031   75..00       MOV     ?V0 + 3,#0x0
+   \   000034   78..         MOV     R0,#?V0 + 2
+   \   000036   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000039   7910         MOV     R1,#0x10
+   \   00003B   8E82         MOV     DPL,R6
+   \   00003D   8F83         MOV     DPH,R7
+   \   00003F   E0           MOVX    A,@DPTR
+   \   000040   FC           MOV     R4,A
+   \   000041   7D00         MOV     R5,#0x0
+   \   000043   7A..         MOV     R2,#`?<Constant "OffWithEff">` & 0xff
+   \   000045   7B..         MOV     R3,#(`?<Constant "OffWithEff">` >> 8) & 0xff
+   \   000047   12....       LCALL   ??HalLcdWriteStringValueValue?relay
+   \   00004A   7404         MOV     A,#0x4
+   \   00004C   12....       LCALL   ?DEALLOC_XSTACK8
+    794            if( zllSampleLight_GlobalSceneCtrl )
+   \   00004F   90....       MOV     DPTR,#zllSampleLight_GlobalSceneCtrl
+   \   000052   E0           MOVX    A,@DPTR
+   \   000053   6010         JZ      ??zllSampleLight_OnOff_OffWithEffectCB_0
+    795            {
+    796              zclSceneReq_t req;
+    797              req.scene = &zllSampleLight_GlobalScene;
+   \   000055   7402         MOV     A,#0x2
+   \   000057   12....       LCALL   ?XSTACK_DISP0_8
+   \   00005A   12....       LCALL   ?Subroutine4 & 0xFFFF
+    798          
+    799              zllSampleLight_SceneStoreCB( &req );
+   \                     ??CrossCallReturnLabel_39:
+   \   00005D   12....       LCALL   ??zllSampleLight_SceneStoreCB?relay
+    800              zllSampleLight_GlobalSceneCtrl = FALSE;
+   \   000060   90....       MOV     DPTR,#zllSampleLight_GlobalSceneCtrl
+   \   000063   E4           CLR     A
+   \   000064   F0           MOVX    @DPTR,A
+    801            }
+    802            zllEffects_InitiateEffect( ZCL_CLUSTER_ID_GEN_ON_OFF, COMMAND_OFF_WITH_EFFECT,
+    803                                           pCmd->effectId, pCmd->effectVariant );
+   \                     ??zllSampleLight_OnOff_OffWithEffectCB_0:
+   \   000065                ; Setup parameters for call to function zllEffects_InitiateEffect
+   \   000065   85..82       MOV     DPL,?V0 + 0
+   \   000068   85..83       MOV     DPH,?V0 + 1
+   \   00006B   E0           MOVX    A,@DPTR
+   \   00006C   FD           MOV     R5,A
+   \   00006D   8E82         MOV     DPL,R6
+   \   00006F   8F83         MOV     DPH,R7
+   \   000071   E0           MOVX    A,@DPTR
+   \   000072   FC           MOV     R4,A
+   \   000073   7940         MOV     R1,#0x40
+   \   000075   7A06         MOV     R2,#0x6
+   \   000077   7B00         MOV     R3,#0x0
+   \   000079   12....       LCALL   ??zllEffects_InitiateEffect?relay
+    804          }
+   \   00007C   02....       LJMP    ?Subroutine1 & 0xFFFF
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine4:
+   \   000000   74..         MOV     A,#zllSampleLight_GlobalScene & 0xff
+   \   000002   F0           MOVX    @DPTR,A
+   \   000003   A3           INC     DPTR
+   \   000004   74..         MOV     A,#(zllSampleLight_GlobalScene >> 8) & 0xff
+   \   000006                REQUIRE ??Subroutine20_0
+   \   000006                ; // Fall through to label ??Subroutine20_0
+    805          
+    806          /*********************************************************************
+    807           * @fn      zllSampleLight_OnOff_OnWithRecallGlobalSceneCB
+    808           *
+    809           * @brief   Callback from the ZCL General Cluster Library when it
+    810           *          received an On with Recall Global Scene Command for this application.
+    811           *
+    812           * @param   none
+    813           *
+    814           * @return  none
+    815           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    816          static void zllSampleLight_OnOff_OnWithRecallGlobalSceneCB( void )
+   \                     zllSampleLight_OnOff_OnWithRecallGlobalSceneCB:
+    817          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 4
+   \   000004   74FC         MOV     A,#-0x4
+   \   000006   12....       LCALL   ?ALLOC_XSTACK8
+    818            if( !zllSampleLight_GlobalSceneCtrl )
+   \   000009   90....       MOV     DPTR,#zllSampleLight_GlobalSceneCtrl
+   \   00000C   E0           MOVX    A,@DPTR
+   \   00000D   7011         JNZ     ??zllSampleLight_OnOff_OnWithRecallGlobalSceneC_1
+    819            {
+    820              zclSceneReq_t req;
+    821              req.scene = &zllSampleLight_GlobalScene;
+   \   00000F   7402         MOV     A,#0x2
+   \   000011   12....       LCALL   ?XSTACK_DISP0_8
+   \   000014   12....       LCALL   ?Subroutine4 & 0xFFFF
+    822          
+    823              zllSampleLight_SceneRecallCB( &req );
+   \                     ??CrossCallReturnLabel_40:
+   \   000017   12....       LCALL   ??zllSampleLight_SceneRecallCB?relay
+    824          
+    825              zllSampleLight_GlobalSceneCtrl = TRUE;
+   \   00001A   90....       MOV     DPTR,#zllSampleLight_GlobalSceneCtrl
+   \   00001D   7401         MOV     A,#0x1
+   \   00001F   F0           MOVX    @DPTR,A
+    826            }
+    827            // If the GlobalSceneControl attribute is equal to TRUE, discard the command
+    828          }
+   \                     ??zllSampleLight_OnOff_OnWithRecallGlobalSceneC_1:
+   \   000020   7404         MOV     A,#0x4
+   \   000022   12....       LCALL   ?DEALLOC_XSTACK8
+   \   000025   02....       LJMP    ?Subroutine2 & 0xFFFF
+    829          
+    830          /*********************************************************************
+    831           * @fn      zllSampleLight_OnOff_OnWithTimedOffCB
+    832           *
+    833           * @brief   Callback from the ZCL General Cluster Library when it
+    834           *          received an On with Timed Off Command for this application.
+    835           *
+    836           * @param   pCmd - On with Timed Off parameters
+    837           *
+    838           * @return  none
+    839           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    840          static void zllSampleLight_OnOff_OnWithTimedOffCB( zclOnWithTimedOff_t *pCmd )
+   \                     zllSampleLight_OnOff_OnWithTimedOffCB:
+    841          {
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+    842            if ( ( pCmd->onOffCtrl.bits.acceptOnlyWhenOn == TRUE )
+    843                && ( zllSampleLight_OnOff == LIGHT_OFF ) )
+   \   000005   8A82         MOV     DPL,R2
+   \   000007   8B83         MOV     DPH,R3
+   \   000009   E0           MOVX    A,@DPTR
+   \   00000A   A2E0         MOV     C,0xE0 /* A   */.0
+   \   00000C   5009         JNC     ??zllSampleLight_OnOff_OnWithTimedOffCB_0
+   \   00000E   90....       MOV     DPTR,#zllSampleLight_OnOff
+   \   000011   E0           MOVX    A,@DPTR
+   \   000012   7003         JNZ     $+5
+   \   000014   02....       LJMP    ??zllSampleLight_OnOff_OnWithTimedOffCB_1 & 0xFFFF
+    844            {
+    845              return;
+    846            }
+    847          
+    848            if ( ( zllSampleLight_OffWaitTime > 0 ) && ( zllSampleLight_OnOff == LIGHT_OFF ) )
+   \                     ??zllSampleLight_OnOff_OnWithTimedOffCB_0:
+   \   000017   EA           MOV     A,R2
+   \   000018   2404         ADD     A,#0x4
+   \   00001A   F8           MOV     R0,A
+   \   00001B   EB           MOV     A,R3
+   \   00001C   3400         ADDC    A,#0x0
+   \   00001E   F9           MOV     R1,A
+   \   00001F   E8           MOV     A,R0
+   \   000020   FE           MOV     R6,A
+   \   000021   E9           MOV     A,R1
+   \   000022   FF           MOV     R7,A
+   \   000023   90....       MOV     DPTR,#zllSampleLight_OffWaitTime
+   \   000026   12....       LCALL   ??Subroutine21_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_45:
+   \   000029   601A         JZ      ??zllSampleLight_OnOff_OnWithTimedOffCB_2
+   \   00002B   90....       MOV     DPTR,#zllSampleLight_OnOff
+   \   00002E   E0           MOVX    A,@DPTR
+   \   00002F   7014         JNZ     ??zllSampleLight_OnOff_OnWithTimedOffCB_2
+    849            {
+    850              zllSampleLight_OffWaitTime = MIN( zllSampleLight_OffWaitTime, pCmd->offWaitTime );
+   \   000031   8E82         MOV     DPL,R6
+   \   000033   8F83         MOV     DPH,R7
+   \   000035   12....       LCALL   ??Subroutine26_0 & 0xFFFF
+    851            }
+   \                     ??CrossCallReturnLabel_57:
+   \   000038   90....       MOV     DPTR,#zllSampleLight_OffWaitTime
+   \   00003B   C3           CLR     C
+   \   00003C   E0           MOVX    A,@DPTR
+   \   00003D   98           SUBB    A,R0
+   \   00003E   A3           INC     DPTR
+   \   00003F   E0           MOVX    A,@DPTR
+   \   000040   99           SUBB    A,R1
+   \   000041   403B         JC      ??CrossCallReturnLabel_14
+   \   000043   8033         SJMP    ??zllSampleLight_OnOff_OnWithTimedOffCB_3
+    852            else
+    853            {
+    854              uint16 maxOnTime = MAX( zllSampleLight_OnTime, pCmd->onTime );
+   \                     ??zllSampleLight_OnOff_OnWithTimedOffCB_2:
+   \   000045   12....       LCALL   ?Subroutine13 & 0xFFFF
+   \                     ??CrossCallReturnLabel_62:
+   \   000048   90....       MOV     DPTR,#zllSampleLight_OnTime
+   \   00004B   C3           CLR     C
+   \   00004C   E0           MOVX    A,@DPTR
+   \   00004D   98           SUBB    A,R0
+   \   00004E   A3           INC     DPTR
+   \   00004F   E0           MOVX    A,@DPTR
+   \   000050   99           SUBB    A,R1
+   \   000051   5006         JNC     ??zllSampleLight_OnOff_OnWithTimedOffCB_4
+   \   000053   88..         MOV     ?V0 + 0,R0
+   \   000055   89..         MOV     ?V0 + 1,R1
+   \   000057   800A         SJMP    ??zllSampleLight_OnOff_OnWithTimedOffCB_5
+   \                     ??zllSampleLight_OnOff_OnWithTimedOffCB_4:
+   \   000059   90....       MOV     DPTR,#zllSampleLight_OnTime
+   \   00005C   E0           MOVX    A,@DPTR
+   \   00005D   F5..         MOV     ?V0 + 0,A
+   \   00005F   A3           INC     DPTR
+   \   000060   E0           MOVX    A,@DPTR
+   \   000061   F5..         MOV     ?V0 + 1,A
+    855              zllSampleLight_OnOffCB( COMMAND_ON );
+   \                     ??zllSampleLight_OnOff_OnWithTimedOffCB_5:
+   \   000063                ; Setup parameters for call to function zllSampleLight_OnOffCB
+   \   000063   7901         MOV     R1,#0x1
+   \   000065   12....       LCALL   ??zllSampleLight_OnOffCB?relay
+    856              zllSampleLight_OnTime = maxOnTime;
+   \   000068   90....       MOV     DPTR,#zllSampleLight_OnTime
+   \   00006B   E5..         MOV     A,?V0 + 0
+   \   00006D   F0           MOVX    @DPTR,A
+   \   00006E   A3           INC     DPTR
+   \   00006F   E5..         MOV     A,?V0 + 1
+   \   000071   12....       LCALL   ?Subroutine9 & 0xFFFF
+    857              zllSampleLight_OffWaitTime = pCmd->offWaitTime;
+    858            }
+   \                     ??CrossCallReturnLabel_23:
+   \   000074   F8           MOV     R0,A
+   \   000075   A3           INC     DPTR
+   \   000076   E0           MOVX    A,@DPTR
+   \   000077   F9           MOV     R1,A
+   \                     ??zllSampleLight_OnOff_OnWithTimedOffCB_3:
+   \   000078   90....       MOV     DPTR,#zllSampleLight_OffWaitTime
+   \   00007B   12....       LCALL   ?Subroutine7 & 0xFFFF
+    859          
+    860            if ( ( zllSampleLight_OnTime < 0xFFFF ) && ( zllSampleLight_OffWaitTime < 0xFFFF ) )
+   \                     ??CrossCallReturnLabel_14:
+   \   00007E   90....       MOV     DPTR,#zllSampleLight_OnTime
+   \   000081   E0           MOVX    A,@DPTR
+   \   000082   F4           CPL     A
+   \   000083   7003         JNZ     ??zllSampleLight_OnOff_OnWithTimedOffCB_6
+   \   000085   A3           INC     DPTR
+   \   000086   E0           MOVX    A,@DPTR
+   \   000087   F4           CPL     A
+   \                     ??zllSampleLight_OnOff_OnWithTimedOffCB_6:
+   \   000088   6023         JZ      ??zllSampleLight_OnOff_OnWithTimedOffCB_1
+   \   00008A   90....       MOV     DPTR,#zllSampleLight_OffWaitTime
+   \   00008D   E0           MOVX    A,@DPTR
+   \   00008E   F4           CPL     A
+   \   00008F   7003         JNZ     ??zllSampleLight_OnOff_OnWithTimedOffCB_7
+   \   000091   A3           INC     DPTR
+   \   000092   E0           MOVX    A,@DPTR
+   \   000093   F4           CPL     A
+   \                     ??zllSampleLight_OnOff_OnWithTimedOffCB_7:
+   \   000094   6017         JZ      ??zllSampleLight_OnOff_OnWithTimedOffCB_1
+    861            {
+    862              osal_start_timerEx( zllSampleLight_TaskID, SAMPLELIGHT_ON_TIMED_OFF_TIMER_EVT, 100 );
+   \   000096                ; Setup parameters for call to function osal_start_timerEx
+   \   000096   90....       MOV     DPTR,#__Constant_64
+   \   000099   12....       LCALL   ?PUSH_XSTACK8_X_FOUR
+   \   00009C   7A04         MOV     R2,#0x4
+   \   00009E   7B00         MOV     R3,#0x0
+   \   0000A0   90....       MOV     DPTR,#zllSampleLight_TaskID
+   \   0000A3   E0           MOVX    A,@DPTR
+   \   0000A4   F9           MOV     R1,A
+   \   0000A5   12....       LCALL   ??osal_start_timerEx?relay
+   \   0000A8   7404         MOV     A,#0x4
+   \   0000AA   12....       LCALL   ?DEALLOC_XSTACK8
+   \                     ??zllSampleLight_OnOff_OnWithTimedOffCB_1:
+   \   0000AD   7F02         MOV     R7,#0x2
+   \   0000AF   02....       LJMP    ?BANKED_LEAVE_XDATA
+    863            }
+    864          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine9:
+   \   000000   F0           MOVX    @DPTR,A
+   \   000001   8E82         MOV     DPL,R6
+   \   000003   8F83         MOV     DPH,R7
+   \   000005   E0           MOVX    A,@DPTR
+   \   000006   22           RET
+    865          
+    866          #define COLOR_SCN_X_Y_ATTRS_SIZE     ( sizeof(zclColor_CurrentX) + sizeof(zclColor_CurrentY) )
+    867          #define COLOR_SCN_HUE_SAT_ATTRS_SIZE ( sizeof(zclColor_EnhancedCurrentHue) + sizeof(zclColor_CurrentSaturation) )
+    868          #define COLOR_SCN_LOOP_ATTRS_SIZE    ( sizeof(zclColor_ColorLoopActive) + sizeof(zclColor_ColorLoopDirection) + sizeof(zclColor_ColorLoopTime) )
+    869          /*********************************************************************
+    870           * @fn      zllSampleLight_SceneStoreCB
+    871           *
+    872           * @brief   Callback from the ZCL General Cluster Library when
+    873           *          it received a Scene Store Request Command for
+    874           *          this application.
+    875           *          Stores current attributes in the scene's extension fields.
+    876           *          Extension field sets =
+    877           *          {{Cluster ID 1, length 1, {extension field set 1}}, {{Cluster ID 2,
+    878           *            length 2, {extension field set 2}}, ...}
+    879           *
+    880           * @param   pReq - pointer to a request holding scene data
+    881           *
+    882           * @return  TRUE if extField is filled out, FALSE if not filled
+    883           *          and there is no need to save the scene
+    884           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    885          static uint8 zllSampleLight_SceneStoreCB( zclSceneReq_t *pReq )
+   \                     zllSampleLight_SceneStoreCB:
+    886          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+    887            uint8 *pExt;
+    888          
+    889            pReq->scene->extLen = SAMPLELIGHT_SCENE_EXT_FIELD_SIZE;
+   \   000005   EA           MOV     A,R2
+   \   000006   2402         ADD     A,#0x2
+   \   000008   F8           MOV     R0,A
+   \   000009   EB           MOV     A,R3
+   \   00000A   3400         ADDC    A,#0x0
+   \   00000C   F9           MOV     R1,A
+   \   00000D   8882         MOV     DPL,R0
+   \   00000F   8983         MOV     DPH,R1
+   \   000011   E0           MOVX    A,@DPTR
+   \   000012   FA           MOV     R2,A
+   \   000013   A3           INC     DPTR
+   \   000014   E0           MOVX    A,@DPTR
+   \   000015   CA           XCH     A,R2
+   \   000016   2417         ADD     A,#0x17
+   \   000018   F582         MOV     DPL,A
+   \   00001A   EA           MOV     A,R2
+   \   00001B   3400         ADDC    A,#0x0
+   \   00001D   F583         MOV     DPH,A
+   \   00001F   7416         MOV     A,#0x16
+   \   000021   F0           MOVX    @DPTR,A
+    890            pExt = pReq->scene->extField;
+   \   000022   8882         MOV     DPL,R0
+   \   000024   8983         MOV     DPH,R1
+   \   000026   12....       LCALL   ?Subroutine16 & 0xFFFF
+   \                     ??CrossCallReturnLabel_33:
+   \   000029   FF           MOV     R7,A
+    891          
+    892            // Build an extension field for On/Off cluster
+    893            *pExt++ = LO_UINT16( ZCL_CLUSTER_ID_GEN_ON_OFF );
+   \   00002A   8E82         MOV     DPL,R6
+   \   00002C   8F83         MOV     DPH,R7
+   \   00002E   7406         MOV     A,#0x6
+   \   000030   12....       LCALL   ?Subroutine5 & 0xFFFF
+    894            *pExt++ = HI_UINT16( ZCL_CLUSTER_ID_GEN_ON_OFF );
+    895            *pExt++ = sizeof(zllSampleLight_OnOff); // length
+    896          
+    897            // Store the value of onOff attribute
+    898            *pExt++ = zllSampleLight_OnOff;
+   \                     ??CrossCallReturnLabel_9:
+   \   000033   90....       MOV     DPTR,#zllSampleLight_OnOff
+   \   000036   12....       LCALL   ?Subroutine14 & 0xFFFF
+   \                     ??CrossCallReturnLabel_30:
+   \   000039   A3           INC     DPTR
+    899          
+    900          #ifdef ZCL_LEVEL_CTRL
+    901            // Build an extension field for Level Control cluster
+    902            *pExt++ = LO_UINT16( ZCL_CLUSTER_ID_GEN_LEVEL_CONTROL );
+   \   00003A   7408         MOV     A,#0x8
+   \   00003C   12....       LCALL   ?Subroutine5 & 0xFFFF
+    903            *pExt++ = HI_UINT16( ZCL_CLUSTER_ID_GEN_LEVEL_CONTROL );
+    904            *pExt++ = sizeof(zclLevel_CurrentLevel); // length
+    905          
+    906            // Store the value of currentLevel attribute
+    907            *pExt++ = zclLevel_CurrentLevel;
+   \                     ??CrossCallReturnLabel_10:
+   \   00003F   90....       MOV     DPTR,#zclLevel_CurrentLevel
+   \   000042   12....       LCALL   ?Subroutine14 & 0xFFFF
+   \                     ??CrossCallReturnLabel_31:
+   \   000045   A3           INC     DPTR
+    908          #endif //ZCL_LEVEL_CTRL
+    909          
+    910          #ifdef ZCL_COLOR_CTRL
+    911            // Build an extension field for Color Control cluster
+    912            *pExt++ = LO_UINT16( ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL );
+   \   000046   E4           CLR     A
+   \   000047   F0           MOVX    @DPTR,A
+   \   000048   A3           INC     DPTR
+    913            *pExt++ = HI_UINT16( ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL );
+   \   000049   7403         MOV     A,#0x3
+   \   00004B   F0           MOVX    @DPTR,A
+   \   00004C   A3           INC     DPTR
+    914            *pExt++ = COLOR_SCN_X_Y_ATTRS_SIZE + COLOR_SCN_HUE_SAT_ATTRS_SIZE + COLOR_SCN_LOOP_ATTRS_SIZE; // length
+   \   00004D   740B         MOV     A,#0xb
+   \   00004F   F0           MOVX    @DPTR,A
+   \   000050   A3           INC     DPTR
+   \   000051   AE82         MOV     R6,DPL
+   \   000053   AF83         MOV     R7,DPH
+    915          
+    916            // Restored color mode is determined by whether stored currentX, currentY values are 0.
+    917            if ( zclColor_ColorMode == COLOR_MODE_CURRENT_X_Y )
+   \   000055   90....       MOV     DPTR,#zclColor_ColorMode
+   \   000058   E0           MOVX    A,@DPTR
+   \   000059   6401         XRL     A,#0x1
+   \   00005B   7017         JNZ     ??zllSampleLight_SceneStoreCB_0
+    918            {
+    919              *pExt++ = LO_UINT16( zclColor_CurrentX );
+   \   00005D   90....       MOV     DPTR,#zclColor_CurrentX
+   \   000060   12....       LCALL   ?Subroutine3 & 0xFFFF
+    920              *pExt++ = HI_UINT16( zclColor_CurrentX );
+   \                     ??CrossCallReturnLabel_0:
+   \   000063   90....       MOV     DPTR,#zclColor_CurrentX + 1
+   \   000066   12....       LCALL   ?Subroutine3 & 0xFFFF
+    921              *pExt++ = LO_UINT16( zclColor_CurrentY );
+   \                     ??CrossCallReturnLabel_1:
+   \   000069   90....       MOV     DPTR,#zclColor_CurrentY
+   \   00006C   12....       LCALL   ?Subroutine3 & 0xFFFF
+    922              *pExt++ = HI_UINT16( zclColor_CurrentY );
+   \                     ??CrossCallReturnLabel_2:
+   \   00006F   90....       MOV     DPTR,#zclColor_CurrentY + 1
+   \   000072   803C         SJMP    ??zllSampleLight_SceneStoreCB_1
+    923              pExt += COLOR_SCN_HUE_SAT_ATTRS_SIZE + COLOR_SCN_LOOP_ATTRS_SIZE; // ignore other parameters
+    924            }
+    925            else
+    926            {
+    927              // nullify currentX and currentY to mark hue/sat color mode
+    928              osal_memset( pExt, 0x00, COLOR_SCN_X_Y_ATTRS_SIZE );
+   \                     ??zllSampleLight_SceneStoreCB_0:
+   \   000074                ; Setup parameters for call to function osal_memset
+   \   000074   7C04         MOV     R4,#0x4
+   \   000076   7D00         MOV     R5,#0x0
+   \   000078   7900         MOV     R1,#0x0
+   \   00007A   EE           MOV     A,R6
+   \   00007B   FA           MOV     R2,A
+   \   00007C   EF           MOV     A,R7
+   \   00007D   FB           MOV     R3,A
+   \   00007E   12....       LCALL   ??osal_memset?relay
+    929              pExt += COLOR_SCN_X_Y_ATTRS_SIZE;
+   \   000081   EE           MOV     A,R6
+   \   000082   2404         ADD     A,#0x4
+   \   000084   FE           MOV     R6,A
+   \   000085   EF           MOV     A,R7
+   \   000086   3400         ADDC    A,#0x0
+   \   000088   FF           MOV     R7,A
+    930              *pExt++ = LO_UINT16( zclColor_EnhancedCurrentHue );
+   \   000089   90....       MOV     DPTR,#zclColor_EnhancedCurrentHue
+   \   00008C   12....       LCALL   ?Subroutine3 & 0xFFFF
+    931              *pExt++ = HI_UINT16( zclColor_EnhancedCurrentHue );
+   \                     ??CrossCallReturnLabel_3:
+   \   00008F   90....       MOV     DPTR,#zclColor_EnhancedCurrentHue + 1
+   \   000092   12....       LCALL   ?Subroutine3 & 0xFFFF
+    932              *pExt++ = zclColor_CurrentSaturation;
+   \                     ??CrossCallReturnLabel_4:
+   \   000095   90....       MOV     DPTR,#zclColor_CurrentSaturation
+   \   000098   12....       LCALL   ?Subroutine3 & 0xFFFF
+    933              *pExt++ = zclColor_ColorLoopActive;
+   \                     ??CrossCallReturnLabel_5:
+   \   00009B   90....       MOV     DPTR,#zclColor_ColorLoopActive
+   \   00009E   12....       LCALL   ?Subroutine3 & 0xFFFF
+    934              *pExt++ = zclColor_ColorLoopDirection;
+   \                     ??CrossCallReturnLabel_6:
+   \   0000A1   90....       MOV     DPTR,#zclColor_ColorLoopDirection
+   \   0000A4   12....       LCALL   ?Subroutine3 & 0xFFFF
+    935              *pExt++ = LO_UINT16( zclColor_ColorLoopTime );
+   \                     ??CrossCallReturnLabel_7:
+   \   0000A7   90....       MOV     DPTR,#zclColor_ColorLoopTime
+   \   0000AA   12....       LCALL   ?Subroutine3 & 0xFFFF
+    936              *pExt++ = HI_UINT16( zclColor_ColorLoopTime );
+   \                     ??CrossCallReturnLabel_8:
+   \   0000AD   90....       MOV     DPTR,#zclColor_ColorLoopTime + 1
+    937            }
+   \                     ??zllSampleLight_SceneStoreCB_1:
+   \   0000B0   12....       LCALL   ?Subroutine14 & 0xFFFF
+    938          #endif //ZCL_COLOR_CTRL
+    939          
+    940            // Add more clusters here
+    941          
+    942            return ( TRUE );
+   \                     ??CrossCallReturnLabel_32:
+   \   0000B3   7901         MOV     R1,#0x1
+   \   0000B5   02....       LJMP    ?Subroutine0 & 0xFFFF
+    943          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine14:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   8E82         MOV     DPL,R6
+   \   000003   8F83         MOV     DPH,R7
+   \   000005   F0           MOVX    @DPTR,A
+   \   000006   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine5:
+   \   000000   F0           MOVX    @DPTR,A
+   \   000001   A3           INC     DPTR
+   \   000002   E4           CLR     A
+   \   000003   F0           MOVX    @DPTR,A
+   \   000004   A3           INC     DPTR
+   \   000005   04           INC     A
+   \   000006   F0           MOVX    @DPTR,A
+   \   000007   A3           INC     DPTR
+   \   000008   AE82         MOV     R6,DPL
+   \   00000A   AF83         MOV     R7,DPH
+   \   00000C   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine3:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   8E82         MOV     DPL,R6
+   \   000003   8F83         MOV     DPH,R7
+   \   000005   F0           MOVX    @DPTR,A
+   \   000006   A3           INC     DPTR
+   \   000007   0E           INC     R6
+   \   000008   AF83         MOV     R7,DPH
+   \   00000A   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine16:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   2418         ADD     A,#0x18
+   \   000003   FE           MOV     R6,A
+   \   000004   A3           INC     DPTR
+   \   000005   E0           MOVX    A,@DPTR
+   \   000006   3400         ADDC    A,#0x0
+   \   000008   22           RET
+    944          
+    945          /*********************************************************************
+    946           * @fn      zllSampleLight_SceneRecallCB
+    947           *
+    948           * @brief   Callback from the ZCL General Cluster Library when
+    949           *          it received a Scene Recall Request Command for
+    950           *          this application.
+    951           *          Restores attributes values from the scene's extension fields.
+    952           *          Extension field sets =
+    953           *          {{Cluster ID 1, length 1, {extension field set 1}}, {{Cluster ID 2,
+    954           *            length 2, {extension field set 2}}, ...}
+    955           *
+    956           * @param   pReq - pointer to a request holding scene data
+    957           *
+    958           * @return  none
+    959           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    960          static void zllSampleLight_SceneRecallCB( zclSceneReq_t *pReq )
+   \                     zllSampleLight_SceneRecallCB:
+    961          {
+   \   000000   74F3         MOV     A,#-0xd
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 13
+   \   000005                ; Auto size: 24
+   \   000005   74E8         MOV     A,#-0x18
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+    962            int8 remain;
+    963            uint16 clusterID;
+    964            uint8 *pExt = pReq->scene->extField;
+   \   00000A   EA           MOV     A,R2
+   \   00000B   2402         ADD     A,#0x2
+   \   00000D   F5..         MOV     ?V0 + 0,A
+   \   00000F   EB           MOV     A,R3
+   \   000010   3400         ADDC    A,#0x0
+   \   000012   F5..         MOV     ?V0 + 1,A
+   \   000014   85..82       MOV     DPL,?V0 + 0
+   \   000017   F583         MOV     DPH,A
+   \   000019   12....       LCALL   ?Subroutine16 & 0xFFFF
+   \                     ??CrossCallReturnLabel_34:
+   \   00001C   8058         SJMP    ??zllSampleLight_SceneRecallCB_0
+    965          
+    966            while ( pExt < pReq->scene->extField + pReq->scene->extLen )
+    967            {
+    968              clusterID =  BUILD_UINT16( pExt[0], pExt[1] );
+    969              pExt += 2; // cluster ID
+    970              remain = *pExt++;
+    971          
+    972              if ( clusterID == ZCL_CLUSTER_ID_GEN_ON_OFF )
+    973              {
+    974                // Update onOff attibute with the recalled value
+    975                if ( remain > 0 )
+    976                {
+    977                  zllSampleLight_OnOffCB( *pExt++ ); // Apply the new value
+    978                  remain--;
+    979                }
+    980              }
+    981          #ifdef ZCL_LEVEL_CTRL
+    982              else if ( clusterID == ZCL_CLUSTER_ID_GEN_LEVEL_CONTROL )
+    983              {
+    984                // Update currentLevel attribute with the recalled value
+    985                if ( remain > 0 )
+    986                {
+    987                  zclLCMoveToLevel_t levelCmd;
+    988          
+    989                  levelCmd.level = *pExt++;
+    990                  levelCmd.transitionTime = pReq->scene->transTime; // whole seconds only
+    991                  levelCmd.withOnOff = 0;
+    992                  zclLevel_MoveToLevelCB( &levelCmd );
+    993                  remain--;
+    994                }
+    995              }
+    996          #endif //ZCL_LEVEL_CTRL
+    997          #ifdef ZCL_COLOR_CTRL
+    998              else if ( clusterID == ZCL_CLUSTER_ID_LIGHTING_COLOR_CONTROL )
+    999              {
+   1000                // Update currentX and currentY attributes with the recalled values
+   1001                if ( remain >= COLOR_SCN_X_Y_ATTRS_SIZE )
+   1002                {
+   1003                  zclCCMoveToColor_t colorCmd = {0};
+   1004          
+   1005                  colorCmd.colorX = BUILD_UINT16( pExt[0], pExt[1] );
+   1006                  colorCmd.colorY = BUILD_UINT16( pExt[2], pExt[3] );
+   1007                  pExt += COLOR_SCN_X_Y_ATTRS_SIZE;
+   1008                  remain -= COLOR_SCN_X_Y_ATTRS_SIZE;
+   1009                  if ( ( colorCmd.colorX != 0 ) || ( colorCmd.colorY != 0 ) )
+   1010                  {
+   1011                    // COLOR_MODE_CURRENT_X_Y
+   1012                    colorCmd.transitionTime = (10 * pReq->scene->transTime) + pReq->scene->transTime100ms; // in 1/10th seconds
+   1013                    zclColor_MoveToColorCB( &colorCmd );
+   1014                    // for non-zero X,Y other hue/sat and loop parameters are ignored (CCB 1683)
+   1015                  }
+   1016                  else if ( remain >= COLOR_SCN_HUE_SAT_ATTRS_SIZE )
+   1017                  {
+   1018                    // ENHANCED_COLOR_MODE_ENHANCED_CURRENT_HUE_SATURATION
+   1019                    zclCCEnhancedMoveToHueAndSaturation_t cmd = {0};
+   1020          
+   1021                    cmd.enhancedHue = BUILD_UINT16( pExt[0], pExt[1] );
+   1022                    pExt += 2;
+   1023                    cmd.saturation = *pExt++;
+   1024                    cmd.transitionTime = (10 * pReq->scene->transTime) + pReq->scene->transTime100ms; // in 1/10th seconds
+   1025                    zclColor_MoveToEnhHueAndSaturationCB( &cmd );
+   1026                    remain -= COLOR_SCN_HUE_SAT_ATTRS_SIZE;
+   1027          
+   1028                    if ( remain >= COLOR_SCN_LOOP_ATTRS_SIZE )
+   1029                    {
+   1030                      zclCCColorLoopSet_t newColorLoopSetCmd = {0};
+   1031                      newColorLoopSetCmd.updateFlags.bits.action = TRUE;
+   1032                      newColorLoopSetCmd.action = ( (*pExt++) ? LIGHTING_COLOR_LOOP_ACTION_ACTIVATE_FROM_ENH_CURR_HUE : LIGHTING_COLOR_LOOP_ACTION_DEACTIVATE );
+   \                     ??zllSampleLight_SceneRecallCB_1:
+   \   00001E   E4           CLR     A
+   \                     ??zllSampleLight_SceneRecallCB_2:
+   \   00001F   F0           MOVX    @DPTR,A
+   \   000020   E0           MOVX    A,@DPTR
+   \   000021   C0E0         PUSH    A
+   \   000023   7412         MOV     A,#0x12
+   \   000025   12....       LCALL   ?XSTACK_DISP0_8
+   \   000028   D0E0         POP     A
+   \   00002A   F0           MOVX    @DPTR,A
+   1033                      newColorLoopSetCmd.updateFlags.bits.direction = TRUE;
+   \   00002B   7410         MOV     A,#0x10
+   \   00002D   12....       LCALL   ?XSTACK_DISP0_8
+   \   000030   E0           MOVX    A,@DPTR
+   \   000031   4402         ORL     A,#0x2
+   \   000033   12....       LCALL   ?Subroutine9 & 0xFFFF
+   1034                      newColorLoopSetCmd.direction = *pExt++;
+   \                     ??CrossCallReturnLabel_24:
+   \   000036   C0E0         PUSH    A
+   \   000038   7413         MOV     A,#0x13
+   \   00003A   12....       LCALL   ?XSTACK_DISP0_8
+   \   00003D   D0E0         POP     A
+   \   00003F   12....       LCALL   ?Subroutine10 & 0xFFFF
+   1035                      newColorLoopSetCmd.updateFlags.bits.time = TRUE;
+   \                     ??CrossCallReturnLabel_26:
+   \   000042   7410         MOV     A,#0x10
+   \   000044   12....       LCALL   ?XSTACK_DISP0_8
+   \   000047   E0           MOVX    A,@DPTR
+   \   000048   4404         ORL     A,#0x4
+   \   00004A   12....       LCALL   ?Subroutine9 & 0xFFFF
+   1036                      newColorLoopSetCmd.time = BUILD_UINT16( pExt[0], pExt[1] );
+   \                     ??CrossCallReturnLabel_25:
+   \   00004D   12....       LCALL   ??Subroutine22_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_54:
+   \   000050   7414         MOV     A,#0x14
+   \   000052   12....       LCALL   ?XSTACK_DISP0_8
+   \   000055   12....       LCALL   ?Subroutine6 & 0xFFFF
+   1037                      pExt += 2;
+   1038                      zclColor_SetColorLoopCB( &newColorLoopSetCmd );
+   \                     ??CrossCallReturnLabel_11:
+   \   000058                ; Setup parameters for call to function zclColor_SetColorLoopCB
+   \   000058   7410         MOV     A,#0x10
+   \   00005A   12....       LCALL   ?XSTACK_DISP0_8
+   \   00005D   AA82         MOV     R2,DPL
+   \   00005F   AB83         MOV     R3,DPH
+   \   000061   12....       LCALL   ??zclColor_SetColorLoopCB?relay
+   1039                      remain -= COLOR_SCN_LOOP_ATTRS_SIZE;
+   \   000064   74FC         MOV     A,#-0x4
+   \                     ??zllSampleLight_SceneRecallCB_3:
+   \   000066   25..         ADD     A,?V0 + 4
+   \   000068   F5..         MOV     ?V0 + 4,A
+   1040                    }
+   1041                  }
+   1042                }
+   1043              }
+   1044          #endif //ZCL_COLOR_CTRL
+   1045          
+   1046              // Add more clusters here
+   1047          
+   1048              pExt += remain; // remain should be 0 if all extension fields are processed
+   \                     ??zllSampleLight_SceneRecallCB_4:
+   \   00006A   E5..         MOV     A,?V0 + 4
+   \   00006C   F8           MOV     R0,A
+   \   00006D   33           RLC     A
+   \   00006E   95E0         SUBB    A,0xE0 /* A   */
+   \   000070   F9           MOV     R1,A
+   \   000071   EE           MOV     A,R6
+   \   000072   28           ADD     A,R0
+   \   000073   FE           MOV     R6,A
+   \   000074   EF           MOV     A,R7
+   \   000075   39           ADDC    A,R1
+   \                     ??zllSampleLight_SceneRecallCB_0:
+   \   000076   FF           MOV     R7,A
+   \   000077   85..82       MOV     DPL,?V0 + 0
+   \   00007A   85..83       MOV     DPH,?V0 + 1
+   \   00007D   12....       LCALL   ??Subroutine26_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_58:
+   \   000080   E8           MOV     A,R0
+   \   000081   2417         ADD     A,#0x17
+   \   000083   F582         MOV     DPL,A
+   \   000085   E9           MOV     A,R1
+   \   000086   3400         ADDC    A,#0x0
+   \   000088   F583         MOV     DPH,A
+   \   00008A   E0           MOVX    A,@DPTR
+   \   00008B   FA           MOV     R2,A
+   \   00008C   E8           MOV     A,R0
+   \   00008D   2A           ADD     A,R2
+   \   00008E   FA           MOV     R2,A
+   \   00008F   E9           MOV     A,R1
+   \   000090   3400         ADDC    A,#0x0
+   \   000092   FB           MOV     R3,A
+   \   000093   EA           MOV     A,R2
+   \   000094   2418         ADD     A,#0x18
+   \   000096   FA           MOV     R2,A
+   \   000097   EB           MOV     A,R3
+   \   000098   3400         ADDC    A,#0x0
+   \   00009A   FB           MOV     R3,A
+   \   00009B   C3           CLR     C
+   \   00009C   EE           MOV     A,R6
+   \   00009D   9A           SUBB    A,R2
+   \   00009E   EF           MOV     A,R7
+   \   00009F   9B           SUBB    A,R3
+   \   0000A0   4003         JC      $+5
+   \   0000A2   02....       LJMP    ??zllSampleLight_SceneRecallCB_5 & 0xFFFF
+   \   0000A5   12....       LCALL   ?Subroutine15 & 0xFFFF
+   \                     ??CrossCallReturnLabel_55:
+   \   0000A8   EE           MOV     A,R6
+   \   0000A9   2402         ADD     A,#0x2
+   \   0000AB   FE           MOV     R6,A
+   \   0000AC   EF           MOV     A,R7
+   \   0000AD   3400         ADDC    A,#0x0
+   \   0000AF   FF           MOV     R7,A
+   \   0000B0   8E82         MOV     DPL,R6
+   \   0000B2   8F83         MOV     DPH,R7
+   \   0000B4   E0           MOVX    A,@DPTR
+   \   0000B5   F5..         MOV     ?V0 + 4,A
+   \   0000B7   A3           INC     DPTR
+   \   0000B8   AE82         MOV     R6,DPL
+   \   0000BA   AF83         MOV     R7,DPH
+   \   0000BC   A3           INC     DPTR
+   \   0000BD   8582..       MOV     ?V0 + 2,DPL
+   \   0000C0   8583..       MOV     ?V0 + 3,DPH
+   \   0000C3   7406         MOV     A,#0x6
+   \   0000C5   68           XRL     A,R0
+   \   0000C6   7001         JNZ     ??zllSampleLight_SceneRecallCB_6
+   \   0000C8   E9           MOV     A,R1
+   \                     ??zllSampleLight_SceneRecallCB_6:
+   \   0000C9   701D         JNZ     ??zllSampleLight_SceneRecallCB_7
+   \   0000CB   E5..         MOV     A,?V0 + 4
+   \   0000CD   C3           CLR     C
+   \   0000CE   9401         SUBB    A,#0x1
+   \   0000D0   A2D2         MOV     C,0xD0 /* PSW */.2
+   \   0000D2   65D0         XRL     A,PSW
+   \   0000D4   33           RLC     A
+   \   0000D5   4093         JC      ??zllSampleLight_SceneRecallCB_4
+   \   0000D7                ; Setup parameters for call to function zllSampleLight_OnOffCB
+   \   0000D7   8E82         MOV     DPL,R6
+   \   0000D9   8F83         MOV     DPH,R7
+   \   0000DB   E0           MOVX    A,@DPTR
+   \   0000DC   F9           MOV     R1,A
+   \   0000DD   12....       LCALL   ??zllSampleLight_OnOffCB?relay
+   \   0000E0   0E           INC     R6
+   \   0000E1   AF..         MOV     R7,?V0 + 3
+   \                     ??zllSampleLight_SceneRecallCB_8:
+   \   0000E3   74FF         MOV     A,#-0x1
+   \   0000E5   02....       LJMP    ??zllSampleLight_SceneRecallCB_3 & 0xFFFF
+   \                     ??zllSampleLight_SceneRecallCB_7:
+   \   0000E8   7408         MOV     A,#0x8
+   \   0000EA   68           XRL     A,R0
+   \   0000EB   7001         JNZ     ??zllSampleLight_SceneRecallCB_9
+   \   0000ED   E9           MOV     A,R1
+   \                     ??zllSampleLight_SceneRecallCB_9:
+   \   0000EE   7044         JNZ     ??zllSampleLight_SceneRecallCB_10
+   \   0000F0   E5..         MOV     A,?V0 + 4
+   \   0000F2   C3           CLR     C
+   \   0000F3   9401         SUBB    A,#0x1
+   \   0000F5   A2D2         MOV     C,0xD0 /* PSW */.2
+   \   0000F7   65D0         XRL     A,PSW
+   \   0000F9   33           RLC     A
+   \   0000FA   5003         JNC     $+5
+   \   0000FC   02....       LJMP    ??zllSampleLight_SceneRecallCB_4 & 0xFFFF
+   \   0000FF   8E82         MOV     DPL,R6
+   \   000101   8F83         MOV     DPH,R7
+   \   000103   E0           MOVX    A,@DPTR
+   \   000104   C0E0         PUSH    A
+   \   000106   7401         MOV     A,#0x1
+   \   000108   12....       LCALL   ?XSTACK_DISP0_8
+   \   00010B   D0E0         POP     A
+   \   00010D   F0           MOVX    @DPTR,A
+   \   00010E   0E           INC     R6
+   \   00010F   AF..         MOV     R7,?V0 + 3
+   \   000111   12....       LCALL   ?Subroutine17 & 0xFFFF
+   \                     ??CrossCallReturnLabel_35:
+   \   000114   A3           INC     DPTR
+   \   000115   12....       LCALL   ??Subroutine25_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_60:
+   \   000118   7402         MOV     A,#0x2
+   \   00011A   12....       LCALL   ?XSTACK_DISP0_8
+   \   00011D   12....       LCALL   ?Subroutine7 & 0xFFFF
+   \                     ??CrossCallReturnLabel_15:
+   \   000120   7404         MOV     A,#0x4
+   \   000122   12....       LCALL   ?XSTACK_DISP0_8
+   \   000125   E4           CLR     A
+   \   000126   F0           MOVX    @DPTR,A
+   \   000127                ; Setup parameters for call to function zclLevel_MoveToLevelCB
+   \   000127   04           INC     A
+   \   000128   12....       LCALL   ?XSTACK_DISP0_8
+   \   00012B   AA82         MOV     R2,DPL
+   \   00012D   AB83         MOV     R3,DPH
+   \   00012F   12....       LCALL   ??zclLevel_MoveToLevelCB?relay
+   \   000132   80AF         SJMP    ??zllSampleLight_SceneRecallCB_8
+   \                     ??zllSampleLight_SceneRecallCB_10:
+   \   000134   E8           MOV     A,R0
+   \   000135   7003         JNZ     ??zllSampleLight_SceneRecallCB_11
+   \   000137   7403         MOV     A,#0x3
+   \   000139   69           XRL     A,R1
+   \                     ??zllSampleLight_SceneRecallCB_11:
+   \   00013A   6003         JZ      $+5
+   \   00013C   02....       LJMP    ??zllSampleLight_SceneRecallCB_4 & 0xFFFF
+   \   00013F   E5..         MOV     A,?V0 + 4
+   \   000141   C3           CLR     C
+   \   000142   9404         SUBB    A,#0x4
+   \   000144   5003         JNC     $+5
+   \   000146   02....       LJMP    ??zllSampleLight_SceneRecallCB_4 & 0xFFFF
+   \   000149   7405         MOV     A,#0x5
+   \   00014B   12....       LCALL   ?XSTACK_DISP0_8
+   \   00014E   AC82         MOV     R4,DPL
+   \   000150   AD83         MOV     R5,DPH
+   \   000152   7583..       MOV     DPH,#(`?<Constant {0}>` >> 8) & 0xff
+   \   000155   7582..       MOV     DPL,#`?<Constant {0}>` & 0xff
+   \   000158   7406         MOV     A,#0x6
+   \   00015A   12....       LCALL   ?MOVE_LONG8_XDATA_XDATA
+   \   00015D   8E82         MOV     DPL,R6
+   \   00015F   8F83         MOV     DPH,R7
+   \   000161   E0           MOVX    A,@DPTR
+   \   000162   FA           MOV     R2,A
+   \   000163   85..82       MOV     DPL,?V0 + 2
+   \   000166   85..83       MOV     DPH,?V0 + 3
+   \   000169   12....       LCALL   ??Subroutine24_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_52:
+   \   00016C   7405         MOV     A,#0x5
+   \   00016E   12....       LCALL   ?XSTACK_DISP0_8
+   \   000171   12....       LCALL   ?Subroutine7 & 0xFFFF
+   \                     ??CrossCallReturnLabel_16:
+   \   000174   8E82         MOV     DPL,R6
+   \   000176   8F83         MOV     DPH,R7
+   \   000178   A3           INC     DPTR
+   \   000179   A3           INC     DPTR
+   \   00017A   E0           MOVX    A,@DPTR
+   \   00017B   FA           MOV     R2,A
+   \   00017C   8E82         MOV     DPL,R6
+   \   00017E   8F83         MOV     DPH,R7
+   \   000180   A3           INC     DPTR
+   \   000181   A3           INC     DPTR
+   \   000182   12....       LCALL   ??Subroutine23_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_53:
+   \   000185   7407         MOV     A,#0x7
+   \   000187   12....       LCALL   ?XSTACK_DISP0_8
+   \   00018A   12....       LCALL   ?Subroutine7 & 0xFFFF
+   \                     ??CrossCallReturnLabel_17:
+   \   00018D   EE           MOV     A,R6
+   \   00018E   2404         ADD     A,#0x4
+   \   000190   FE           MOV     R6,A
+   \   000191   EF           MOV     A,R7
+   \   000192   3400         ADDC    A,#0x0
+   \   000194   FF           MOV     R7,A
+   \   000195   74FC         MOV     A,#-0x4
+   \   000197   25..         ADD     A,?V0 + 4
+   \   000199   F5..         MOV     ?V0 + 4,A
+   \   00019B   7405         MOV     A,#0x5
+   \   00019D   12....       LCALL   ?XSTACK_DISP0_8
+   \   0001A0   12....       LCALL   ??Subroutine21_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_46:
+   \   0001A3   700A         JNZ     ??zllSampleLight_SceneRecallCB_12
+   \   0001A5   7407         MOV     A,#0x7
+   \   0001A7   12....       LCALL   ?XSTACK_DISP0_8
+   \   0001AA   12....       LCALL   ??Subroutine21_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_47:
+   \   0001AD   601A         JZ      ??zllSampleLight_SceneRecallCB_13
+   \                     ??zllSampleLight_SceneRecallCB_12:
+   \   0001AF   12....       LCALL   ?Subroutine11 & 0xFFFF
+   \                     ??CrossCallReturnLabel_28:
+   \   0001B2   7409         MOV     A,#0x9
+   \   0001B4   12....       LCALL   ?XSTACK_DISP0_8
+   \   0001B7   12....       LCALL   ?Subroutine7 & 0xFFFF
+   \                     ??CrossCallReturnLabel_18:
+   \   0001BA                ; Setup parameters for call to function zclColor_MoveToColorCB
+   \   0001BA   7405         MOV     A,#0x5
+   \   0001BC   12....       LCALL   ?XSTACK_DISP0_8
+   \   0001BF   AA82         MOV     R2,DPL
+   \   0001C1   AB83         MOV     R3,DPH
+   \   0001C3   12....       LCALL   ??zclColor_MoveToColorCB?relay
+   \   0001C6   02....       LJMP    ??zllSampleLight_SceneRecallCB_4 & 0xFFFF
+   \                     ??zllSampleLight_SceneRecallCB_13:
+   \   0001C9   E5..         MOV     A,?V0 + 4
+   \   0001CB   C3           CLR     C
+   \   0001CC   9403         SUBB    A,#0x3
+   \   0001CE   5003         JNC     $+5
+   \   0001D0   02....       LJMP    ??zllSampleLight_SceneRecallCB_4 & 0xFFFF
+   \   0001D3   7583..       MOV     DPH,#(`?<Constant {0}>_1` >> 8) & 0xff
+   \   0001D6   7582..       MOV     DPL,#`?<Constant {0}>_1` & 0xff
+   \   0001D9   7405         MOV     A,#0x5
+   \   0001DB   12....       LCALL   ?MOVE_LONG8_XDATA_XDATA
+   \   0001DE   12....       LCALL   ?Subroutine15 & 0xFFFF
+   \                     ??CrossCallReturnLabel_56:
+   \   0001E1   740B         MOV     A,#0xb
+   \   0001E3   12....       LCALL   ?XSTACK_DISP0_8
+   \   0001E6   12....       LCALL   ?Subroutine6 & 0xFFFF
+   \                     ??CrossCallReturnLabel_12:
+   \   0001E9   8E82         MOV     DPL,R6
+   \   0001EB   8F83         MOV     DPH,R7
+   \   0001ED   E0           MOVX    A,@DPTR
+   \   0001EE   C0E0         PUSH    A
+   \   0001F0   740D         MOV     A,#0xd
+   \   0001F2   12....       LCALL   ?XSTACK_DISP0_8
+   \   0001F5   D0E0         POP     A
+   \   0001F7   12....       LCALL   ?Subroutine10 & 0xFFFF
+   \                     ??CrossCallReturnLabel_27:
+   \   0001FA   12....       LCALL   ?Subroutine11 & 0xFFFF
+   \                     ??CrossCallReturnLabel_29:
+   \   0001FD   740E         MOV     A,#0xe
+   \   0001FF   12....       LCALL   ?XSTACK_DISP0_8
+   \   000202   12....       LCALL   ?Subroutine7 & 0xFFFF
+   \                     ??CrossCallReturnLabel_19:
+   \   000205                ; Setup parameters for call to function zclColor_MoveToEnhHueAndSaturationCB
+   \   000205   740B         MOV     A,#0xb
+   \   000207   12....       LCALL   ?XSTACK_DISP0_8
+   \   00020A   AA82         MOV     R2,DPL
+   \   00020C   AB83         MOV     R3,DPH
+   \   00020E   12....       LCALL   ??zclColor_MoveToEnhHueAndSaturationCB?relay
+   \   000211   74FD         MOV     A,#-0x3
+   \   000213   25..         ADD     A,?V0 + 4
+   \   000215   F5..         MOV     ?V0 + 4,A
+   \   000217   C3           CLR     C
+   \   000218   9404         SUBB    A,#0x4
+   \   00021A   5003         JNC     $+5
+   \   00021C   02....       LJMP    ??zllSampleLight_SceneRecallCB_4 & 0xFFFF
+   \   00021F   7410         MOV     A,#0x10
+   \   000221   12....       LCALL   ?XSTACK_DISP0_8
+   \   000224   AC82         MOV     R4,DPL
+   \   000226   AD83         MOV     R5,DPH
+   \   000228   7583..       MOV     DPH,#(`?<Constant {{{0}}}>` >> 8) & 0xff
+   \   00022B   7582..       MOV     DPL,#`?<Constant {{{0}}}>` & 0xff
+   \   00022E   7408         MOV     A,#0x8
+   \   000230   12....       LCALL   ?MOVE_LONG8_XDATA_XDATA
+   \   000233   7410         MOV     A,#0x10
+   \   000235   12....       LCALL   ?XSTACK_DISP0_8
+   \   000238   E0           MOVX    A,@DPTR
+   \   000239   4401         ORL     A,#0x1
+   \   00023B   F0           MOVX    @DPTR,A
+   \   00023C   EE           MOV     A,R6
+   \   00023D   F8           MOV     R0,A
+   \   00023E   EF           MOV     A,R7
+   \   00023F   F9           MOV     R1,A
+   \   000240   8882         MOV     DPL,R0
+   \   000242   8983         MOV     DPH,R1
+   \   000244   A3           INC     DPTR
+   \   000245   0E           INC     R6
+   \   000246   AF83         MOV     R7,DPH
+   \   000248   8882         MOV     DPL,R0
+   \   00024A   8983         MOV     DPH,R1
+   \   00024C   E0           MOVX    A,@DPTR
+   \   00024D   85..82       MOV     DPL,?XSP + 0
+   \   000250   85..83       MOV     DPH,?XSP + 1
+   \   000253   7003         JNZ     $+5
+   \   000255   02....       LJMP    ??zllSampleLight_SceneRecallCB_1 & 0xFFFF
+   \   000258   7402         MOV     A,#0x2
+   \   00025A   02....       LJMP    ??zllSampleLight_SceneRecallCB_2 & 0xFFFF
+   1049            }
+   1050          
+   1051            zllSampleLight_CurrentScene = pReq->scene->ID;
+   \                     ??zllSampleLight_SceneRecallCB_5:
+   \   00025D   8882         MOV     DPL,R0
+   \   00025F   8983         MOV     DPH,R1
+   \   000261   A3           INC     DPTR
+   \   000262   A3           INC     DPTR
+   \   000263   E0           MOVX    A,@DPTR
+   \   000264   90....       MOV     DPTR,#zllSampleLight_CurrentScene
+   \   000267   F0           MOVX    @DPTR,A
+   1052            zllSampleLight_CurrentGroup = pReq->scene->groupID;
+   \   000268   12....       LCALL   ?Subroutine17 & 0xFFFF
+   \                     ??CrossCallReturnLabel_36:
+   \   00026B   12....       LCALL   ??Subroutine26_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_59:
+   \   00026E   90....       MOV     DPTR,#zllSampleLight_CurrentGroup
+   \   000271   12....       LCALL   ?Subroutine7 & 0xFFFF
+   1053            zllSampleLight_GlobalSceneCtrl = TRUE;
+   \                     ??CrossCallReturnLabel_20:
+   \   000274   90....       MOV     DPTR,#zllSampleLight_GlobalSceneCtrl
+   \   000277   7401         MOV     A,#0x1
+   \   000279   F0           MOVX    @DPTR,A
+   1054            SCENE_VALID();
+   \   00027A   90....       MOV     DPTR,#zllSampleLight_SceneValid
+   \   00027D   F0           MOVX    @DPTR,A
+   1055          }
+   \   00027E   7418         MOV     A,#0x18
+   \   000280   12....       LCALL   ?DEALLOC_XSTACK8
+   \   000283   7F05         MOV     R7,#0x5
+   \   000285   02....       LJMP    ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine17:
+   \   000000   85..82       MOV     DPL,?V0 + 0
+   \   000003   85..83       MOV     DPH,?V0 + 1
+   \   000006   E0           MOVX    A,@DPTR
+   \   000007   F8           MOV     R0,A
+   \   000008   A3           INC     DPTR
+   \   000009   E0           MOVX    A,@DPTR
+   \   00000A   F583         MOV     DPH,A
+   \   00000C   8882         MOV     DPL,R0
+   \   00000E   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine15:
+   \   000000   8E82         MOV     DPL,R6
+   \   000002   8F83         MOV     DPH,R7
+   \   000004   E0           MOVX    A,@DPTR
+   \   000005                REQUIRE ??Subroutine22_0
+   \   000005                ; // Fall through to label ??Subroutine22_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine22_0:
+   \   000000   FA           MOV     R2,A
+   \   000001                REQUIRE ??Subroutine23_0
+   \   000001                ; // Fall through to label ??Subroutine23_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine23_0:
+   \   000000   A3           INC     DPTR
+   \   000001                REQUIRE ??Subroutine24_0
+   \   000001                ; // Fall through to label ??Subroutine24_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine11:
+   \   000000   85..82       MOV     DPL,?V0 + 0
+   \   000003   85..83       MOV     DPH,?V0 + 1
+   \   000006   E0           MOVX    A,@DPTR
+   \   000007   F8           MOV     R0,A
+   \   000008   A3           INC     DPTR
+   \   000009   E0           MOVX    A,@DPTR
+   \   00000A   F9           MOV     R1,A
+   \   00000B   8882         MOV     DPL,R0
+   \   00000D   8983         MOV     DPH,R1
+   \   00000F   A3           INC     DPTR
+   \   000010   A3           INC     DPTR
+   \   000011   A3           INC     DPTR
+   \   000012   E0           MOVX    A,@DPTR
+   \   000013   FA           MOV     R2,A
+   \   000014   A3           INC     DPTR
+   \   000015   E0           MOVX    A,@DPTR
+   \   000016   FB           MOV     R3,A
+   \   000017   EA           MOV     A,R2
+   \   000018   75F00A       MOV     B,#0xa
+   \   00001B   A4           MUL     AB
+   \   00001C   FA           MOV     R2,A
+   \   00001D   ACF0         MOV     R4,B
+   \   00001F   75F00A       MOV     B,#0xa
+   \   000022   EB           MOV     A,R3
+   \   000023   A4           MUL     AB
+   \   000024   2C           ADD     A,R4
+   \   000025   FB           MOV     R3,A
+   \   000026   8882         MOV     DPL,R0
+   \   000028   8983         MOV     DPH,R1
+   \   00002A   A3           INC     DPTR
+   \   00002B   A3           INC     DPTR
+   \   00002C   A3           INC     DPTR
+   \   00002D   A3           INC     DPTR
+   \   00002E   A3           INC     DPTR
+   \   00002F   E0           MOVX    A,@DPTR
+   \   000030   2A           ADD     A,R2
+   \   000031   F8           MOV     R0,A
+   \   000032   A3           INC     DPTR
+   \   000033   E0           MOVX    A,@DPTR
+   \   000034   3B           ADDC    A,R3
+   \   000035   F9           MOV     R1,A
+   \   000036   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine10:
+   \   000000   F0           MOVX    @DPTR,A
+   \   000001   8E82         MOV     DPL,R6
+   \   000003   8F83         MOV     DPH,R7
+   \   000005   A3           INC     DPTR
+   \   000006   0E           INC     R6
+   \   000007   AF83         MOV     R7,DPH
+   \   000009   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine6:
+   \   000000   E8           MOV     A,R0
+   \   000001   F0           MOVX    @DPTR,A
+   \   000002   A3           INC     DPTR
+   \   000003   E9           MOV     A,R1
+   \   000004   F0           MOVX    @DPTR,A
+   \   000005   EE           MOV     A,R6
+   \   000006   2402         ADD     A,#0x2
+   \   000008   FE           MOV     R6,A
+   \   000009   EF           MOV     A,R7
+   \   00000A   3400         ADDC    A,#0x0
+   \   00000C   FF           MOV     R7,A
+   \   00000D   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine8:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   24FF         ADD     A,#-0x1
+   \   000003   F0           MOVX    @DPTR,A
+   \   000004   18           DEC     R0
+   \   000005   A3           INC     DPTR
+   \   000006   E0           MOVX    A,@DPTR
+   \   000007   34FF         ADDC    A,#-0x1
+   \   000009   F0           MOVX    @DPTR,A
+   \   00000A   F9           MOV     R1,A
+   \   00000B   E8           MOV     A,R0
+   \   00000C   49           ORL     A,R1
+   \   00000D   22           RET
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for zllSampleLight_GenCmdCBs>`:
+   \   000000   ....         DW ??zllSampleLight_BasicResetCB?relay
+   \   000002   ....         DW ??zllSampleLight_IdentifyCB?relay
+   \   000004   ....         DW ??zllSampleLight_IdentifyEffectCB?relay
+   \   000006   ....         DW ??zllSampleLight_IdentifyQueryRspCB?relay
+   \   000008   ....         DW ??zllSampleLight_OnOffCB?relay
+   \   00000A   ....         DW ??zllSampleLight_OnOff_OffWithEffectCB?relay
+   \   00000C   ....         DW ??zllSampleLight_OnOff_OnWithRecallGlobalSceneC
+   \   00000E   ....         DW ??zllSampleLight_OnOff_OnWithTimedOffCB?relay
+   \   000010   ....         DW ??zclLevel_MoveToLevelCB?relay
+   \   000012   ....         DW ??zclLevel_MoveCB?relay
+   \   000014   ....         DW ??zclLevel_StepCB?relay
+   \   000016   ....         DW ??zclLevel_StopCB?relay
+   \   000018   0000         DW 0H
+   \   00001A   ....         DW ??zllSampleLight_SceneStoreCB?relay
+   \   00001C   ....         DW ??zllSampleLight_SceneRecallCB?relay
+   \   00001E   0000         DW 0H
+   \   000020   0000         DW 0H
+   \   000022   0000         DW 0H
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for zllSampleLight_LightingCmdCB`:
+   \   000000   ....         DW ??zclColor_MoveToHueCB?relay
+   \   000002   ....         DW ??zclColor_MoveHueCB?relay
+   \   000004   ....         DW ??zclColor_StepHueCB?relay
+   \   000006   ....         DW ??zclColor_MoveToSaturationCB?relay
+   \   000008   ....         DW ??zclColor_MoveSaturationCB?relay
+   \   00000A   ....         DW ??zclColor_StepSaturationCB?relay
+   \   00000C   ....         DW ??zclColor_MoveToHueAndSaturationCB?relay
+   \   00000E   ....         DW ??zclColor_MoveToColorCB?relay
+   \   000010   ....         DW ??zclColor_MoveColorCB?relay
+   \   000012   ....         DW ??zclColor_StepColorCB?relay
+   \   000014   0000         DW 0H
+   \   000016   ....         DW ??zclColor_EnhMoveToHueCB?relay
+   \   000018   ....         DW ??zclColor_MoveEnhHueCB?relay
+   \   00001A   ....         DW ??zclColor_StepEnhHueCB?relay
+   \   00001C   ....         DW ??zclColor_MoveToEnhHueAndSaturationCB?relay
+   \   00001E   ....         DW ??zclColor_SetColorLoopCB?relay
+   \   000020   ....         DW ??zclColor_StopCB?relay
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllSampleLight_Init?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllSampleLight_Init
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllSampleLight_event_loop?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllSampleLight_event_loop
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllSampleLight_ProcessIdentifyTimeChange?rela:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllSampleLight_ProcessIdentifyTimeChange
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllSampleLight_AttrReadWriteCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllSampleLight_AttrReadWriteCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllSampleLight_BasicResetCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllSampleLight_BasicResetCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllSampleLight_IdentifyCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllSampleLight_IdentifyCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllSampleLight_IdentifyEffectCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllSampleLight_IdentifyEffectCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllSampleLight_IdentifyQueryRspCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllSampleLight_IdentifyQueryRspCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllSampleLight_OnOffCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllSampleLight_OnOffCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllSampleLight_OnOff_OffWithEffectCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllSampleLight_OnOff_OffWithEffectCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllSampleLight_OnOff_OnWithRecallGlobalSceneC:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllSampleLight_OnOff_OnWithRecallGlobalSceneCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllSampleLight_OnOff_OnWithTimedOffCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllSampleLight_OnOff_OnWithTimedOffCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllSampleLight_SceneStoreCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllSampleLight_SceneStoreCB
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??zllSampleLight_SceneRecallCB?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    zllSampleLight_SceneRecallCB
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "IdentifyEffId">`:
+   \   000000   4964656E     DB "IdentifyEffId"
+   \            74696679
+   \            45666649
+   \            6400    
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "OffWithEff">`:
+   \   000000   4F666657     DB "OffWithEff"
+   \            69746845
+   \            666600  
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant {0}>`:
+   \   000000   0000         DW 0
+   \   000002   00000000     DB 0, 0, 0, 0
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant {0}>_1`:
+   \   000000   0000         DW 0
+   \   000002   000000       DB 0, 0, 0
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant {{{0}}}>`:
+   \   000000   00           DB 0
+   \   000001   00           DB 0
+   \   000002   00000000     DB 0, 0, 0, 0, 0, 0
+   \            0000    
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_2:
+   \   000000   02000000     DD 2
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_6:
+   \   000000   06000000     DD 6
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_64:
+   \   000000   64000000     DD 100
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_3e8:
+   \   000000   E8030000     DD 1000
+   1056          
+   1057          
+   1058          /****************************************************************************
+   1059          ****************************************************************************/
+   1060          
+   1061          
+
+   Maximum stack usage in bytes:
+
+   ISTACK PSTACK XSTACK Function
+   ------ ------ ------ --------
+       1      0     24  zllSampleLight_AttrReadWriteCB
+                          0 0 20 -> zclGeneral_ReadSceneCountCB
+                          0 0 16 -> zllSampleLight_IdentifyCB
+       0      0      0  zllSampleLight_BasicResetCB
+       2      0     16  zllSampleLight_IdentifyCB
+                          2 0  0 -> zllSampleLight_ProcessIdentifyTimeChange
+       0      0     12  zllSampleLight_IdentifyEffectCB
+                          0 0 12 -> HalLcdWriteStringValue
+                          0 0 11 -> zllEffects_InitiateEffect
+       0      0      0  zllSampleLight_IdentifyQueryRspCB
+       0      0      9  zllSampleLight_Init
+                          0 0  9 -> HalTimer1Init
+                          0 0  9 -> RegisterForKeys
+                          0 0  9 -> zclColor_init
+                          0 0  9 -> zclGeneral_RegisterCmdCallbacks
+                          0 0  9 -> zclLevel_init
+                          0 0  9 -> zclLighting_RegisterCmdCallbacks
+                          0 0  9 -> zcl_registerAttrList
+                          0 0  9 -> zcl_registerReadWriteCB
+                          0 0  9 -> zllEffects_Init
+                          0 0  9 -> zllSampleLight_OnOffCB
+                          0 0  9 -> zllTarget_InitDevice
+                          0 0  9 -> zllTarget_RegisterApp
+                          0 0  9 -> zllTarget_RegisterIdentifyCB
+                          0 0  9 -> zll_RegisterSimpleDesc
+       0      0     46  zllSampleLight_OnOffCB
+                          0 0  9 -> hwLight_UpdateOnOff
+       0      0     20  zllSampleLight_OnOff_OffWithEffectCB
+                          0 0 20 -> HalLcdWriteStringValueValue
+                          0 0 16 -> zllEffects_InitiateEffect
+                          0 0 16 -> zllSampleLight_SceneStoreCB
+       2      0      4  zllSampleLight_OnOff_OnWithRecallGlobalSceneCB
+                          2 0  4 -> zllSampleLight_SceneRecallCB
+       0      0     14  zllSampleLight_OnOff_OnWithTimedOffCB
+                          0 0 14 -> osal_start_timerEx
+                          0 0 10 -> zllSampleLight_OnOffCB
+       2      0     18  zllSampleLight_ProcessIdentifyTimeChange
+                          2 0  4 -> osal_start_timerEx
+                          2 0  0 -> zllEffects_Blink
+       2      0     41  zllSampleLight_SceneRecallCB
+                          0 0 37 -> zclColor_MoveToColorCB
+                          0 0 37 -> zclColor_MoveToEnhHueAndSaturationCB
+                          0 0 37 -> zclColor_SetColorLoopCB
+                          0 0 37 -> zclLevel_MoveToLevelCB
+                          0 0 37 -> zllSampleLight_OnOffCB
+       1      0     25  zllSampleLight_SceneStoreCB
+                          0 0  9 -> osal_memset
+       0      0     18  zllSampleLight_event_loop
+                          0 0 14 -> osal_getClock
+                          0 0 14 -> osal_msg_deallocate
+                          0 0 14 -> osal_msg_receive
+                          0 0 18 -> osal_start_timerEx
+                          0 0 14 -> osal_stop_timerEx
+                          0 0 14 -> zclColor_process
+                          0 0 14 -> zclColor_processColorLoop
+                          0 0 14 -> zclLevel_process
+                          0 0 14 -> zllEffects_ProcessEffect
+                          0 0 14 -> zllSampleLight_OnOffCB
+                          0 0 14 -> zllSampleLight_ProcessIdentifyTimeChange
+                          0 0 14 -> zllTarget_ClassicalCommissioningStart
+                          0 0 14 -> zllTarget_PermitJoin
+                          0 0 14 -> zllTarget_ResetToFactoryNew
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      14  ?<Constant "IdentifyEffId">
+      11  ?<Constant "OffWithEff">
+       6  ?<Constant {0}>
+       5  ?<Constant {0}>_1
+       8  ?<Constant {{{0}}}>
+      36  ?<Initializer for zllSampleLight_GenCmdCBs>
+      34  ?<Initializer for zllSampleLight_LightingCmdCB
+       8  ??Subroutine19_0
+      12  ??Subroutine20_0
+       8  ??Subroutine21_0
+       1  ??Subroutine22_0
+       1  ??Subroutine23_0
+       5  ??Subroutine24_0
+       2  ??Subroutine25_0
+       6  ??Subroutine26_0
+       6  ??zllSampleLight_AttrReadWriteCB?relay
+       6  ??zllSampleLight_BasicResetCB?relay
+       6  ??zllSampleLight_IdentifyCB?relay
+       6  ??zllSampleLight_IdentifyEffectCB?relay
+       6  ??zllSampleLight_IdentifyQueryRspCB?relay
+       6  ??zllSampleLight_Init?relay
+       6  ??zllSampleLight_OnOffCB?relay
+       6  ??zllSampleLight_OnOff_OffWithEffectCB?relay
+       6  ??zllSampleLight_OnOff_OnWithRecallGlobalSceneC
+       6  ??zllSampleLight_OnOff_OnWithTimedOffCB?relay
+       6  ??zllSampleLight_ProcessIdentifyTimeChange?rela
+       6  ??zllSampleLight_SceneRecallCB?relay
+       6  ??zllSampleLight_SceneStoreCB?relay
+       6  ??zllSampleLight_event_loop?relay
+       5  ?Subroutine0
+       2  ?Subroutine1
+      10  ?Subroutine10
+      55  ?Subroutine11
+       3  ?Subroutine12
+       4  ?Subroutine13
+       7  ?Subroutine14
+       5  ?Subroutine15
+       9  ?Subroutine16
+      15  ?Subroutine17
+      13  ?Subroutine18
+       7  ?Subroutine2
+      11  ?Subroutine3
+       6  ?Subroutine4
+      13  ?Subroutine5
+      14  ?Subroutine6
+       6  ?Subroutine7
+      14  ?Subroutine8
+       7  ?Subroutine9
+       4  __Constant_2
+       4  __Constant_3e8
+       4  __Constant_6
+       4  __Constant_64
+       4  keyPressTime
+     193  zllSampleLight_AttrReadWriteCB
+       3  zllSampleLight_BasicResetCB
+      36  zllSampleLight_GenCmdCBs
+      19  zllSampleLight_IdentifyCB
+      75  zllSampleLight_IdentifyEffectCB
+       3  zllSampleLight_IdentifyQueryRspCB
+     164  zllSampleLight_Init
+      34  zllSampleLight_LightingCmdCBs
+      69  zllSampleLight_OnOffCB
+     127  zllSampleLight_OnOff_OffWithEffectCB
+      40  zllSampleLight_OnOff_OnWithRecallGlobalSceneCB
+     178  zllSampleLight_OnOff_OnWithTimedOffCB
+      50  zllSampleLight_ProcessIdentifyTimeChange
+     648  zllSampleLight_SceneRecallCB
+     184  zllSampleLight_SceneStoreCB
+       1  zllSampleLight_TaskID
+     416  zllSampleLight_event_loop
+
+ 
+ 2 418 bytes in segment BANKED_CODE
+    84 bytes in segment BANK_RELAYS
+    70 bytes in segment XDATA_I
+    70 bytes in segment XDATA_ID
+    60 bytes in segment XDATA_ROM_C
+     5 bytes in segment XDATA_Z
+ 
+ 2 572 bytes of CODE  memory
+    44 bytes of CONST memory (+ 16 bytes shared)
+    75 bytes of XDATA memory
+
+Errors: none
+Warnings: none

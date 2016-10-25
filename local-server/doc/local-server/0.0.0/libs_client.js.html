@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: libs/frameHandler.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: libs/frameHandler.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * 指令帧处理层
+ *
+ * - 封装常用SREQ指令
+ * - 处理除`AppMsgFeedback`之外的AREQ指令。其交付`appmsg`层处理。
+ *
+ * @module
+ */
+
+const co = require('co');
+const { expect } = require('chai');
+const pry = require('promisify-node');
+const { EventEmitter } = require('events');
+const { client: log } = require('../utils/log');
+const { getDb, getModels } = require('../db');
+const transfer = require('./frameTransfer');
+const mt = require('../utils/mt');
+const { onOfLamp } = require('../utils/mtAppMsg');
+
+
+const { parseSrsp, frameMap } = mt;
+
+const db = getDb();
+const models = getModels();
+
+
+/**
+ * @fires areq - 解析好的AREQ指令帧实例
+ * @fires postAreq - AREQ指令帧处理完毕
+ */
+class Client extends EventEmitter {
+  constructor(transfer, frameMap, models) {
+    super();
+    this._models = models;
+    this._frameMap = frameMap;
+    this._transfer = transfer;
+    this._transfer.on('areq', this._handleTransferAreq.bind(this));
+  }
+  _handleTransferAreq(buf) {
+    const areq = this._frameMap.genAreqInsByBuf(buf);
+    /**
+     * @event areq
+     * @type {Frame}
+     */
+    this.emit('areq', areq);
+    this._handleAreqFeedback(areq);
+  }
+
+  * _handle_ZdoEndDeviceAnnceInd (areq) {
+    const { SrcAddr, NwkAddr, IEEEAddr, DeviceType } = areq.parsed;
+    const { Device } = this._models;
+    yield Device
+      .find()
+      .or([{nwk: NwkAddr}, {ieee: IEEEAddr}])
+      .remove()
+      .exec();
+    const device = yield Device.create({
+      nwk: NwkAddr,
+      ieee: IEEEAddr,
+      type: DeviceType,
+      name: `新设备 @${NwkAddr}`,
+    });
+    log.info(`新设备已加入 @${NwkAddr}\n`, areq.parsed);
+  }
+
+  /**
+   * 根据AREQ，修改数据库，并发出一些事件
+   * @param {Frame} areq
+   */
+  _handleAreqFeedback(areq) {
+    const handlerName = `_handle_${areq.name}`;
+    if (!(handlerName in this)) {
+      const err = `${handlerName} 处理器未定义`;
+      log.error(err);
+      throw new Error(err);
+    }
+    co.wrap(this[handlerName].bind(this))(areq)
+      .then(() => {
+        /**
+         * @event postAreq
+         * @type {Frame}
+         */
+        this.emit('postAreq', areq)
+      })
+      .catch(err => {
+        log.error(`${handlerName} 处理器出错\n`, err);
+        this.emit('error', err);
+      })
+  }
+}
+
+const client = new Client(
+  transfer,
+  frameMap,
+  models
+);
+
+module.exports = client;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-libs_client.html">libs/client</a></li><li><a href="module-libs_frameTransfer.html">libs/frameTransfer</a></li><li><a href="module-libs_msgTransfer.html">libs/msgTransfer</a></li><li><a href="module-libs_serial.html">libs/serial</a></li><li><a href="module-libs_zigbee.html">libs/zigbee</a></li><li><a href="module-routers_client.html">routers/client</a></li><li><a href="module-socket_client.html">socket/client</a></li><li><a href="module-utils_log.html">utils/log</a></li><li><a href="module-utils_mixin.html">utils/mixin</a></li><li><a href="module-utils_msg.html">utils/msg</a></li><li><a href="module-utils_mt.html">utils/mt</a></li><li><a href="module-utils_mtAppMsg.html">utils/mtAppMsg</a></li></ul><h3>Classes</h3><ul><li><a href="module-libs_client-Client.html">Client</a></li><li><a href="module-libs_frameTransfer-Transfer.html">Transfer</a></li><li><a href="module-libs_msgTransfer-MsgTransfer.html">MsgTransfer</a></li><li><a href="module-utils_msg-Msg.html">Msg</a></li><li><a href="module-utils_mtAppMsg-OnOffLampTurn.OnOffLampTurn.html">OnOffLampTurn</a></li><li><a href="module-utils_mt-AppMsg.AppMsg.html">AppMsg</a></li><li><a href="module-utils_mt-ZdoSecDeviceRemove.ZdoSecDeviceRemove.html">ZdoSecDeviceRemove</a></li></ul><h3>Events</h3><ul><li><a href="module-libs_frameTransfer.html#~event:areq">areq</a></li><li><a href="module-libs_msgTransfer.html#~event:feedback">feedback</a></li><li><a href="module-libs_frameTransfer.html#~event:frame">frame</a></li><li><a href="module-libs_client.html#~event:postAreq">postAreq</a></li><li><a href="module-libs_frameTransfer.html#~event:sreq">sreq</a></li><li><a href="module-libs_frameTransfer.html#~event:srsp">srsp</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun Sep 04 2016 17:05:45 GMT+0800 (中国标准时间)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: utils/mtAppMsg.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: utils/mtAppMsg.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * 构建app msg指令。用于上位机、协调器、终端设备之间传输自定义指令。
+ *
+ * ## MSG结构
+ *
+ * 在`DATA`区段：
+ *
+ * 1. 自定义clusterId: 2 bytes
+ * 1. 自定义payload: n bytes
+ *
+ * ## ON_OF_LAMP
+ *
+ * clusterId (2B) | on off flag (1B)
+ * ---------------|----------------
+ * 0xff00         | 0 or 1
+ *
+ * @module
+ */
+
+
+const { AppMsg } = require('./mt');
+
+const msgEp = 8;
+
+const clusters = {
+  // lamp
+  // --------------------
+  ON_OF_LAMP: 0xff00,
+  GRAY_LAMP: 0xff01,
+
+  // switch
+  // --------------------
+  ON_OF_SWITCH: 0xff02,
+  GRAY_SWITCH: 0xff03,
+};
+
+/**
+ * 为Class定义静态属性
+ * @param {Function} cls
+ * @param {object} desc
+ */
+function setClass(cls, desc) {
+  let nd = {};
+  Object.keys(desc).forEach(name => {
+    nd[name] = {value: desc[name], writable: false, enumerable: true, configurable: false};
+  });
+  Object.defineProperties(cls, nd);
+}
+
+/**
+ * ON_OFF_LAMP 工具类
+ */
+const onOfLamp = {
+  clusterId: clusters.ON_OF_LAMP,
+  /**
+   * 开关灯
+   * @param {Number} nwk
+   * @param {Number} ep
+   * @param {Boolean} x - on or off
+   * @return {Frame}
+   */
+  turn(nwk, ep, x) {
+    const turnCmdId = 0;
+    const msg = Buffer.from([turnCmdId, +x]);
+    return new AppMsg(msgEp, nwk, ep, this.clusterId, msg);
+  }
+};
+
+/**
+ * @typedef {MsgBase} MsgBase
+ */
+class MsgBase {}
+
+/**
+ * @typedef {MsgSend} MsgSend
+ */
+class MsgSend extends MsgBase {}
+setClass(MsgSend, {
+  msgEp: msgEp
+});
+
+/**
+ * @typedef {MsgFeedback} MsgFeedback
+ */
+class MsgFeedback extends MsgBase {}
+
+
+// on off lamp
+// -----------------------------------------------------
+
+/**
+ * @typedef {OnOffLampSendBase} OnOffLampSendBase
+ */
+class OnOffLampSendBase extends MsgSend {}
+setClass(OnOffLampSendBase, {
+  clusterId: clusters.ON_OF_LAMP
+});
+
+/**
+ * @typedef {OnOffLampTurn} OnOffLampTurn
+ */
+class OnOffLampTurn extends OnOffLampSendBase {
+  /**
+   * @param {Number} nwk
+   * @param {Number} ep
+   * @param {Boolean} x
+   */
+  constructor(nwk, ep, x) {
+    super();
+    this._nwk = nwk;
+    this._ep = ep;
+    this._x = x;
+  }
+  dump() {
+    const msg = Buffer.from([
+      OnOffLampTurn.appCmdId, +this._x
+    ]);
+    return new AppMsg(
+      OnOffLampTurn.msgEp,
+      this._nwk,
+      this._ep,
+      OnOffLampTurn.clusterId,
+      msg
+    );
+  }
+}
+setClass(OnOffLampTurn, {
+  appCmdId: 1
+});
+
+
+module.exports = {
+  clusters,
+  onOfLamp,
+  // base
+  MsgBase,
+  MsgSend,
+  MsgFeedback,
+  // lamp
+  OnOffLampSendBase,
+  OnOffLampTurn,
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-libs_client.html">libs/client</a></li><li><a href="module-libs_frameTransfer.html">libs/frameTransfer</a></li><li><a href="module-libs_msgTransfer.html">libs/msgTransfer</a></li><li><a href="module-libs_serial.html">libs/serial</a></li><li><a href="module-libs_zigbee.html">libs/zigbee</a></li><li><a href="module-routers_client.html">routers/client</a></li><li><a href="module-socket_client.html">socket/client</a></li><li><a href="module-utils_log.html">utils/log</a></li><li><a href="module-utils_mixin.html">utils/mixin</a></li><li><a href="module-utils_msg.html">utils/msg</a></li><li><a href="module-utils_mt.html">utils/mt</a></li><li><a href="module-utils_mtAppMsg.html">utils/mtAppMsg</a></li></ul><h3>Classes</h3><ul><li><a href="module-libs_client-Client.html">Client</a></li><li><a href="module-libs_frameTransfer-Transfer.html">Transfer</a></li><li><a href="module-libs_msgTransfer-MsgTransfer.html">MsgTransfer</a></li><li><a href="module-utils_msg-Msg.html">Msg</a></li><li><a href="module-utils_mtAppMsg-OnOffLampTurn.OnOffLampTurn.html">OnOffLampTurn</a></li><li><a href="module-utils_mt-AppMsg.AppMsg.html">AppMsg</a></li><li><a href="module-utils_mt-ZdoSecDeviceRemove.ZdoSecDeviceRemove.html">ZdoSecDeviceRemove</a></li></ul><h3>Events</h3><ul><li><a href="module-libs_frameTransfer.html#~event:areq">areq</a></li><li><a href="module-libs_msgTransfer.html#~event:feedback">feedback</a></li><li><a href="module-libs_frameTransfer.html#~event:frame">frame</a></li><li><a href="module-libs_client.html#~event:postAreq">postAreq</a></li><li><a href="module-libs_frameTransfer.html#~event:sreq">sreq</a></li><li><a href="module-libs_frameTransfer.html#~event:srsp">srsp</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun Sep 04 2016 17:05:45 GMT+0800 (中国标准时间)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

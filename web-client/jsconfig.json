@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "ES7",
+        "experimentalDecorators": true,
+        "module": "commonjs",
+        "allowSyntheticDefaultImports": true
+    },
+    "exclude": [
+        "node_modules",
+        ".idea",
+        "doc"
+    ]
+}
